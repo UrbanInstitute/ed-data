@@ -4,7 +4,6 @@
 library(dplyr)
 library(tidyr)
 library(openxlsx)
-library(readxl)
 
 ########################################################################################################
 # Define datasets
@@ -15,13 +14,20 @@ states <- read.csv("data/states.csv",stringsAsFactors = F)
 
 #College Board Trends in College Pricing - xls, need to save as xlsx to use openxlsx - probably worth it
 cp = "data/original/cbtrends-pricing2015.xls"
-cpx = "data/original/cbtrends-pricing2015.xlsx"
 download.file("http://trends.collegeboard.org/sites/default/files/2015-trends-college-pricing-source-data-11-2-15.xls", cp)
+cpx = "data/original/cbtrends-pricing2015.xlsx"
 
 #Trends in Student Aid
 sa = "data/original/cbtrends-studentaid2015.xls"
-sax = "data/original/cbtrends-studentaid2015.xlsx"
 download.file("http://trends.collegeboard.org/sites/default/files/2015-trends-student-aid-source-data-final.xls", sa)
+sax = "data/original/cbtrends-studentaid2015.xlsx"
+
+#State Higher Education Finance FY14 - now putting out the Grapevine pubs
+#http://www.sheeo.org/resources/publications/shef-%E2%80%94-state-higher-education-finance-fy14
+shef1 = "data/original/shef1.xlsx"
+download.file("http://www.sheeo.org/sites/default/files/publications/State%20and%20US%20Nominal%20All%20Data%202014.xlsx", shef1)
+shef2 = "data/original/shef2.xlsx"
+download.file("http://www.sheeo.org/sites/default/files/publications/All%20States%20Wavechart%202014.xlsx", shef2)
 
 ########################################################################################################
 # Annual tuition & fees from College Board
@@ -64,3 +70,11 @@ tab5b <- formatLong(tab5b) %>% rename(tufees_pub4 = tuition)
 tuition_cb <- left_join(tab5a,tab5b, by=c("state","year")) %>% mutate(dollars=2015,year_type="academic")
 tuition_cb  <- right_join(states,tuition_cb, by="state")
 write.csv(tuition_cb,"data/annualtuition.csv",row.names=F, na="")
+
+
+########################################################################################################
+# State Higher Education Finance report from http://www.sheeo.org/ - potentially using for state financing data
+########################################################################################################
+
+sh1<-readWorkbook(shef1, sheet="State and US Nominal All Data", colNames=T, rowNames=F, startRow=8)
+sh2<-readWorkbook(shef2, sheet="Ordered Data", colNames=T, rowNames=F)
