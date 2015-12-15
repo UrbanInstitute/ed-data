@@ -4,6 +4,9 @@
 library(dplyr)
 library(tidyr)
 
+#State fips codes, abbreviations, names, regions for matching
+states <- read.csv("data/states.csv",stringsAsFactors = F)
+
 #download identifying variables and dictionary
 download.file("http://nces.ed.gov/ipeds/datacenter/data/HD2014.zip","data/original/ipedsidentifiers.zip")
 unzip("data/original/ipedsidentifiers.zip", exdir="data/original/")
@@ -100,6 +103,7 @@ write.csv(enrollnames,"data/enrollment/varnames.csv",row.names=F, na="")
 enrollment <- left_join(colleges,enrollment,by="unitid") %>% 
   select(-institution.name)
 # Calculate means and sums by sector and state
+####NEED TO DO WEIGHTED MEAN FOR PRICE
 enrollsum <- enrollment %>% group_by(fips,sector) %>% summarise_each(funs(sum(., na.rm = TRUE)))
 enrollmean <- enrollment %>% group_by(fips,sector) %>% summarise_each(funs(mean(., na.rm = TRUE)))
 
@@ -110,6 +114,29 @@ temp2 <- enrollmean %>% gather(rawname, mean, 6:243) %>% select(fips,sector,rawn
 enrollstats <- left_join(temp1,temp2,by=c("fips","sector","rawname"))
 enrollstats$rawname <- as.character(enrollstats$rawname)
 enrollstats <- left_join(enrollstats, enrollnames, by="rawname")
-enrollstats <- enrollstats %>% filter(sector >=1, sector <=5) %>% filter(type!="identifier")
+enrollstats <- enrollstats %>% filter(sector >=1 & sector <=5 & type!="identifier")
+price <- enrollstats %>% filter(type=="totalprice") %>% 
+  select(-sum,-studentlevel,-type, -rawname) %>% 
+  rename(totalprice = mean)
+pricewide <- price %>% spread(studenttype,totalprice)
 
-write.csv(enrollstats,"data/enrollment.csv",row.names=F, na="")
+# Make wide enrollment dataset
+enroll<- enrollstats %>% filter(type=="enrollment") %>%
+  select(-mean,-type, -rawname) %>% 
+  rename(enrollment = sum)
+
+enrollwide <- enroll %>% mutate(studenttype = ifelse(studenttype=="total", "tot",
+                                                     ifelse(studenttype=="parttime", "pt",
+                                                            ifelse(studenttype=="fulltime","ft", NA)))) %>%
+   mutate(studentlevel = ifelse(studentlevel==20, "ug",
+                               ifelse(studentlevel==50, "gp", NA))) %>%
+  mutate(student=paste(studenttype, studentlevel, sep="_")) %>%
+  select(-studenttype,-studentlevel) %>%
+  spread(student,enrollment)
+
+enrollwide <- left_join(enrollwide,states,by=c("fips"="statefip"))
+enrollwide <- enrollwide %>% select(-state,-region) %>%
+  arrange(sector,fips,year) %>%
+  select(abbrev,everything())
+enrollwide <- enrollwide %>% mutate(tot_all = tot_ug + tot_gp)
+write.csv(enrollwide,"data/enrollment.csv",row.names=F, na="")
