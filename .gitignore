@@ -3,3 +3,4 @@
 .RData
 *.mvl
 *.zip
+data/enrollment.csv
