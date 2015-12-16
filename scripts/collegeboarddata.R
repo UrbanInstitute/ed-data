@@ -44,7 +44,7 @@ tab2$year <- as.numeric(tab2$year)
 tab2 <- tab2 %>% mutate(year = ifelse(year > 30, year+1900,
                                       year + 2000))
 tab2 <- tab2 %>% select(c(statefip,year,year_type, dollars), everything()) %>% select(-year_academic)
-write.csv(tab2,"data/nationaltuition.csv",row.names=F, na="")
+write.csv(tab2,"data/nationaltuition_cb.csv",row.names=F, na="")
 
 #TABLE 5. Average Published Tuition and Fees by State in Current Dollars and in 2015 Dollars, 2004-05 to 2015-16
 #Left (a): public two-year in district
@@ -69,7 +69,7 @@ tab5a <- formatLong(tab5a) %>% rename(tufees_pub2 = tuition)
 tab5b <- formatLong(tab5b) %>% rename(tufees_pub4 = tuition)
 tuition_cb <- left_join(tab5a,tab5b, by=c("state","year")) %>% mutate(dollars=2015,year_type="academic")
 tuition_cb  <- right_join(states,tuition_cb, by="state")
-write.csv(tuition_cb,"data/annualtuition.csv",row.names=F, na="")
+write.csv(tuition_cb,"data/annualtuition_cb.csv",row.names=F, na="")
 
 
 ########################################################################################################
