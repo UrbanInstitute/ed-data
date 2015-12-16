@@ -3,6 +3,3 @@
 .RData
 *.mvl
 *.zip
-data/original/enrollment_ipeds/
-data/original/nonenrollment_ipeds/
-data/original/tuitionfees_ipeds/
