@@ -56,7 +56,7 @@ editnames <- function(dt) {
 # Dataset has some total price info - will revisit later if using
 ########################################################################################################
 
-enrollment <- read.csv("data/enrollment/Data_12-14-2015.csv", stringsAsFactors = F)
+enrollment <- read.csv("data/original/enrollment_ipeds/Data_12-14-2015.csv", stringsAsFactors = F)
 colnames(enrollment) <- tolower(colnames(enrollment))
 
 ########################################################################################################
@@ -95,7 +95,7 @@ enrollnames <- function(names) {
 
 enames <- enrollnames(enames)
 
-write.csv(enames,"data/enrollment/varnames.csv",row.names=F, na="")
+write.csv(enames,"data/original/enrollment_ipeds/varnames.csv",row.names=F, na="")
 
 ########################################################################################################
 # Compute enrollment sums by state, sector
@@ -140,8 +140,8 @@ rm(temp1,enrollsum,enrollstats,enrollment,enames,enroll)
 # Non-Enrollment data - a bunch of things that we may use for 2013-14, 2014-15
 ########################################################################################################
 
-dt <- read.csv("data/nonenrollment_ipeds/Data_12-15-2015.csv",stringsAsFactors = F)
-varlabs <- read.csv("data/nonenrollment_ipeds/variablelabels.csv",stringsAsFactors = F)
+dt <- read.csv("data/original/nonenrollment_ipeds/Data_12-15-2015.csv",stringsAsFactors = F)
+varlabs <- read.csv("data/original/nonenrollment_ipeds/variablelabels.csv",stringsAsFactors = F)
 
 ########################################################################################################
 # Tuition and fees
@@ -149,13 +149,13 @@ varlabs <- read.csv("data/nonenrollment_ipeds/variablelabels.csv",stringsAsFacto
 # Dictionary ish http://nces.ed.gov/ipeds/datacenter/data/IC2014_AY_Dict.zip
 ########################################################################################################
 
-tfa <- read.csv("data/tuitionfees_ipeds/Data_12-16-2015a.csv",stringsAsFactors = F) #2005-06 to 2014-15
-tfb <- read.csv("data/tuitionfees_ipeds/Data_12-16-2015b.csv",stringsAsFactors = F) #1999-00 to 2004-05
+tfa <- read.csv("data/original/tuitionfees_ipeds/Data_12-16-2015a.csv",stringsAsFactors = F) #2005-06 to 2014-15
+tfb <- read.csv("data/original/tuitionfees_ipeds/Data_12-16-2015b.csv",stringsAsFactors = F) #1999-00 to 2004-05
 
 #Download, read dictionary
 download.file("http://nces.ed.gov/ipeds/datacenter/data/IC2014_AY_Dict.zip", "data/tuitionfees_ipeds/tfdictionary.zip")
-unzip("data/tuitionfees_ipeds/tfdictionary.zip", exdir="data/tuitionfees_ipeds")
-tfdict <- readWorkbook("data/tuitionfees_ipeds/ic2014_ay.xlsx", sheet="varlist", colNames=T, rowNames=F)
+unzip("data/original/tuitionfees_ipeds/tfdictionary.zip", exdir="data/original/tuitionfees_ipeds")
+tfdict <- readWorkbook("data/original/tuitionfees_ipeds/ic2014_ay.xlsx", sheet="varlist", colNames=T, rowNames=F)
 tfdict$varname <- tolower(tfdict$varname)
 tfdict <- tfdict %>% select(varname,varTitle)
 
