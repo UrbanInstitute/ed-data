@@ -1,0 +1,45 @@
+Important value labels
+
+cinsoff=chg2ay3+chg4ay3+chg7ay3+chg8ay3
+
+SECTOR (HD2014)	0	Administrative Unit
+SECTOR (HD2014)	1	Public, 4-year or above
+SECTOR (HD2014)	2	Private not-for-profit, 4-year or above
+SECTOR (HD2014)	3	Private for-profit, 4-year or above
+SECTOR (HD2014)	4	Public, 2-year
+SECTOR (HD2014)	5	Private not-for-profit, 2-year
+SECTOR (HD2014)	6	Private for-profit, 2-year
+SECTOR (HD2014)	7	Public, less-than 2-year
+SECTOR (HD2014)	8	Private not-for-profit, less-than 2-year
+SECTOR (HD2014)	9	Private for-profit, less-than 2-year
+SECTOR (HD2014)	99	Sector unknown (not active)
+ICLEVEL (HD2014)	1	Four or more years
+ICLEVEL (HD2014)	2	At least 2 but less than 4 years
+ICLEVEL (HD2014)	3	Less than 2 years (below associate)
+ICLEVEL (HD2014)	-3	{Not available}
+CONTROL (HD2014)	1	Public
+CONTROL (HD2014)	2	Private not-for-profit
+CONTROL (HD2014)	3	Private for-profit
+CONTROL (HD2014)	-3	{Not available}
+INSTCAT (HD2013)	1	Degree-granting, graduate with no undergraduate degrees
+INSTCAT (HD2013)	2	Degree-granting, primarily baccalaureate or above
+INSTCAT (HD2013)	3	Degree-granting, not primarily baccalaureate or above
+INSTCAT (HD2013)	4	Degree-granting, associate's and certificates
+INSTCAT (HD2013)	5	Nondegree-granting, above the baccalaureate
+INSTCAT (HD2013)	6	Nondegree-granting, sub-baccalaureate
+INSTCAT (HD2013)	-1	Not reported
+INSTCAT (HD2013)	-2	Not applicable
+
+20 = undergraduate
+50 = graduate and professional
+
+Total price for in-district students living on campus  2014-15 (DRVIC2014)	CINDON (DRVIC2014)
+Total price for in-state students living on campus 2014-15 (DRVIC2014)	CINSON (DRVIC2014)
+Total price for out-of-state students living on campus 2014-15 (DRVIC2014)	COTSON (DRVIC2014)
+
+ef = enrollment fall
+total = part time + full time
+ft = full time
+pt = part time
+20 = undergraduate
+50 = graduate and professional
