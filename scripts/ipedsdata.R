@@ -28,9 +28,9 @@ colnames(ids) <- tolower(colnames(ids))
 colleges <- ids %>% select(unitid,fips,sector,iclevel,control)
 
 #Format variable name meanings correctly
-varnames <- read.csv("data/collegeidentifiers/varnames.csv", stringsAsFactors = F, sep='"')
-varnames <- varnames %>% select(-X)
-write.csv(varnames,"data/collegeidentifiers/varnames.csv",row.names=F, na="")
+# varnames <- read.csv("data/collegeidentifiers/varnames.csv", stringsAsFactors = F, sep='"')
+# varnames <- varnames %>% select(-X)
+# write.csv(varnames,"data/collegeidentifiers/varnames.csv",row.names=F, na="")
 
 ########################################################################################################
 # Column names from custom data files include spaces, parentheses, etc - need a lot of editing
@@ -153,11 +153,14 @@ tfa <- read.csv("data/original/tuitionfees_ipeds/Data_12-16-2015a.csv",stringsAs
 tfb <- read.csv("data/original/tuitionfees_ipeds/Data_12-16-2015b.csv",stringsAsFactors = F) #1999-00 to 2004-05
 
 #Download, read dictionary
-download.file("http://nces.ed.gov/ipeds/datacenter/data/IC2014_AY_Dict.zip", "data/tuitionfees_ipeds/tfdictionary.zip")
-unzip("data/original/tuitionfees_ipeds/tfdictionary.zip", exdir="data/original/tuitionfees_ipeds")
-tfdict <- readWorkbook("data/original/tuitionfees_ipeds/ic2014_ay.xlsx", sheet="varlist", colNames=T, rowNames=F)
-tfdict$varname <- tolower(tfdict$varname)
-tfdict <- tfdict %>% select(varname,varTitle)
+# download.file("http://nces.ed.gov/ipeds/datacenter/data/IC2014_AY_Dict.zip", "data/tuitionfees_ipeds/tfdictionary.zip")
+# unzip("data/original/tuitionfees_ipeds/tfdictionary.zip", exdir="data/original/tuitionfees_ipeds")
+# tfdict <- readWorkbook("data/original/tuitionfees_ipeds/ic2014_ay.xlsx", sheet="varlist", colNames=T, rowNames=F)
+# tfdict$varname <- tolower(tfdict$varname)
+# tfdict <- tfdict %>% select(varname,varTitle)
+
+# Dictionary from ipeds-dictionary: https://github.com/UrbanInstitute/ipeds-dictionary
+dict <- read.csv("/Users/hrecht/Documents/ipeds-dictionary/ipeds_dictionary.csv",stringsAsFactors = F)
 
 tf <- left_join(tfa,tfb, by=c("UnitID", "Institution.Name"))
 tfnames <- editnames(tf)
@@ -167,7 +170,7 @@ table(tfnames$V.3)
 table(tfnames$V.4)
 
 #Join titles from dictionary to names
-tftypes <- left_join(tftypes,tfdict,by=c("Var1"="varname"))
+tftypes <- left_join(tftypes,dict,by=c("Var1"="varname"))
 #Remove the year from names
 tftypes$varTitle <- substr(tftypes$varTitle, 1, nchar(tftypes$varTitle)-8)
 tfnames <- left_join(tfnames,tftypes,by=c("V.1"="Var1"))
