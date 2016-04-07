@@ -30,8 +30,7 @@ taxes <- taxes %>% filter(!is.na(year))
 # Add fips code
 taxes <- left_join(taxes, states, by="state")
 # DC is named as "DC", not "District of Columbia"
-taxes <- taxes %>% mutate(statefip = ifelse(state=="DC", "11", statefip)) %>% 
+taxes <- taxes %>% mutate(fips = ifelse(state=="DC", "11", fips)) %>% 
   select(-state) %>%
-  select(statefip, year, everything()) %>%
-	rename(fips = statefip)
+  select(fips, year, everything())
 write.csv(taxes, "data/taxes_slfi.csv", row.names=F, na="")

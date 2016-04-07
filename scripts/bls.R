@@ -45,7 +45,7 @@ cpi_food <- getBLS('CUUS0000SAF') %>%
 	rename(cpi_food = value)	
 # Housing at school, excluding board
 cpi_housing <- getBLS('CUUR0000SEHB01') %>% 
-	rename(cpi_housing = value)	
+	rename(cpi_collegehousing = value)	
 # Rent of primary residence
 cpi_rent <- getBLS('CUUS0000SEHA') %>% 
 	rename(cpi_rent  = value)	
