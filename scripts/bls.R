@@ -7,7 +7,7 @@ library("jsonlite")
 library("dplyr")
 library("httr")
 
-blskey <- read_file("/Users/Hannah/Documents/keys/blskey.txt")
+blskey <- read_file("/Users/hrecht/Documents/keys/blskey.txt")
 
 # Consumer price index - annual average, non-seasonally adjusted, national
 # There's a multiseries API allowance but it's annoying to parse, just call individually
@@ -52,6 +52,9 @@ cpi_rent <- getBLS('CUUS0000SEHA') %>%
 # College textbooks
 cpi_textbooks <- getBLS('CUUR0000SSEA011') %>% 
 	rename(cpi_textbooks = value)	
+# Recreational books
+cpi_recbooks <- getBLS('CUUR0000SERG02') %>% 
+  rename(cpi_recbooks = value)	
 
 # College tuition and fees
 # cpi_college <- getBLS('CUUR0000SEEB01')
@@ -59,6 +62,7 @@ cpi_textbooks <- getBLS('CUUR0000SSEA011') %>%
 cpi <- left_join(cpi_all, cpi_food, by="year") %>%
 	left_join(., cpi_housing, by="year") %>%
 	left_join(., cpi_rent, by="year") %>%
-	left_join(., cpi_textbooks, by="year")   
+	left_join(., cpi_textbooks, by="year")    %>%
+  left_join(., cpi_recbooks, by="year") 
 
 write.csv(cpi, "data/cpi_bls.csv", row.names = F, na="")
