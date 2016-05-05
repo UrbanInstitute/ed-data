@@ -9,6 +9,7 @@
 
 ### Data download tools
 * [SLFI](scripts/slfi.R): state and local tax totals, by state and year - [taxes_slfi.csv](data/taxes_slfi.csv)
+* PowerStats
 
 ### Direct data (received via email, etc)
 * [SHEF](scripts/shef.R): appropriations by state and year - [shef.csv](data/shef.csv)

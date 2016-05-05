@@ -7,7 +7,7 @@
     "specs": {
         "charttype": "line",
         "section": 4,
-        "series names": {
+        "seriesnames": {
             "a": "Public 4 year",
             "b": "Private 4 year",
             "c": "Public 2 year"
