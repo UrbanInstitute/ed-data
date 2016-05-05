@@ -76,7 +76,7 @@ institutions <- institutions %>% select(year, unitid, everything()) %>%
 write.csv(institutions, "data/ipeds/institutions.csv", row.names=F, na="")
 
 # Define universe
-dt <- dt %>% filter(fips < 60 & sector > 0 & pset4flg==1) %>%
+dt <- dt %>% filter(sector > 0 & pset4flg==1) %>%
   # Special institutions - graduate-students only or other special focus
   mutate(specialty = ifelse((instcat==1 | ccbasic>23), 1, 0)) %>%
   # Primary Carnegie categories
