@@ -9,9 +9,10 @@ ipedspath <- "/Users/hrecht/Documents/ipeds-scraper/"
 allfiles <- fromJSON(paste(ipedspath, "data/ipedsfiles.json", sep=""))
 datacols <- fromJSON(paste(ipedspath, "data/ipedscolumns.json", sep=""))
 
-# Join colnames to file info, remove FLAGS datasets
+# Join colnames to file info, remove FLAGS datasets, using 1990+
 ipeds <- left_join(datacols, allfiles, by = c("name", "year"))
-ipeds <- ipeds %>% filter(!grepl("flags", name))
+ipeds <- ipeds %>% filter(!grepl("flags", name)) %>%
+  filter(year >= 1990)
 
 # Search for a variable, return list of files that contain it
 searchVars <- function(vars) {
@@ -27,7 +28,7 @@ searchVars <- function(vars) {
 }
 
 # Institutional characteristics vars
-vars <- c("fips", "sector", "pset4flg", "instcat", "ccbasic", "control", "deggrant")
+vars <- c("fips", "stabbr", "instnm", "sector", "pset4flg", "instcat", "ccbasic", "control", "deggrant", "carnegie")
 dl <- searchVars(vars)
 allvars <- tolower(c(vars, "unitid", "year"))
 for (i in seq_along(dl)) {
@@ -54,6 +55,23 @@ makeDataset <- function(vars) {
   return(ipedsdata)
 }
 institutions <- makeDataset(vars)
+
+########################################################################################################
+# Format institutions dataset
+# Fun: in 1986, all Puerto Rico colleges have the same unitid
+########################################################################################################
+
+carnegievar <- as.data.frame(table(institutions$year, institutions$carnegie))
+
+institutions <- institutions %>% group_by(unitid) %>%
+  mutate(yearsin = n())
+table(institutions$yearsin)
+
+# Keep 50 states + DC
+institutions <- institutions %>% filter(fips <= 56)
+institutions <- as.data.frame(institutions)
+institutions <- institutions %>% select(year, unitid, everything()) %>%
+  arrange(year, unitid)
 
 write.csv(institutions, "data/ipeds/institutions.csv", row.names=F, na="")
 
