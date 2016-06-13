@@ -46,7 +46,7 @@ makeDataset <- function(vars) {
 #######################################################################################################
 
 # Institutional characteristics vars
-instvars <- c("fips", "stabbr", "instnm", "sector", "pset4flg", "instcat", "ccbasic", "control", "deggrant", "opeflag", "carnegie", "hloffer")
+instvars <- c("fips", "stabbr", "instnm", "sector", "pset4flg", "instcat", "ccbasic", "control", "deggrant", "opeflag", "opeind", "opeid", "carnegie", "hloffer")
 dl <- searchVars(instvars)
 allvars <- tolower(c(instvars, "unitid", "year"))
 for (i in seq_along(dl)) {
@@ -61,7 +61,9 @@ for (i in seq_along(dl)) {
   # Select just the need vars
   selects <- intersect(colnames(d), allvars)
   d <- d %>% select(one_of(selects))
-  
+  if("opeid" %in% colnames(d)) {
+    d$opeid <- as.character(d$opeid)
+  }
   assign(name, d)
 }
 
@@ -190,9 +192,12 @@ finaid9 <- makeDataset("finaid9")
 institutions <- left_join(institutions, finaid9, by = c("unitid", "year"))
 write.csv(institutions, "data/ipeds/institutions.csv", row.names=F, na="")
 
+rm(list=setdiff(ls(), c("institutions", "ipeds", "ipedspath")))
+
 ########################################################################################################
 # Format institutions dataset
 # Fun: in 1986, unitids are all screwy
+# As of 06/13/16 - using 1994+
 ########################################################################################################
 
 institutions <- read.csv("data/ipeds/institutions.csv", stringsAsFactors = F)
@@ -238,6 +243,7 @@ institutions$deggrant2[institutions$year < 2000 & !(institutions$level3==1 | ins
 
 ########################################################################################################
 # pset4flg - Postsecondary and Title IV institution indicator
+# This is near impossible to make <1994
 ########################################################################################################
 
 # PSET4FLG	1	Title IV postsecondary institution
@@ -251,8 +257,13 @@ institutions$pset4flg2 <- institutions$pset4flg
 # institution is NOT 'not eligible for any of the above' federal financial aid programs
 institutions$pset4flg2[institutions$year < 1997 & institutions$finaid9!=1] <- 1
 institutions$pset4flg2[institutions$year < 1996 & is.na(institutions$finaid9)] <- 1
+
 # participates in Title IV federal financial aid programs
-institutions$pset4flg2[institutions$year >= 1996 & institutions$year < 2000 & institutions$opeflag==1] <- 1
+institutions$pset4flg2[institutions$year %in% c(1996, 1997, 1998, 1999) & institutions$opeind==1] <- 1
+institutions$pset4flg2[institutions$year %in% c(1996, 1997, 1998, 1999) & institutions$opeflag==1] <- 1
+
+# 1995: if opeid exists
+institutions$pset4flg2[institutions$year==1995 & !is.na(institutions$opeid)] <- 1
 
 ########################################################################################################
 # instcat - institutional category
@@ -379,36 +390,19 @@ institutions$sector_urban[institutions$instcat2==2 & institutions$control==2] <-
 # for profit, any level
 institutions$sector_urban[institutions$control==3] <- 4
 # other degree-granting (small groups and special focus)
-institutions$sector_urban[institutions$carnegie_urban %in% c(8,9) & institutions$sector_urban==0] <- 5
+# NOTE: We cannot include public bachelor's and special focus institutions in 'other' prior to 1994 because
+# defining those categories requires ccbasic. We can only include private nonprofit associate's institutions.
+institutions$sector_urban[(institutions$carnegie_urban %in% c(8,9) & institutions$year>=1994) | 
+                            (institutions$instcat2 %in% c(3, 4) & institutions$control==2 & institutions$year < 1994) ] <- 5
 # non-degree-granting
 institutions$sector_urban[institutions$deggrant2==2] <- 6
 
 # Check
 table(institutions$carnegie_urban, institutions$sector_urban)
+table(institutions$sector_urban, institutions$year)
 
 write.csv(institutions, "data/ipeds/institutions.csv", row.names=F, na="")
 
 institutionskeep <- institutions %>% filter(sector_urban > 0 & pset4flg2==1)
 table(institutionskeep$year)
-
-########################################################################################################
-# Format institutions dataset
-# Fun: in 1986, unitids are all screwy
-########################################################################################################
-
-# Define universe
-# dt <- dt %>% filter(sector > 0 & pset4flg==1) %>%
-#   # Special institutions - graduate-students only or other special focus
-#   mutate(specialty = ifelse((instcat==1 | ccbasic>23), 1, 0)) %>%
-#   # Primary Carnegie categories
-#   mutate(carnegie = ifelse((ccbasic<18 & ccbasic>14) & control==1), "Public research",
-#          ifelse((ccbasic<21 & ccbasic>17) & control==1, "Public masters",
-#                 ifelse((instcat==3 | instcat==4) & control==1, "Public associates",
-#                        ifelse((ccbasic<18 & ccbasic>14) & control==2, "Private nonprofit research",
-#                               ifelse((ccbasic<21 & ccbasic>17) & control==2, "Private nonprofit masters",
-#                                      ifelse(instcat==2 & control==2 & carnegie==0, "Private nonprofit bachelors",
-#                                             ifelse(control==3, "For profit",
-#                                                    ifelse((instcat==2 & control==1 & carnegie==0) | (instcat==3 | instcat==4) & control==2) |(ccbasic==-3 & control!=3 & instcat!=3 & instcat!=4 & specialty!=1), "Small groups",
-#                                             ifelse(specialty==1 & control!=3, "Special focus",
-#                                                    ifelse(deggrant==2, NA, NA))
-#                                      )))))))
+table(institutionskeep$sector_urban, institutionskeep$year)
