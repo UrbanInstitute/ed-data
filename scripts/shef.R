@@ -29,9 +29,19 @@ colnames(shef) <- c('state', 'year', 'arra', 'appropriations_tax', 'support_nont
 										'studentaid_public', 'studentaid_indepndent', 'studentaid_oos', 'institutions_indep', 'ncce', 
 										'operations_public', 'tuitionrevenue_net', 'fte_net', 'appropriations_net', 'revenue_total', 'fips')
 
-# Calculated variables
+# Calculated variable - state appropriations
 shef <- shef %>% select(fips, everything()) %>%
-	mutate(appropriations_fte = appropriations_net/fte_net,
-												appropriations_state = appropriations_net - appropriations_local)
+  mutate(appropriations_state = appropriations_net - appropriations_local + researchagmed)
+
+########################################################################################################
+# State and local support for higher education: use appropriations_tax (state) and appropriations_local
+# Add cpi to age dollar amounts to latest data year
+########################################################################################################
+cpi <- read.csv("data/cpi_bls.csv", stringsAsFactors = F)
+cpi <- cpi %>% select(year, cpi_all)
+
+cpi2014 <- cpi$cpi_all[cpi$year==2014]
+shef <- left_join(shef, cpi, by="year")
+shef$cpi_multiplier = cpi2014/shef$cpi_all
 
 write.csv(shef, "data/shef.csv", row.names = F, na="")
