@@ -31,7 +31,7 @@ colnames(shef) <- c('state', 'year', 'arra', 'appropriations_tax', 'support_nont
 
 # Calculated variable - state appropriations
 shef <- shef %>% select(fips, everything()) %>%
-  mutate(appropriations_state = appropriations_net - appropriations_local + researchagmed)
+  mutate(appropriations_state = appropriations_net - appropriations_local)
 
 ########################################################################################################
 # State and local support for higher education: use appropriations_tax (state) and appropriations_local
