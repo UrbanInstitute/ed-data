@@ -320,7 +320,7 @@ institutions$ccbasic2[institutions$year < 2005 & institutions$year >= 1994 &
                         (institutions$carnegie %in% c(21, 22))] <- 20
 # special focus
 institutions$ccbasic2[institutions$year < 2005 & institutions$year >= 1994 & 
-                        (institutions$carnegie > 50)] <- 20
+                        (institutions$carnegie > 50)] <- 25
 
 ########################################################################################################
 # Redefined carnegie for this project - carnegie_urban
