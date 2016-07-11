@@ -11,7 +11,8 @@ graphtext <- readWorkbook(textpath, sheet = 1)
 graphtext$section_number <- as.numeric(graphtext$section_number)
 
 # sectionn and graphn correspond to the location of the graph, specifically in the row in the Excel file that contains text attributes
-makeJson <- function(sectionn, graphn, dt, graphtype = "bar", series, categories, tickformat = "number", directlabels = FALSE, rotated = FALSE, xtype = "category", xlabel = NULL, ylabel = NULL) {
+# subn is graph subnumber - so small multiples, or graphs added later, etc. 0 unless needed
+makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, categories, tickformat = "number", directlabels = FALSE, rotated = FALSE, xtype = "category", xlabel = NULL, ylabel = NULL) {
   # Init json and attributes
   graphjson <- NULL
   metadata <- NULL
@@ -53,7 +54,7 @@ makeJson <- function(sectionn, graphn, dt, graphtype = "bar", series, categories
   
   json <- toJSON(graphjson, auto_unbox=T)
   
-  write(json, paste("graph-json/", sectionn, "_", graphn, ".json", sep=""))
+  write(json, paste("graph-json/", sprintf("%02s",sectionn), "_", sprintf("%03s",graphn), subn, ".json", sep=""))
   return(json)
 }
 
