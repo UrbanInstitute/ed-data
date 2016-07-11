@@ -81,6 +81,6 @@ fig6$approp_local_change <- (fig6$approp_local_aged - local2000)/local2000
 # Save data as json
 fig6_min <- fig6 %>% select(year, approp_state_change, approp_local_change)
 
-json2_6 <- makeJson(sectionn = 2, graphn = 6, dt = fig6_min, graphtype = "line", series = c("State", "Local"), categories = fig6_min$year, tickformat = "percent", directlabels = FALSE, rotated = FALSE, xtype = "time", xlabel = NULL, ylabel = NULL) 
+json2_6 <- makeJson(sectionn = 2, graphn = 6, dt = fig6_min, graphtype = "line", series = c("State", "Local"), categories = fig6_min$year, tickformat = "percent", directlabels = FALSE, rotated = FALSE, xtype = "numeric", xlabel = NULL, ylabel = NULL) 
 
 
