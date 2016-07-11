@@ -28,6 +28,21 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
     columns[[s]] <- c(series[s], dt[,s+1])
   }
   graphdata$columns <- columns  
+  
+  # If we're using direct labels:
+  # c3 needs format to be repeated for each series
+  # example: "labels": {"format": {"First": "dollar","Second": "dollar","Third": "dollar"} }
+  if (directlabels != FALSE) {
+    labels <- NULL
+    # Make an object with key value pairs with each series name as the key and the format as the value
+    # Not super elegant but it works
+    labeldf <- data.frame(t(replicate(length(series), tickformat, simplify=",")))
+    colnames(labeldf) <- series
+    labels$format <- labeldf
+    
+    graphdata$labels <- labels
+  }
+  
   graphjson$data <- graphdata
   
   # Axis attributes
@@ -82,6 +97,6 @@ fig6$approp_local_change <- (fig6$approp_local_aged - local2000)/local2000
 # Save data as json
 fig6_min <- fig6 %>% select(year, approp_state_change, approp_local_change)
 
-json2_6 <- makeJson(sectionn = 2, graphn = 6, dt = fig6_min, graphtype = "line", series = c("State", "Local"), categories = fig6_min$year, tickformat = "percent", directlabels = FALSE, rotated = FALSE, xtype = "numeric", xlabel = NULL, ylabel = NULL) 
+json2_6 <- makeJson(sectionn = 2, graphn = 6, dt = fig6_min, graphtype = "line", series = c("State", "Local"), categories = fig6_min$year, tickformat = "percent", directlabels = FALSE, rotated = FALSE, xtype = "category", xlabel = NULL, ylabel = NULL) 
 
 
