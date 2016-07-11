@@ -12,7 +12,8 @@ graphtext$section_number <- as.numeric(graphtext$section_number)
 
 # sectionn and graphn correspond to the location of the graph, specifically in the row in the Excel file that contains text attributes
 # subn is graph subnumber - so small multiples, or graphs added later, etc. 0 unless needed
-makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, categories, tickformat = "number", directlabels = FALSE, rotated = FALSE, xtype = "category", xlabel = NULL, ylabel = NULL) {
+makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, categories, tickformat = "number", 
+                     directlabels = FALSE, rotated = FALSE, xtype = "category", xlabel = NULL, ylabel = NULL) {
   # Init json and attributes
   graphjson <- NULL
   metadata <- NULL
@@ -23,6 +24,7 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
   
   graphdata$type <- graphtype
   # Organize data series into "columns" for c3 specs
+  # This assumes that the first column is the category names/axis values and the other columns are the values for each series
   columns <- list()
   for (s in seq_along(series)) {
     columns[[s]] <- c(series[s], dt[,s+1])
@@ -97,6 +99,6 @@ fig6$approp_local_change <- (fig6$approp_local_aged - local2000)/local2000
 # Save data as json
 fig6_min <- fig6 %>% select(year, approp_state_change, approp_local_change)
 
-json2_6 <- makeJson(sectionn = 2, graphn = 6, dt = fig6_min, graphtype = "line", series = c("State", "Local"), categories = fig6_min$year, tickformat = "percent", directlabels = FALSE, rotated = FALSE, xtype = "category", xlabel = NULL, ylabel = NULL) 
-
-
+json2_6 <- makeJson(sectionn = 2, graphn = 6, dt = fig6_min, graphtype = "line", series = c("State", "Local"), 
+                    categories = fig6_min$year, tickformat = "percent", directlabels = FALSE, rotated = FALSE, xtype = "category",
+                    xlabel = NULL, ylabel = NULL)
