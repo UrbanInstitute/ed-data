@@ -71,7 +71,7 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
   
   json <- toJSON(graphjson, auto_unbox=T)
   
-  write(json, paste("graph-json/", sprintf("%02s",sectionn), "_", sprintf("%03s",graphn), subn, ".json", sep=""))
+  write(json, paste("graph-json/",sprintf("%02s",sectionn), "/", sprintf("%02s",sectionn), "_", sprintf("%03s",graphn), subn, ".json", sep=""))
   return(json)
 }
 
