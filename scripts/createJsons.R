@@ -85,20 +85,18 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
 shef <- read.csv("data/shef.csv", stringsAsFactors = F, colClasses = c("fips" = "character"))
 
 fig6 <- shef %>% filter(fips=="00") %>% 
-  select(year, cpi_multiplier, appropriations_state, appropriations_local) %>%
   mutate(approp_state_aged = appropriations_state * cpi_multiplier,
          approp_local_aged = appropriations_local * cpi_multiplier)
 
 # Get 2000 values to compare with value by year
-state2000 <- fig6$approp_state_aged[fig6$year==2000]
-local2000 <- fig6$approp_local_aged[fig6$year==2000]
+state2000 <- fig6$approp_state_aged[fig6$year_fiscal==2000]
+local2000 <- fig6$approp_local_aged[fig6$year_fiscal==2000]
 fig6$approp_state_change <- (fig6$approp_state_aged - state2000)/state2000
 fig6$approp_local_change <- (fig6$approp_local_aged - local2000)/local2000
-# write.csv(fig6, "data/section2fig6.csv", row.names = F)
 
 # Save data as json
-fig6_min <- fig6 %>% select(year, approp_state_change, approp_local_change)
+fig6_min <- fig6 %>% select(year_axis, approp_state_change, approp_local_change)
 
 json2_6 <- makeJson(sectionn = 2, graphn = 6, dt = fig6_min, graphtype = "line", series = c("State", "Local"), 
-                    categories = fig6_min$year, tickformat = "percent", directlabels = FALSE, rotated = FALSE, xtype = "category",
+                    categories = fig6_min$year_axis, tickformat = "percent", directlabels = FALSE, rotated = FALSE, xtype = "category",
                     xlabel = NULL, ylabel = NULL)
