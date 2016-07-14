@@ -8,15 +8,13 @@ Throughout this project, we'll be using dollar amounts over time and aging nomin
 For data such as income, which is reported for a calendar year, use that calendar year's CPI. For data that crosses two years, for example 2000-2001 academic year data, use the CPI for the first year in the range: in this case, 2000 CPI. Always label data accordingly in graphs: axis ticks should say '00-'01, not 2000 or 2001. Fiscal year data, mainly used for appropriations, labels 2000-2001 as fiscal year 2001. In this case, we would use the 2000 CPI and label the data point as '00-'01.
 
 ## Data sources
-* IPEDS data from [scraper](https://github.com/UrbanInstitute/ipeds-scraper)
+| Source 		| Source type | Script | Content |
+| -------------| -------------  | ------------- | ------------- |
+| IPEDS  		| CSV files from scraper | [Scraper repo](https://github.com/UrbanInstitute/ipeds-scraper)  | Institution-level data |
+| Bureau of Economic Analysis  | API | [bea.R](scripts/get-data/bea.R)  | Per capita personal income, by state and year |
+| Bureau of Labor Statistics | API | [bls.R](scripts/get-data/bls.R) | Consumer price index by year |
+| State Higher Education Officers Association | Excel | [shef.R](scripts/get-data/shef.R) | Appropriations by state and year |
+| State and Local Finance Initiative (SLFI) | Data download tool | [slfi.R](scripts/get-data/slfi.R) | State and local tax totals, by state and year |
 
-### APIs
-* [Bureau of Economic Analysis](scripts/get-data/bea.R): per capita personal income, by state and year
-* [Bureau of Labor Statistics](scripts/get-data/bls.R): consumer price index by year
-
-### Website downloads
-* [State Higher Education Officers Association's State Higher Education Finance](scripts/get-data/shef.R) - [.xlsx](http://www.sheeo.org/projects/shef-fy15): appropriations by state and year
-
-### Data download tools
-* [State and Local Finance Initiative (SLFI)](scripts/get-data/slfi.R): state and local tax totals, by state and year
+### Additional
 * PowerStats
