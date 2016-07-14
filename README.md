@@ -11,13 +11,12 @@ For data such as income, which is reported for a calendar year, use that calenda
 * IPEDS data from [scraper](https://github.com/UrbanInstitute/ipeds-scraper)
 
 ### APIs
-* [Bureau of Economic Analysis](scripts/get-data/bea.R): per capita personal income, by state and year - [incomepc_bea.csv](data/incomepc_bea.csv)
-* [BLS](scripts/get-data/bls.R): consumer price index by year - [cpi_bls.csv](data/cpi_bls.csv)
+* [Bureau of Economic Analysis](scripts/get-data/bea.R): per capita personal income, by state and year
+* [Bureau of Labor Statistics](scripts/get-data/bls.R): consumer price index by year
+
+### Website downloads
+* [State Higher Education Officers Association's State Higher Education Finance](scripts/get-data/shef.R) - [.xlsx](http://www.sheeo.org/projects/shef-fy15): appropriations by state and year
 
 ### Data download tools
-* [SLFI](scripts/get-data/slfi.R): state and local tax totals, by state and year - [taxes_slfi.csv](data/taxes_slfi.csv)
+* [State and Local Finance Initiative (SLFI)](scripts/get-data/slfi.R): state and local tax totals, by state and year
 * PowerStats
-
-### Direct data (received via email, etc)
-* [SHEF](scripts/get-data/shef.R): appropriations by state and year - [shef.csv](data/shef.csv)
-
