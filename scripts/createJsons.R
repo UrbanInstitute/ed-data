@@ -25,9 +25,12 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
   graphdata$type <- graphtype
   # Organize data series into "columns" for c3 specs
   # This assumes that the first column is the category names/axis values and the other columns are the values for each series
+  # For c3, "columns" need to have first the series names and then the values - mixing string and numeric
+  # R does not like to mix types, so make a list - but this will need to be flatted
+  # scripts/flattenJsonColumns.py accomplishes that
   columns <- list()
   for (s in seq_along(series)) {
-    columns[[s]] <- c(series[s], dt[,s+1])
+    columns[[s]] <- list(series[s], dt[,s+1])
   }
   graphdata$columns <- columns  
   
@@ -69,9 +72,13 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
   metadata$notes <- row$notes
   graphjson$metadata <- metadata
   
+  # Write json
   json <- toJSON(graphjson, auto_unbox=T)
+  jsonpath <- paste("graph-json/",sprintf("%02s",sectionn), "/", sprintf("%02s",sectionn), "_", sprintf("%03s",graphn), subn, ".json", sep="")
+  write(json, jsonpath)
+  # As noted above, flatten "columns" arrays
+  system(paste("python3 scripts/flattenJsonColumns.py", jsonpath, sep=" "))
   
-  write(json, paste("graph-json/",sprintf("%02s",sectionn), "/", sprintf("%02s",sectionn), "_", sprintf("%03s",graphn), subn, ".json", sep=""))
   return(json)
 }
 
