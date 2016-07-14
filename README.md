@@ -10,11 +10,11 @@ For data such as income, which is reported for a calendar year, use that calenda
 ## Data sources
 | Source 		| Source type | Script | Content |
 | -------------| -------------  | ------------- | ------------- |
-| IPEDS  		| CSV files from scraper | [Scraper repo](https://github.com/UrbanInstitute/ipeds-scraper)  | Institution-level data |
-| Bureau of Economic Analysis  | API | [bea.R](scripts/get-data/bea.R)  | Per capita personal income, by state and year |
-| Bureau of Labor Statistics | API | [bls.R](scripts/get-data/bls.R) | Consumer price index by year |
-| State Higher Education Officers Association | Excel | [shef.R](scripts/get-data/shef.R) | Appropriations by state and year |
-| State and Local Finance Initiative (SLFI) | Data download tool | [slfi.R](scripts/get-data/slfi.R) | State and local tax totals, by state and year |
+| Integrated Postsecondary Education Data System 		| CSV files from scraper | [Scraper repo](https://github.com/UrbanInstitute/ipeds-scraper)  | Institution-level data |
+| Bureau of Economic Analysis  | [API](http://www.bea.gov/API/signup/index.cfm) | [bea.R](scripts/get-data/bea.R)  | Per capita personal income, by state and year |
+| Bureau of Labor Statistics | [API](http://www.bls.gov/developers/) | [bls.R](scripts/get-data/bls.R) | Consumer price index by year |
+| State Higher Education Officers Association | [Excel](http://www.sheeo.org/sites/default/files/Unadjusted_Nominal_Data_FY15.xlsx) | [shef.R](scripts/get-data/shef.R) | Appropriations by state and year |
+| State and Local Finance Initiative (SLFI) | [Data download tool](http://slfdqs.taxpolicycenter.org/) | [slfi.R](scripts/get-data/slfi.R) | State and local tax totals, by state and year |
 
 ### Additional
 * PowerStats
