@@ -12,6 +12,7 @@ def flattenColumns(filepath):
     with open(filepath, encoding='utf-8') as fp:
         dj = json.load(fp)
     columns = dj["data"]["columns"]
+    print(len(columns))
     for i in range(0, len(columns)):
         columns[i] = flatten(columns[i])
     print(columns)

@@ -6,7 +6,7 @@ library(jsonlite)
 library(openxlsx)
 
 # Path to Excel file with graph titles, notes, data sources
-textpath <- "/Users/hrecht/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/Getting data for Phase2/GraphText.xlsx"
+textpath <- "/Users/hrecht/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/Production/GraphText.xlsx"
 graphtext <- readWorkbook(textpath, sheet = 1)
 graphtext$section_number <- as.numeric(graphtext$section_number)
 
@@ -29,8 +29,12 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
   # R does not like to mix types, so make a list - but this will need to be flatted
   # scripts/flattenJsonColumns.py accomplishes that
   columns <- list()
-  for (s in seq_along(series)) {
-    columns[[s]] <- list(series[s], dt[,s+1])
+  if (is.data.frame(dt)) {
+    for (s in seq_along(series)) {
+      columns[[s]] <- list(series[s], dt[,s+1])
+    } 
+  } else {
+    columns <- list(series, dt)
   }
   graphdata$columns <- columns  
   
@@ -52,7 +56,12 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
   
   # Axis attributes
   axis$rotated <- rotated
-  yaxis$tick$format <- tickformat
+  
+  if (rotated == TRUE) {
+    xaxis$tick$format <- tickformat
+  } else {
+    yaxis$tick$format <- tickformat
+  }
   if (!is.null(xlabel)) {
     xaxis$label <- xlabel
   }
@@ -82,28 +91,3 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
   return(json)
 }
 
-########################################################################################################
-# Costs and subsidies (Section 2)
-########################################################################################################
-
-# Figure 6 - local support for higher education has grown in recent years relative to state support
-# State and local support for higher education: use appropriations_tax (state) and appropriations_local
-# Use cpi to age dollar amounts to latest data year
-shef <- read.csv("data/shef.csv", stringsAsFactors = F, colClasses = c("fips" = "character"))
-
-fig6 <- shef %>% filter(fips=="00") %>% 
-  mutate(approp_state_aged = appropriations_state * cpi_multiplier,
-         approp_local_aged = appropriations_local * cpi_multiplier)
-
-# Get 2000 values to compare with value by year
-state2000 <- fig6$approp_state_aged[fig6$year_fiscal==2000]
-local2000 <- fig6$approp_local_aged[fig6$year_fiscal==2000]
-fig6$approp_state_change <- (fig6$approp_state_aged - state2000)/state2000
-fig6$approp_local_change <- (fig6$approp_local_aged - local2000)/local2000
-
-# Save data as json
-fig6_min <- fig6 %>% select(year_axis, approp_state_change, approp_local_change)
-
-json2_6 <- makeJson(sectionn = 2, graphn = 6, dt = fig6_min, graphtype = "line", series = c("State", "Local"), 
-                    categories = fig6_min$year_axis, tickformat = "percent", directlabels = FALSE, rotated = FALSE, xtype = "category",
-                    xlabel = NULL, ylabel = NULL)
