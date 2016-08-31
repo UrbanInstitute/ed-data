@@ -40,7 +40,6 @@ shef <- shef %>% mutate(year_cpi = year_fiscal - 1,
                         year_axis = paste("'", str_sub(year_cpi, start = -2), "–'", str_sub(year_fiscal, start = -2), sep=""))
 
 ########################################################################################################
-# State and local support for higher education: use appropriations_tax (state) and appropriations_local
 # Add cpi to age dollar amounts to latest data year
 ########################################################################################################
 cpi <- read.csv("data/cpi_bls.csv", stringsAsFactors = F)
@@ -51,45 +50,83 @@ shef <- left_join(shef, cpi, by=c("year_cpi" = "year"))
 shef$cpi_multiplier = cpi2014/shef$cpi_all
 
 # Use cpi to age dollar amounts to latest data year
+
 shef <- shef %>% mutate(approp_state_aged = appropriations_state * cpi_multiplier,
                         approp_local_aged = appropriations_local * cpi_multiplier)
-
 # State and local ppropriations per FTE student
-shef <- shef %>% mutate(approp_perstudent_aged = (approp_state_aged + approp_local_aged)/enrollment_fte)
+shef <- shef %>% mutate(approp_perstudent_aged = (approp_state_aged + approp_local_aged)/enrollment_fte,
+                        approp_statelocal_aged = approp_state_aged + approp_local_aged)
 
 shef <- shef %>% arrange(fips, year_fiscal)
 write.csv(shef, "data/shef.csv", row.names = F, na="")
 
 ########################################################################################################
-# Section 2 - producing education
+# Section 2 - producing education, appropriations page
 # Graph data
 ########################################################################################################
 source("scripts/createJsons.R")
-
-# Figure 6 - local support for higher education has grown in recent years relative to state support
-# State and local support for higher education: use appropriations_tax (state) and appropriations_local
 shef <- read.csv("data/shef.csv", stringsAsFactors = F, colClasses = c("fips" = "character"))
 
-fig6 <- shef %>% filter(fips=="00")
+# Change in X since 2000 - national level
+changedt <- shef %>% filter(fips=="00")
 
 # Get 2000 values to compare with value by year
-state2000 <- fig6$approp_state_aged[fig6$year_fiscal==2000]
-local2000 <- fig6$approp_local_aged[fig6$year_fiscal==2000]
-fig6$approp_state_change <- (fig6$approp_state_aged - state2000)/state2000
-fig6$approp_local_change <- (fig6$approp_local_aged - local2000)/local2000
+# Figure 1: Change in appropriations, enrollment, and appropriations per student over time
+approp2000 <- changedt$approp_statelocal_aged[changedt$year_fiscal==2000]
+appps2000 <- changedt$approp_perstudent_aged[changedt$year_fiscal==2000]
+fte2000 <- changedt$enrollment_fte[changedt$year_fiscal==2000]
+changedt$approp_statelocal_change <- (changedt$approp_statelocal_aged - approp2000)/approp2000
+changedt$approp_perstudent_change <- (changedt$approp_perstudent_aged - appps2000)/appps2000
+changedt$approp_fte_change <- (changedt$enrollment_fte - fte2000)/fte2000
 
-# Save data as json
-fig6_min <- fig6 %>% select(year_axis, approp_state_change, approp_local_change)
+fig1_min <- changedt %>% select(year_axis, approp_statelocal_change, approp_perstudent_change, approp_fte_change)
 
-json2_6 <- makeJson(sectionn = 2, graphn = 6, dt = fig6_min, graphtype = "line", series = c("State", "Local"), 
-                    categories = fig6_min$year_axis, tickformat = "percent", directlabels = FALSE, rotated = FALSE, xtype = "category",
+json2_1 <- makeJson(sectionn = 2, graphn = 1, dt = fig1_min, graphtype = "line", 
+                    series = c("State and local appropriations", "State and local appropriations per FTE student", "Public FTE enrollment"), 
+                    categories = fig1_min$year_axis, tickformat = "percent", directlabels = FALSE, rotated = FALSE, xtype = "category",
                     xlabel = NULL, ylabel = NULL)
 
-# Figure 7 - State and Local Appropriations for Public Higher Education per Public FTE Student, latest year
+# Figure 3: Changes from FY 2000 in state and local support for higher education
+state2000 <- changedt$approp_state_aged[changedt$year_fiscal==2000]
+local2000 <- changedt$approp_local_aged[changedt$year_fiscal==2000]
+changedt$approp_state_change <- (changedt$approp_state_aged - state2000)/state2000
+changedt$approp_local_change <- (changedt$approp_local_aged - local2000)/local2000
+
+# State and local support for higher education: use appropriations_tax (state) and appropriations_local
+fig3_min <- changedt %>% select(year_axis, approp_state_change, approp_local_change)
+
+json2_3 <- makeJson(sectionn = 2, graphn = 3, dt = fig3_min, graphtype = "line", series = c("State", "Local"), 
+                    categories = fig3_min$year_axis, tickformat = "percent", directlabels = FALSE, rotated = FALSE, xtype = "category",
+                    xlabel = NULL, ylabel = NULL)
+
+########################################################################################################
+# Figure 2: Tax appropriations for higher education as a percentage of state and local tax revenues
+# Tax revenues from SLFI data
+########################################################################################################
+
+slfi <- read.csv("data/taxes_slfi.csv", stringsAsFactors = F, colClasses = c("fips" = "character"))
+slfi <- slfi %>% filter(fips=="00")
+
+# Join to shef data to get appropriations/taxes - don't need aged bc just percent
+fig2 <- shef %>% filter(fips=="00") %>% select(-fips)
+fig2 <- left_join(fig2, slfi, by = c("year_fiscal" = "year"))
+
+fig2 <- fig2 %>% mutate(approp_pertax = (appropriations_local + appropriations_state)/(taxes_local + taxes_state)) %>%
+  filter(year_fiscal <= 2013)
+
+json2_2 <- makeJson(sectionn = 2, graphn = 2, dt = fig2$approp_pertax, graphtype = "line", series = "Appropriations per tax revenue", 
+                    categories = fig2$year_axis, tickformat = "percent", directlabels = FALSE, rotated = FALSE, xtype = "category",
+                    xlabel = NULL, ylabel = NULL)
+
+
+########################################################################################################
+# Figure 4: State and Local Appropriations for Public Higher Education per Public FTE Student, latest year
 # Horizontal bar chart by state
-fig7 <- shef %>% filter(year_fiscal == 2015) %>%
+########################################################################################################
+
+fig4 <- shef %>% filter(year_fiscal == 2015) %>%
   arrange(-desc(approp_perstudent_aged))
-  
-json2_7 <- makeJson(sectionn = 2, graphn = 7, dt = fig7$approp_perstudent_aged, graphtype = "bar", series = "Appropriations per FTE", 
-                    categories = fig7$state, tickformat = "dollar", directlabels = TRUE, rotated = TRUE, xtype = "category",
+
+json2_4 <- makeJson(sectionn = 2, graphn = 4, dt = fig4$approp_perstudent_aged, graphtype = "bar", series = "Appropriations per FTE", 
+                    categories = fig4$state, tickformat = "dollar", directlabels = TRUE, rotated = TRUE, xtype = "category",
                     xlabel = NULL, ylabel = NULL)

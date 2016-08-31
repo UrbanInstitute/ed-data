@@ -6,7 +6,7 @@ library(jsonlite)
 library(openxlsx)
 
 # Path to Excel file with graph titles, notes, data sources
-textpath <- "/Users/hrecht/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/Production/GraphText.xlsx"
+textpath <- "/Users/hrecht/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/GraphText.xlsx"
 graphtext <- readWorkbook(textpath, sheet = 1)
 graphtext$section_number <- as.numeric(graphtext$section_number)
 
@@ -75,7 +75,7 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
   graphjson$axis <- axis
   
   # Text attributes - title, source, notes
-  row <- graphtext[graphtext$section_number==sectionn & graphtext$graph_number==graphn,]
+  row <- graphtext[which(graphtext$section_number==sectionn & graphtext$graph_number==graphn),]
   graphjson$title <- row$title
   metadata$sources <- row$sources
   metadata$notes <- row$notes
