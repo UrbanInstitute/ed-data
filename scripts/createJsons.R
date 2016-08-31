@@ -74,6 +74,9 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
   axis$y <- yaxis
   graphjson$axis <- axis
   
+  # Number of series - for error checking
+  graphjson$series <- series
+  
   # Text attributes - title, source, notes
   row <- graphtext[which(graphtext$section_number==sectionn & graphtext$graph_number==graphn),]
   graphjson$title <- row$title

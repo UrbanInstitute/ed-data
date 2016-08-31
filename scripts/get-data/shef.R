@@ -118,7 +118,6 @@ json2_2 <- makeJson(sectionn = 2, graphn = 2, dt = fig2$approp_pertax, graphtype
                     categories = fig2$year_axis, tickformat = "percent", directlabels = FALSE, rotated = FALSE, xtype = "category",
                     xlabel = NULL, ylabel = NULL)
 
-
 ########################################################################################################
 # Figure 4: State and Local Appropriations for Public Higher Education per Public FTE Student, latest year
 # Horizontal bar chart by state
