@@ -80,7 +80,7 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
   # Text attributes - title, source, notes
   row <- graphtext[which(graphtext$section_number==sectionn & graphtext$graph_number==graphn),]
   graphjson$title <- row$title
-  metadata$sources <- row$sources
+  metadata$source <- row$sources
   metadata$notes <- row$notes
   graphjson$metadata <- metadata
   
