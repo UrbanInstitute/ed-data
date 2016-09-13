@@ -8,13 +8,13 @@ Throughout this project, we'll be using dollar amounts over time and aging nomin
 For data such as income, which is reported for a calendar year, use that calendar year's CPI. For data that crosses two years, for example 2000-2001 academic year data, use the CPI for the first year in the range: in this case, 2000 CPI. Always label data accordingly in graphs: axis ticks should say '00-'01, not 2000 or 2001. Fiscal year data, mainly used for appropriations, labels 2000-2001 as fiscal year 2001. In this case, we would use the 2000 CPI and label the data point as '00-'01.
 
 ## Data sources
-| Source 		| Source type | Script | Content |
-| -------------| -------------  | ------------- | ------------- |
-| Integrated Postsecondary Education Data System 		| CSV files from scraper | [Scraper repo](https://github.com/UrbanInstitute/ipeds-scraper)  | Institution-level data |
-| Bureau of Economic Analysis  | [API](http://www.bea.gov/API/signup/index.cfm) | [bea.R](scripts/get-data/bea.R)  | Per capita personal income, by state and year |
-| Bureau of Labor Statistics | [API](http://www.bls.gov/developers/) | [bls.R](scripts/get-data/bls.R) | Consumer price index by year |
-| State Higher Education Officers Association | [Excel](http://www.sheeo.org/sites/default/files/Unadjusted_Nominal_Data_FY15.xlsx) | [shef.R](scripts/get-data/shef.R) | Appropriations by state and year |
-| State and Local Finance Initiative (SLFI) | [Data download tool](http://slfdqs.taxpolicycenter.org/) | [slfi.R](scripts/get-data/slfi.R) | State and local tax totals, by state and year |
+| Source 		| Source type | Script | Content | Sections |
+| -------------| -------------  | ------------- | ------------- | ------------- |
+| Integrated Postsecondary Education Data System 		| CSV files from scraper | [Scraper repo](https://github.com/UrbanInstitute/ipeds-scraper)  | Institution-level data | Various |
+| Bureau of Economic Analysis  | [API](http://www.bea.gov/API/signup/index.cfm) | [bea.R](scripts/get-data/bea.R)  | Per capita personal income, by state and year |  |
+| Bureau of Labor Statistics | [API](http://www.bls.gov/developers/) | [bls.R](scripts/get-data/bls.R) | Consumer price index by year | Various |
+| State Higher Education Officers Association | [Excel](http://www.sheeo.org/sites/default/files/Unadjusted_Nominal_Data_FY15.xlsx) | [shef.R](scripts/get-data/shef.R) | Appropriations by state and year | Appropriations |
+| State and Local Finance Initiative (SLFI) | [Data download tool](http://slfdqs.taxpolicycenter.org/) | [slfi.R](scripts/get-data/slfi.R) | State and local tax totals, by state and year | Appropriations |
 
 ### Additional
 * PowerStats
