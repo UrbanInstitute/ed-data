@@ -4,5 +4,5 @@
 *.rds
 *.mvl
 *.zip
-data/original/delta/
-data/original/old
+*.xls
+data/original/Delta_database_87_13_CSV/

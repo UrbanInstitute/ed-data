@@ -235,11 +235,14 @@ institutions$level7[is.na(institutions$level7)] <- -99
 institutions$level9[is.na(institutions$level9)] <- -99
 institutions$level10[is.na(institutions$level10)] <- -99
 
-institutions$deggrant2 <- institutions$deggrant
-institutions$deggrant2[institutions$year < 2000 & (institutions$level3==1 | institutions$level5==1 | institutions$level7==1 | 
-                                                institutions$level9==1 | institutions$level10==1)] <- 1
-institutions$deggrant2[institutions$year < 2000 & !(institutions$level3==1 | institutions$level5==1 | institutions$level7==1 | 
-                                                institutions$level9==1 | institutions$level10==1)] <- 2
+institutions <- as.data.frame(institutions)
+institutions <- institutions %>% mutate(deggrant2 = deggrant) %>%
+  mutate(deggrant2 = replace(deggrant2, 
+                             (year < 2000 & (level3==1 | level5==1 | level7==1 | level9==1 | level10==1)),
+                             1)) %>%
+  mutate(deggrant2 = replace(deggrant2, 
+                             (year < 2000 & !(level3==1 | level5==1 | level7==1 | level9==1 | level10==1)),
+                             2))
 
 ########################################################################################################
 # pset4flg - Postsecondary and Title IV institution indicator
@@ -253,17 +256,20 @@ institutions$deggrant2[institutions$year < 2000 & !(institutions$level3==1 | ins
 # PSET4FLG	6	Non-Title IV postsecondary institution that is NOT open to the public
 # PSET4FLG	9	Institution is not active in current universe
 table(institutions$pset4flg)
-institutions$pset4flg2 <- institutions$pset4flg
-# institution is NOT 'not eligible for any of the above' federal financial aid programs
-institutions$pset4flg2[institutions$year < 1997 & institutions$finaid9!=1] <- 1
-institutions$pset4flg2[institutions$year < 1996 & is.na(institutions$finaid9)] <- 1
 
-# participates in Title IV federal financial aid programs
-institutions$pset4flg2[institutions$year %in% c(1996, 1997, 1998, 1999) & institutions$opeind==1] <- 1
-institutions$pset4flg2[institutions$year %in% c(1996, 1997, 1998, 1999) & institutions$opeflag==1] <- 1
-
-# 1995: if opeid exists
-institutions$pset4flg2[institutions$year==1995 & !is.na(institutions$opeid)] <- 1
+institutions <- institutions %>% mutate(pset4flg2 = pset4flg) %>%
+  # institution is NOT 'not eligible for any of the above' federal financial aid programs
+  mutate(pset4flg2 = replace(pset4flg2, 
+                             (year < 1997 & finaid9 != 1) | (year < 1996 & is.na(finaid9)),
+                             1)) %>%
+  # participates in Title IV federal financial aid programs
+  mutate(pset4flg2 = replace(pset4flg2, 
+                             (year %in% c(1996, 1997, 1998, 1999) & (opeind == 1 | opeflag == 1)),
+                             1)) %>%
+  # 1995: if opeid exists
+  mutate(pset4flg2 = replace(pset4flg2, 
+                             (year == 1995 & !is.na(opeid)),
+                             1))
 
 ########################################################################################################
 # instcat - institutional category
@@ -278,29 +284,38 @@ institutions$pset4flg2[institutions$year==1995 & !is.na(institutions$opeid)] <- 
 # INSTCAT	-1	Not reported
 # INSTCAT	-2	Not applicable
 table(institutions$instcat)
-institutions$instcat2 <- institutions$instcat
-# Master's, Doctor's, or first-professional, no bachelor's, no associate's
-institutions$instcat2[institutions$year < 2004 & institutions$deggrant2==1 & 
-                        (institutions$level7==1 | institutions$level9==1 | institutions$level10==1) & 
-                        institutions$level5!=1 & institutions$level3!=1] <- 1
-# Bachelor's or higher, primarily bachelor's or higher
-institutions$instcat2[institutions$year < 2004 & institutions$deggrant2==1 & 
-                        (institutions$level5==1 | institutions$level7==1 | institutions$level9==1 | institutions$level10==1) & 
-                        institutions$degrees_pctbachplus > 0.5] <- 2
-# Bachelor's or higher, primarily below bachelor's
-institutions$instcat2[institutions$year < 2004 & institutions$deggrant2==1 & 
-                        (institutions$level5==1 | institutions$level7==1 | institutions$level9==1 | institutions$level10==1) & 
-                        institutions$degrees_pctbachplus <= 0.5] <- 3
-# Highest degree is associate's (may have post-bacc certificates)
-institutions$instcat2[institutions$year < 2004 & institutions$deggrant2==1 & institutions$level3==1 &
-                        institutions$level5!=1 & institutions$level7!=1 & institutions$level9!=1 & institutions$level10!=1] <- 4
-# post-bacc certificates, no degrees
-institutions$instcat2[institutions$year < 2004 & institutions$deggrant2==2 & institutions$hloffer >= 6] <- 5
-# no post-bacc certificates, no degrees
-institutions$instcat2[institutions$year < 2004 & institutions$deggrant2==2 & institutions$hloffer < 6] <- 6
 
-# Sector 0 = NA instcat (-2)
-institutions$instcat2[institutions$year < 2004 & institutions$sector==0] <- -2
+institutions <- institutions %>% mutate(instcat2 = instcat) %>%
+  # Master's, Doctor's, or first-professional, no bachelor's, no associate's
+  mutate(instcat2 = replace(instcat2, 
+                             (year < 2004 & deggrant2==1 & (level7==1 | level9==1 | level10==1) & level5!=1 & level3!=1),
+                             1)) %>%
+  # Bachelor's or higher, primarily bachelor's or higher
+  mutate(instcat2 = replace(instcat2, 
+                            (year < 2004 & deggrant2==1 & (level7==1 | level9==1 | level10==1) & degrees_pctbachplus > 0.5),
+                            2)) %>%
+  # Bachelor's or higher, primarily below bachelor's
+  mutate(instcat2 = replace(instcat2, 
+                            (year < 2004 & deggrant2==1 & (level7==1 | level9==1 | level10==1) & degrees_pctbachplus <= 0.5),
+                            3)) %>%
+  # Highest degree is associate's (may have post-bacc certificates)
+  mutate(instcat2 = replace(instcat2, 
+                            (year < 2004 & deggrant2==1 & level3==1 & level5!=1 & level7!=1 & level9!=1 & level10!=1),
+                            4)) %>%
+  # post-bacc certificates, no degrees
+  mutate(instcat2 = replace(instcat2, 
+                            (year < 2004 & deggrant2==2 & hloffer >= 6),
+                            5)) %>%
+  # no post-bacc certificates, no degrees
+  mutate(instcat2 = replace(instcat2, 
+                            (year < 2004 & deggrant2==2 & hloffer < 6),
+                            6)) %>%
+  # Sector 0 = NA instcat (-2)
+  mutate(instcat2 = replace(instcat2, 
+                            (year < 2004 & sector==0),
+                            -2))
+
+table(institutions$instcat2)
 
 ########################################################################################################
 # ccbasic for 1994 - 2004
@@ -308,19 +323,15 @@ institutions$instcat2[institutions$year < 2004 & institutions$sector==0] <- -2
 # We'll generally be using carnegie for the latest year but sector over time
 ########################################################################################################
 
-institutions$ccbasic2 <- institutions$ccbasic
-# doctoral and research level
-institutions$ccbasic2[institutions$year < 2000 & institutions$year >= 1994 & 
-                        (institutions$carnegie %in% c(11, 12, 13, 14))] <- 15
-institutions$ccbasic2[institutions$year < 2005 & institutions$year >= 2000 & 
-                        (institutions$carnegie %in% c(15,16))] <- 15
-
-# masters level
-institutions$ccbasic2[institutions$year < 2005 & institutions$year >= 1994 & 
-                        (institutions$carnegie %in% c(21, 22))] <- 20
-# special focus
-institutions$ccbasic2[institutions$year < 2005 & institutions$year >= 1994 & 
-                        (institutions$carnegie > 50)] <- 25
+institutions <- institutions %>% mutate(ccbasic2 = ccbasic) %>%
+  # doctoral and research level
+  mutate(ccbasic2 = replace(ccbasic2, (year < 2000 & year >= 1994 & carnegie %in% c(11, 12, 13, 14)), 15)) %>%
+  mutate(ccbasic2 = replace(ccbasic2, (year < 2005 & year >= 2000 & carnegie %in% c(15, 16)), 15)) %>%
+  # masters level
+  mutate(ccbasic2 = replace(ccbasic2, (year < 2005 & year >= 1994 & carnegie %in% c(21, 22)), 20)) %>%
+  # special focus
+  mutate(ccbasic2 = replace(ccbasic2, (year < 2005 & year >= 1994 & carnegie > 50), 25))
+table(institutions$ccbasic2)
 
 ########################################################################################################
 # Redefined carnegie for this project - carnegie_urban
@@ -328,40 +339,38 @@ institutions$ccbasic2[institutions$year < 2005 & institutions$year >= 1994 &
 # 6 "private nonprofit bachelors" 7 "for profit" 8 "small groups" 9 "special focus"
 ########################################################################################################
 # Special institutions - graduate-students only or other special focus
-institutions$specialty <- 0
-institutions$specialty[(institutions$instcat2==1 | institutions$ccbasic2 > 23)] <- 1
+institutions <- institutions %>% mutate(specialty = 0) %>%
+  # doctoral and research level
+  mutate(specialty = replace(specialty, (instcat2==1 | ccbasic2 > 23), 1))
 
-institutions$carnegie_urban <- 0
-### PUBLIC
-# public research
-institutions$carnegie_urban[institutions$ccbasic2 %in% c(15, 16, 17) & institutions$control==1] <- 1
-# public masters
-institutions$carnegie_urban[institutions$ccbasic2 %in% c(18, 19, 20) & institutions$control==1] <- 2
-# public associates
-institutions$carnegie_urban[institutions$instcat2 %in% c(3, 4) & institutions$control==1] <- 3
+institutions <- institutions %>% mutate(carnegie_urban = 0) %>%
+  ### PUBLIC
+  # public research
+  mutate(carnegie_urban = replace(carnegie_urban, ccbasic2 %in% c(15, 16, 17) & control==1, 1)) %>%
+  # public masters
+  mutate(carnegie_urban = replace(carnegie_urban, ccbasic2 %in% c(18, 19, 20) & control==1, 2)) %>%
+  # public associates
+  mutate(carnegie_urban = replace(carnegie_urban, ccbasic2 %in% c(3, 4) & control==1, 3)) %>%
+  
+  ### PRIVATE
+  # private nonprofit research
+  mutate(carnegie_urban = replace(carnegie_urban, ccbasic2 %in% c(15, 16, 17) & control==2, 4)) %>%
+  # private nonprofit masters
+  mutate(carnegie_urban = replace(carnegie_urban, ccbasic2 %in% c(18, 19, 20) & control==2, 5)) %>%
+  # private nonprofit bachelors
+  mutate(carnegie_urban = replace(carnegie_urban, instcat2==2 & control==2 & carnegie_urban==0, 6)) %>%
+  # for profit
+  mutate(carnegie_urban = replace(carnegie_urban, control==3, 7)) %>%
 
-### PRIVATE
-# private nonprofit research
-institutions$carnegie_urban[institutions$ccbasic2 %in% c(15, 16, 17) & institutions$control==2] <- 4
-# private nonprofit masters
-institutions$carnegie_urban[institutions$ccbasic2 %in% c(18, 19, 20) & institutions$control==2] <- 5
-# private nonprofit bachelors
-institutions$carnegie_urban[institutions$instcat2==2 & institutions$control==2 & institutions$carnegie_urban==0] <- 6
-
-# for profit
-institutions$carnegie_urban[institutions$control==3] <- 7
-
-#### SMALL GROUPS
-# public bachelors
-institutions$carnegie_urban[institutions$instcat2==2 & institutions$control==1 & institutions$carnegie_urban==0] <- 8
-# private nonprofit associates
-institutions$carnegie_urban[institutions$instcat2 %in% c(3,4) & institutions$control==2] <- 8
-
-# Special focus
-institutions$carnegie_urban[institutions$specialty==1] <- 9
-
-# non degree granting excluded
-institutions$carnegie_urban[institutions$deggrant2==2] <- NA
+  #### SMALL GROUPS
+  # public bachelors
+  mutate(carnegie_urban = replace(carnegie_urban, instcat2==2 & control==1 & carnegie_urban==0, 8)) %>%
+  # private nonprofit associates
+  mutate(carnegie_urban = replace(carnegie_urban, instcat2 %in% c(3,4) & control==2, 8)) %>%
+  # Special focus
+  mutate(carnegie_urban = replace(carnegie_urban, specialty==1, 9)) %>%
+  # non degree granting excluded
+  mutate(carnegie_urban = replace(carnegie_urban, deggrant2==2, NA))
 
 
 ########################################################################################################
@@ -380,22 +389,23 @@ institutions$carnegie_urban[institutions$deggrant2==2] <- NA
 # SECTOR	8	Private not-for-profit, less-than 2-year
 # SECTOR	9	Private for-profit, less-than 2-year
 
-institutions$sector_urban <- 0
-# public and fewer than 50% of degrees/certificates are bachelor's or higher
-institutions$sector_urban[institutions$instcat2 %in% c(3,4) & institutions$control==1] <- 1
-# public and more than 50% of degrees/certificates are bachelor's or higher
-institutions$sector_urban[institutions$instcat2==2 & institutions$control==1] <- 2
-# private and more than 50% of degrees/certificates are bachelor's or higher
-institutions$sector_urban[institutions$instcat2==2 & institutions$control==2] <- 3
-# for profit, any level
-institutions$sector_urban[institutions$control==3] <- 4
-# other degree-granting (small groups and special focus)
-# NOTE: We cannot include public bachelor's and special focus institutions in 'other' prior to 1994 because
-# defining those categories requires ccbasic. We can only include private nonprofit associate's institutions.
-institutions$sector_urban[(institutions$carnegie_urban %in% c(8,9) & institutions$year>=1994) | 
-                            (institutions$instcat2 %in% c(3, 4) & institutions$control==2 & institutions$year < 1994) ] <- 5
-# non-degree-granting
-institutions$sector_urban[institutions$deggrant2==2] <- 6
+institutions <- institutions %>% mutate(sector_urban = 0) %>%
+  # public and fewer than 50% of degrees/certificates are bachelor's or higher
+  mutate(sector_urban = replace(sector_urban, instcat2 %in% c(3,4) & control==1, 1)) %>%
+  # public and more than 50% of degrees/certificates are bachelor's or higher
+  mutate(sector_urban = replace(sector_urban, instcat2==2 & control==1, 2)) %>%
+  # private and more than 50% of degrees/certificates are bachelor's or higher
+  mutate(sector_urban = replace(sector_urban, instcat2==2 & control==2, 3)) %>%
+  # for profit, any level
+  mutate(sector_urban = replace(sector_urban, control==3, 4)) %>%
+  # other degree-granting (small groups and special focus)
+  # NOTE: We cannot include public bachelor's and special focus institutions in 'other' prior to 1994 because
+  # defining those categories requires ccbasic. We can only include private nonprofit associate's institutions.
+  mutate(sector_urban = replace(sector_urban, 
+                                (carnegie_urban %in% c(8,9) & year>=1994) | (instcat2 %in% c(3, 4) & control==2 & year < 1994), 
+                                5)) %>%
+  # non-degree-granting
+  mutate(sector_urban = replace(sector_urban, deggrant2==2, 6))
 
 # Check
 table(institutions$carnegie_urban, institutions$sector_urban)
