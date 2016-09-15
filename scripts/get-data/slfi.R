@@ -33,4 +33,8 @@ taxes <- left_join(taxes, states, by="state")
 taxes <- taxes %>% mutate(fips = ifelse(state=="DC", "11", fips)) %>% 
   select(-state) %>%
   select(fips, year, everything())
+
+####### IMPORTANT: Unit is "thousands of dollars" - multiply by 1000! Check out Excel files in future updates 
+taxes <- taxes %>% mutate(taxes_state = 1000 * taxes_state, taxes_local = 1000 * taxes_local)
+
 write.csv(taxes, "data/taxes_slfi.csv", row.names=F, na="")
