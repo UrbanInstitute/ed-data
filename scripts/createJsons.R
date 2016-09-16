@@ -47,7 +47,7 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
     # Not super elegant but it works
     labeldf <- data.frame(t(replicate(length(series), tickformat, simplify=",")))
     colnames(labeldf) <- series
-    labels$format <- labeldf
+    labels$format <- tickformat
     
     graphdata$labels <- labels
   }
@@ -56,12 +56,8 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
   
   # Axis attributes
   axis$rotated <- rotated
+  yaxis$tick$format <- tickformat
   
-  if (rotated == TRUE) {
-    xaxis$tick$format <- tickformat
-  } else {
-    yaxis$tick$format <- tickformat
-  }
   if (!is.null(xlabel)) {
     xaxis$label <- xlabel
   }
