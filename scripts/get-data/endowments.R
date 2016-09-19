@@ -14,64 +14,10 @@ inst_latest <- inst %>% filter(year == latestyear)
 # Get enrollment for undergrads and grads from IPEDS
 source("scripts/ipedsFunctions.R")
 
-vars2 <- c("fteug")
-dl <- searchVars(vars2)
-allvars <- tolower(c(vars2, "unitid", "year"))
-for (i in seq_along(dl)) {
-  csvpath <- dl[[i]]$path
-  fullpath <- paste(ipedspath, csvpath, sep="")
-  name <- dl[[i]]$name
-  d <- read.csv(fullpath, header=T, stringsAsFactors = F, na.strings=c("",".","NA"))
-  # Give it a year variable
-  d$year <- dl[[i]]$year
-  # All lowercase colnames
-  colnames(d) <- tolower(colnames(d))
-  # Select just the need vars
-  selects <- intersect(colnames(d), allvars)
-  d <- d %>% select(one_of(selects))
-  
-  assign(name, d)
-}
-enrollment <- makeDataset(vars2)
-
-endowvars1 <- c("f1h02")
-dl <- searchVars(endowvars1)
-allvars <- tolower(c(endowvars1, "unitid", "year"))
-for (i in seq_along(dl)) {
-  csvpath <- dl[[i]]$path
-  fullpath <- paste(ipedspath, csvpath, sep="")
-  name <- dl[[i]]$name
-  d <- read.csv(fullpath, header=T, stringsAsFactors = F, na.strings=c("",".","NA"))
-  # Give it a year variable
-  d$year <- dl[[i]]$year
-  # All lowercase colnames
-  colnames(d) <- tolower(colnames(d))
-  # Select just the need vars
-  selects <- intersect(colnames(d), allvars)
-  d <- d %>% select(one_of(selects))
-  
-  assign(name, d)
-}
-endow1 <- makeDataset(endowvars1)
-
-endowvars2 <- c("f2h02")
-dl <- searchVars(endowvars2)
-allvars <- tolower(c(endowvars2, "unitid", "year"))
-for (i in seq_along(dl)) {
-  csvpath <- dl[[i]]$path
-  fullpath <- paste(ipedspath, csvpath, sep="")
-  name <- dl[[i]]$name
-  d <- read.csv(fullpath, header=T, stringsAsFactors = F, na.strings=c("",".","NA"))
-  # Give it a year variable
-  d$year <- dl[[i]]$year
-  # All lowercase colnames
-  colnames(d) <- tolower(colnames(d))
-  # Select just the need vars
-  selects <- intersect(colnames(d), allvars)
-  d <- d %>% select(one_of(selects))
-  
-  assign(name, d)
-}
-endow2 <- makeDataset(endowvars2)
+enrollment <- returnData("fteug")
+endow1 <- returnData("f1h02")
+endow2 <- returnData("f2h02")
 
 endow <- full_join(endow1, endow2, by=c("unitid", "year"))
+
+rm(list=setdiff(ls(), c("latestyear", "institutions", "enrollment", "endow1", "endow2")))
