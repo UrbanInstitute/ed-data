@@ -9,6 +9,9 @@ ipedspath <- "/Users/hrecht/Documents/ipeds-scraper/"
 allfiles <- fromJSON(paste(ipedspath, "data/ipedsfiles.json", sep=""))
 datacols <- fromJSON(paste(ipedspath, "data/ipedscolumns.json", sep=""))
 
+# IPEDS dictionary
+dictionary <- read.csv(paste(ipedspath, "data/dictionary.csv", sep=""), stringsAsFactors = F)
+
 # Join colnames to file info, remove FLAGS datasets, using 1990+
 ipeds <- left_join(datacols, allfiles, by = c("name", "year"))
 ipeds <- ipeds %>% filter(!grepl("flags", name)) %>%
