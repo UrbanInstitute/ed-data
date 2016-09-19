@@ -3,7 +3,6 @@
 library("jsonlite")
 library("dplyr")
 library("stringr")
-library("tidyr")
 library("openxlsx")
 
 ipedspath <- "/Users/hrecht/Documents/ipeds-scraper/"
@@ -38,6 +37,13 @@ getData <- function(datalist, vars) {
     d$year <- datalist[[i]]$year
     # All lowercase colnames
     colnames(d) <- tolower(colnames(d))
+    
+    # OPEID can be sometimes integer sometimes character - coerce to character
+    if("opeid" %in% colnames(d))
+    {
+      d$opeid <- as.character(d$opeid)
+    }
+    
     # Select just the need vars
     selects <- intersect(colnames(d), allvars)
     d <- d %>% select(one_of(selects))

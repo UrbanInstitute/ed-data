@@ -1,45 +1,11 @@
 # Create IPEDS institutions identifiers dataset
 # Get IPEDS data using scraper https://github.com/UrbanInstitute/ipeds-scraper
 
-library("jsonlite")
 library("dplyr")
-library("stringr")
 library("tidyr")
-library("openxlsx")
 
-ipedspath <- "/Users/hrecht/Documents/ipeds-scraper/"
-allfiles <- fromJSON(paste(ipedspath, "data/ipedsfiles.json", sep=""))
-datacols <- fromJSON(paste(ipedspath, "data/ipedscolumns.json", sep=""))
-
-# Join colnames to file info, remove FLAGS datasets, using 1990+
-ipeds <- left_join(datacols, allfiles, by = c("name", "year"))
-ipeds <- ipeds %>% filter(!grepl("flags", name)) %>%
-  filter(year >= 1990)
-
-# There are a few in the way that IPEDS lists its files - remove them
-ipeds <-ipeds[!duplicated(ipeds[,"path"]),]
-
-# Search for a variable, return list of files that contain it
-searchVars <- function(vars) {
-  # Filter the full IPEDS metadata dataset info to just those containing your vars
-  dt <- ipeds %>% filter(grepl(paste(vars, collapse='|'), columns, ignore.case = T))
-  dl <- split(dt, dt$name)
-  return(dl)
-  # For all the files, read in the CSVs
-  #dat <- lapply(dt$path, function(i){
-  #  read.csv(i, header=T, stringsAsFactors = F)
-  #})
-  #names(dat) <- dt$name
-}
-
-# Bind rows to make one data frame
-makeDataset <- function(vars) {
-  dt <- ipeds %>% filter(grepl(paste(vars, collapse='|'), columns, ignore.case = T))
-  ipeds_list <- lapply(dt$name, get)
-  ipedsdata <- bind_rows(ipeds_list)
-  ipedsdata <- ipedsdata %>% arrange(year, unitid)
-  return(ipedsdata)
-}
+# Functions to return ipeds data
+source("scripts/ipedsFunctions.R")
 
 ########################################################################################################
 # Get main insitutional characteristics
@@ -47,27 +13,7 @@ makeDataset <- function(vars) {
 
 # Institutional characteristics vars
 instvars <- c("fips", "stabbr", "instnm", "sector", "pset4flg", "instcat", "ccbasic", "control", "deggrant", "opeflag", "opeind", "opeid", "carnegie", "hloffer")
-dl <- searchVars(instvars)
-allvars <- tolower(c(instvars, "unitid", "year"))
-for (i in seq_along(dl)) {
-  csvpath <- dl[[i]]$path
-  fullpath <- paste(ipedspath, csvpath, sep="")
-  name <- dl[[i]]$name
-  d <- read.csv(fullpath, header=T, stringsAsFactors = F)
-  # Give it a year variable
-  d$year <- dl[[i]]$year
-  # All lowercase colnames
-  colnames(d) <- tolower(colnames(d))
-  # Select just the need vars
-  selects <- intersect(colnames(d), allvars)
-  d <- d %>% select(one_of(selects))
-  if("opeid" %in% colnames(d)) {
-    d$opeid <- as.character(d$opeid)
-  }
-  assign(name, d)
-}
-
-institutions <- makeDataset(instvars)
+institutions <- returnData(instvars)
 
 ########################################################################################################
 # For years < 2004, we need % of degrees granted that are bachelor's degrees or higher
@@ -142,26 +88,7 @@ institutions <- left_join(institutions, degrees, by = c("unitid", "year"))
 ########################################################################################################
 
 # Additional institutional characteristics
-vars2 <- c("level3", "level5", "level7", "level9", "level10")
-dl <- searchVars(vars2)
-allvars <- tolower(c(vars2, "unitid", "year"))
-for (i in seq_along(dl)) {
-  csvpath <- dl[[i]]$path
-  fullpath <- paste(ipedspath, csvpath, sep="")
-  name <- dl[[i]]$name
-  d <- read.csv(fullpath, header=T, stringsAsFactors = F)
-  # Give it a year variable
-  d$year <- dl[[i]]$year
-  # All lowercase colnames
-  colnames(d) <- tolower(colnames(d))
-  # Select just the need vars
-  selects <- intersect(colnames(d), allvars)
-  d <- d %>% select(one_of(selects))
-  
-  assign(name, d)
-}
-levelsdt <- makeDataset(vars2)
-
+levelsdt <- returnData(c("level3", "level5", "level7", "level9", "level10"))
 # Add to institutions dataset
 institutions <- left_join(institutions, levelsdt, by = c("unitid", "year"))
 
@@ -169,24 +96,7 @@ institutions <- left_join(institutions, levelsdt, by = c("unitid", "year"))
 # finaid9 for <1996
 # replace zeros with 1 if institution is NOT 'not eligible for any of the above' federal financial aid programs
 ########################################################################################################
-dl <- searchVars("finaid9")
-allvars <- tolower(c("finaid9", "unitid", "year"))
-for (i in seq_along(dl)) {
-  csvpath <- dl[[i]]$path
-  fullpath <- paste(ipedspath, csvpath, sep="")
-  name <- dl[[i]]$name
-  d <- read.csv(fullpath, header=T, stringsAsFactors = F)
-  # Give it a year variable
-  d$year <- dl[[i]]$year
-  # All lowercase colnames
-  colnames(d) <- tolower(colnames(d))
-  # Select just the need vars
-  selects <- intersect(colnames(d), allvars)
-  d <- d %>% select(one_of(selects))
-  
-  assign(name, d)
-}
-finaid9 <- makeDataset("finaid9")
+finaid9 <- returnData("finaid9")
 
 # Add to institutions dataset
 institutions <- left_join(institutions, finaid9, by = c("unitid", "year"))
