@@ -1,6 +1,7 @@
 # Endowments data from IPEDS
 
 library(dplyr)
+source("scripts/ipedsFunctions.R")
 
 latestyear <- 2014
 # fte12mn Total 12-month FTE student enrollment
@@ -12,8 +13,6 @@ inst <- institutions %>% select(unitid, year, sector_urban, carnegie_urban, fte1
 inst_latest <- inst %>% filter(year == latestyear)
 
 # Get enrollment for undergrads and grads from IPEDS
-source("scripts/ipedsFunctions.R")
-
 enrollment <- returnData("fteug")
 endow1 <- returnData("f1h02")
 endow2 <- returnData("f2h02")
@@ -54,18 +53,31 @@ temp <- endow %>% group_by(carnegie_urban) %>%
 # Ratios are converted to percentages and rounded to the nearest whole number.
 ########################################################################################################
 
-#### MOVE OPENADMP TO NEW FUNCTION? MESSING UP 2014**********
-selectivity <- returnData(c("openadmp", "admssn", "applcn"))
-table(selectivity$openadmp)
+selectivity <- returnData(c("admssn", "applcn"))
+openad <- returnData("openadmp")
+selectivity <- full_join(selectivity, openad, by = c("unitid", "year"))
 
+# Calculate selectivity groups: <25%, 25-50%, 50-75%, 75
 selectivity <- selectivity %>% mutate(admitted_pct = admssn/applcn) %>%
   mutate(admitted_pct = replace(admitted_pct, admitted_pct > 1 & !is.na(admitted_pct), 1)) %>%
   mutate(admitted_pct = replace(admitted_pct, openadmp==1, 1)) %>%
   mutate(admitted_pct = replace(admitted_pct, openadmp==2 & admitted_pct>0.99, 0.99)) %>%
-  mutate(selectcat = cut(admitted_pct, breaks=c(0, 0.25, 0.50, 0.75, 1), include.lowest=TRUE, labels = F))
+  mutate(selectcat = cut(admitted_pct, breaks=c(0, 0.25, 0.50, 0.75, 1), include.lowest=TRUE, labels = F)) %>%
+  # separate category for open admissions
+  mutate(selectcat = replace(selectcat, admitted_pct==1, 5)) %>%
+  arrange(unitid, year)
 
 endow <- left_join(endow, selectivity, by = c("unitid", "year"))
 endow_latest = endow %>% filter(year == latestyear)
+table(endow_latest$selectcat, endow_latest$sector_urban)
+
+# Graphs: sector_urban = 2 "public four-year", 3 "private nonprofit four-year"
+pub4 <- endow_latest %>% filter(sector_urban==2)
+pnp4 <- endow_latest %>% filter(sector_urban==3)
+
+fig6 <- endow_latest %>% filter((sector_urban == 2 | sector_urban == 3) & !is.na(selectcat)) %>%
+  group_by(sector_urban, selectcat) %>%
+  summarize(endowinc_median = median(endowperfte, na.rm=T))
 
 # egen selectcat = cut(selectivity), at(0(25)125)
 # table selectcat, contents(min selectivity max selectivity)
