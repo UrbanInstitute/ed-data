@@ -61,5 +61,9 @@ enrollment <- full_join(fte, fteug, by = c("unitid", "year"))
 enrollment <- enrollment %>% select(-instname)
 
 institutions <- left_join(institutions, enrollment, by=c("unitid", "year"))
+
+# getting one duplicated row - University of Phoenix in 2013. not a big deal bc for-profit, but remove it.
+institutions <- institutions[!duplicated(institutions[,1:2]),]
+
 institutions <- institutions %>% arrange(unitid, year)
 write.csv(institutions, "data/ipeds/institutions.csv", row.names=F, na="")
