@@ -100,7 +100,7 @@ finaid9 <- returnData("finaid9")
 
 # Add to institutions dataset
 institutions <- left_join(institutions, finaid9, by = c("unitid", "year"))
-write.csv(institutions, "data/ipeds/institutions.csv", row.names=F, na="")
+write.csv(institutions, "data/ipeds/institutions_raw.csv", row.names=F, na="")
 
 rm(list=setdiff(ls(), c("institutions", "ipeds", "ipedspath")))
 
@@ -110,7 +110,7 @@ rm(list=setdiff(ls(), c("institutions", "ipeds", "ipedspath")))
 # As of 06/13/16 - using 1994+
 ########################################################################################################
 
-institutions <- read.csv("data/ipeds/institutions.csv", stringsAsFactors = F)
+institutions <- read.csv("data/ipeds/institutions_raw.csv", stringsAsFactors = F)
 carnegievar <- as.data.frame(table(institutions$year, institutions$carnegie))
 
 institutions <- institutions %>% group_by(unitid) %>%
@@ -282,6 +282,17 @@ institutions <- institutions %>% mutate(carnegie_urban = 0) %>%
   # non degree granting excluded
   mutate(carnegie_urban = replace(carnegie_urban, deggrant2==2, NA))
 
+# String variables
+institutions <- institutions%>% mutate(carnegie_label = ifelse(carnegie_urban == 1, "Public research",
+                                                               ifelse(carnegie_urban == 2, "Public master's",
+                                                                      ifelse(carnegie_urban == 3, "Public associate's",
+                                                                             ifelse(carnegie_urban == 4, "Private nonprofit research",
+                                                                                    ifelse(carnegie_urban == 5, "Private nonprofit master's",
+                                                                                           ifelse(carnegie_urban == 6, "Private nonprofit bachelor's",
+                                                                                                  ifelse(carnegie_urban == 7, "For profit",
+                                                                                                         ifelse(carnegie_urban == 8, "Small groups",
+                                                                                                                ifelse(carnegie_urban == 9, "Special focus",
+                                                                                                                       ""))))))))))
 
 ########################################################################################################
 # Basic sector - sector_urban (named sectorv2 in Stata draft do files)
@@ -317,9 +328,23 @@ institutions <- institutions %>% mutate(sector_urban = 0) %>%
   # non-degree-granting
   mutate(sector_urban = replace(sector_urban, deggrant2==2, 6))
 
+# String variables
+institutions <- institutions%>% mutate(sector_label = ifelse(sector_urban == 1, "Public two-year",
+                                                               ifelse(sector_urban == 2, "Public four-year",
+                                                                      ifelse(sector_urban == 3, "Private nonprofit four-year",
+                                                                             ifelse(sector_urban == 4, "For-profit",
+                                                                                    ifelse(sector_urban == 5, "Other",
+                                                                                           ifelse(sector_urban == 6, "Non-degree-granting",
+                                                                                                                       "")))))))
+
 # Check
-table(institutions$carnegie_urban, institutions$sector_urban)
-table(institutions$sector_urban, institutions$year)
+table(institutions$carnegie_label, institutions$sector_label)
+table(institutions$sector_label, institutions$year)
+
+# Remove some of the original variables (all saved in institutions_raw if needed again)
+colnames(institutions)
+institutions <- institutions %>% select(-hloffer, -opeid, -opeind, -opeflag, -sector, -control, -carnegie, -deggrant, -pset4flg, -instcat, -ccbasic, -starts_with("level"), -finaid9,
+                                        -instcat2, -ccbasic2, -yearsin)
 
 write.csv(institutions, "data/ipeds/institutions.csv", row.names=F, na="")
 

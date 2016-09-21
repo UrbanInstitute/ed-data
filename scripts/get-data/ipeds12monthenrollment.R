@@ -49,6 +49,7 @@ write.csv(fte, "data/ipeds/fte12mn.csv", row.names = F, na="")
 
 # Add to institutions dataset
 institutions <- read.csv("data/ipeds/institutions.csv", stringsAsFactors = F)
+fte <- read.csv("data/ipeds/fte12mn.csv", stringsAsFactors = F)
 
 fte <- fte %>% select(-instname)
 institutions <- left_join(institutions, fte, by=c("unitid", "year"))
