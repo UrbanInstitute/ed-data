@@ -2,6 +2,7 @@
 
 library(dplyr)
 source("scripts/ipedsFunctions.R")
+source("scripts/createJsons.R")
 
 latestyear <- 2014
 # fte12mn Total 12-month FTE student enrollment
@@ -67,18 +68,28 @@ selectivity <- selectivity %>% mutate(admitted_pct = admssn/applcn) %>%
   mutate(selectcat = replace(selectcat, admitted_pct==1, 5)) %>%
   arrange(unitid, year)
 
+# Label groups
+selectivity <- selectivity %>% mutate(selectlabel = ifelse(selectcat==5, "Open admissions policy",
+                                                           ifelse(selectcat==4, "75 - 100%",
+                                                                  ifelse(selectcat==3, "50 - 75%",
+                                                                         ifelse(selectcat==2, "25 - <50%", "0 - 25%")))))
+
 endow <- left_join(endow, selectivity, by = c("unitid", "year"))
 endow_latest = endow %>% filter(year == latestyear)
-table(endow_latest$selectcat, endow_latest$sector_urban)
+table(endow_latest$selectlabel, endow_latest$sector_urban)
 
 # Graphs: sector_urban = 2 "public four-year", 3 "private nonprofit four-year"
-pub4 <- endow_latest %>% filter(sector_urban==2)
-pnp4 <- endow_latest %>% filter(sector_urban==3)
-
 fig6 <- endow_latest %>% filter((sector_urban == 2 | sector_urban == 3) & !is.na(selectcat)) %>%
-  group_by(sector_urban, selectcat) %>%
-  summarize(endowinc_median = median(endowperfte, na.rm=T))
+  group_by(sector_urban, selectlabel) %>%
+  summarize(endowinc_median = median(endowperfte, na.rm=T),
+            endowinc_wmean = weighted.mean(endowperfte, w=fteug, na.rm=T))
 
-# egen selectcat = cut(selectivity), at(0(25)125)
-# table selectcat, contents(min selectivity max selectivity)
-# table selectcat [aweight=fteug_2014] if carnegie<7 & carnegie!=3, by(carnegie) contents(n selectivity mean endowperfte_2014)
+fig6a <- fig6 %>% filter(sector_urban==3)
+fig6b <- fig6 %>% filter(sector_urban==2)
+# Small multiples of median by sector
+json2_6a <- makeJson(sectionn = 2, graphn = 6, subn = 1, dt = fig6a$endowinc_median, graphtype = "bar", series = "Private Nonprofit Four-Year Institutions", 
+                    categories = fig6a$selectlabel, tickformat = "dollar", directlabels = TRUE, rotated = TRUE, xtype = "category",
+                    xlabel = NULL, ylabel = NULL)
+json2_6b <- makeJson(sectionn = 2, graphn = 6, subn = 2, dt = fig6b$endowinc_median, graphtype = "bar", series = "Public Four-Year Institutions", 
+                     categories = fig6b$selectlabel, tickformat = "dollar", directlabels = TRUE, rotated = TRUE, xtype = "category",
+                     xlabel = NULL, ylabel = NULL)
