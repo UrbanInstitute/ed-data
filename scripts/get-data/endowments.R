@@ -1,6 +1,8 @@
 # Endowments data from IPEDS
 
 library(dplyr)
+library(Hmisc)
+
 source("scripts/ipedsFunctions.R")
 source("scripts/createJsons.R")
 
@@ -37,11 +39,48 @@ endow <- endow %>% mutate(endowperfte = ifelse(!is.na(f1h02), f1h02/fte12mn * 0.
 
 # Take each carnegie category. Then within them, divide them in to deciles by endowperfte, weighted by fteug. 
 # For each decile, for each carnegie category, calculate the mean endowperfte weighted by fteug. 
+
+# carnegie_urban: # 1 "public research" 2 "public masters" 3 "public associates" 4 "private nonprofit research" 5 "private nonprofit masters"
+# 6 "private nonprofit bachelors" 7 "for profit" 8 "small groups" 9 "special focus"
+# We need 1, 2, 4, 5, 6
 ########################################################################################################
 
-temp <- endow %>% group_by(carnegie_urban) %>%
-  
+fig5 <- endow %>% filter(carnegie_urban %in% c(1, 2, 4, 5, 6)) %>%
+  mutate(carnegie_label = ifelse(carnegie_urban == 1, "Public research",
+                                ifelse(carnegie_urban == 2, "Public masters",
+                                       ifelse(carnegie_urban == 4, "Private nonprofit research",
+                                              ifelse(carnegie_urban == 5, "Private nonprofit masters",
+                                                     ifelse(carnegie_urban == 6, "Private nonprofit bachelors",
+                                                            "")))))) %>%
+  filter(year == latestyear)
 
+# Within a carnegie group, calculate weighted deciles of endowment group
+# Then by decile, weighted mean endowment per FTE
+calcDeciles <- function(category) {
+  dt <- fig5 %>% filter(carnegie_label == category)
+  dt <- dt %>% filter(!is.na(endowperfte))
+  dt$endowdecile <- as.integer(cut(dt$endowperfte, wtd.quantile(dt$endowperfte, weights = dt$fteug, probs = seq(0, 1, 0.1)), include.lowest=TRUE))
+  dt <- dt %>% group_by(endowdecile) %>%
+    summarise(endowperfte_wmean = weighted.mean(endowperfte, w = fteug, na.rm=T))
+  return(dt)
+}
+
+fig5a <- calcDeciles("Public research")
+fig5b <- calcDeciles("Public masters")
+fig5c <- calcDeciles("Private nonprofit research")
+fig5d <- calcDeciles("Private nonprofit masters")
+fig5e <- calcDeciles("Private nonprofit bachelors")
+
+json2_5a <- makeJson(sectionn = 2, graphn = 5, subn = 1, dt = fig5a$endowperfte_wmean, graphtype = "bar", series = "Public research", 
+                     categories = fig5a$endowdecile, tickformat = "dollar", xtype = "category")
+json2_5b <- makeJson(sectionn = 2, graphn = 5, subn = 2, dt = fig5b$endowperfte_wmean, graphtype = "bar", series = "Public masters", 
+                     categories = fig5b$endowdecile, tickformat = "dollar", xtype = "category")
+json2_5c <- makeJson(sectionn = 2, graphn = 5, subn = 3, dt = fig5c$endowperfte_wmean, graphtype = "bar", series = "Private nonprofit research", 
+                     categories = fig5c$endowdecile, tickformat = "dollar", xtype = "category")
+json2_5d <- makeJson(sectionn = 2, graphn = 5, subn = 4, dt = fig5d$endowperfte_wmean, graphtype = "bar", series = "Private nonprofit masters", 
+                     categories = fig5d$endowdecile, tickformat = "dollar", xtype = "category")
+json2_5e <- makeJson(sectionn = 2, graphn = 5, subn = 5, dt = fig5e$endowperfte_wmean, graphtype = "bar", series = "Private nonprofit bachelors", 
+                     categories = fig5e$endowdecile, tickformat = "dollar", xtype = "category")
 
 ########################################################################################################
 # Endowment spending per FTE by degree of selectivity
@@ -72,7 +111,7 @@ selectivity <- selectivity %>% mutate(admitted_pct = admssn/applcn) %>%
 selectivity <- selectivity %>% mutate(selectlabel = ifelse(selectcat==5, "Open admissions policy",
                                                            ifelse(selectcat==4, "75 - 100%",
                                                                   ifelse(selectcat==3, "50 - 75%",
-                                                                         ifelse(selectcat==2, "25 - <50%", "0 - 25%")))))
+                                                                         ifelse(selectcat==2, "25 - 50%", "0 - 25%")))))
 
 endow <- left_join(endow, selectivity, by = c("unitid", "year"))
 endow_latest = endow %>% filter(year == latestyear)
@@ -88,8 +127,6 @@ fig6a <- fig6 %>% filter(sector_urban==3)
 fig6b <- fig6 %>% filter(sector_urban==2)
 # Small multiples of median by sector
 json2_6a <- makeJson(sectionn = 2, graphn = 6, subn = 1, dt = fig6a$endowinc_median, graphtype = "bar", series = "Private Nonprofit Four-Year Institutions", 
-                    categories = fig6a$selectlabel, tickformat = "dollar", directlabels = TRUE, rotated = TRUE, xtype = "category",
-                    xlabel = NULL, ylabel = NULL)
+                    categories = fig6a$selectlabel, tickformat = "dollar", directlabels = TRUE, rotated = TRUE, xtype = "category")
 json2_6b <- makeJson(sectionn = 2, graphn = 6, subn = 2, dt = fig6b$endowinc_median, graphtype = "bar", series = "Public Four-Year Institutions", 
-                     categories = fig6b$selectlabel, tickformat = "dollar", directlabels = TRUE, rotated = TRUE, xtype = "category",
-                     xlabel = NULL, ylabel = NULL)
+                     categories = fig6b$selectlabel, tickformat = "dollar", directlabels = TRUE, rotated = TRUE, xtype = "category")
