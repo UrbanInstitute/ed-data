@@ -71,15 +71,15 @@ fig5c <- calcDeciles("Private nonprofit research")
 fig5d <- calcDeciles("Private nonprofit masters")
 fig5e <- calcDeciles("Private nonprofit bachelors")
 
-json2_5a <- makeJson(sectionn = 2, graphn = 5, subn = 1, dt = fig5a$endowperfte_wmean, graphtype = "bar", series = "Public research", 
+json2_5a <- makeJson(sectionn = 2, graphn = 5, subn = 1, dt = fig5a$endowperfte_wmean, graphtype = "bar", series = "Public research", graphtitle = "Public research",
                      categories = fig5a$endowdecile, tickformat = "dollar", xtype = "category")
-json2_5b <- makeJson(sectionn = 2, graphn = 5, subn = 2, dt = fig5b$endowperfte_wmean, graphtype = "bar", series = "Public masters", 
+json2_5b <- makeJson(sectionn = 2, graphn = 5, subn = 2, dt = fig5b$endowperfte_wmean, graphtype = "bar", series = "Public masters", graphtitle = "Public masters",
                      categories = fig5b$endowdecile, tickformat = "dollar", xtype = "category")
-json2_5c <- makeJson(sectionn = 2, graphn = 5, subn = 3, dt = fig5c$endowperfte_wmean, graphtype = "bar", series = "Private nonprofit research", 
+json2_5c <- makeJson(sectionn = 2, graphn = 5, subn = 3, dt = fig5c$endowperfte_wmean, graphtype = "bar", series = "Private nonprofit research", graphtitle = "Private nonprofit research",
                      categories = fig5c$endowdecile, tickformat = "dollar", xtype = "category")
-json2_5d <- makeJson(sectionn = 2, graphn = 5, subn = 4, dt = fig5d$endowperfte_wmean, graphtype = "bar", series = "Private nonprofit masters", 
+json2_5d <- makeJson(sectionn = 2, graphn = 5, subn = 4, dt = fig5d$endowperfte_wmean, graphtype = "bar", series = "Private nonprofit masters", graphtitle = "Private nonprofit masters",
                      categories = fig5d$endowdecile, tickformat = "dollar", xtype = "category")
-json2_5e <- makeJson(sectionn = 2, graphn = 5, subn = 5, dt = fig5e$endowperfte_wmean, graphtype = "bar", series = "Private nonprofit bachelors", 
+json2_5e <- makeJson(sectionn = 2, graphn = 5, subn = 5, dt = fig5e$endowperfte_wmean, graphtype = "bar", series = "Private nonprofit bachelors", graphtitle = "Private nonprofit bachelors",
                      categories = fig5e$endowdecile, tickformat = "dollar", xtype = "category")
 
 ########################################################################################################
@@ -126,7 +126,7 @@ fig6 <- endow_latest %>% filter((sector_urban == 2 | sector_urban == 3) & !is.na
 fig6a <- fig6 %>% filter(sector_urban==3)
 fig6b <- fig6 %>% filter(sector_urban==2)
 # Small multiples of median by sector
-json2_6a <- makeJson(sectionn = 2, graphn = 6, subn = 1, dt = fig6a$endowinc_median, graphtype = "bar", series = "Private Nonprofit Four-Year Institutions", 
+json2_6a <- makeJson(sectionn = 2, graphn = 6, subn = 1, dt = fig6a$endowinc_median, graphtype = "bar", series = "Private Nonprofit Four-Year Institutions", graphtitle = "Private Nonprofit Four-Year Institutions",
                     categories = fig6a$selectlabel, tickformat = "dollar", directlabels = TRUE, rotated = TRUE, xtype = "category")
-json2_6b <- makeJson(sectionn = 2, graphn = 6, subn = 2, dt = fig6b$endowinc_median, graphtype = "bar", series = "Public Four-Year Institutions", 
+json2_6b <- makeJson(sectionn = 2, graphn = 6, subn = 2, dt = fig6b$endowinc_median, graphtype = "bar", series = "Public Four-Year Institutions", graphtitle = "Public Four-Year Institutions",
                      categories = fig6b$selectlabel, tickformat = "dollar", directlabels = TRUE, rotated = TRUE, xtype = "category")
