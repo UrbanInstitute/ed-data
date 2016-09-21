@@ -1,7 +1,12 @@
 # Process and format data for higher education site graphs
 
+## Requirements
+* R
+* Python 3
+* IPEDS data downloaded from [scraper] - 1990-latest year
+
 ## Graph json creation
-For each graph, 1 .json containing data and metadata is needed. These files are stored in [graph-json/](graph-json/) in subfolders organized by main section. The data are retrieved from various sources in [scripts/get-data/](scripts/get-data/) and formatted for particular graphs in [scripts/format-graphs/](scripts/format-graphs/). To create a formatted json, use the function `makeJson`, found in [scripts/createJsons.R](scripts/createJsons.R).
+For each graph, 1 .json containing data and metadata is needed. These files are stored in [graph-json/](graph-json/) in subfolders organized by main section. The data are retrieved from various sources in [scripts/get-data/](scripts/get-data/) and formatted for particular graphs. To create a formatted json, use the function `makeJson`, found in [scripts/createJsons.R](scripts/createJsons.R).
 
 ## CPI adjustments and year ranges
 Throughout this project, we'll be using dollar amounts over time and aging nominal dollars using the [Consumer Price Index](www.bls.gov/cpi/). The CPI is retrieved via API in [bls.R](scripts/get-data/bls.R). We use the annual average CPI for all items `(CUUS0000SA0)` when aging dollar amounts.
