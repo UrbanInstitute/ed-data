@@ -1,3 +1,10 @@
+# IPEDS enrollment variables used throughout sections
+# fte12mn, fteug
+
+source("scripts/ipedsFunctions.R")
+# fteug from IPEDS raw data
+fteug <- returnData("fteug")
+
 # IPEDS 12 month FTE enrollment: a derived variable
 # Available in the data download center and Delta cost project but NOT in the raw data downloads
 # Get available years from Delta, latest from IPEDS data download center
@@ -49,9 +56,10 @@ write.csv(fte, "data/ipeds/fte12mn.csv", row.names = F, na="")
 
 # Add to institutions dataset
 institutions <- read.csv("data/ipeds/institutions.csv", stringsAsFactors = F)
-fte <- read.csv("data/ipeds/fte12mn.csv", stringsAsFactors = F)
 
-fte <- fte %>% select(-instname)
-institutions <- left_join(institutions, fte, by=c("unitid", "year"))
+enrollment <- full_join(fte, fteug, by = c("unitid", "year"))
+enrollment <- enrollment %>% select(-instname)
+
+institutions <- left_join(institutions, enrollment, by=c("unitid", "year"))
 institutions <- institutions %>% arrange(unitid, year)
 write.csv(institutions, "data/ipeds/institutions.csv", row.names=F, na="")

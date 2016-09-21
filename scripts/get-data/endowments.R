@@ -13,11 +13,10 @@ latestyear <- 2014
 
 institutions <- read.csv("data/ipeds/institutions.csv", stringsAsFactors = F)
 
-inst <- institutions %>% select(unitid, year, sector_urban, carnegie_urban, sector_label, carnegie_label, fte12mn, instnm)
+inst <- institutions %>% select(unitid, year, sector_urban, carnegie_urban, sector_label, carnegie_label, fte12mn, fteug, instnm)
 inst_latest <- inst %>% filter(year == latestyear)
 
-# Get enrollment for undergrads and grads from IPEDS
-enrollment <- returnData("fteug")
+# Get endowment data from IPEDS
 endow1 <- returnData("f1h02")
 endow2 <- returnData("f2h02")
 
