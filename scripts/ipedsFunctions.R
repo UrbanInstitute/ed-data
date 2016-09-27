@@ -5,6 +5,8 @@ library("dplyr")
 library("stringr")
 library("openxlsx")
 
+latestyear <- 2014
+
 ipedspath <- "/Users/hrecht/Documents/ipeds-scraper/"
 allfiles <- fromJSON(paste(ipedspath, "data/ipedsfiles.json", sep=""))
 datacols <- fromJSON(paste(ipedspath, "data/ipedscolumns.json", sep=""))
@@ -29,7 +31,7 @@ searchVars <- function(vars) {
 }
 
 # Return the datasets containing the var(s) and selected the necessary columns
-getData <- function(datalist, vars) {
+getData <- function(datalist, vars, keepallvars) {
   allvars <- tolower(c(vars, "unitid", "year"))
   for (i in seq_along(datalist)) {
     csvpath <- datalist[[i]]$path
@@ -46,10 +48,18 @@ getData <- function(datalist, vars) {
     {
       d$opeid <- as.character(d$opeid)
     }
+    if("f2a20" %in% colnames(d))
+    {
+      d$f2a20 <- as.character(d$f2a20)
+    }
     
     # Select just the need vars
-    selects <- intersect(colnames(d), allvars)
-    d <- d %>% select(one_of(selects))
+    if(keepallvars == FALSE) {
+      selects <- intersect(colnames(d), allvars)
+      d <- d %>% select(one_of(selects))
+    } else {
+      d <- d %>% select(-starts_with("x"))
+    }
     assign(name, d, envir = .GlobalEnv)
   }
 }
@@ -64,9 +74,9 @@ makeDataset <- function(vars) {
 }
 
 # If desired (usually the case): Do all the things: search, get datasets
-returnData <- function(myvars) {
+returnData <- function(myvars, keepallvars = FALSE) {
   dl <- searchVars(myvars)
-  getData(dl, myvars)
+  getData(dl, myvars, keepallvars)
   makeDataset(myvars)
 }
 rm(allfiles, datacols)

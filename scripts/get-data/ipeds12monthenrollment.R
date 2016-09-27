@@ -1,9 +1,11 @@
 # IPEDS enrollment variables used throughout sections
 # fte12mn, fteug
 
+library(dplyr)
+
 source("scripts/ipedsFunctions.R")
 # fteug from IPEDS raw data
-fteug <- returnData("fteug")
+fteug <- returnData(c("fteug", "ftegd"))
 
 # IPEDS 12 month FTE enrollment: a derived variable
 # Available in the data download center and Delta cost project but NOT in the raw data downloads
@@ -25,7 +27,6 @@ fteug <- returnData("fteug")
 # students is added to one-third of the estimated number of part-time first professional students. 
 ########################################################################################################
 
-library(dplyr)
 
 # Delta Cost Project, 1985-2013 http://www.deltacostproject.org/delta-cost-project-database
 # download.file("http://www.deltacostproject.org/sites/default/files/database/Delta_database_87_13_CSV.zip", "data/original/Delta_database_87_13_CSV.zip")
@@ -56,6 +57,7 @@ write.csv(fte, "data/ipeds/fte12mn.csv", row.names = F, na="")
 
 # Add to institutions dataset
 institutions <- read.csv("data/ipeds/institutions.csv", stringsAsFactors = F)
+fte <- read.csv("data/ipeds/fte12mn.csv", stringsAsFactors = F)
 
 enrollment <- full_join(fte, fteug, by = c("unitid", "year"))
 enrollment <- enrollment %>% select(-instname)
