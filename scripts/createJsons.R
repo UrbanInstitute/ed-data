@@ -15,7 +15,7 @@ graphtext$toggle <- as.numeric(graphtext$toggle)
 # sectionn and graphn correspond to the location of the graph, specifically in the row in the Excel file that contains text attributes
 # subn is graph subnumber - so small multiples, or graphs added later, etc. 0 unless needed
 makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, categories, tickformat = "number", 
-                     directlabels = FALSE, rotated = FALSE, graphtitle = NULL, xtype = "category", xlabel = NULL, ylabel = NULL) {
+                     directlabels = FALSE, rotated = FALSE, graphtitle = NULL, xtype = "category", xlabel = NULL, ylabel = NULL, ymax = NULL) {
   # Init json and attributes
   graphjson <- NULL
   metadata <- NULL
@@ -74,6 +74,9 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
   }
   if (!is.null(ylabel)) {
     yaxis$label <- ylabel
+  }
+  if (!is.null(ymax)) {
+    yaxis$max <- ymax
   }
   xaxis$type <- xtype
   xaxis$categories <- categories

@@ -137,7 +137,7 @@ fig7 <- figs %>% filter(grepl("Public", carnegie_label))
 fig7 <- as.data.frame(fig7)
 
 # Use the same y max value for all multiples of this chart
-ymax <- max(fig7$nettuition_perfte_aged + fig7$subsidy_perfte_aged)
+ymax7 <- max(fig7$nettuition_perfte_aged + fig7$subsidy_perfte_aged)
 
 # Split multiples by carnegie group
 fig7a <- fig7 %>% filter(carnegie_label == "Public research") %>% select(-carnegie_label)
@@ -150,15 +150,15 @@ legnames <- c("Average subsidy per FTE student", "Average net tuition revenue pe
 # Make jsons
 json2_7a <- makeJson(sectionn = 2, graphn = 7, subn = 1, dt = fig7a, graphtype = "bar", 
                      series = legnames, 
-                     graphtitle = "Public research institutions", categories = fig7a$year_axis, tickformat = "dollar", directlabels = TRUE, xtype = "category")
+                     graphtitle = "Research institutions", categories = fig7a$year_axis, tickformat = "dollar", directlabels = TRUE, xtype = "category", ymax = ymax7)
 
 json2_7b <- makeJson(sectionn = 2, graphn = 7, subn = 2, dt = fig7b, graphtype = "bar", 
                      series = legnames, 
-                     graphtitle = "Public master's institutions", categories = fig7b$year_axis, tickformat = "dollar", directlabels = TRUE, xtype = "category")
+                     graphtitle = "Master's institutions", categories = fig7b$year_axis, tickformat = "dollar", directlabels = TRUE, xtype = "category", ymax = ymax7)
 
 json2_7c <- makeJson(sectionn = 2, graphn = 7, subn = 3, dt = fig7c, graphtype = "bar", 
                      series = legnames, 
-                     graphtitle = "Public associate's institutions", categories = fig7c$year_axis, tickformat = "dollar", directlabels = TRUE, xtype = "category")
+                     graphtitle = "Associate's institutions", categories = fig7c$year_axis, tickformat = "dollar", directlabels = TRUE, xtype = "category", ymax = ymax7)
 
 ##################################################################################################
 # Average Subsidy per Full-Time Equivalent Student within Undergraduate Deciles
