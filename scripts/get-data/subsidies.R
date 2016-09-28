@@ -2,6 +2,7 @@
 # Logic by Martha Johnson - original Stata code in "IPEDS_Cost of education and subsides_clean.do"
 
 library(dplyr)
+library(Hmisc)
 
 source("scripts/ipedsFunctions.R")
 source("scripts/createJsons.R")
@@ -27,8 +28,10 @@ temp <- subs[duplicated(subs[,c("unitid", "year")]),]
 
 # Join data
 subsidies <- left_join(institutions, subs, by = c("year", "unitid"))
+# FTE: undergrad plus grad, but for two-year colleges where grad FTE is missing just use undergrad
 subsidies <- subsidies  %>% filter(year >= 2005) %>%
-  mutate(fte = fteug + ftegd)
+  mutate(fte = ifelse(carnegie_label == "Public associate's" & is.na(ftegd), fteug,
+                      fteug + ftegd))
 
 # Clean up workspace
 rm(list = ls(pattern = "^f1"))
@@ -90,6 +93,10 @@ subsidies <- subsidies %>%
          nettuition_perfte = nettuition/fte,
          subsidy_perfte = pmax(0, (eandr_perfte - nettuition_perfte)))
 
+# Check public associate's doesn't have too many NAs
+temp <- subsidies %>% filter(carnegie_label == "Public associate's")
+summary(temp$subsidy_perfte)
+
 # write.csv(subsidies, "data/ipeds/subsidies.csv", na="", row.names = F)
 rm(subs, subs1, subs2)
 
@@ -136,13 +143,22 @@ figs <- subsaged %>% filter(year %in% displayyears) %>%
 fig7 <- figs %>% filter(grepl("Public", carnegie_label))
 fig7 <- as.data.frame(fig7)
 
+# Private sector
+fig8 <- figs %>% filter(grepl("Private", carnegie_label))
+fig8 <- as.data.frame(fig8)
+
 # Use the same y max value for all multiples of this chart
 ymax7 <- max(fig7$nettuition_perfte_aged + fig7$subsidy_perfte_aged)
+ymax8 <- max(fig8$nettuition_perfte_aged + fig8$subsidy_perfte_aged)
 
 # Split multiples by carnegie group
 fig7a <- fig7 %>% filter(carnegie_label == "Public research") %>% select(-carnegie_label)
 fig7b <- fig7 %>% filter(carnegie_label == "Public master's") %>% select(-carnegie_label) 
 fig7c <- fig7 %>% filter(carnegie_label == "Public associate's") %>% select(-carnegie_label) 
+
+fig8a <- fig8 %>% filter(carnegie_label == "Private nonprofit research") %>% select(-carnegie_label)
+fig8b <- fig8 %>% filter(carnegie_label == "Private nonprofit master's") %>% select(-carnegie_label) 
+fig8c <- fig8 %>% filter(carnegie_label == "Private nonprofit bachelor's") %>% select(-carnegie_label) 
 
 # Series names 
 legnames <- c("Average subsidy per FTE student", "Average net tuition revenue per FTE student")
@@ -160,15 +176,62 @@ json2_7c <- makeJson(sectionn = 2, graphn = 7, subn = 3, dt = fig7c, graphtype =
                      series = legnames, 
                      graphtitle = "Associate's institutions", categories = fig7c$year_axis, tickformat = "dollar", directlabels = TRUE, xtype = "category", ymax = ymax7)
 
+json2_8a <- makeJson(sectionn = 2, graphn = 8, subn = 1, dt = fig8a, graphtype = "bar", 
+                     series = legnames, 
+                     graphtitle = "Research institutions", categories = fig8a$year_axis, tickformat = "dollar", directlabels = TRUE, xtype = "category", ymax = ymax8)
+
+json2_8b <- makeJson(sectionn = 2, graphn = 8, subn = 2, dt = fig8b, graphtype = "bar", 
+                     series = legnames, 
+                     graphtitle = "Master's institutions", categories = fig8b$year_axis, tickformat = "dollar", directlabels = TRUE, xtype = "category", ymax = ymax8)
+
+json2_8c <- makeJson(sectionn = 2, graphn = 8, subn = 3, dt = fig8c, graphtype = "bar", 
+                     series = legnames, 
+                     graphtitle = "Associate's institutions", categories = fig8c$year_axis, tickformat = "dollar", directlabels = TRUE, xtype = "category", ymax = ymax8)
+
 ##################################################################################################
 # Average Subsidy per Full-Time Equivalent Student within Undergraduate Deciles
 ########################################################################################################
 
+fig9 <- subsaged %>% filter(year == latestyear)
+
 calcSubsidyDeciles <- function(category) {
-  dt <- fig5 %>% filter(carnegie_label == category)
-  dt <- dt %>% filter(!is.na(endowperfte))
-  dt$endowdecile <- as.integer(cut(dt$endowperfte, wtd.quantile(dt$endowperfte, weights = dt$fteug, probs = seq(0, 1, 0.1)), include.lowest=TRUE))
-  dt <- dt %>% group_by(endowdecile, carnegie_label) %>%
-    summarise(endowperfte_wmean = weighted.mean(endowperfte, w = fteug, na.rm=T))
+  dt <- fig9 %>% filter(carnegie_label == category)
+  dt <- dt %>% filter(!is.na(subsidy_perfte_aged))
+  print(wtd.quantile(dt$subsidy_perfte_aged, weights = dt$fteug, probs=0:10/10))
+  deciles <- wtd.quantile(dt$subsidy_perfte_aged, weights = dt$fteug, probs=0:10/10)
+  # Using bincode instead of cut bc when multiple decile values are 0, breaks are nonunique
+  dt <- dt %>% mutate(decile = ifelse(subsidy_perfte_aged == 0, 1,
+                                as.integer(.bincode(subsidy_perfte_aged, deciles, include.lowest = TRUE, right = FALSE)))) %>%
+    group_by(decile, carnegie_label) %>%
+      summarise(subsfte_wmean = weighted.mean(subsidy_perfte_aged, w = fteug, na.rm=T))
+  # for private nonprofit master's, 20th percentile is 0 - so make a row with decile==2 to wmean = 0
+  dt <- as.data.frame(dt)
+  if (!(2 %in% dt$decile)) {
+    dt <- rbind(dt, c(2, category, 0))
+  } 
+  dt$decile <- as.numeric(dt$decile)
+  dt <- dt %>% arrange(decile) %>%
+    # sometimes max value shows up as decile NA (probably rounding) - remove that
+    filter(!is.na(decile))
   return(dt)
 }
+
+fig9a <- calcSubsidyDeciles("Public research")
+fig9b <- calcSubsidyDeciles("Public master's")
+fig9c <- calcSubsidyDeciles("Public associate's")
+fig9d <- calcSubsidyDeciles("Private nonprofit research")
+fig9e <- calcSubsidyDeciles("Private nonprofit master's")
+fig9f <- calcSubsidyDeciles("Private nonprofit bachelor's")
+
+json2_9a <- makeJson(sectionn = 2, graphn = 9, subn = 1, dt = fig9a$subsfte_wmean, graphtype = "bar", series = "Average subsidy per FTE student", graphtitle = "Public research",
+                     categories = fig9a$decile, tickformat = "dollar", xtype = "category")
+json2_9b <- makeJson(sectionn = 2, graphn = 9, subn = 2, dt = fig9b$subsfte_wmean, graphtype = "bar", series = "Average subsidy per FTE student", graphtitle = "Public master's",
+                     categories = fig9b$decile, tickformat = "dollar", xtype = "category")
+json2_9c <- makeJson(sectionn = 2, graphn = 9, subn = 3, dt = fig9c$subsfte_wmean, graphtype = "bar", series = "Average subsidy per FTE student", graphtitle = "Public associate's",
+                     categories = fig9c$decile, tickformat = "dollar", xtype = "category")
+json2_9d <- makeJson(sectionn = 2, graphn = 9, subn = 4, dt = fig9d$subsfte_wmean, graphtype = "bar", series = "Average subsidy per FTE student", graphtitle = "Private nonprofit research",
+                     categories = fig9d$decile, tickformat = "dollar", xtype = "category")
+json2_9e <- makeJson(sectionn = 2, graphn = 9, subn = 5, dt = fig9e$subsfte_wmean, graphtype = "bar", series = "Average subsidy per FTE student", graphtitle = "Private nonprofit master's",
+                     categories = fig9e$decile, tickformat = "dollar", xtype = "category")
+json2_9f <- makeJson(sectionn = 2, graphn = 9, subn = 6, dt = fig9f$subsfte_wmean, graphtype = "bar", series = "Average subsidy per FTE student", graphtitle = "Private nonprofit bachelor's",
+                     categories = fig9f$decile, tickformat = "dollar", xtype = "category")
