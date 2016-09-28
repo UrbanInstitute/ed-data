@@ -97,7 +97,7 @@ rm(subs, subs1, subs2)
 # Age data to latest year
 ########################################################################################################
 # Just minimally needed vars for graphs
-subsaged <- subsidies %>% select(unitid, instnm, year, carnegie_label, sector_label, fte, nettuition_perfte, subsidy_perfte)
+subsaged <- subsidies %>% select(unitid, instnm, year, carnegie_label, sector_label, fteug, nettuition_perfte, subsidy_perfte)
 subsaged <- subsaged %>% mutate(year_cpi = year - 1, 
                         year_axis = paste("'", str_sub(year_cpi, start = -2), "–'", str_sub(year, start = -2), sep=""))
 
@@ -123,8 +123,44 @@ write.csv(subsaged, "data/ipeds/subsidies_aged.csv", na="", row.names = F)
 # Dual formatted tooltips - $ and %
 ########################################################################################################
 
+# Graphs show 3 points in time: latest year, latest - 4, latest - 8
+displayyears <- c(latestyear, latestyear - 4, latestyear - 8)
 
-########################################################################################################
+# Small multiples for public sector, private sector
+figs <- subsaged %>% filter(year %in% displayyears) %>%
+  group_by(carnegie_label, year_axis) %>%
+  summarise(subsidy_perfte_aged = weighted.mean(subsidy_perfte_aged, w=fteug, na.rm=T),
+            nettuition_perfte_aged = weighted.mean(nettuition_perfte_aged, w=fteug, na.rm=T))
+
+# Public sector
+fig7 <- figs %>% filter(grepl("Public", carnegie_label))
+fig7 <- as.data.frame(fig7)
+
+# Use the same y max value for all multiples of this chart
+ymax <- max(fig7$nettuition_perfte_aged + fig7$subsidy_perfte_aged)
+
+# Split multiples by carnegie group
+fig7a <- fig7 %>% filter(carnegie_label == "Public research") %>% select(-carnegie_label)
+fig7b <- fig7 %>% filter(carnegie_label == "Public master's") %>% select(-carnegie_label) 
+fig7c <- fig7 %>% filter(carnegie_label == "Public associate's") %>% select(-carnegie_label) 
+
+# Series names 
+legnames <- c("Average subsidy per FTE student", "Average net tuition revenue per FTE student")
+
+# Make jsons
+json2_7a <- makeJson(sectionn = 2, graphn = 7, subn = 1, dt = fig7a, graphtype = "bar", 
+                     series = legnames, 
+                     graphtitle = "Public research institutions", categories = fig7a$year_axis, tickformat = "dollar", directlabels = TRUE, xtype = "category")
+
+json2_7b <- makeJson(sectionn = 2, graphn = 7, subn = 2, dt = fig7b, graphtype = "bar", 
+                     series = legnames, 
+                     graphtitle = "Public master's institutions", categories = fig7b$year_axis, tickformat = "dollar", directlabels = TRUE, xtype = "category")
+
+json2_7c <- makeJson(sectionn = 2, graphn = 7, subn = 3, dt = fig7c, graphtype = "bar", 
+                     series = legnames, 
+                     graphtitle = "Public associate's institutions", categories = fig7c$year_axis, tickformat = "dollar", directlabels = TRUE, xtype = "category")
+
+##################################################################################################
 # Average Subsidy per Full-Time Equivalent Student within Undergraduate Deciles
 ########################################################################################################
 

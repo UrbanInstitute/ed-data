@@ -24,6 +24,15 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
   xaxis <- NULL
   yaxis <- NULL
   
+  # Attributes from graphtext spreadsheet
+  row <- graphtext[which(graphtext$section_number==sectionn & graphtext$graph_number==graphn),]
+  
+  # Internally use full type of graph for stacking, grouping needs - but the json type will be "line" or "bar"
+  if (row$type == "stacked bar") {
+    # c3 needs this to be a list of lists - nest it in Python script
+    graphdata$groups <- series
+  }
+  
   graphdata$type <- graphtype
   # Organize data series into "columns" for c3 specs
   # This assumes that the first column is the category names/axis values and the other columns are the values for each series
@@ -76,7 +85,6 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
   graphjson$series <- series
   
   # Text attributes - title, source, notes
-  row <- graphtext[which(graphtext$section_number==sectionn & graphtext$graph_number==graphn),]
   if (row$multiples == "1") {
     graphjson$title <- graphtitle
   } else {

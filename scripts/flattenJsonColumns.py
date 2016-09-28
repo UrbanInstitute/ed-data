@@ -22,6 +22,9 @@ def flattenColumns(filepath):
         dj["data"]["columns"] = [columns[0]] + columns[1]
         # And for c3 charts it needs to be coreced to an array of arrays
         dj["data"]["columns"] = [dj["data"]["columns"]]
+    # For stacked charts, need to nest "groups" elements as a list of lists for c3
+    if "groups" in dj["data"]:
+        dj["data"]["groups"] = [dj["data"]["groups"]]
     print(dj["data"]["columns"])
     with open(filepath, 'w', encoding='utf-8') as fp:
         json.dump(dj, fp, ensure_ascii=False)
