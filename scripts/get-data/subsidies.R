@@ -91,6 +91,30 @@ subsidies <- subsidies %>%
          subsidy_perfte = pmax(0, (eandr_perfte - nettuition_perfte)))
 
 # write.csv(subsidies, "data/ipeds/subsidies.csv", na="", row.names = F)
+rm(subs, subs1, subs2)
+
+########################################################################################################
+# Age data to latest year
+########################################################################################################
+# Just minimally needed vars for graphs
+subsaged <- subsidies %>% select(unitid, instnm, year, carnegie_label, sector_label, fte, nettuition_perfte, subsidy_perfte)
+subsaged <- subsaged %>% mutate(year_cpi = year - 1, 
+                        year_axis = paste("'", str_sub(year_cpi, start = -2), "–'", str_sub(year, start = -2), sep=""))
+
+cpi <- read.csv("data/cpi_bls.csv", stringsAsFactors = F)
+cpi <- cpi %>% select(year, cpi_all)
+
+# Multiplier is based on the latest year of data - using academic year rules
+cpi_latest <- cpi$cpi_all[cpi$year==(latestyear-1)]
+
+subsaged <- left_join(subsaged, cpi, by = c("year_cpi" = "year"))
+subsaged$cpi_multiplier = cpi_latest/subsaged$cpi_all
+
+# Use cpi to age dollar amounts to latest data year
+subsaged <- subsaged  %>% mutate(subsidy_perfte_aged = subsidy_perfte * cpi_multiplier,
+                                 nettuition_perfte_aged = nettuition_perfte * cpi_multiplier)
+
+write.csv(subsaged, "data/ipeds/subsidies_aged.csv", na="", row.names = F)
 
 ########################################################################################################
 # Education and Related Spending per Full-Time Equivalent Students 2005-–06 to 2013-–14
@@ -98,7 +122,7 @@ subsidies <- subsidies %>%
 # Net tuition revenue per FTE and subsidies per FTE
 # Dual formatted tooltips - $ and %
 ########################################################################################################
-temp <- subsidies %>% select(unitid, instnm, year, carnegie_label, sector_label, fte, nettuition_perfte, subsidy_perfte)
+
 
 ########################################################################################################
 # Average Subsidy per Full-Time Equivalent Student within Undergraduate Deciles
