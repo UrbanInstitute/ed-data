@@ -19,6 +19,26 @@ For data such as income, which is reported for a calendar year, use that calenda
 
 Note about IPEDS years: "2014" data files can contain 2013-2014 or 2014-2015 data depending on subject matter. Check the dictionary created with [the IPEDS scraper](https://github.com/UrbanInstitute/ipeds-scraper) for variable labels, which often specify academic years.
 
+### Sector names
+Formatted college groups to use in graph labels:
+#### Carnegie classifications
+* Public research
+* Public master's
+* Public associate's
+* Private nonprofit research
+* Private nonprofit master's
+* Private nonprofit bachelor's
+* For profit
+* Small groups
+
+#### Sector classifications
+* Public two-year
+* Public four-year
+* Private nonprofit four-year
+* For profit
+* Other
+* Non-degree-granting
+
 ## Data sources
 | Source 		| Source type | Script | Content | Sections |
 | -------------| -------------  | ------------- | ------------- | ------------- |
