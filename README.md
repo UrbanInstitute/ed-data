@@ -47,6 +47,4 @@ Formatted college groups to use in graph labels:
 | Bureau of Labor Statistics | [API](http://www.bls.gov/developers/) | [bls.R](scripts/get-data/bls.R) | Consumer price index by year | Various |
 | State Higher Education Officers Association | [Excel](http://www.sheeo.org/sites/default/files/Unadjusted_Nominal_Data_FY15.xlsx) | [shef.R](scripts/get-data/shef.R) | Appropriations by state and year | Appropriations |
 | State and Local Finance Initiative (SLFI) | [Data download tool](http://slfdqs.taxpolicycenter.org/) | [slfi.R](scripts/get-data/slfi.R) | State and local tax totals, by state and year | Appropriations |
-
-### Additional
-* PowerStats
+| National Post-Secondary Aid Study (NPSAS) | [Data download tool](https://nces.ed.gov/datalab/) | [processingExistingDatasets.R](scripts/processingExistingDatasets.R) | | Various |
