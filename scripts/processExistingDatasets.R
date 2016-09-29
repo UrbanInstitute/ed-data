@@ -9,4 +9,4 @@ fig3_5 <- read.csv("/Users/Hannah/Desktop/Section3_LivingArrangementofFTUG.csv",
 
 json3_5 <- makeJson(sectionn = 3, graphn = 5, dt = fig3_5, graphtype = "bar", 
 										 series = c("On campus", "Off campus", "Living with parents"), 
-										 graphtitle = "Research institutions", categories = fig3_5$Sector, tickformat = "dollar", rotated = TRUE, directlabels = TRUE, xtype = "category")
+										 graphtitle = "Research institutions", categories = fig3_5$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE, xtype = "category")
