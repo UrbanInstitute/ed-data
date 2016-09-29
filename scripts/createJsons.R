@@ -29,7 +29,7 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
   row <- graphtext[which(graphtext$section_number==sectionn & graphtext$graph_number==graphn),]
   
   # Internally use full type of graph for stacking, grouping needs - but the json type will be "line" or "bar"
-  if (row$type == "stacked bar") {
+  if (row$type == "stacked bar" | row$type == "horizontal stacked bar") {
     # c3 needs this to be a list of lists - nest it in Python script
     graphdata$groups <- series
   }

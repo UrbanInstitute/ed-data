@@ -3,7 +3,7 @@
 ## Requirements
 * R
 * Python 3
-* IPEDS data downloaded from [scraper] - 1990-latest year
+* IPEDS data downloaded from [scraper](https://github.com/UrbanInstitute/ipeds-scraper): 1990-latest year
 
 ## Graph json creation
 For each graph, 1 .json containing data and metadata is needed. These files are stored in [graph-json/](graph-json/) in subfolders organized by main section. The data are retrieved from various sources in [scripts/get-data/](scripts/get-data/) and formatted for particular graphs. To create a formatted json, use the function `makeJson`, found in [scripts/createJsons.R](scripts/createJsons.R).
