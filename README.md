@@ -3,7 +3,6 @@
 ## Requirements
 * R
 * Python 3
-* IPEDS data downloaded from [scraper](https://github.com/UrbanInstitute/ipeds-scraper): 1990-latest year
 
 ## Graph json creation
 For each graph, 1 .json containing data and metadata is needed. These files are stored in [graph-json/](graph-json/) in subfolders organized by main section. The data are retrieved from various sources in [scripts/get-data/](scripts/get-data/) and formatted for particular graphs. To create a formatted json, use the function `makeJson`, found in [scripts/createJsons.R](scripts/createJsons.R).
@@ -40,6 +39,10 @@ Formatted college groups to use in graph labels:
 * Non-degree-granting
 
 ## Data sources
+Most of the data in this project is calculated using the Integrated Postsecondary Education System (IPEDS)[http://nces.ed.gov/ipeds/datacenter/DataFiles.aspx]. IPEDS data is downloaded using a  [scraper](https://github.com/UrbanInstitute/ipeds-scraper) for 1990-latest year available. The data is divided into several hundred CSVs, each covering a topic area for one year. See the scraper repo for more info.
+
+We also use various other data sources, listed and linked below.
+
 | Source 		| Source type | Script | Content | Sections |
 | -------------| -------------  | ------------- | ------------- | ------------- |
 | Integrated Postsecondary Education Data System 		| CSV files from scraper | [Scraper repo](https://github.com/UrbanInstitute/ipeds-scraper)  | Institution-level data | Various |
