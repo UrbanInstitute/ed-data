@@ -15,7 +15,8 @@ graphtext$toggle <- as.numeric(graphtext$toggle)
 # sectionn and graphn correspond to the location of the graph, specifically in the row in the Excel file that contains text attributes
 # subn is graph subnumber - so small multiples, or graphs added later, etc. 0 unless needed
 makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, categories, tickformat = "number", 
-                     directlabels = FALSE, rotated = FALSE, graphtitle = NULL, xtype = "category", xlabel = NULL, ylabel = NULL, ymax = NULL) {
+                     directlabels = FALSE, rotated = FALSE, graphtitle = NULL, xtype = "category", xlabel = NULL, ylabel = NULL, ymax = NULL,
+                     set1 = NULL, set2 = NULL, set3 = NULL, set4 = NULL, set5 = NULL) {
   # Init json and attributes
   graphjson <- NULL
   metadata <- NULL
@@ -39,15 +40,35 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
   # For c3, "columns" need to have first the series names and then the values - mixing string and numeric
   # R does not like to mix types, so make a list - but this will need to be flatted
   # scripts/flattenJsonColumns.py accomplishes that
-  columns <- list()
-  if (is.data.frame(dt)) {
-    for (s in seq_along(series)) {
-      columns[[s]] <- list(series[s], dt[,s+1])
-    } 
+  
+  # Nest "sets" in data if toggle chart
+  if (row$toggle == 1) {
+    sets <- list()
+    sets$set1 <- list(series[1], set1)
+    sets$set2 <- list(series[2], set2)
+    # Refactor this someday
+    if (!(is.null(set3))) {
+      sets$set3 <- list(series[3], set3)
+    }
+    if (!(is.null(set4))) {
+      sets$set4 <- list(series[4], set4)
+    }
+    if (!(is.null(set5))) {
+      sets$set5 <- list(series[5], set5)
+    }
+    graphdata$sets <- sets
   } else {
-    columns <- list(series, dt)
+    columns <- list()
+    # Otherwise "columns" if not toggle chart
+    if (is.data.frame(dt)) {
+      for (s in seq_along(series)) {
+        columns[[s]] <- list(series[s], dt[,s+1])
+      } 
+    } else {
+      columns <- list(series, dt)
+    }
+    graphdata$columns <- columns  
   }
-  graphdata$columns <- columns  
   
   # If we're using direct labels:
   # c3 needs format to be repeated for each series
@@ -88,7 +109,7 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
   graphjson$series <- series
   
   # Text attributes - title, source, notes
-  if (row$multiples == "1") {
+  if (row$multiples == 1) {
     graphjson$title <- graphtitle
   } else {
   graphjson$title <- row$title

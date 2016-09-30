@@ -52,7 +52,8 @@ getData <- function(datalist, vars, keepallvars) {
     {
       d$f2a20 <- as.character(d$f2a20)
     }
-    
+    # unitid sometimes has type issues
+    d$unitid <- as.character(d$unitid)
     # Select just the need vars
     if(keepallvars == FALSE) {
       selects <- intersect(colnames(d), allvars)
@@ -70,6 +71,8 @@ makeDataset <- function(vars) {
   ipeds_list <- lapply(dt$name, get)
   ipedsdata <- bind_rows(ipeds_list)
   ipedsdata <- ipedsdata %>% arrange(year, unitid)
+  # Unit id back to numeric
+  ipedsdata$unitid <- as.numeric(ipedsdata$unitid)
   return(ipedsdata)
 }
 
