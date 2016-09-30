@@ -4,14 +4,14 @@ library(dplyr)
 library(stringr)
 source("scripts/createJsons.R")
 
-# TODO change to Box file paths
+boxpath <- "/Users/hrecht/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
 
 ########################################################################################################
 # Prices and Expenses
 ########################################################################################################
 # Room and Board
 # Stacked horizontal bars
-fig3_5 <- read.csv("/Users/Hannah/Desktop/Section3_LivingArrangementofFTUG.csv", stringsAsFactors = F)
+fig3_5 <- read.csv(paste(boxpath, "Prices and expenses_room and board/Section3_LivingArrangementofFTUG.csv", sep = ""), stringsAsFactors = F)
 
 json3_5 <- makeJson(sectionn = 3, graphn = 5, dt = fig3_5, graphtype = "bar", 
 										 series = c("On campus", "Off campus", "Living with parents"), 
@@ -19,8 +19,8 @@ json3_5 <- makeJson(sectionn = 3, graphn = 5, dt = fig3_5, graphtype = "bar",
 
 # Net price - small multiples separated by toggle
 # Stacked horizontal bars
-fig3_21a <- read.csv("/Users/Hannah/Desktop/Section3_NetTFandLivingExpen.csv", stringsAsFactors = F)
-fig3_21b <- read.csv("/Users/Hannah/Desktop/Section3_NetTFandLivingExpen-Percent.csv", stringsAsFactors = F)
+fig3_21a <- read.csv(paste(boxpath, "Prices and expenses_net price/Section3_NetTFandLivingExpen.csv", sep = ""), stringsAsFactors = F)
+fig3_21b <- read.csv(paste(boxpath, "Prices and expenses_net price/Section3_NetTFandLivingExpen-Percent.csv", sep = ""), stringsAsFactors = F)
 fig3_21 <- left_join(fig3_21a, fig3_21b, by="group")
 colnames(fig3_21) <- tolower(colnames(fig3_21))
 
