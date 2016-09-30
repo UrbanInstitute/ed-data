@@ -5,9 +5,11 @@
 * Python 3
 
 ## Graph json creation
-For each graph, 1 .json containing data and metadata is needed. These files are stored in [graph-json/](graph-json/) in subfolders organized by main section. The data are retrieved from various sources in [scripts/get-data/](scripts/get-data/) and formatted for particular graphs. Graph titles, notes, sources, and some options are stored in GraphText.xlsx on Box. 
+For each graph, 1 .json containing data and metadata is needed. These files are stored in [graph-json/](graph-json/) in subfolders organized by main section. The data are retrieved from various sources in [scripts/get-data/](scripts/get-data/) and formatted for particular graphs.
 
-To create a formatted json, use the function `makeJson`, found in [scripts/createJsons.R](scripts/createJsons.R). Function options are defined within the script. Graph creation example:
+To create a formatted json, use the function `makeJson`, found in [scripts/createJsons.R](scripts/createJsons.R). Section number (`sectionn`) and graph number (`graphn`) are used to retrieve graph metadata from the GraphText.xlsx file stored on Box. This metadata includes title, source, notes, small multiples (0/1), toggle (0/1), and more. Function options are defined within the script. 
+
+Graph creation example:
 ```R
 json3_5 <- makeJson(sectionn = 3, graphn = 5, dt = fig3_5, graphtype = "bar", 
 										 series = c("On campus", "Off campus", "Living with parents"), 
