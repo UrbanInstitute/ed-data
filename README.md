@@ -39,7 +39,7 @@ Formatted college groups to use in graph labels:
 * Non-degree-granting
 
 ## Data sources
-Most of the data in this project is calculated using the Integrated Postsecondary Education System (IPEDS)[http://nces.ed.gov/ipeds/datacenter/DataFiles.aspx]. IPEDS data is downloaded using a  [scraper](https://github.com/UrbanInstitute/ipeds-scraper) for 1990-latest year available. The data is divided into several hundred CSVs, each covering a topic area for one year. See the scraper repo for more info.
+Most of the data in this project is calculated using the Integrated Postsecondary Education System, or [IPEDS](http://nces.ed.gov/ipeds/datacenter/DataFiles.aspx). IPEDS data is downloaded using a  [scraper](https://github.com/UrbanInstitute/ipeds-scraper) for 1990-latest year available. The data is divided into several hundred CSVs, each covering a topic area for one year. See the scraper repo for more info.
 
 We also use various other data sources, listed and linked below.
 
