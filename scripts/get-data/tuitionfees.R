@@ -38,21 +38,34 @@ fig3_4 <- as.data.frame(fig3_4)
 
 fig3_4 <- rbind(fig3_4, usave)
 
-# Reshape to wide - 1 col per sector for graph file
-fig3_4 <- fig3_4 %>% spread(sector_label, tuition) %>%
-  rename(pub4 = `Public four-year`, pub2 = `Public two-year`) %>%
-  arrange(pub2) %>%
-  # Hide DC
-  filter(fips != 11)
-
 # Join state names for labels
 states <- read.csv("data/states.csv", stringsAsFactors = F)
 states <- states %>% select(-abbrev)
-
 fig3_4 <- left_join(fig3_4, states, by="fips")
 
-# Toggle graphs json
-json3_4 <- makeJson(sectionn = 3, graphn = 4, set1 = fig3_4$pub2, set2 = fig3_4$pub4, graphtype = "bar", 
-                    series = c("Public two-year", "Public four-year"),
-                    categories = fig3_4$state, tickformat = "dollar", directlabels = TRUE, rotated = TRUE)
+# Reshape to wide - 1 col per sector for graph file
+# fig3_4 <- fig3_4 %>% spread(sector_label, tuition) %>%
+#   rename(pub4 = `Public four-year`, pub2 = `Public two-year`) %>%
+#   arrange(pub2) %>%
+#   # Hide DC
+#   filter(fips != 11)
 
+# Toggle graphs json
+# json3_4 <- makeJson(sectionn = 3, graphn = 4, set1 = fig3_4$pub2, set2 = fig3_4$pub4, graphtype = "bar", 
+#                     series = c("Public two-year", "Public four-year"),
+#                     categories = fig3_4$state, tickformat = "dollar", directlabels = TRUE, rotated = TRUE)
+
+# MULTIPLES instead
+fig3_4a <- fig3_4 %>% filter(sector_label == "Public two-year")%>%
+  filter(!is.na(tuition)) %>%
+  arrange(desc(tuition))
+fig3_4b <- fig3_4 %>% filter(sector_label == "Public four-year") %>%
+  filter(!is.na(tuition)) %>%
+  arrange(desc(tuition))
+
+json3_4a <- makeJson(sectionn = 3, graphn = 4, subn = 1, dt = fig3_4a$tuition, graphtype = "bar", 
+                    series = "In-district tuition and fees", graphtitle = "Public two-year",
+                    categories = fig3_4a$state, tickformat = "dollar", directlabels = TRUE, rotated = TRUE)
+json3_4b <- makeJson(sectionn = 3, graphn = 4, subn = 2, dt = fig3_4b$tuition, graphtype = "bar", 
+                     series = "In-district tuition and fees", graphtitle = "Public four-year",
+                     categories = fig3_4b$state, tickformat = "dollar", directlabels = TRUE, rotated = TRUE)
