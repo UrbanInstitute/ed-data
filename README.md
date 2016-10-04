@@ -24,7 +24,7 @@ json3_5 <- makeJson(sectionn = 3, graphn = 5, dt = fig3_5, graphtype = "bar",
 Many charts in the draft text use weighted means within weighted deciles. We will instead report weighted decile cutoffs in the site - 10th percentile, 20th percentile, etc.
 
 ## Weights
-Various sections using IPEDS data weight institutions by FTE enrollment - total, undergrad, or graduate. Some Stata code drafts use IPEDS "derived" variables that are unavailable in the complete data files. For weighting consistency, and to use available variables, use `fte`, `fteug`, or `ftegd` unless a compelling reason exists to use the derived variables. These variables are retrieved and saved in [ipeds12monthenrollment.R](scripts/get-data/ipeds12monthenrollment.R)
+Various sections using IPEDS data weight institutions by FTE enrollment - total, undergrad, or graduate. Some Stata code drafts use IPEDS "derived" variables that are unavailable in the complete data files. For weighting consistency, and to use available variables, use `fte12mn`, `fteug`, or `ftegd` unless a compelling reason exists to use the derived variables. These variables are retrieved and saved in [ipeds12monthenrollment.R](scripts/get-data/ipeds12monthenrollment.R)
 
 ### CPI adjustments and year ranges
 Throughout this project, we'll be using dollar amounts over time and aging nominal dollars using the [Consumer Price Index](www.bls.gov/cpi/). The CPI is retrieved via API in [bls.R](scripts/get-data/bls.R). We use the annual average CPI for all items `(CUUS0000SA0)` when aging dollar amounts.
