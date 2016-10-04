@@ -10,11 +10,50 @@ source("scripts/createJsons.R")
 
 institutions <- read.csv("data/ipeds/institutions.csv", stringsAsFactors = F)
 
+
+# Weighting variables: enrollment
+# MJ code uses ipeds data center derived variables, not available in the complete data files
+# We'll use fteug for consistency and bc it's basically identical
+
+########################################################################################################
+# Tuition
 # chg1ay3 Published in-district tuition and fees (year -> year+1 academic year)
-indistrict <- returnData("chg1ay3")
-tuition <- left_join(institutions, indistrict, by = c("unitid", "year"))
+########################################################################################################
+tuition <- returnData("chg1ay3")
+tuition <- left_join(institutions, tuition, by = c("unitid", "year"))
 
 rm(list = ls(pattern = "ic"))
+
+########################################################################################################
+# Distribution of Full-Time Students by Published Tuition and Fees within Sectors
+# Decile chart
+########################################################################################################
+fig3 <- tuition %>% filter(year == latestyear)
+calcDeciles <- function(category) {
+  dt <- fig3 %>% filter(sector_label == category)
+  dt <- dt %>% filter(!is.na(chg1ay3))
+  deciles <- as.data.frame(wtd.quantile(dt$chg1ay3, weights = dt$fteug, probs=0:10/10))
+  colnames(deciles) <- "tuition"
+  # format decile names
+  deciles$decile <- as.numeric(sub("%", "", row.names(deciles)))
+  deciles <- deciles %>% filter(decile > 0) %>%
+    mutate(decile = decile/10) %>%
+    arrange(decile)
+  return(deciles)
+}
+fig3a <- calcDeciles("Public two-year")
+fig3b <- calcDeciles("Public four-year")
+fig3c <- calcDeciles("Private nonprofit four-year")
+fig3d <- calcDeciles("For-profit")
+
+json3_3a <- makeJson(sectionn = 3, graphn = 3, subn = 1, dt = fig3a$tuition, graphtype = "bar", series = "Average tuition and fees", graphtitle = "Public two-year",
+                     categories = fig3a$decile, tickformat = "dollar")
+json3_3b <- makeJson(sectionn = 3, graphn = 3, subn = 2, dt = fig3b$tuition, graphtype = "bar", series = "Average tuition and fees", graphtitle = "Public four-year",
+                     categories = fig3b$decile, tickformat = "dollar")
+json3_3c <- makeJson(sectionn = 3, graphn = 3, subn = 3, dt = fig3c$tuition, graphtype = "bar", series = "Average tuition and fees", graphtitle = "Private nonprofit four-year",
+                     categories = fig3c$decile, tickformat = "dollar")
+json3_3d <- makeJson(sectionn = 3, graphn = 3, subn = 4, dt = fig3d$tuition, graphtype = "bar", series = "Average tuition and fees", graphtitle = "For-profit",
+                     categories = fig3d$decile, tickformat = "dollar")
 
 ########################################################################################################
 # In-district tuition and fees, latest year by state: for public two-year and public four-year colleges
