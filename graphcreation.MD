@@ -7,16 +7,6 @@ Metadata about every graph is stored in GraphText.xlsx, in the Production folder
 
 GraphText contains one row per graph, with some fields that are for your own reference and notes, and others that get used in Json creation. Graphs from most sections of the site will already be entered into GraphText, but you may need to enter some yourself in later sections. Once page/section has been workshopped and had text approved, open the latest draft of the page's Word doc. For each graph, add a new row in GraphText with the following information:
 
-### Columns that are for your reference only
-* section: string - name of the section on the site
-* page: string - name of the page on the site & Box folder
-* needs_data_update: yes/no/unknown - will the data need to be updated before site launch?
-* simple_dataset_exists: binary 1/blank - has a researcher made a simple data csv that you'll read in directly to make the json?
- * These CSVs should be placed in the same folder as the Word doc
-* submitted: binary 1/blank - change to 1 when you've submitted the graph to keep track
- * You may want to add another value once data updates begin.
-* comments: string - notes about the graph for yourself
-
 ### Columns that get used in `makeJson`
 * section_number: integer - used for json file name and file path
 * graph_number: integer - used for json file name and file path.
@@ -26,5 +16,18 @@ GraphText contains one row per graph, with some fields that are for your own ref
 * multiples: binary 0/1 - used to indicate if the graph has small multiples
 * toggle: binary 0/1 - used to indicate if the uses a toggle (dropdown)
 * title: string - copy/paste from the Word doc, inserted into the graph json
+ * Many will need editing in the quality control phase
 * notes: string - copy/paste from the Word doc, inserted into the graph json (leave blank if none)
+ * Many will need editing in the quality control phase
 * sources: string - copy/paste from the Word doc, inserted into the graph json
+ * You'll see some source notes in Word docs that are inconsistent. A good example is IPEDS - you'll see it written in multiple ways. In general, standardize the main data sources within this spreadsheet. Put "Integrated Postsecondary Education Data System" for IPEDS, "National Postsecondary Student Aid Study 2012" for NPSAS, etc. In the quality control phase, editorial staff may change the formatting. You can then find & replace within this spreadsheet and change all the IPEDS notes at once.
+
+### Columns that are for your reference only
+* section: string - name of the section on the site
+* page: string - name of the page on the site & Box folder
+* needs_data_update: yes/no/unknown - will the data need to be updated before site launch?
+* simple_dataset_exists: binary 1/blank - has a researcher made a simple data csv that you'll read in directly to make the json?
+ * These CSVs should be placed in the same folder as the Word doc
+* submitted: binary 1/blank - change to 1 when you've submitted the json to keep track
+ * You may want to add another value once data updates begin.
+* comments: string - notes about the graph for yourself
