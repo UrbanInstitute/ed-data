@@ -21,6 +21,7 @@ GraphText contains one row per graph, with some fields that are for your own ref
 * section_number: integer - used for json file name and file path
 * graph_number: integer - used for json file name and file path.
  * These numbers should go from 1 to N within each section. You'll see some figure numbers in the Word docs. IGNORE THEM ALL. We won't be displaying figure numbers on the site. These numbers are for your use, site production, and file management. It is fine if a Word doc says "Figure 5" and your spreadsheet says 18.
+ * If a graph is added or deleted at a later date, and you've already made the other jsons in the section, it may be easier to not renumber the other graphs. E.g. if 03_0070 gets cut and the graphs skip from 03_0060 to 03_0080, that's fine. If an additional graph gets added at a late stage, you can give it a number that hasn't yet been used in the section - 50/90/whatever. It's okay if it's out of order as long as it's clear where it belongs. Note it for site production. The numbers will not be seen by readers so it shouldn't matter much.
 * type: string - valid options include "line", "bar", "horizontal bar", "stacked bar", "grouped bar", "horizontal stacked bar", "horizontal grouped bar", "stacked area"
 * multiples: binary 0/1 - used to indicate if the graph has small multiples
 * toggle: binary 0/1 - used to indicate if the uses a toggle (dropdown)
