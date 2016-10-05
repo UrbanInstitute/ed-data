@@ -10,17 +10,20 @@ GraphText contains one row per graph, with some fields that are for your own ref
 ### Columns that are for your reference only
 * section: string - name of the section on the site
 * page: string - name of the page on the site & Box folder
-* needs_data_updated: yes/no/unknown - will the data need to be updated before site launch?
-* simple_dataset_exists: binary 1/blank - has a researcher made a simple data csv that you'll read in directly to make the json? These CSVs should be placed in the same folder as the Word doc
-* submitted: binary 1/blank - change to 1 when you've submitted the graph to keep track. You may want to add another value once data updates begin.
+* needs_data_update: yes/no/unknown - will the data need to be updated before site launch?
+* simple_dataset_exists: binary 1/blank - has a researcher made a simple data csv that you'll read in directly to make the json?
+ * These CSVs should be placed in the same folder as the Word doc
+* submitted: binary 1/blank - change to 1 when you've submitted the graph to keep track
+ * You may want to add another value once data updates begin.
 * comments: string - notes about the graph for yourself
 
 ### Columns that get used in `makeJson`
 * section_number: integer - used for json file name and file path
 * graph_number: integer - used for json file name and file path.
+ * These numbers should go from 1 to N within each section. You'll see some figure numbers in the Word docs. IGNORE THEM ALL. We won't be displaying figure numbers on the site. These numbers are for your use, site production, and file management. It is fine if a Word doc says "Figure 5" and your spreadsheet says 18.
 * type: string - valid options include "line", "bar", "horizontal bar", "stacked bar", "grouped bar", "horizontal stacked bar", "horizontal grouped bar", "stacked area"
 * multiples: binary 0/1 - used to indicate if the graph has small multiples
 * toggle: binary 0/1 - used to indicate if the uses a toggle (dropdown)
-* title: string - copy/pasted from the Word doc, inserted into the graph json
-* notes: string - copy/pasted from the Word doc, inserted into the graph json (leave blank if none)
-* sources: string - copy/pasted from the Word doc, inserted into the graph json
+* title: string - copy/paste from the Word doc, inserted into the graph json
+* notes: string - copy/paste from the Word doc, inserted into the graph json (leave blank if none)
+* sources: string - copy/paste from the Word doc, inserted into the graph json
