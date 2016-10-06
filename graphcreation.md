@@ -45,5 +45,3 @@ json3_5 <- makeJson(sectionn = 3, graphn = 5, dt = fig3_5, graphtype = "bar",
 										 categories = fig3_5$Sector, tickformat = "percent", 
 										 rotated = TRUE, directlabels = TRUE)
 ```
-=======
->>>>>>> dd0fbf3940a343e68d6884f828c71b3eae0114d8:graphcreation.md

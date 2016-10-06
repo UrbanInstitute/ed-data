@@ -1,5 +1,9 @@
 # Working with IPEDS data
 
+## Getting data
+In this project, we use institution-level data from the Integrated Postsecondary Education Data System (IPEDS), grabbed from the IPEDS Complete Data Files. There isn't a direct link to that page, but go to [http://nces.ed.gov/ipeds/datacenter/login.aspx?gotoReportId=7](http://nces.ed.gov/ipeds/datacenter/login.aspx?gotoReportId=7) and press "Continue". Then press "Continue" again and you'll see a table of data file information appear.
+
+To get all this data onto your computer, we use the [IPEDS scraper](https://github.com/UrbanInstitute/ipeds-scraper). This will need to be run after IPEDS data updates. A developer with Python on their computer (Alex or Ben) will run this scraper when needed and put the data on to a shared drive. Copy that data on to your machine.
 
 ## Changes from draft graphs
 

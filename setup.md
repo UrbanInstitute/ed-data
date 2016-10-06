@@ -1,5 +1,8 @@
 # Education data setup
 
+## Grabbing this repository
+If you have git set up already, clone this repo. If not: go to [https://github.com/UrbanInstitute/ed-data](https://github.com/UrbanInstitute/ed-data). Click the button that says "Clone or download" and press "Download ZIP" to download all of the latest files for this project. Unzip the file.
+
 ## R Setup
 To work with IPEDS and other data in this project, you'll need to have some things installed on your computer. The main requirements are R and RStudio. You probably have an old version of R installed - [install the latest version](https://www.r-project.org/).
 
