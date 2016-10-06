@@ -31,7 +31,6 @@ GraphText contains one row per graph, with some fields that are for your own ref
 * submitted: binary 1/blank - change to 1 when you've submitted the json to keep track
  * You may want to add another value once data updates begin.
 * comments: string - notes about the graph for yourself
-<<<<<<< HEAD:graphcreation.MD
 
 ## Graph json creation
 For each graph, 1 .json containing data and metadata is needed. These files are stored in [graph-json/](graph-json/) in subfolders organized by main section. The data are retrieved from various sources in [scripts/get-data/](scripts/get-data/) and formatted for particular graphs.
