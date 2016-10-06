@@ -19,7 +19,7 @@ ipeds <- left_join(datacols, allfiles, by = c("name", "year"))
 ipeds <- ipeds %>% filter(!grepl("flags", name)) %>%
   filter(year >= 1990)
 
-# There are a few in the way that IPEDS lists its files - remove them
+# There are a few duplicates in the way that IPEDS lists its files - remove them
 ipeds <-ipeds[!duplicated(ipeds[,"path"]),]
 
 # Search for a variable(s), return list of files that contain it

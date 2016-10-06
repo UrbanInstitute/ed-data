@@ -5,6 +5,21 @@ In this project, we use institution-level data from the Integrated Postsecondary
 
 To get all this data onto your computer, we use the [IPEDS scraper](https://github.com/UrbanInstitute/ipeds-scraper). This will need to be run after IPEDS data updates. A developer with Python on their computer (Alex or Ben) will run this scraper when needed and put the data on to a shared drive. Copy that data on to your machine.
 
+## Retrieving data
+To use the IPEDS complete data files, you'll use a set of functions stored in [ipedsFunctions.R](scripts/ipedsFunctions.R). The functions in this script are used to read in IPEDS dataset metadata (what datasets exist and what's in them) and to read in and join IPEDS data for analysis.
+First, go to line 10 of that file and change `ipedspath` to be the location of your IPEDS data folder.
+```R
+# Change the right-hand side!
+ipedspath <- "/Users/hrecht/Documents/ipeds-scraper/"
+```
+Then, when writing a new R script to use IPEDS data, source ipedsFunctions.R at the top of your script.
+```R
+source("scripts/ipedsFunctions.R")
+```
+This will run through the whole ipedsFunctions script and load the functions and datasets into your R environment.
+
+## Analyzing data
+
 ## Changes from draft graphs
 
 ### Deciles
