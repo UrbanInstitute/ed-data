@@ -23,4 +23,6 @@ If you're generating graph JSONS, you'll need all of the above, plus Python3 ins
 install.packages("jsonlite")
 ```
 
+NEXT: researcher - [Working with IPEDS data](ipedsdata.md) or developer - [Creating graph jsons](graphcreation.md)
+
 Check out a handy [R cheatsheet for data wrangling](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) and the [Urban Institute R Users Group](https://github.com/UrbanInstitute/R-Trainings).
