@@ -5,6 +5,11 @@
 * Python 3
 * Access to Box production folder
 
+## Detailed documentation
+* [Setting up your machine](setup.md)
+* [Working with IPEDS data](ipedsdata.md)
+* [Creating graph jsons](graphcreation.md)
+
 ## Graph json creation
 For each graph, 1 .json containing data and metadata is needed. These files are stored in [graph-json/](graph-json/) in subfolders organized by main section. The data are retrieved from various sources in [scripts/get-data/](scripts/get-data/) and formatted for particular graphs.
 
