@@ -1,11 +1,13 @@
 # Education data setup
 
 ## R Setup
-To work with IPEDS and other data in this project, you'll need to have some things installed on your computer. The main requirements are R and RStudio. You probably have an old version of R installed - [install the latest version]((https://www.r-project.org/). If you have RStudio already, open it up and go to Help > Check for updates. Update RStudio if needed. If you don't have RStudio installed already, [download RStudio](https://www.rstudio.com/products/rstudio/download3/).
+To work with IPEDS and other data in this project, you'll need to have some things installed on your computer. The main requirements are R and RStudio. You probably have an old version of R installed - [install the latest version](https://www.r-project.org/).
+
+If you have RStudio already, open it up and go to Help > Check for updates. Update RStudio if needed. If you don't have RStudio installed already, [download RStudio](https://www.rstudio.com/products/rstudio/download3/). You may need an admin password to update/install - if that's the case, contact IT.
 
 ## R packages
 Once R is installed and working, you'll need to install some packages to work with the data. 
-Open RStudio, and run these commands:
+Open RStudio, and run this command:
 
 ```R
 install.packages(c("dplyr", "tidyr", "stringr", "Hmisc", "openxlsx", "readxl"))
