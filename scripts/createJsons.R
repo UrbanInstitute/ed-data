@@ -5,18 +5,44 @@ library(tidyr)
 library(jsonlite)
 library(openxlsx)
 
-# Path to Excel file with graph titles, notes, data sources
+# Path to Excel file with graph metadata - change to your file path
 textpath <- "/Users/hrecht/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/GraphText.xlsx"
 graphtext <- readWorkbook(textpath, sheet = 1)
 graphtext$section_number <- as.numeric(graphtext$section_number)
 graphtext$multiples <- as.numeric(graphtext$multiples)
 graphtext$toggle <- as.numeric(graphtext$toggle)
 
-# sectionn and graphn correspond to the location of the graph, specifically in the row in the Excel file that contains text attributes
-# subn is graph subnumber - so small multiples, or graphs added later, etc. 0 unless needed
-makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, categories, tickformat = "number", 
-                     directlabels = FALSE, rotated = FALSE, graphtitle = NULL, xtype = "category", xlabel = NULL, ylabel = NULL, ymax = NULL,
-                     set1 = NULL, set2 = NULL, set3 = NULL, set4 = NULL, set5 = NULL) {
+makeJson <- function(
+  # sectionn and graphn correspond to the location of the graph, specifically in the row in the Excel file that contains text attributes
+  sectionn, graphn, 
+  # subn is graph subnumber - so small multiples, or graphs added later, etc. 0 unless needed
+  subn = 0, 
+  # data to use - this can be a data frame or a list or a column (dataset$column)
+  dt, 
+  # this can be "bar", "line", or "area". Stacked bar charts, grouped bar charts etc are all "bar"
+  graphtype = "bar", 
+  # Series is a string or list of strings that label the data series - this is a c3 thing. Ex: "In-district tuition" or c("Tuition", "Fees", "Room and board")
+  series, 
+  # Category names (c3 syntax) aka axis labels. You can use a list but generally want a data frame column. http://c3js.org/reference.html#axis-x-categories
+  categories, 
+  # Format for ticks. You can use "number", "dollar", "percent" or a d3 formatting string.
+  tickformat = "number",
+  # TRUE/FALSE show labels directly on data points.
+  directlabels = FALSE, 
+  # c3 syntax - is this a horizontal (bar) chart? If TRUE, you don't need to swap x and y parameters - just set this to TRUE. Always use false for line charts. http://c3js.org/reference.html#axis-rotated
+  rotated = FALSE, 
+  # This is specifically for small multiples. In all other cases, the title from GraphText.xlsx will be inserted. In small multiples, list the title for the multiple.
+  graphtitle = NULL,
+  # c3 syntax - should always be category. http://c3js.org/reference.html#axis-x-type
+  xtype = "category", 
+  # Strings for X and Y labels - rarely needed
+  xlabel = NULL, ylabel = NULL,
+  # Maximum y value. If none entered, it'll use the max of the dataset. Sometimes you'll want to set it manually, particularly with small multiples or toggles. http://c3js.org/reference.html#axis-y-max
+  ymax = NULL,
+  # Data to use for toggle graphs. These can be columns of data frames, etc.
+  set1 = NULL, set2 = NULL, set3 = NULL, set4 = NULL, set5 = NULL) {
+  
+  
   # Init json and attributes
   graphjson <- NULL
   metadata <- NULL
@@ -112,7 +138,7 @@ makeJson <- function(sectionn, graphn, subn = 0, dt, graphtype = "bar", series, 
   if (row$multiples == 1) {
     graphjson$title <- graphtitle
   } else {
-  graphjson$title <- row$title
+    graphjson$title <- row$title
   }
   metadata$source <- row$sources
   metadata$notes <- row$notes
