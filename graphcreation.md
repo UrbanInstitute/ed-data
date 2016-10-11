@@ -86,3 +86,41 @@ json3_5 <- makeJson(sectionn = 3, graphn = 5,
 	rotated = TRUE, 
 	directlabels = TRUE)
 ```
+
+The output of this script is:
+``` javascript
+{
+	"series": ["On campus", "Off campus", "Living with parents"],
+	"axis": {
+		"rotated": true,
+		"x": {
+			"type": "category",
+			"categories": ["All", "Public four-year", "Public two-year", "Private nonprofit four-year", "For profit"]
+		},
+		"y": {
+			"tick": {
+				"format": "percent"
+			}
+		}
+	},
+	"metadata": {
+		"source": "National Postsecondary Student Aid Study 2012, Power Stats",
+		"notes": null
+	},
+	"title": "Living Arrangements of Full-Time Undergraduates, 2011-12",
+	"data": {
+		"columns": [
+			["On campus", 0.22, 0.56, 0.33, 0.03, 0.01],
+			["Off campus", 0.46, 0.24, 0.39, 0.52, 0.66],
+			["Living with parents", 0.33, 0.2, 0.28, 0.45, 0.33]
+		],
+		"type": "bar",
+		"groups": [
+			["On campus", "Off campus", "Living with parents"]
+		],
+		"labels": {
+			"format": "percent"
+		}
+	}
+}
+```
