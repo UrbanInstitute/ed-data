@@ -35,7 +35,7 @@ makeJson <- function(
   graphtitle = NULL,
   # c3 syntax - should always be category. http://c3js.org/reference.html#axis-x-type
   xtype = "category", 
-  # Strings for X and Y labels - rarely needed
+  # Strings for X and Y axis labels - rarely needed
   xlabel = NULL, ylabel = NULL,
   # Maximum y value. If none entered, it'll use the max of the dataset. Sometimes you'll want to set it manually, particularly with small multiples or toggles. http://c3js.org/reference.html#axis-y-max
   ymax = NULL,

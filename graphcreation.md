@@ -32,15 +32,57 @@ GraphText contains one row per graph, with some fields that are for your own ref
  * You may want to add another value once data updates begin.
 * comments: string - notes about the graph for yourself
 
-## Graph json creation
-For each graph, 1 .json containing data and metadata is needed. These files are stored in [graph-json/](graph-json/) in subfolders organized by main section. The data are retrieved from various sources in [scripts/get-data/](scripts/get-data/) and formatted for particular graphs.
+## How to make a graph json
+* Once you have your [machine set up](setup.md) and the Box folder synced to your computer, clone this repo.
+* Change [the file path in createJsons.R ](https://github.com/UrbanInstitute/ed-data/blob/master/scripts/createJsons.R#L9) to the correct location on your machine.
+* Open GraphText.xlsx and find the row corresponding to the graph you want to make.
+* On Box, navigate to the folder containing the corresponding draft Word document (section name_page name) and open the latest Word doc.
+* Find the graph within the Word document. If the graph title or notes are different than in GraphText.xlsx (they might be newly copyedited) copy and paste the new versions into the corresponding row in GraphText.xlsx
+* Open up R and if none exists yet, make a new script for the section or page. Organization is up to you, just be consistent and use lots of comments so you or Ben can find the right code later as needed.
+* Read in the data CSV(s) that go with your graph. These should be stored in the same Box folder as the Word document.
+* Use the function `makeJson` to create a JSON for the graph. Look at the Word document graph draft and GraphText.xlsx row and note the following things:
+	* From GraphText.xlsx - What are the section number and graph number? 
+	* From GraphText.xlsx - Is the graph horizontal bars? If yes, `rotated = TRUE`
+	* Is the general graph type bar, line or area? `graphtype` is one of those options.
+	* What type of number formatting do you need? `tickformat` is "number", "percent", "dollar" or a d3.format string.
+	* Should the bars have direct labels on them? If yes, `directlables = TRUE`. This should not be true for line charts.
+	* What are the data series names? These will go into legends (if more than one series) and tooltips.
+	* See [createJsons.R](https://github.com/UrbanInstitute/ed-data/blob/master/scripts/createJsons.R) for full options definitions.
+* From the data you've read in from the CSV, you'll generally use a column/vector for the `categories` argument. This generally corresponds to the X axis labels. For example, the values might be '03-'04, '04-'05, '05-'06 etc in a line chart. In the example below, the category column in "Sector".
+* If your data contains one series - e.g. a simple bar chart or a single line chart, use a column/vector for the data argument. Example: `dt = mydata$tuition`
+* If your chart contains multiple series - e.g. a stacked bar chart or multi-line chart, as opposed to a simple bar chart or single line chart, your data should be a data frame with one column per series. See below example. If needed, move the categories column as determined above (axis labels) to be the leftmost column. For the dt (data) argument, but the name of the data frame. This will take all columns besides the first and save each as a new "column" in your JSON (c3.js nomenclature).
 
-To create a formatted json, use the function `makeJson`, found in [scripts/createJsons.R](scripts/createJsons.R). Section number (`sectionn`) and graph number (`graphn`) are used to retrieve graph metadata from the GraphText.xlsx file stored on Box. This metadata includes title, source, notes, small multiples (0/1), toggle (0/1), and more. Function options and defaults are defined within the `makeJson` script. 
 
-Graph creation example:
+An example from [scripts/processExistingDatasets.R](scripts/processExistingDatasets.R):
 ```R
-json3_5 <- makeJson(sectionn = 3, graphn = 5, dt = fig3_5, graphtype = "bar", 
-										 series = c("On campus", "Off campus", "Living with parents"), 
-										 categories = fig3_5$Sector, tickformat = "percent", 
-										 rotated = TRUE, directlabels = TRUE)
+library(dplyr)
+library(stringr)
+source("scripts/createJsons.R")
+
+# Change this!
+boxpath <- "/Users/hrecht/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
+
+########################################################################################################
+# Prices and Expenses
+########################################################################################################
+# Room and Board
+# Stacked horizontal bars
+fig3_5 <- read.csv(paste(boxpath, "Prices and expenses_room and board/Section3_LivingArrangementofFTUG.csv", sep = ""), stringsAsFactors = F)
+
+fig3_5
+#                      Sector OnCampus OffCampus LiveWithParents
+#                         All     0.22      0.46            0.33
+#            Public four-year     0.56      0.24            0.20
+#             Public two-year     0.33      0.39            0.28
+# Private nonprofit four-year     0.03      0.52            0.45
+#                  For profit     0.01      0.66            0.33
+
+json3_5 <- makeJson(sectionn = 3, graphn = 5, 
+	dt = fig3_5, 
+	graphtype = "bar", 
+	series = c("On campus", "Off campus", "Living with parents"), 
+	categories = fig3_5$Sector, 
+	tickformat = "percent", 
+	rotated = TRUE, 
+	directlabels = TRUE)
 ```
