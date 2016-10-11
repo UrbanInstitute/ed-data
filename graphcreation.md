@@ -55,8 +55,6 @@ GraphText contains one row per graph, with some fields that are for your own ref
 
 An example from [scripts/processExistingDatasets.R](scripts/processExistingDatasets.R):
 ```R
-library(dplyr)
-library(stringr)
 source("scripts/createJsons.R")
 
 # Change this!
