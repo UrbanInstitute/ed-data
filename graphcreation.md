@@ -45,7 +45,7 @@ GraphText contains one row per graph, with some fields that are for your own ref
 	* From GraphText.xlsx - Is the graph horizontal bars? If yes, `rotated = TRUE`
 	* Is the general graph type bar, line or area? `graphtype` is one of those options.
 	* What type of number formatting do you need? `tickformat` is "number", "percent", "dollar" or a d3.format string.
-	* Should the bars have direct labels on them? If yes, `directlables = TRUE`. This should not be true for line charts.
+	* Should the bars have direct labels on them? If yes, `directlabels = TRUE`. This should not be true for line charts.
 	* What are the data series names? These will go into legends (if more than one series) and tooltips.
 	* See [createJsons.R](https://github.com/UrbanInstitute/ed-data/blob/master/scripts/createJsons.R) for full options definitions.
 * From the data you've read in from the CSV, you'll generally use a column/vector for the `categories` argument. This generally corresponds to the X axis labels. For example, the values might be '03-'04, '04-'05, '05-'06 etc in a line chart. In the example below, the category column in "Sector".
