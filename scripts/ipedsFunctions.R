@@ -27,7 +27,6 @@ searchVars <- function(vars) {
   # Filter the full IPEDS metadata dataset info to just those containing your vars
   dt <- ipeds %>% filter(grepl(paste(vars, collapse='|'), columns, ignore.case = T))
   datalist <- split(dt, dt$name)
-  print(dt$name)
   return(datalist)
 }
 
