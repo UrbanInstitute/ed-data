@@ -27,6 +27,7 @@ searchVars <- function(vars) {
   # Filter the full IPEDS metadata dataset info to just those containing your vars
   dt <- ipeds %>% filter(grepl(paste(vars, collapse='|'), columns, ignore.case = T))
   datalist <- split(dt, dt$name)
+  print(dt$name)
   return(datalist)
 }
 
@@ -34,10 +35,29 @@ searchVars <- function(vars) {
 getData <- function(datalist, vars, keepallvars) {
   allvars <- tolower(c(vars, "unitid", "year"))
   for (i in seq_along(datalist)) {
+    # Construct path to CSV
     csvpath <- datalist[[i]]$path
     fullpath <- paste(ipedspath, csvpath, sep="")
     name <- datalist[[i]]$name
-    d <- read.csv(fullpath, header=T, stringsAsFactors = F, na.strings=c("",".","NA"))
+    
+    print(paste("Reading in ", fullpath, sep = ""))
+    
+    # Read CSV - some IPEDS CSVs are malformed, containing extra commas at the end of all rows but the headers
+    # Need to handle these. Permanent solution - send list of malformed files to NCES. This is a known issue.
+    row1 <- readLines(fullpath, n = 1)
+    csvnames <- unlist(strsplit(row1,','))
+    d <- read.table(fullpath, header = F, stringsAsFactors = F, sep=",", skip = 1, na.strings=c("",".","NA"))
+    if (length(csvnames) == ncol(d)) {
+      colnames(d) <- csvnames
+    } else if (length(csvnames) == ncol(d) - 1) {
+      colnames(d) <- c(csvnames, "xxx")
+      print("Malformed CSV - extra column without header. Handled by R function but note for NCES.")
+    } else if ((length(csvnames) != ncol(d) - 1) & length(csvnames) == ncol(d)) {
+      print("Malformed CSV - unknown column length mismatch error. Note for NCES")
+      print(path)
+    }
+    
+    #d <- read.csv(fullpath, header=T, stringsAsFactors = F, na.strings=c("",".","NA"))
     # Give it a year variable
     d$year <- datalist[[i]]$year
     # All lowercase colnames
