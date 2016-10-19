@@ -4,7 +4,7 @@ library(dplyr)
 library(stringr)
 source("scripts/createJsons.R")
 
-boxpath <- "/Users/vhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
+boxpath <- "/Users/bchartof/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
 
 ########################################################################################################
 # Prices and Expenses
