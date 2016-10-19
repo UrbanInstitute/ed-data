@@ -4,16 +4,16 @@ library(dplyr)
 library(stringr)
 source("scripts/createJsons.R")
 
-boxpath <- "/Users/hrecht/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
+boxpath <- "/Users/vhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
 
 ########################################################################################################
 # Prices and Expenses
 ########################################################################################################
 # Room and Board
 # Stacked horizontal bars
-fig3_5 <- read.csv(paste(boxpath, "Prices and expenses_room and board/Section3_LivingArrangementofFTUG.csv", sep = ""), stringsAsFactors = F)
+fig3_5 <- read.csv("03_0010.csv", stringsAsFactors = F)
 
-json3_5 <- makeJson(sectionn = 3, graphn = 5, dt = fig3_5, graphtype = "bar", 
+json3_5 <- makeJson(sectionn = 3, graphn = 5, dt = fig3_5,#add $column_name if only one column/ graphtype = "bar", 
 										 series = c("On campus", "Off campus", "Living with parents"), 
 										 categories = fig3_5$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
