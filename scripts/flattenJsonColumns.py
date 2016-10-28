@@ -17,7 +17,10 @@ def flattenColumns(filepath):
                 columns[i] = flatten(columns[i])
         # Otherwise flatten the whole 'columns' attribute
         else:
-            dj["data"]["columns"] = [columns[0]]
+            if(isinstance(columns[1], list)):
+                dj["data"]["columns"] = [columns[0]] + columns[1]
+            else:
+                dj["data"]["columns"] = [columns[0]] + [columns[1]]
             # And for c3 charts it needs to be coreced to an array of arrays
             dj["data"]["columns"] = [dj["data"]["columns"]]
         print(dj["data"]["columns"])
