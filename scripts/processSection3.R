@@ -10,10 +10,19 @@ source('~/Documents/ed-data/scripts/createJsons.R')
 # Path to Excel file with graph metadata - change to your file path
 
 textpath <- "/Users/vhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
+<<<<<<< HEAD
 graphtext <- readWorkbook(paste(textpath, "GraphText.xlsx", sep=""),sheet = 1)
 graphtext$section_number <- as.numeric(graphtext$section_number)
 graphtext$multiples <- as.numeric(graphtext$multiples)
 graphtext$toggle <- as.numeric(graphtext$toggle)
+=======
+graphtext <- readWorkbook(paste(textpath,"GraphText.xlsx", sep=""), sheet = 1)
+graphtext$section_number <- as.numeric(graphtext$section_number)
+graphtext$multiples <- as.numeric(graphtext$multiples)
+graphtext$toggle <- as.numeric(graphtext$toggle)
+fig3_17 <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_0170.csv", sep=""),stringsAsFactors=FALSE)
+fig3_17 <- as.data.frame(fig3_17)
+>>>>>>> cb53cbfd89404c716754d6e139b6ca7cf86dae35
 
 #Figure 3-5
 fig3_5 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0050.csv", sep=""),stringsAsFactors=FALSE)
