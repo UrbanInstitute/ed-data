@@ -1,0 +1,1 @@
+{"data": {"labels": {"format": "percent"}, "type": "bar", "columns": [[false, 0.01, 0.18]]}, "series": false, "metadata": {"notes": null, "source": "National Postsecondary Student Aid Study 2012 "}, "axis": {"x": {"label": "Residency", "type": "category", "categories": ["Out-of-state", "In-state"]}, "y": {"tick": {"format": "percent"}}, "rotated": true}}
