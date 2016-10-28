@@ -1,6 +1,3 @@
-# Read in json file for graph, created in R
-# Flatten "columns" arrays, which are generally nested due to R list limitations
-
 import json
 import sys
 
@@ -20,7 +17,7 @@ def flattenColumns(filepath):
                 columns[i] = flatten(columns[i])
         # Otherwise flatten the whole 'columns' attribute
         else:
-            dj["data"]["columns"] = [columns[0]] + columns[1]
+            dj["data"]["columns"] = [columns[0]]
             # And for c3 charts it needs to be coreced to an array of arrays
             dj["data"]["columns"] = [dj["data"]["columns"]]
         print(dj["data"]["columns"])

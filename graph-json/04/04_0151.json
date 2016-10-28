@@ -1,1 +1,1 @@
-{"data":{"type":"bar","columns":[false,0.15],"labels":{"format":"percent"}},"axis":{"rotated":true,"x":{"type":"category","categories":"All"},"y":{"tick":{"format":"percent"}}},"series":false,"metadata":{"source":"National Postsecondary Student Aid Study 2012 ","notes":null}}
+{"axis": {"y": {"tick": {"format": "percent"}}, "x": {"type": "category", "categories": "All"}, "rotated": true}, "series": false, "data": {"type": "bar", "columns": [[false]], "labels": {"format": "percent"}}, "metadata": {"source": "National Postsecondary Student Aid Study 2012 ", "notes": null}}

@@ -1,0 +1,1 @@
+{"metadata": {"notes": null, "source": "National Postsecondary Student Aid Study 2012 "}, "data": {"columns": [[false, 2000, 3000]], "labels": {"format": "dollar"}, "type": "bar"}, "axis": {"rotated": true, "x": {"type": "category", "label": "Dependency Status", "categories": ["Independent", "Dependent"]}, "y": {"tick": {"format": "dollar"}}}, "series": false}
