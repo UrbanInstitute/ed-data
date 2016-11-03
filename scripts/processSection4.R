@@ -51,7 +51,7 @@ fig4_15e <- read.csv(paste(textpath, "Financial aid_state/04_0155.csv", sep=""),
 
 json4_15a <- makeJson(sectionn = 4, graphn = 15, subn= 1, dt = fig4_15a$percent, graphtype = "bar",
                      series = FALSE,
-                     categories = fig4_15a$sub_category, graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+                     categories = fig4_15a$sub_category,  xlabel = "All", graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 json4_15b <- makeJson(sectionn = 4, graphn = 15, subn=2, dt = fig4_15b$percent, graphtype = "bar",
                      series = FALSE,
                      categories = fig4_15b$sub_category, xlabel = "Dependency Status", graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
@@ -74,7 +74,7 @@ fig4_16e <- read.csv(paste(textpath, "Financial aid_state/04_0165.csv", sep=""),
 
 json4_16a <- makeJson(sectionn = 4, graphn = 16, subn= 1, dt = fig4_16a$grant, graphtype = "bar",
                       series = FALSE,
-                      categories = fig4_16a$sub_category, graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+                      categories = fig4_16a$sub_category,  xlabel = "All",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 json4_16b <- makeJson(sectionn = 4, graphn = 16, subn=2, dt = fig4_16b$grant, graphtype = "bar",
                       series = FALSE,
                       categories = fig4_16b$sub_category, xlabel = "Dependency Status", graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
