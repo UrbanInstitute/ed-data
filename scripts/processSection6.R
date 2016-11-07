@@ -19,6 +19,12 @@ fig6_3 <- read.csv(paste(textpath, "After college_employment/06_0030.csv", sep="
 json6_3 <- makeJson(sectionn = 6, graphn = 3, dt = fig6_3, graphtype = "bar",
                      series = c("No work last year", "Part year or part time", "Full year full time"),
                      categories = fig6_3$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+#Figure 6-6
+
+fig6_6 <- read.csv(paste(textpath, "After college_earnings/06_0060.csv", sep=""),stringsAsFactors=FALSE)
+json6_6 <- makeJson(sectionn = 6, graphn = 6, dt = fig6_6, graphtype = "bar",
+                    series = c("$0-$20,999",	"$21,000-$35,399",	"$35,400-$51,999",	"$52,000-$79.999	$80,000+"),
+                    categories = fig6_6$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 6-15
 
