@@ -12,6 +12,14 @@ graphtext$section_number <- as.numeric(graphtext$section_number)
 graphtext$multiples <- as.numeric(graphtext$multiples)
 graphtext$toggle <- as.numeric(graphtext$toggle)
 
+
+#Figure 6-3
+
+fig6_3 <- read.csv(paste(textpath, "After college_employment/06_0030.csv", sep=""),stringsAsFactors=FALSE)
+json6_3 <- makeJson(sectionn = 6, graphn = 3, dt = fig6_3, graphtype = "bar",
+                     series = c("No work last year", "Part year or part time", "Full year full time"),
+                     categories = fig6_3$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+
 #Figure 6-15
 
 fig6_15 <- read.csv(paste(textpath, "After college_debt/06_0150.csv", sep=""),stringsAsFactors=FALSE)
