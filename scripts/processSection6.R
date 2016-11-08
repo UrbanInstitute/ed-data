@@ -12,6 +12,15 @@ graphtext$section_number <- as.numeric(graphtext$section_number)
 graphtext$multiples <- as.numeric(graphtext$multiples)
 graphtext$toggle <- as.numeric(graphtext$toggle)
 
+#Figure 6-1
+fig6_1<- read.csv(paste(textpath, "After College_employment/06_0010.csv", sep=""),stringsAsFactors=FALSE)
+json6_1 <- makeJson(sectionn = 6, graphn = 1, dt = fig6_1, graphtype = "line", series=c("High school or equivalent", "Some college, no degree", "Associate's degree", "Bachelor's degree", "Advanced degree"),
+                    categories = fig6_1$year, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
+
+#Figure 6-2
+fig6_2<- read.csv(paste(textpath, "After College_employment/06_0020.csv", sep=""),stringsAsFactors=FALSE)
+json6_2 <- makeJson(sectionn = 6, graphn = 2, dt = fig6_2, graphtype = "line", series=c("High school or equivalent", "Some college, no degree", "Associate's degree", "Bachelor's degree", "Advanced degree"),
+                    categories = fig6_2$year, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 #Figure 6-3
 

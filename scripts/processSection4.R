@@ -22,6 +22,11 @@ fig4_1 <- read.csv(paste(textpath, "Financial aid_financial need/04_00100.csv", 
 json4_1 <- makeJson(sectionn = 4, graphn = 1, dt = fig4_1$MedianEFCbyParentsIncome, graphtype = "bar", series=FALSE,
                     categories = fig4_1$IncomeRange, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
+#Figure 4-2
+fig4_2 <- read.csv(paste(textpath, "Financial aid_financial need/04_0020.csv", sep=""),stringsAsFactors=FALSE)
+json4_2 <- makeJson(sectionn = 4, graphn = 2, dt = fig4_2, graphtype = "bar", series= c("Independent, No Dependents Unmarried", "Independent, No Dependents Married",	"Independent with Dependents"),
+                     categories = fig4_2$category, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+
 #Figure 4-3
 fig4_3 <- read.csv(paste(textpath, "Financial aid_financial need/04_0030.csv", sep=""),stringsAsFactors=FALSE)
 json4_3 <- makeJson(sectionn = 4, graphn = 3, dt = fig4_3$Percent0EFC, graphtype = "bar", series=FALSE,
@@ -62,6 +67,17 @@ json4_8<- makeJson(sectionn = 4, graphn = 8, dt = fig4_8, graphtype = "bar",
 fig4_11 <- read.csv(paste(textpath, "Financial aid_federal/04_0110.csv", sep=""),stringsAsFactors=FALSE)
 json4_11 <- makeJson(sectionn = 4, graphn = 11, dt = fig4_11$recipients, graphtype = "bar", series=FALSE,
                     categories = fig4_11$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
+#Figure 4-13
+fig4_13 <- read.csv(paste(textpath, "Financial aid_state/04_0130.csv", sep=""),stringsAsFactors=FALSE)
+json4_13 <- makeJson(sectionn = 4, graphn = 13, dt = fig4_13$GrantAid, graphtype = "bar", series=FALSE,
+                    categories = fig4_13$state, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+
+#Figure 4-14
+fig4_14 <- read.csv(paste(textpath, "Financial aid_state/04_0140.csv", sep=""),stringsAsFactors=FALSE)
+json4_14 <- makeJson(sectionn = 4, graphn = 14, dt = fig4_14$stategrants, graphtype = "bar", series=FALSE,
+                     categories = fig4_14$state, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+
 
 #Figure 4-15
 fig4_15a <- read.csv(paste(textpath, "Financial aid_state/04_0151.csv", sep=""),stringsAsFactors=FALSE)
@@ -108,3 +124,10 @@ json4_16d <- makeJson(sectionn = 4, graphn = 16, subn=4, dt = fig4_16d$grant, gr
 json4_16e <- makeJson(sectionn = 4, graphn = 16, subn=5, dt = fig4_16e$grant, graphtype = "bar",
                       series = FALSE,
                       categories = fig4_16e$sub_category, xlabel = "Sector", graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+
+#Figure 4-17
+fig4_17 <- read.csv(paste(textpath, "Financial aid_state/04_0170-no_percent.csv", sep=""),stringsAsFactors=FALSE)
+json4_17 <- makeJson(sectionn = 4, graphn = 17, dt = fig4_17, graphtype = "area",
+                    series = c("Need-based", "Non Need-based"),
+                    categories = fig4_17$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
