@@ -12,6 +12,21 @@ graphtext$section_number <- as.numeric(graphtext$section_number)
 graphtext$multiples <- as.numeric(graphtext$multiples)
 graphtext$toggle <- as.numeric(graphtext$toggle)
 
+
+
+#Figure 5-24
+fig5_24<- read.csv(paste(textpath, "Covering Expenses_time to degree/05_0240.csv", sep=""),stringsAsFactors=FALSE)
+json5_24<- makeJson(sectionn = 5, graphn = 24, dt = fig5_24$forgone, graphtype = "bar",
+                    series = FALSE,
+                    categories = fig5_24$category, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
+
+#Figure 5-22
+fig5_22<- read.csv(paste(textpath, "Covering Expenses_time to degree/05_0220-revised.csv", sep=""),stringsAsFactors=FALSE)
+json5_22<- makeJson(sectionn = 5, graphn = 22, dt = fig5_22, graphtype = "bar",
+                     series = c("4 years", "5 years", "6 years"),
+                     categories = fig5_22$category, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
 #Figure 5-23
 
 fig5_23 <- read.csv(paste(textpath, "Covering expenses_time to degree/05_0230.csv", sep=""),stringsAsFactors=FALSE)
