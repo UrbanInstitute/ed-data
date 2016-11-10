@@ -12,6 +12,11 @@ graphtext$section_number <- as.numeric(graphtext$section_number)
 graphtext$multiples <- as.numeric(graphtext$multiples)
 graphtext$toggle <- as.numeric(graphtext$toggle)
 
+#Figure 5-19
+fig5_19<- read.csv(paste(textpath, "Covering Expenses_time to degree/05_0190.csv", sep=""),stringsAsFactors=FALSE)
+json5_19<- makeJson(sectionn = 5, graphn = 19, dt = fig5_19, graphtype = "bar",
+                    series = c("Average Years Enrolled", "Average Years Elasped"),
+                    categories = fig5_19$category, tickformat = "number", rotated = FALSE, directlabels = TRUE)
 
 
 #Figure 5-24

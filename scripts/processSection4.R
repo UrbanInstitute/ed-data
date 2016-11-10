@@ -39,6 +39,11 @@ json4_4 <- makeJson(sectionn = 4, graphn = 4, dt = fig4_4, graphtype = "bar",
                     series = c("$0", "$1-$4,999", "$5,000-$9,999", "$10,000-$14,999", "$15,000 or higher"),
                     categories = fig4_4$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
+#Figure 4-5
+fig4_5 <- read.csv(paste(textpath, "Financial aid_grant aid/CSVs/04_0050.csv", sep=""),stringsAsFactors=FALSE)
+json4_5 <- makeJson(sectionn = 4, graphn = 5, dt = fig4_5$grant, graphtype = "bar", series=FALSE,
+                    categories = fig4_5$category, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+
 
 #Figure 4-6
 fig4_6 <- read.csv(paste(textpath, "Financial aid_grant aid/CSVs/04_0060.csv", sep=""),stringsAsFactors=FALSE)
