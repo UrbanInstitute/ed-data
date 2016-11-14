@@ -66,3 +66,14 @@ fig5_9 <- read.csv(paste(textpath, "Covering expenses_working/05_0090.csv", sep=
 json5_9 <- makeJson(sectionn = 5, graphn = 9, dt = fig5_9, graphtype = "bar",
                      series = c("No work", "1-5", "6-10", "11-15", "16-20", "21-30", "31-40", "41 or more"),
                      categories = fig5_9$hours, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+
+#Figure 5-7
+fig5_7<- read.csv(paste(textpath, "Covering expenses_working/05_0070.csv", sep=""),stringsAsFactors=FALSE)
+json5_7 <- makeJson(sectionn = 5, graphn = 7, dt = fig5_7$fed_min_wage, graphtype = "line", series=FALSE,
+                    categories = fig5_7$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
+#Figure 5-6
+fig5_6<- read.csv(paste(textpath, "Covering expenses_working/05_0060.csv", sep=""),stringsAsFactors=FALSE)
+json5_6 <- makeJson(sectionn = 5, graphn = 6, dt = fig5_6, graphtype = "line", series=c("800 hours at minimum wage", "Tuition, fees, room, and board", "Tuition and fees"),
+                    categories = fig5_6$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
