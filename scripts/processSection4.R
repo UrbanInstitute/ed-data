@@ -49,19 +49,19 @@ fig4_4e <- read.csv(paste(textpath, "Financial aid_financial need/04_0045.csv", 
 
 json4_4a <- makeJson(sectionn = 4, graphn = 4, subn= 1, dt = fig4_4a, graphtype = "bar",
                      series = c("$0", "$1-$4,999", "$5,000-$9,999", "$10,000-$14,999", "$15,000 or higher"),
-                     categories = fig4_4$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="Total")
+                     categories = fig4_4a$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="Total")
 json4_4b <- makeJson(sectionn = 4, graphn = 4, subn= 2, dt = fig4_4b, graphtype = "bar",
                      series = c("$0", "$1-$4,999", "$5,000-$9,999", "$10,000-$14,999", "$15,000 or higher"),
-                     categories = fig4_4$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="Public Four-Year")
+                     categories = fig4_4b$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="Public Four-Year")
 json4_4c <- makeJson(sectionn = 4, graphn = 4, subn= 3, dt = fig4_4c, graphtype = "bar",
                      series = c("$0", "$1-$4,999", "$5,000-$9,999", "$10,000-$14,999", "$15,000 or higher"),
-                     categories = fig4_4$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="Private Four-Year")
+                     categories = fig4_4c$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="Private Four-Year")
 json4_4d <- makeJson(sectionn = 4, graphn = 4, subn= 4, dt = fig4_4d, graphtype = "bar",
                      series = c("$0", "$1-$4,999", "$5,000-$9,999", "$10,000-$14,999", "$15,000 or higher"),
-                     categories = fig4_4$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="Public Two-Year")
+                     categories = fig4_4d$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="Public Two-Year")
 json4_4e <- makeJson(sectionn = 4, graphn = 4, subn= 5, dt = fig4_4e, graphtype = "bar",
                      series = c("$0", "$1-$4,999", "$5,000-$9,999", "$10,000-$14,999", "$15,000 or higher"),
-                     categories = fig4_4$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="For-Profit")
+                     categories = fig4_4e$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="For-Profit")
 
 
 
