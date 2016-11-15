@@ -29,7 +29,7 @@ json4_2 <- makeJson(sectionn = 4, graphn = 2, dt = fig4_2, graphtype = "bar", se
 
 #Figure 4-3
 fig4_3 <- read.csv(paste(textpath, "Financial aid_financial need/04_0030.csv", sep=""),stringsAsFactors=FALSE)
-json4_3 <- makeJson(sectionn = 4, graphn = 3, dt = fig4_3$Percent0EFC, graphtype = "bar", series=FALSE,
+json4_3 <- makeJson(sectionn = 4, graphn = 3, dt = fig4_3$Percent0EFC, graphtype = "bar", series="Percent",
                     categories = fig4_3$DependencyStatus, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 
@@ -66,9 +66,11 @@ json4_7b <- makeJson(sectionn = 4, graphn = 7, subn=2, dt = fig4_7b, graphtype =
 
 #Figure 4-8
 fig4_8 <- read.csv(paste(textpath, "Financial aid_grant aid/CSVs/04_0080.csv", sep=""),stringsAsFactors=FALSE)
-json4_8<- makeJson(sectionn = 4, graphn = 8, dt = fig4_8, graphtype = "bar",
-                    series = c("Federal", "Veterans", "State", "Institutional", "Private", "Total"),
-                    categories = fig4_8$category, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+json4_8<- makeJson(sectionn = 4, graphn = 8, dt = fig4_8, graphtype = "bar", set1= fig4_8[grep("Less than \\$30,00", fig4_8$category),], set2= fig4_8[grep("\\$30,000\\:\\$64,999", fig4_8$category),],
+                    set3= fig4_8[grep("\\$65,000\\:\\$105,999", fig4_8$category),], set4= fig4_8[grep("\\$106,000\\:\\$154,999", fig4_8$category),],
+                    set5=fig4_8[grep("\\$155,000", fig4_8$category),],
+                    series = c("Less than $30,000", "$30,000-$64,999", "$65,000-$105,999","$106,000-$154,999", "$155,000 or higher"),
+                    categories = c("Federal", "Veterans", "State", "Institutional", "Private", "Total"), tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 #Figure 4-10
 fig4_10 <- read.csv(paste(textpath, "Financial aid_federal/04_0100.csv", sep=""),stringsAsFactors=FALSE)

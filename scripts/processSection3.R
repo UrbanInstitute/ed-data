@@ -30,10 +30,10 @@ json3_1 <- makeJson(sectionn = 3, graphn = 1, dt = fig3_1, graphtype = "bar",
                     categories = fig3_1$category, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 3-2
-fig3_2 <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0020.csv", sep=""),stringsAsFactors=FALSE)
+fig3_2 <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0020-revised.csv", sep=""),stringsAsFactors=FALSE)
 json3_2 <- makeJson(sectionn = 3, graphn = 2, dt = fig3_2, graphtype = "line",
-                    series = c("In-district or in-state tuition", "Additional tuition charged to out-of-state students"),
-                    categories = fig3_1$category, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                    series = c("for profit", "private nonprofit four-year", "public four-year", "public two-year"),
+                    categories = fig3_2$year, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 #Figure 3-3
 fig3_3a <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0031.csv", sep=""),stringsAsFactors=FALSE)
@@ -66,6 +66,12 @@ fig3_5 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0050.c
 json3_5 <- makeJson(sectionn = 3, graphn = 5, dt = fig3_5, graphtype = "bar",
                      series = c("On campus", "Off campus", "Living with Parents"),
                      categories = fig3_5$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+
+#Figure 3-6
+fig3_5 <- read.csv(paste(textpath, "Financial aid_financial need/03_0060.csv", sep=""),stringsAsFactors=FALSE)
+json4_3 <- makeJson(sectionn = 4, graphn = 3, dt = fig4_3$Percent0EFC, graphtype = "bar", series=FALSE,
+                    categories = fig4_3$DependencyStatus, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
+
 #Figure 3-7
 fig3_7 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0070.csv", sep=""),stringsAsFactors=FALSE)
 json3_7 <- makeJson(sectionn = 3, graphn = 7, dt = fig3_7$roomamt, graphtype = "bar", series=FALSE,
