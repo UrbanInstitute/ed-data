@@ -21,8 +21,8 @@ json5_19<- makeJson(sectionn = 5, graphn = 19, dt = fig5_19, graphtype = "bar",
 
 #Figure 5-24
 fig5_24<- read.csv(paste(textpath, "Covering Expenses_time to degree/05_0240.csv", sep=""),stringsAsFactors=FALSE)
-json5_24<- makeJson(sectionn = 5, graphn = 24, dt = fig5_24$forgone, graphtype = "bar",
-                    series = FALSE,
+json5_24<- makeJson(sectionn = 5, graphn = 24, dt = fig5_24$foregone, graphtype = "bar",
+                    series = "Forgone earnings",
                     categories = fig5_24$category, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 
@@ -53,6 +53,11 @@ json5_20 <- makeJson(sectionn = 5, graphn = 20, dt = fig5_20, graphtype = "bar",
                      series = c("4 years or less", "5 years", "6 to 7 years", "8 years or more"),
                      categories = fig5_20$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
+#Figure 5-11
+fig5_11 <- read.csv(paste(textpath, "Covering expenses_working/05_0110.csv", sep=""),stringsAsFactors=FALSE)
+json5_11 <- makeJson(sectionn = 5, graphn = 11, dt = fig5_11, graphtype = "bar", series=c("Total", "Public Four-Year", "Private Nonprofit Four-Year", "Public Two-year", "For-profit"), set1=fig5_11[,c("all")], set2=fig5_11[,c("publicfour")],
+                     set3=fig5_11[,c("publictwo")], set4=fig5_11[,c("privatenonprofit")], set5=fig5_11[,c("forprofit")], categories = fig5_11$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+
 #Figure 5-10
 
 fig5_10 <- read.csv(paste(textpath, "Covering expenses_working/05_0100.csv", sep=""),stringsAsFactors=FALSE)
@@ -67,9 +72,14 @@ json5_9 <- makeJson(sectionn = 5, graphn = 9, dt = fig5_9, graphtype = "bar",
                      series = c("No work", "1-5", "6-10", "11-15", "16-20", "21-30", "31-40", "41 or more"),
                      categories = fig5_9$hours, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
+#Figure 5-8
+fig5_8<- read.csv(paste(textpath, "Covering expenses_working/05_0080.csv", sep=""),stringsAsFactors=FALSE)
+json5_8 <- makeJson(sectionn = 5, graphn = 8, dt = fig5_8$minwage, graphtype = "bar", series="State minimum wage",
+                    categories = fig5_8$state, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+
 #Figure 5-7
 fig5_7<- read.csv(paste(textpath, "Covering expenses_working/05_0070.csv", sep=""),stringsAsFactors=FALSE)
-json5_7 <- makeJson(sectionn = 5, graphn = 7, dt = fig5_7$fed_min_wage, graphtype = "line", series=FALSE,
+json5_7 <- makeJson(sectionn = 5, graphn = 7, dt = fig5_7$fed_min_wage, graphtype = "line", series="Federal minimum wage",
                     categories = fig5_7$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-6

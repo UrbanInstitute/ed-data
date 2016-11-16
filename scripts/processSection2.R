@@ -25,5 +25,5 @@ json2_3 <- makeJson(sectionn = 2, graphn = 3, dt = fig2_3, graphtype = "line", s
 
 #Figure 2-4
 fig2_4 <- read.csv(paste(textpath, "Cost of educating_appropriations/02_0040.csv", sep=""),stringsAsFactors=FALSE)
-json2_4 <- makeJson(sectionn = 2, graphn = 4, dt = fig2_4$public, graphtype = "bar", series=FALSE,
+json2_4 <- makeJson(sectionn = 2, graphn = 4, dt = fig2_4$public, graphtype = "bar", series="State and Local Appropriations per Public FTE Student",
                     categories = fig2_4$state, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)

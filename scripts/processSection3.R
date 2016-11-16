@@ -83,3 +83,7 @@ json3_17 <- makeJson(sectionn = 3, graphn = 17, dt = fig3_17, graphtype = "bar",
                      series = c("Did not work last year", "Part year or part time", "Full year full time"),
                      categories = fig3_17$age, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
+#Figure 3-20
+fig3_20 <- read.csv(paste(textpath, "Financial aid_federal/04_0090.csv", sep=""),stringsAsFactors=FALSE)
+json4_9 <- makeJson(sectionn = 4, graphn = 9, dt = fig4_9, graphtype = "bar", series=c("Pell Grant per full-time student", "Pell Grant per full-time recipient"), set1=fig4_9[,c("pell_per_student")], set2=fig4_9[,c("grant_per_recip")],
+                    categories = fig4_9$dependency_income, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
