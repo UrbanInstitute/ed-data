@@ -24,7 +24,7 @@ json4_1 <- makeJson(sectionn = 4, graphn = 1, dt = fig4_1$MedianEFCbyParentsInco
 
 #Figure 4-2
 fig4_2 <- read.csv(paste(textpath, "Financial aid_financial need/04_0020.csv", sep=""),stringsAsFactors=FALSE)
-json4_2 <- makeJson(sectionn = 4, graphn = 2, dt = fig4_2, graphtype = "bar", series= c("Independent, No Dependents Unmarried", "Independent, No Dependents Married",	"Independent with Dependents"),
+json4_2 <- makeJson(sectionn = 4, graphn = 2, dt = fig4_2, graphtype = "bar", series= c("Independent, no dependents, single", "Independent, no dependents, married",	"Independent with dependents"),
                      categories = fig4_2$category, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 #Figure 4-3
@@ -52,16 +52,16 @@ json4_4a <- makeJson(sectionn = 4, graphn = 4, subn= 1, dt = fig4_4a, graphtype 
                      categories = fig4_4a$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="Total")
 json4_4b <- makeJson(sectionn = 4, graphn = 4, subn= 2, dt = fig4_4b, graphtype = "bar",
                      series = c("$0", "$1-$4,999", "$5,000-$9,999", "$10,000-$14,999", "$15,000 or higher"),
-                     categories = fig4_4b$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="Public Four-Year")
+                     categories = fig4_4b$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="Public four-year")
 json4_4c <- makeJson(sectionn = 4, graphn = 4, subn= 3, dt = fig4_4c, graphtype = "bar",
                      series = c("$0", "$1-$4,999", "$5,000-$9,999", "$10,000-$14,999", "$15,000 or higher"),
-                     categories = fig4_4c$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="Private Four-Year")
+                     categories = fig4_4c$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="Private four-year")
 json4_4d <- makeJson(sectionn = 4, graphn = 4, subn= 4, dt = fig4_4d, graphtype = "bar",
                      series = c("$0", "$1-$4,999", "$5,000-$9,999", "$10,000-$14,999", "$15,000 or higher"),
-                     categories = fig4_4d$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="Public Two-Year")
+                     categories = fig4_4d$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="Public two-year")
 json4_4e <- makeJson(sectionn = 4, graphn = 4, subn= 5, dt = fig4_4e, graphtype = "bar",
                      series = c("$0", "$1-$4,999", "$5,000-$9,999", "$10,000-$14,999", "$15,000 or higher"),
-                     categories = fig4_4e$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="For-Profit")
+                     categories = fig4_4e$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE, graphtitle="For-profit")
 
 
 
