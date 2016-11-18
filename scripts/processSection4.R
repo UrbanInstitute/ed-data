@@ -105,17 +105,21 @@ json4_9 <- makeJson(sectionn = 4, graphn = 9, dt = fig4_9, graphtype = "bar", se
 
 #Figure 4-10
 fig4_10 <- read.csv(paste(textpath, "Financial aid_federal/04_0100.csv", sep=""),stringsAsFactors=FALSE)
-json4_10 <- makeJson(sectionn = 4, graphn = 10, dt = fig4_10, graphtype = "line", series=c("Max Pell (2015 dollars)", "Average Pell (2015 dollars)"),
+fig4_10$year <- gsub("&ndash", "–", fig4_10$year) 
+fig4_10
+json4_10 <- makeJson(sectionn = 4, graphn = 10, dt = fig4_10, graphtype = "line", series=c("Maximum Pell (2015 dollars)", "Average Pell (2015 dollars)"),
                     categories = fig4_10$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 4-11
 fig4_11 <- read.csv(paste(textpath, "Financial aid_federal/04_0110.csv", sep=""),stringsAsFactors=FALSE)
+fig4_11$year <- gsub("\x96", "–", fig4_11$year) 
+fig4_11
 json4_11 <- makeJson(sectionn = 4, graphn = 11, dt = fig4_11$recipients, graphtype = "bar", series="Amount",
                     categories = fig4_11$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 4-12
 fig4_12 <- read.csv(paste(textpath, "Financial aid_federal/04_0120.csv", sep=""),stringsAsFactors=FALSE)
-json4_12 <- makeJson(sectionn = 4, graphn = 12, dt = fig4_12, graphtype = "line", series=c("Pell per FTE Undergraduate", "Military and Veterans Aid per FTE Undergraduate"),
+json4_12 <- makeJson(sectionn = 4, graphn = 12, dt = fig4_12, graphtype = "line", series=c("Pell per FTE undergraduate", "Military and veterans aid per FTE undergraduate"),
                      categories = fig4_12$Year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 4-13
