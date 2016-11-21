@@ -64,18 +64,28 @@ json3_4b <- makeJson(sectionn = 3, graphn = 4, subn= 2, dt = fig3_4b$amount, gra
 #Figure 3-5
 fig3_5 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0050.csv", sep=""),stringsAsFactors=FALSE)
 json3_5 <- makeJson(sectionn = 3, graphn = 5, dt = fig3_5, graphtype = "bar",
-                     series = c("On campus", "Off campus", "Living with Parents"),
+                     series = c("On campus", "Off campus", "Living with parents"),
                      categories = fig3_5$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 3-6
-fig3_5 <- read.csv(paste(textpath, "Financial aid_financial need/03_0060.csv", sep=""),stringsAsFactors=FALSE)
-json4_3 <- makeJson(sectionn = 4, graphn = 3, dt = fig4_3$Percent0EFC, graphtype = "bar", series=FALSE,
-                    categories = fig4_3$DependencyStatus, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
+fig3_6 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0060.csv", sep=""),stringsAsFactors=FALSE)
+json3_6 <- makeJson(sectionn = 3, graphn = 6, dt = fig3_6$amount, graphtype = "bar", series="Price",
+                    categories = fig3_6$category, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 3-7
 fig3_7 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0070.csv", sep=""),stringsAsFactors=FALSE)
 json3_7 <- makeJson(sectionn = 3, graphn = 7, dt = fig3_7$roomamt, graphtype = "bar", series=FALSE,
                     categories = fig3_7$state, tickformat = "number", rotated = TRUE, directlabels = TRUE)
+
+#Figure 3-9
+fig3_9 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0090.csv", sep=""),stringsAsFactors=FALSE)
+json3_9 <- makeJson(sectionn = 3, graphn = 9, dt = fig3_9, graphtype = "line", series=c("Private nonprofit four-year", "Public four-year"),
+                    categories = fig3_9$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
+#Figure 3-10
+fig3_10 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0100.csv", sep=""),stringsAsFactors=FALSE)
+json3_10 <- makeJson(sectionn = 3, graphn = 10, dt = fig3_10, graphtype = "bar", series=c("Room and board", "Tuition and fees"), set1=fig3_10[,c("pell_per_student")], set2=fig4_9[,c("grant_per_recip")],
+                    categories = fig4_9$dependency_income, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 #Figure 3-17
 fig3_17 <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_0170.csv", sep=""),stringsAsFactors=FALSE)

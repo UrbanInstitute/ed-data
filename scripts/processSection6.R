@@ -38,14 +38,15 @@ json6_6 <- makeJson(sectionn = 6, graphn = 6, dt = fig6_6, graphtype = "bar",
 #Figure 6-15
 
 fig6_15 <- read.csv(paste(textpath, "After college_debt/06_0150.csv", sep=""),stringsAsFactors=FALSE)
-json6_15 <- makeJson(sectionn = 6, graphn = 15, dt = fig6_15, graphtype = "bar",
-                     series = c("No debt", "Less than $10,000", "$10,000-$19,999", "$20,000-$29,999", "$30,000-$39,000", "$40,000 or More"),
+figjson6_15 <- makeJson(sectionn = 6, graphn = 15, dt = fig6_15, graphtype = "bar",
+                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or More"),
                      categories = fig6_15$race, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 6-14
 fig6_14 <- read.csv(paste(textpath, "After college_debt/06_0140.csv", sep=""),stringsAsFactors=FALSE)
+fig6_14$column <- gsub("-", "–", fig6_14$column) 
 json6_14 <- makeJson(sectionn = 6, graphn = 14, dt = fig6_14, graphtype = "bar",
-                     series = c("No debt", "$1-$9,999", "$10,000-$19,999", "$20,000-$29,999", "$30,000-$39,000", "$40,000 or more"),
+                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or more"),
                      categories = fig6_14$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 
@@ -53,20 +54,34 @@ json6_14 <- makeJson(sectionn = 6, graphn = 14, dt = fig6_14, graphtype = "bar",
 
 fig6_13 <- read.csv(paste(textpath, "After college_debt/06_0130.csv", sep=""),stringsAsFactors=FALSE)
 json6_13 <- makeJson(sectionn = 6, graphn = 13, dt = fig6_13, graphtype = "bar",
-                     series = c("No debt", "Less than $10,000", "$10,000-$19,999", "$20,000-$29,999", "$30,000-$39,000", "$40,000 or More"),
+                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or More"),
                      categories = fig6_13$dependency, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 6-12
 
 fig6_12 <- read.csv(paste(textpath, "After college_debt/06_0120.csv", sep=""),stringsAsFactors=FALSE)
 json6_12 <- makeJson(sectionn = 6, graphn = 12, dt = fig6_12, graphtype = "bar",
-                     series = c("No debt", "Less than $10,000", "$10,000-$19,999", "$20,000-$29,999", "$30,000-$39,000", "$40,000 or More"),
+                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or More"),
                      categories = fig6_12$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 #Figure 6-11
 
 fig6_11 <- read.csv(paste(textpath, "After college_debt/06_0110.csv", sep=""),stringsAsFactors=FALSE)
 json6_11 <- makeJson(sectionn = 6, graphn = 11, dt = fig6_11, graphtype = "bar",
-                     series = c("No debt", "Less than $10,000", "$10,000-$19,999", "$20,000-$29,999", "$30,000-$39,000", "$40,000 or More"),
+                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or More"),
                      categories = fig6_11$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+
+#Figure 6-10
+fig6_10 <- read.csv(paste(textpath, "After college_debt/06_0100.csv", sep=""),stringsAsFactors=FALSE)
+json6_10 <- makeJson(sectionn = 6, graphn = 10, dt = fig6_10, graphtype = "bar",
+                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or More"),
+                     categories = fig6_10$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+
+#Figure 6-9
+
+fig6_9 <- read.csv(paste(textpath, "After college_debt/06_0090.csv", sep=""),stringsAsFactors=FALSE)
+fig6_9$Year <- gsub("-", "–", fig6_9$Year) 
+json6_9 <- makeJson(sectionn = 6, graphn = 9, dt = fig6_9, graphtype = "bar",
+                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or More"),
+                     categories = fig6_9$Year, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 

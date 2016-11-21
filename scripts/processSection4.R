@@ -187,6 +187,13 @@ json4_17 <- makeJson(sectionn = 4, graphn = 17, dt = fig4_17, graphtype = "area"
                     series = c("Need-based", "Non Need-based"),
                     categories = fig4_17$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
+#Figure 4-22
+fig4_22 <- read.csv(paste(textpath, "Financial aid_other/04_0220.csv", sep=""),stringsAsFactors=FALSE)
+fig4_22$sub_category <- gsub("-\xca\xca", ": ", fig4_22$sub_category) 
+fig4_22$sub_category <- gsub("-\xca", ": ", fig4_22$sub_category) 
+json4_22 <- makeJson(sectionn = 4, graphn = 22, dt = fig4_22, graphtype = "bar", series=c("Employer aid", "Private Grants"), set1=fig4_22[,c("percent_employer")], set2=fig4_22[,c("percent_private")],
+                    categories = fig4_22$sub_category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+
 #Figure 4-24
 fig4_24 <- read.csv(paste(textpath, "Financial aid_tax benefits/04_0240-dollars.csv", sep=""),stringsAsFactors=FALSE)
 json4_24 <- makeJson(sectionn = 4, graphn = 24, dt = fig4_24, graphtype = "area",
