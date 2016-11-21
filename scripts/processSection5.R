@@ -88,3 +88,28 @@ fig5_6<- read.csv(paste(textpath, "Covering expenses_working/05_0060.csv", sep="
 json5_6 <- makeJson(sectionn = 5, graphn = 6, dt = fig5_6, graphtype = "line", series=c("800 hours at minimum wage", "Tuition, fees, room, and board", "Tuition and fees"),
                     categories = fig5_6$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
+#Figure 5-2
+fig5_2<- read.csv(paste(textpath, "Covering expenses_income/05_0020.csv", sep=""),stringsAsFactors=FALSE)
+json5_2 <- makeJson(sectionn = 5, graphn = 2, dt = fig5_2$Median.Income, graphtype = "bar", series="Median Income",
+                    categories = fig5_2$Ed.level, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+
+#Figure 5-1
+
+fig5_1a <- read.csv(paste(textpath, "Covering expenses_income/05_0011.csv", sep=""),stringsAsFactors=FALSE)
+fig5_1b <- read.csv(paste(textpath, "Covering expenses_income/05_0012.csv", sep=""),stringsAsFactors=FALSE)
+fig5_1c <- read.csv(paste(textpath, "Covering expenses_income/05_0013.csv", sep=""),stringsAsFactors=FALSE)
+fig5_1d <- read.csv(paste(textpath, "Covering expenses_income/05_0014.csv", sep=""),stringsAsFactors=FALSE)
+
+json5_1a <- makeJson(sectionn = 5, graphn = 1, subn= 1, dt = fig5_1a$income, graphtype = "bar",
+                      series = "Income",
+                      categories = fig5_1a$category,  xlabel = "All",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=100000, directlabels = TRUE)
+json5_1b <- makeJson(sectionn = 5, graphn = 1, subn= 2, dt = fig5_1b$income, graphtype = "bar",
+                      series = "Income",
+                      categories = fig5_1b$category,  xlabel = "Race",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=100000, directlabels = TRUE)
+json5_1c <- makeJson(sectionn = 5, graphn = 1, subn= 3, dt = fig5_1c$income, graphtype = "bar",
+                      series = "Income",
+                      categories = fig5_1c$category,  xlabel = "Geographical region",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=100000, directlabels = TRUE)
+json5_1d <- makeJson(sectionn = 5, graphn = 1, subn= 4, dt = fig5_1d$income, graphtype = "bar",
+                      series = "Income",
+                      categories = fig5_1d$category,  xlabel = "Age",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=100000, directlabels = TRUE)
+

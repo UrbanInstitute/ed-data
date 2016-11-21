@@ -35,6 +35,7 @@ json1_2 <- makeJson(sectionn = 1, graphn = 2, dt = fig1_2, graphtype = "bar",
                     categories = fig1_2$carnegie_label, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 
+
 #Figure 1-5
 fig1_5 <- read.csv(paste(textpath, "What is college_students/01_0050.csv", sep=""),stringsAsFactors=FALSE)
 json1_5 <- makeJson(sectionn = 1, graphn = 5, dt = fig1_5, graphtype = "bar",
