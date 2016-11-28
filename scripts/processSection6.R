@@ -28,6 +28,17 @@ fig6_3 <- read.csv(paste(textpath, "After college_employment/06_0030.csv", sep="
 json6_3 <- makeJson(sectionn = 6, graphn = 3, dt = fig6_3, graphtype = "bar",
                      series = c("No work last year", "Part year or part time", "Full year full time"),
                      categories = fig6_3$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+
+#Figure 6-4
+fig6_4<- read.csv(paste(textpath, "After College_earnings/06_0040-revised.csv", sep=""),stringsAsFactors=FALSE)
+json6_4 <- makeJson(sectionn = 6, graphn = 4, dt = fig6_4, graphtype = "line", series=c("High school or equivalent", "Some college, no degree", "Associate degree", "Bachelor's degree", "Advanced degree"),
+                    categories = fig6_4$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
+#Figure 6-5
+fig6_5<- read.csv(paste(textpath, "After College_earnings/06_0050.csv", sep=""),stringsAsFactors=FALSE)
+json6_5 <- makeJson(sectionn = 6, graphn = 5, dt = fig6_5, graphtype = "line", series=c("High school or equivalent", "Some college, no degree", "Associate degree", "Bachelor's degree", "Advanced degree"),
+                    categories = fig6_5$age, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
 #Figure 6-6
 
 fig6_6 <- read.csv(paste(textpath, "After college_earnings/06_0060.csv", sep=""),stringsAsFactors=FALSE)
@@ -96,7 +107,13 @@ json6_8 <- makeJson(sectionn = 6, graphn = 8, dt = fig6_8, graphtype = "bar",
 fig6_7 <- read.csv(paste(textpath, "After college_earnings/06_0070.csv", sep=""),stringsAsFactors=FALSE)
 json6_7 <- makeJson(sectionn = 6, graphn = 7, dt = fig6_7, graphtype = "bar",
                     series = c("0-25th percentile", "25th-50th percentile", "50th-75th percentile"),
-                    categories = fig6_7$field, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                    categories = fig6_7$field, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 
+#Figure 6-21
+
+fig6_21 <- read.csv(paste(textpath, "Breaking even/06_0210.csv", sep=""),stringsAsFactors=FALSE)
+json6_21 <- makeJson(sectionn = 6, graphn = 21, dt = fig6_21, graphtype = "line",
+                    series = c("High School Graduate","Associate Degree", "Bachelor's Degree"),
+                    categories = fig6_21$age, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
