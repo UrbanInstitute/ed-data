@@ -53,6 +53,13 @@ json5_20 <- makeJson(sectionn = 5, graphn = 20, dt = fig5_20, graphtype = "bar",
                      series = c("4 years or less", "5 years", "6 to 7 years", "8 years or more"),
                      categories = fig5_20$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
+
+#Figure 5-12
+fig5_12 <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0120.csv", sep=""),stringsAsFactors=FALSE)
+json5_12 <- makeJson(sectionn = 5, graphn = 12, dt = fig5_12, graphtype = "bar", series=c("With debt", "Borrowed in 2011–2012"),
+                    categories = fig5_12$category, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
+
+
 #Figure 5-11
 fig5_11 <- read.csv(paste(textpath, "Covering expenses_working/05_0110.csv", sep=""),stringsAsFactors=FALSE)
 fig5_11$category <- gsub("-", "–", fig5_11$category) 
@@ -87,6 +94,10 @@ json5_7 <- makeJson(sectionn = 5, graphn = 7, dt = fig5_7$fed_min_wage, graphtyp
 fig5_6<- read.csv(paste(textpath, "Covering expenses_working/05_0060.csv", sep=""),stringsAsFactors=FALSE)
 json5_6 <- makeJson(sectionn = 5, graphn = 6, dt = fig5_6, graphtype = "line", series=c("800 hours at minimum wage", "Tuition, fees, room, and board", "Tuition and fees"),
                     categories = fig5_6$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+#Figure 5-5
+fig5_5<- read.csv(paste(textpath, "Covering expenses_income/05_0050.csv", sep=""),stringsAsFactors=FALSE)
+json5_5 <- makeJson(sectionn = 5, graphn = 5, dt = fig5_5$Median.Income, graphtype = "line", series="Median Income",
+                    categories = fig5_5$X, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-3
 fig5_3<- read.csv(paste(textpath, "Covering expenses_income/05_0030.csv", sep=""),stringsAsFactors=FALSE)
