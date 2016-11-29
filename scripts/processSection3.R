@@ -79,6 +79,8 @@ json3_7 <- makeJson(sectionn = 3, graphn = 7, dt = fig3_7$roomamt, graphtype = "
 
 
 
+
+
 #Figure 3-9
 fig3_9 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0090.csv", sep=""),stringsAsFactors=FALSE)
 json3_9 <- makeJson(sectionn = 3, graphn = 9, dt = fig3_9, graphtype = "line", series=c("Private nonprofit four-year", "Public four-year"),
@@ -86,9 +88,13 @@ json3_9 <- makeJson(sectionn = 3, graphn = 9, dt = fig3_9, graphtype = "line", s
 
 #Figure 3-10
 fig3_10 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0100.csv", sep=""),stringsAsFactors=FALSE)
-json3_10 <- makeJson(sectionn = 3, graphn = 10, dt = fig3_10, graphtype = "bar", series=c("Room and board", "Tuition and fees"), set1=fig3_10[,c("pell_per_student")], set2=fig4_9[,c("grant_per_recip")],
-                    categories = fig4_9$dependency_income, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+json3_10 <- makeJson(sectionn = 3, graphn = 10, dt = fig3_10, graphtype = "bar", series=c("Room and board", "Tuition and fees"), set1=fig3_10[,c("room_percent", "tuition_percent")], set2=fig3_10[,c("room_dollar", "tuition_dollar")],
+                    categories = fig3_10$category, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
+#Figure 3-11
+fig3_11 <- read.csv(paste(textpath, "Prices and expenses_student budgets/03_0110.csv", sep=""),stringsAsFactors=FALSE)
+json3_11 <- makeJson(sectionn = 3, graphn = 11, dt = fig3_11, graphtype = "bar", series=c("1st", "2nd", "3rd", "4th", "5th"),
+                     categories = fig3_11$sector_label, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 3-12
 fig3_12a <- read.csv(paste(textpath, "Prices and expenses_student budgets/03_0120.csv", sep=""),stringsAsFactors=FALSE)
@@ -119,8 +125,11 @@ json3_13 <- makeJson(sectionn = 3, graphn = 13, dt = fig3_13, graphtype = "bar",
 #Figure 3-14
 fig3_14 <- read.csv(paste(textpath, "Prices and expenses_student budgets/03_0140.csv", sep=""),stringsAsFactors=FALSE)
 fig3_14$X <- gsub("-", "–", fig3_14$X) 
-json3_14 <- makeJson(sectionn = 3, graphn = 14, dt = fig3_14, graphtype = "line", series="Annual Spending",
+json3_14 <- makeJson(sectionn = 3, graphn = 14, dt = fig3_14$course.material.spending, graphtype = "line", series="Annual Spending",
                      categories = fig3_14$X, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+#need to add: "line": {"connectNull": true}  in JSON
+
+
 #Figure 3-15
 fig3_15 <- read.csv(paste(textpath, "Prices and expenses_student budgets/03_0150.csv", sep=""),stringsAsFactors=FALSE)
 fig3_15$X <- gsub("-", "–", fig3_15$X) 

@@ -1,0 +1,1 @@
+{"data":{"type":"bar","sets":{"set1":["Employer Aid",{}],"set2":[null,{}]},"labels":{"format":"dollar"}},"axis":{"rotated":true,"x":{"type":"category","categories":"Total"},"y":{"tick":{"format":"dollar"}}},"series":"Employer Aid","title":"Total","metadata":{"source":"National Postsecondary Student Aid Study 2012 ","notes":null}}
