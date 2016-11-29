@@ -1,0 +1,1 @@
+{"series": "Private Grants", "axis": {"y": {"tick": {"format": "percent"}}, "rotated": true, "x": {"type": "category", "categories": "Total"}}, "data": {"type": "bar", "columns": [["Private Grants", 0.14]], "labels": {"format": "percent"}}, "metadata": {"notes": null, "source": "National Postsecondary Student Aid Study 2012 "}}

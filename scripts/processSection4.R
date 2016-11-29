@@ -192,6 +192,11 @@ fig4_18 <- read.csv(paste(textpath, "Financial aid_institutional/04_0180.csv", s
 json4_18 <- makeJson(sectionn = 4, graphn = 18, dt = fig4_18$percent, graphtype = "bar", series="Percentage receiving institutional grant aid", xlabel="Institution type",
                      categories = fig4_18$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
+#Figure 4-19
+fig4_19 <- read.csv(paste(textpath, "Financial aid_institutional/04_0190-revised.csv", sep=""),stringsAsFactors=FALSE)
+json4_19 <- makeJson(sectionn = 4, graphn = 19, dt = fig4_19, graphtype = "bar", series=c("Per recipient","Per first-time full-time student"), set1=fig4_19[,c("leftover_first")], set2=fig4_19[,c("leftover_recipient")],
+                     categories = fig4_19$category, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+
 #Figure 4-22
 fig4_22 <- read.csv(paste(textpath, "Financial aid_other/04_0220.csv", sep=""),stringsAsFactors=FALSE)
 fig4_22$sub_category <- gsub("-\xca\xca", ": ", fig4_22$sub_category) 
