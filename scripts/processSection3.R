@@ -87,9 +87,14 @@ json3_9 <- makeJson(sectionn = 3, graphn = 9, dt = fig3_9, graphtype = "line", s
                     categories = fig3_9$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 3-10
+#graph 1
 fig3_10 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0100.csv", sep=""),stringsAsFactors=FALSE)
-json3_10 <- makeJson(sectionn = 3, graphn = 10, dt = fig3_10, graphtype = "bar", series=c("Room and board", "Tuition and fees"), set1=fig3_10[,c("room_percent", "tuition_percent")], set2=fig3_10[,c("room_dollar", "tuition_dollar")],
-                    categories = fig3_10$category, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+json3_10 <- makeJson(sectionn = 3, graphn = 10, subn=0, dt = fig3_10, graphtype = "bar", series=c("Room and board", "Tuition and fees"),
+                categories = fig3_10$category, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+#graph2  
+fig3_101<- read.csv(paste(textpath, "Prices and expenses_room and board/03_0101.csv", sep=""),stringsAsFactors=FALSE)
+json3_101 <- makeJson(sectionn = 3, graphn = 10, subn=1, dt = fig3_101, graphtype = "bar", series=c("Room and board", "Tuition and fees"),
+                            categories = fig3_10$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 3-11
 fig3_11 <- read.csv(paste(textpath, "Prices and expenses_student budgets/03_0110.csv", sep=""),stringsAsFactors=FALSE)
@@ -120,7 +125,7 @@ json3_12d <- makeJson(sectionn = 3, graphn = 12, subn= 4, dt = fig3_12d, graphty
 #Figure 3-13
 fig3_13 <- read.csv(paste(textpath, "Prices and expenses_student budgets/03_0130.csv", sep=""),stringsAsFactors=FALSE)
 json3_13 <- makeJson(sectionn = 3, graphn = 13, dt = fig3_13, graphtype = "bar", series=c("2001", "2016"),
-                     categories = fig3_14$X, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                     categories = fig3_14$X, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 #Figure 3-14
 fig3_14 <- read.csv(paste(textpath, "Prices and expenses_student budgets/03_0140.csv", sep=""),stringsAsFactors=FALSE)

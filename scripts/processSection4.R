@@ -99,9 +99,35 @@ json4_8<- makeJson(sectionn = 4, graphn = 8, dt = fig4_8, graphtype = "bar", set
                     categories = c("Federal", "Veterans", "State", "Institutional", "Private", "Total"), tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 #Figure 4-9
+#OLD VERSION:
 fig4_9 <- read.csv(paste(textpath, "Financial aid_federal/04_0090.csv", sep=""),stringsAsFactors=FALSE)
 json4_9 <- makeJson(sectionn = 4, graphn = 9, dt = fig4_9, graphtype = "bar", series=c("Pell Grant per full-time student", "Pell Grant per full-time recipient"), set1=fig4_9[,c("pell_per_student")], set2=fig4_9[,c("grant_per_recip")],
                      categories = fig4_9$dependency_income, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+#CORRECT VERSION:
+fig4_9a <- read.csv(paste(textpath, "Financial aid_federal/04_00901.csv", sep=""),stringsAsFactors=FALSE)
+fig4_9b <- read.csv(paste(textpath, "Financial aid_federal/04_00902.csv", sep=""),stringsAsFactors=FALSE)
+fig4_9c <- read.csv(paste(textpath, "Financial aid_federal/04_00903.csv", sep=""),stringsAsFactors=FALSE)
+
+json4_9a <- makeJson(sectionn = 4, graphn = 9, subn= 3, dt = fig4_9a$grant_per_recip, graphtype = "bar",
+                     series = "Pell-Grant",
+                     categories = fig4_9a$dependency_income, tickformat = "dollar", rotated = TRUE, directlabels = TRUE, graphtitle="Dependency status")
+json4_9b <- makeJson(sectionn = 4, graphn = 9, subn= 2, dt = fig4_9b$grant_per_recip, graphtype = "bar",
+                     series = "Pell-Grant",
+                     categories = fig4_9b$dependency_income, tickformat = "dollar", rotated = TRUE, directlabels = TRUE, graphtitle="Dependent students' family income")
+json4_9c <- makeJson(sectionn = 4, graphn = 9, subn= 1, dt = fig4_9c$grant_per_recip, graphtype = "bar",
+                     series = "Pell-Grant",
+                     categories = fig4_9c$dependency_income, tickformat = "dollar", rotated = TRUE, directlabels = TRUE, graphtitle="All")
+
+json4_91a <- makeJson(sectionn = 4, graphn = 9, subn= 33, dt = fig4_9a$pell_per_student, graphtype = "bar",
+                     series = "Pell-Grant",
+                     categories = fig4_9a$dependency_income, tickformat = "dollar", rotated = TRUE, directlabels = TRUE, graphtitle="Dependency status")
+json4_91b <- makeJson(sectionn = 4, graphn = 9, subn= 22, dt = fig4_9b$pell_per_student, graphtype = "bar",
+                      series = "Pell-Grant",
+                      categories = fig4_9b$dependency_income, tickformat = "dollar", rotated = TRUE, directlabels = TRUE, graphtitle="Dependent students' family income")
+json4_91c <- makeJson(sectionn = 4, graphn = 9, subn= 11, dt = fig4_9c$pell_per_student, graphtype = "bar",
+                      series = "Pell-Grant",
+                      categories = fig4_9c$dependency_income, tickformat = "dollar", rotated = TRUE, directlabels = TRUE, graphtitle="All")
+
 
 #Figure 4-10
 fig4_10 <- read.csv(paste(textpath, "Financial aid_federal/04_0100.csv", sep=""),stringsAsFactors=FALSE)
