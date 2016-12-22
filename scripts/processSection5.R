@@ -23,6 +23,12 @@ json5_32<- makeJson(sectionn = 5, graphn = 32, dt = fig5_32$X..of.PSE.students, 
                     series = "Percentage",
                     categories = fig5_32$X, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
+#Figure 5-31
+fig5_31<- read.csv(paste(textpath, "Covering Expenses_savings/05_0310.csv", sep=""),stringsAsFactors=FALSE)
+json5_31<- makeJson(sectionn = 5, graphn = 31, dt = fig5_31, graphtype = "bar",
+                    series = "Percentage",
+                    categories = fig5_32$X, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
+
 #Figure 5-30
 fig5_30<- read.csv(paste(textpath, "Covering Expenses_savings/05_0300.csv", sep=""),stringsAsFactors=FALSE)
 json5_30<- makeJson(sectionn = 5, graphn = 30, dt = fig5_30, graphtype = "line",
@@ -35,6 +41,11 @@ json5_29<- makeJson(sectionn = 5, graphn = 29, dt = fig5_29, graphtype = "line",
                     series = c("White non-Hispanic", "Non-white or Hispanic"),
                     categories = fig5_29$X, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
+#Figure 5-28
+fig5_28<- read.csv(paste(textpath, "Covering Expenses_savings/05_0280.csv", sep=""),stringsAsFactors=FALSE)
+json5_28<- makeJson(sectionn = 5, graphn = 28, dt = fig5_28, graphtype = "bar",
+                    series = c("Lowest quintile", "Second quintile", "Third quintile", "Fourth quintile", "Highest quintile"),
+                    categories = fig5_28$X, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 #Figure 5-27
 fig5_27<- read.csv(paste(textpath, "Covering Expenses_savings/05_0270.csv", sep=""),stringsAsFactors=FALSE)
@@ -42,7 +53,11 @@ json5_27<- makeJson(sectionn = 5, graphn = 27, dt = fig5_27, graphtype = "line",
                     series = c("All Familes", "Family with Head Age 45–54", "Single with children", "Couple with children"),
                     categories = fig5_27$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
-
+#Figure 5-26
+fig5_26<- read.csv(paste(textpath, "Covering Expenses_savings/05_0260.csv", sep=""),stringsAsFactors=FALSE)
+json5_26<- makeJson(sectionn = 5, graphn = 26, dt = fig5_26$Total.EFC, graphtype = "line",
+                    series = "Total EFC",
+                    categories = fig5_26$Savings, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 #Figure 5-25
 fig5_25<- read.csv(paste(textpath, "Covering Expenses_savings/05_0250.csv", sep=""),stringsAsFactors=FALSE)
 json5_25<- makeJson(sectionn = 5, graphn = 25, dt = fig5_25$amount, graphtype = "line",

@@ -23,8 +23,8 @@ json7_3<- makeJson(sectionn = 7, graphn = 3, dt = fig7_3, graphtype = "bar", ser
                    categories = fig7_1$category, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 #Figure 7-4
-fig7_4<- read.csv(paste(textpath, "Personas/07_0040.csv", sep=""),stringsAsFactors=FALSE)
-json7_4<- makeJson(sectionn = 7, graphn = 4, dt = fig7_4, graphtype = "bar", series=c("In state", "Out-of-state"), set1= fig7_4[,c("X4_in", "X5_in")] , set2= fig7_4[,c("X6_in", "X4_out")] ,
+fig7_4<- read.csv(paste(textpath, "Personas/07_0040.csv", sep=""),stringsAsFactors=FALSE, check.names=FALSE)
+json7_4<- makeJson(sectionn = 7, graphn = 4, dt = fig7_4, graphtype = "bar", series=c("Public four-year out-of-state","Public four-year in-state", "Private", "For-profit", "Public two-year"), set1= fig7_4[,c("Public four-year out-of-state, 4 years", "Public four-year out-of-state, 5 years", "Public four-year out-of-state, 6 years")], set2= fig7_4[,c("Public four-year in-state, 1 year", "Public four-year in-state, 2 years", "Public four-year in-state, 3 years", "Public four-year in-state, 4 years", "Public four-year in-state, 5 years", "Public four-year in-state, 6 years")], set3= fig7_4[,c("Private, 4 years", "Private, 5 years", "Private, 6 years")],  set4= fig7_4[,c("For-profit, 2 years", "For-profit, 3 years", "For-profit, 4 years", "For-profit, 5 years", "For-profit, 6 years")],  set5= fig7_4[,c("Public two-year, 2 years", "Public two-year, 3 years", "Public two-year, 4 years")], 
                    categories = fig7_4$category, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 7-5
@@ -38,6 +38,10 @@ json7_7<- makeJson(sectionn = 7, graphn = 7, dt = fig7_7, graphtype = "bar", ser
                    set1= fig7_7[,c("EFC_public_in","federal_public_in","military_public_in","state_public_in","inst_public_in","private_public_in","student_loans_public_in","parent_loans_public_in","private_loans_public_in","earnings_public_in","budget_public_in","tuition_public_in")], 
                    set2= fig7_7[,c("EFC_public_out","federal_public_out","military_public_out","state_public_out","inst_public_out","private_public_out","student_loans_public_out","parent_loans_public_out","private_loans_public_out","earnings_public_out","budget_public_out","tuition_public_out")], 
                    categories = fig7_7$category, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+#Figure 7-8 
+fig7_8<- read.csv(paste(textpath, "Personas/07_0080.csv", sep=""),stringsAsFactors=FALSE, check.names=FALSE)
+json7_8<- makeJson(sectionn = 7, graphn = 8, dt = fig7_8, graphtype = "bar", series=c("Public four-year in-state", "Public four-year out-of-state", "Private", "For-profit", "Public two-year"),  set1= fig7_8[,c("Public four-year in-state, 4 years", "Public four-year in-state, 5 years", "Public four-year in-state, 6 years")], set2= fig7_8[,c("Public four-year out-of-state, 4 years", "Public four-year out-of-state, 5 years", "Public four-year out-of-state, 6 years")],  set3= fig7_8[,c("Private, 4 years", "Private, 5 years", "Private, 6 years")],  set4= fig7_8[,c("For-profit, 2 years", "For-profit, 2 years", "For-profit, 3 years", "For-profit, 4 years", "For-profit, 5 years")],  set5= fig7_8[,c("Public two-year, 2 years", "Public two-year, 3 years", "Public two-year, 4 years")], 
+                   categories = fig7_8$category, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 7-9
 fig7_9<- read.csv(paste(textpath, "Personas/07_0090.csv", sep=""),stringsAsFactors=FALSE)

@@ -90,13 +90,21 @@ json4_7b <- makeJson(sectionn = 4, graphn = 7, subn=2, dt = fig4_7b, graphtype =
                     series = c("Federal Grants", "Veterans' and Military", "State Grants", "Institutional Grants", "Employer or Private Grants"),
                     categories = fig4_7b$column, graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
-#Figure 4-8
+#Figure 4-8 #had to manually change the ordering of the sets and had to replace "groups" aray with     
+"groups": [
+[
+"Federal",
+"State",
+"Veterans",
+"Institutional",
+"Private"
+]
 fig4_8 <- read.csv(paste(textpath, "Financial aid_grant aid/CSVs/04_0080.csv", sep=""),stringsAsFactors=FALSE)
-json4_8<- makeJson(sectionn = 4, graphn = 8, dt = fig4_8, graphtype = "bar", set1= fig4_8[grep("Less than \\$30,00", fig4_8$category),], set2= fig4_8[grep("\\$30,000\\:\\$64,999", fig4_8$category),],
-                    set3= fig4_8[grep("\\$65,000\\:\\$105,999", fig4_8$category),], set4= fig4_8[grep("\\$106,000\\:\\$154,999", fig4_8$category),],
-                    set5=fig4_8[grep("\\$155,000", fig4_8$category),],
-                    series = c("Less than $30,000", "$30,000-$64,999", "$65,000-$105,999","$106,000-$154,999", "$155,000 or higher"),
-                    categories = fig4_8$category, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+json4_8<- makeJson(sectionn = 4, graphn = 8, dt = fig4_8, graphtype = "bar", set1= fig4_8[grep("Less than \\$30,00", fig4_8$category), c("Federal", "Veterans", "State", "Institutional", "Private")], set2= fig4_8[grep("\\$30,000\\:\\$64,999", fig4_8$category),c("Federal", "Veterans", "State", "Institutional", "Private")],
+                    set3= fig4_8[grep("\\$65,000\\:\\$105,999", fig4_8$category),c("Federal", "Veterans", "State", "Institutional", "Private")], set4= fig4_8[grep("\\$106,000\\:\\$154,999", fig4_8$category),c("Federal", "Veterans", "State", "Institutional", "Private")],
+                    set5=fig4_8[grep("\\$155,000", fig4_8$category),c("Federal", "Veterans", "State", "Institutional", "Private")],
+                    series = c("Less than $30,000", "$30,000–$64,999", "$65,000–$105,999","$106,000–$154,999", "$155,000 or higher"),
+                    categories = fig4_8$category_labels, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 #Figure 4-9
 #OLD VERSION:
