@@ -96,7 +96,7 @@ json4_8<- makeJson(sectionn = 4, graphn = 8, dt = fig4_8, graphtype = "bar", set
                     set3= fig4_8[grep("\\$65,000\\:\\$105,999", fig4_8$category),], set4= fig4_8[grep("\\$106,000\\:\\$154,999", fig4_8$category),],
                     set5=fig4_8[grep("\\$155,000", fig4_8$category),],
                     series = c("Less than $30,000", "$30,000-$64,999", "$65,000-$105,999","$106,000-$154,999", "$155,000 or higher"),
-                    categories = c("Federal", "Veterans", "State", "Institutional", "Private", "Total"), tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+                    categories = fig4_8$category, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 #Figure 4-9
 #OLD VERSION:

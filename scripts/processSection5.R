@@ -17,7 +17,37 @@ fig5_19<- read.csv(paste(textpath, "Covering Expenses_time to degree/05_0190.csv
 json5_19<- makeJson(sectionn = 5, graphn = 19, dt = fig5_19, graphtype = "bar",
                     series = c("Average years enrolled", "Average years elasped"),
                     categories = fig5_19$category, tickformat = "number", rotated = FALSE, directlabels = TRUE)
+#Figure 5-32
+fig5_32<- read.csv(paste(textpath, "Covering Expenses_savings/05_0320.csv", sep=""),stringsAsFactors=FALSE)
+json5_32<- makeJson(sectionn = 5, graphn = 32, dt = fig5_32$X..of.PSE.students, graphtype = "line",
+                    series = "Percentage",
+                    categories = fig5_32$X, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
+#Figure 5-30
+fig5_30<- read.csv(paste(textpath, "Covering Expenses_savings/05_0300.csv", sep=""),stringsAsFactors=FALSE)
+json5_30<- makeJson(sectionn = 5, graphn = 30, dt = fig5_30, graphtype = "line",
+                    series = c("No high school diploma", "High school diploma", "Some college", "Bachelor's Degree or Higher"),
+                    categories = fig5_30$X, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
+#Figure 5-29
+fig5_29<- read.csv(paste(textpath, "Covering Expenses_savings/05_0290.csv", sep=""),stringsAsFactors=FALSE)
+json5_29<- makeJson(sectionn = 5, graphn = 29, dt = fig5_29, graphtype = "line",
+                    series = c("White non-Hispanic", "Non-white or Hispanic"),
+                    categories = fig5_29$X, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
+
+#Figure 5-27
+fig5_27<- read.csv(paste(textpath, "Covering Expenses_savings/05_0270.csv", sep=""),stringsAsFactors=FALSE)
+json5_27<- makeJson(sectionn = 5, graphn = 27, dt = fig5_27, graphtype = "line",
+                    series = c("All Familes", "Family with Head Age 45–54", "Single with children", "Couple with children"),
+                    categories = fig5_27$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
+
+#Figure 5-25
+fig5_25<- read.csv(paste(textpath, "Covering Expenses_savings/05_0250.csv", sep=""),stringsAsFactors=FALSE)
+json5_25<- makeJson(sectionn = 5, graphn = 25, dt = fig5_25$amount, graphtype = "line",
+                    series = "Personal savings rate",
+                    categories = fig5_25$year, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-24
 fig5_24<- read.csv(paste(textpath, "Covering Expenses_time to degree/05_0240.csv", sep=""),stringsAsFactors=FALSE)
@@ -53,7 +83,74 @@ json5_20 <- makeJson(sectionn = 5, graphn = 20, dt = fig5_20, graphtype = "bar",
                      series = c("4 years or less", "5 years", "6 to 7 years", "8 years or more"),
                      categories = fig5_20$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
+#Figure 5-18
+fig5_18a <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0181.csv", sep=""),stringsAsFactors=FALSE)
+fig5_18b <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0182.csv", sep=""),stringsAsFactors=FALSE)
+fig5_18c <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0183.csv", sep=""),stringsAsFactors=FALSE)
 
+fig5_18a
+json5_18a <- makeJson(sectionn = 5, graphn = 18, subn= 1, dt = fig5_18a$parentPLUS, graphtype = "bar",
+                      series = "Loans borrowed",
+                      categories = fig5_18a$category,  xlabel = "All full-time dependent students",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=17000, directlabels = TRUE)
+json5_18b <- makeJson(sectionn = 5, graphn = 18, subn= 2, dt = fig5_18b$parentPLUS, graphtype = "bar",
+                      series = "Loans borrowed",
+                      categories = fig5_18b$category,  xlabel = "Family income",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=17000, directlabels = TRUE)
+json5_18c <- makeJson(sectionn = 5, graphn = 18, subn= 3, dt = fig5_18c$parentPLUS, graphtype = "bar",
+                      series = "Loans borrowed",
+                      categories = fig5_18c$category,  xlabel = "Sector",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=17000, directlabels = TRUE)
+
+#Figure 5-17
+fig5_17a <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0171.csv", sep=""),stringsAsFactors=FALSE)
+fig5_17b <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0172.csv", sep=""),stringsAsFactors=FALSE)
+fig5_17c <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0173.csv", sep=""),stringsAsFactors=FALSE)
+
+json5_17a <- makeJson(sectionn = 5, graphn = 17, subn= 1, dt = fig5_17a$amount, graphtype = "bar",
+                      series = "Loans borrowed",
+                      categories = fig5_17a$category,  xlabel = "All full-time dependent students",graphtitle=NULL, tickformat = "dual_$_%", rotated = TRUE, ymax=17000, directlabels = TRUE)
+json5_17b <- makeJson(sectionn = 5, graphn = 17, subn= 2, dt = fig5_17b$amount, graphtype = "bar",
+                      series = "Loans borrowed",
+                      categories = fig5_17b$category,  xlabel = "Family income",graphtitle=NULL, tickformat = "dual_$_%", rotated = TRUE, ymax=17000, directlabels = TRUE)
+json5_17c <- makeJson(sectionn = 5, graphn = 17, subn= 3, dt = fig5_17c$amount, graphtype = "bar",
+                      series = "Loans borrowed",
+                      categories = fig5_17c$category,  xlabel = "Family income",graphtitle=NULL, tickformat = "dual_$_%", rotated = TRUE, ymax=17000, directlabels = TRUE)
+#Figure 5-16
+fig5_16<- read.csv(paste(textpath, "Covering expenses_borrowing/05_0160.csv", sep=""),stringsAsFactors=FALSE)
+json5_16 <- makeJson(sectionn = 5, graphn = 16, dt = fig5_16$amount, graphtype = "bar", series="Loan amount",
+                     categories = fig5_16$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
+#Figure 5-15
+#First graph
+fig5_15a<- read.csv(paste(textpath, "Covering expenses_borrowing/05_0151.csv", sep=""),stringsAsFactors=FALSE)
+json5_15a <- makeJson(sectionn = 5, graphn = 15, subn=1, dt = fig5_15a$X..of.students.borrowing.federal.loans, graphtype = "bar", series="Percentage of students borrowing federal loans",
+                     categories = fig5_15a$Degree, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
+#Second graph
+fig5_15b<- read.csv(paste(textpath, "Covering expenses_borrowing/05_0152.csv", sep=""),stringsAsFactors=FALSE)
+json5_15b <- makeJson(sectionn = 5, graphn = 15, subn=2, dt = fig5_15b$amount, graphtype = "bar", series="Average amount in federal loans",
+                      categories = fig5_15b$Degree, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
+#Figure 5-14
+fig5_14<- read.csv(paste(textpath, "Covering expenses_borrowing/05_0140.csv", sep=""),stringsAsFactors=FALSE)
+json5_14 <- makeJson(sectionn = 5, graphn = 14, dt = fig5_14, graphtype = "line", series=c("$ Average per borrower", "$ Average per student"),
+                    categories = fig5_14$Academic.Year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
+#Figure 5-13
+fig5_13a <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0131.csv", sep=""),stringsAsFactors=FALSE)
+fig5_13b <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0132.csv", sep=""),stringsAsFactors=FALSE)
+fig5_13c <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0133.csv", sep=""),stringsAsFactors=FALSE)
+fig5_13d <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0134.csv", sep=""),stringsAsFactors=FALSE)
+
+json5_13a <- makeJson(sectionn = 5, graphn = 13, subn= 1, dt = fig5_13a, graphtype = "bar",
+                     series = c("Average per borrower", "Average per student"),
+                     categories = fig5_13a$category,  xlabel = "All",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=10000, directlabels = TRUE)
+json5_13b <- makeJson(sectionn = 5, graphn = 13, subn= 2, dt = fig5_13b, graphtype = "bar",
+                      series = c("Average per borrower", "Average per student"),
+                      categories = fig5_13b$category,  xlabel = "Dependency status",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=10000, directlabels = TRUE)
+json5_13c <- makeJson(sectionn = 5, graphn = 13, subn= 3, dt = fig5_13c, graphtype = "bar",
+                      series = c("Average per borrower", "Average per student"),
+                      categories = fig5_13c$category,  xlabel = "Dependent Student's Parent Income",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=10000, directlabels = TRUE)
+json5_13d <- makeJson(sectionn = 5, graphn = 13, subn= 4, dt = fig5_13d, graphtype = "bar",
+                      series = c("Average per borrower", "Average per student"),
+                      categories = fig5_13d$category,  xlabel = "All",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=10000, directlabels = TRUE)
 #Figure 5-12
 fig5_12 <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0120.csv", sep=""),stringsAsFactors=FALSE)
 json5_12 <- makeJson(sectionn = 5, graphn = 12, dt = fig5_12, graphtype = "bar", series=c("With debt", "Borrowed in 2011–2012"),
@@ -98,6 +195,11 @@ json5_6 <- makeJson(sectionn = 5, graphn = 6, dt = fig5_6, graphtype = "line", s
 fig5_5<- read.csv(paste(textpath, "Covering expenses_income/05_0050.csv", sep=""),stringsAsFactors=FALSE)
 json5_5 <- makeJson(sectionn = 5, graphn = 5, dt = fig5_5$Median.Income, graphtype = "line", series="Median Income",
                     categories = fig5_5$X, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
+#Figure 5-4
+fig5_4<- read.csv(paste(textpath, "Covering expenses_income/05_0040.csv", sep=""),stringsAsFactors=FALSE)
+json5_4 <- makeJson(sectionn = 5, graphn = 4, dt = fig5_4, graphtype = "line", series=c("Ages 25 to 34", "Agest 35 to 44", "Ages 45 to 54", "Ages 55 to 64"),
+                    categories = fig5_4$Year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-3
 fig5_3<- read.csv(paste(textpath, "Covering expenses_income/05_0030.csv", sep=""),stringsAsFactors=FALSE)

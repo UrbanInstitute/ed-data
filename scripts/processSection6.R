@@ -99,14 +99,14 @@ json6_9 <- makeJson(sectionn = 6, graphn = 9, dt = fig6_9, graphtype = "bar",
 
 fig6_8 <- read.csv(paste(textpath, "After college_debt/06_0080.csv", sep=""),stringsAsFactors=FALSE)
 json6_8 <- makeJson(sectionn = 6, graphn = 8, dt = fig6_8, graphtype = "bar",
-                    series = c("Bottom Quartile", "Second Quartile", "Third Quartile", "Highest Quartile"),
-                    categories = fig6_8$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+                    series = c("Bottom Quartile", "Second Quartile", "Third Quartile", "Highest Quartile"), ymax=1,
+                    categories = fig6_8$category, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 #Figure 6-7
 
 fig6_7 <- read.csv(paste(textpath, "After college_earnings/06_0070.csv", sep=""),stringsAsFactors=FALSE)
 json6_7 <- makeJson(sectionn = 6, graphn = 7, dt = fig6_7, graphtype = "bar",
-                    series = c("0-25th percentile", "25th-50th percentile", "50th-75th percentile"),
+                    series = c("0–25th percentile", "25th–50th percentile", "50th–75th percentile"),
                     categories = fig6_7$field, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 

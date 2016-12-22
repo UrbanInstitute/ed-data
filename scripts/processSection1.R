@@ -34,7 +34,17 @@ json1_2 <- makeJson(sectionn = 1, graphn = 2, dt = fig1_2, graphtype = "bar",
                     series = c("0-499", "500-999", "1,000-1,499", "5,000-9,999", "10,000-19,999", "20,000+"),
                     categories = fig1_2$carnegie_label, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
+#Figure 1-3
+fig1_3 <- read.csv(paste(textpath, "What is college_institutions/01_0030.csv", sep=""),stringsAsFactors=FALSE)
+json1_3 <- makeJson(sectionn = 1, graphn = 3, dt = fig1_3, graphtype = "bar",
+                    series = c("Graduate enrollment", "Full-time undergraduate enrollment", "Part-time undergraduate enrollment"),
+                    categories = fig1_3$category, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
+#Figure 1-4
+fig1_4 <- read.csv(paste(textpath, "What is college_institutions/01_0040.csv", sep=""),stringsAsFactors=FALSE)
+json1_4 <- makeJson(sectionn = 1, graphn = 4, dt = fig1_4, graphtype = "line",
+                    series = c("Public four-year", "Public two-year", "Private nonprofit four-year", "For-profit"),
+                    categories = fig1_4$X, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 1-5
 fig1_5 <- read.csv(paste(textpath, "What is college_students/01_0050.csv", sep=""),stringsAsFactors=FALSE)
@@ -92,12 +102,12 @@ json1_12 <- makeJson(sectionn = 1, graphn = 12, dt = fig1_12, graphtype = "bar",
 fig1_13 <- read.csv(paste(textpath, "What is college_students/01_0130.csv", sep=""),stringsAsFactors=FALSE)
 json1_13 <- makeJson(sectionn = 1, graphn = 13, dt = fig1_13, graphtype = "bar",
                      series = c("Public four-year", "Private four-year", "Public two-year", "For-profit", "Other or nondegree-granting"),
-                    categories = fig1_13$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+                    categories = fig1_13$Attendance, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 1-14
 fig1_14 <- read.csv(paste(textpath, "What is college_students/01_0140.csv", sep=""),stringsAsFactors=FALSE)
 json1_14 <- makeJson(sectionn = 1, graphn = 14, dt = fig1_14, graphtype = "bar",
                      series = c("Public four-year", "Private four-year", "Public two-year", "For-profit", "Other or nondegree-granting"),
-                     categories = fig1_14$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+                     categories = fig1_14$Attendance, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 
