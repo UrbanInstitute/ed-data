@@ -3,7 +3,7 @@ library(dplyr)
 library(tidyr)
 library(jsonlite)
 library(openxlsx)
-
+ 
 
 source('~/Documents/ed-data/scripts/createJsons.R')
 textpath <- "/Users/vhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
@@ -24,7 +24,7 @@ json7_3<- makeJson(sectionn = 7, graphn = 3, dt = fig7_3, graphtype = "bar", ser
 
 #Figure 7-4
 fig7_4<- read.csv(paste(textpath, "Personas/07_0040.csv", sep=""),stringsAsFactors=FALSE)
-json7_4<- makeJson(sectionn = 7, graphn = 4, dt = fig7_4, graphtype = "bar", series=c("In state", "Out-of-state"), set1= fig7_4[,c("in")], set2= fig7_4[,c("out")],
+json7_4<- makeJson(sectionn = 7, graphn = 4, dt = fig7_4, graphtype = "bar", series=c("In state", "Out-of-state"), set1= fig7_4[,c("X4_in", "X5_in")] , set2= fig7_4[,c("X6_in", "X4_out")] ,
                    categories = fig7_4$category, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 7-5

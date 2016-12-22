@@ -28,9 +28,26 @@ def flattenColumns(filepath):
         sets = dj["data"]["sets"]
         # If there is more than one series, flatten each separately
         for key, value in sets.items():
-            dj["data"]["sets"][key] = [value[0]] + value[1]
-            # And for c3 charts it needs to be coreced to an array of arrays
-            dj["data"]["sets"][key] = [dj["data"]["sets"][key]]
+            if(type(value[1][0]) is dict):
+            #toggles with multiple series (e.g. personas)
+                reshaped = {}
+                finalReshaped = []
+                for subDict in value[1]:
+                    for subKey, subValue in subDict.items():
+                        if subKey not in reshaped:
+                            reshaped[subKey] = [subValue]
+                        else:
+                            reshaped[subKey].append(subValue)
+                for reshapedKey, reshapedValue in reshaped.items():
+                    finalReshaped.append([reshapedKey] + reshapedValue)
+                print (finalReshaped)
+                dj["data"]["sets"][key][1] = finalReshaped
+
+            else:
+            #other toggles, with a single series
+                dj["data"]["sets"][key] = [value[0]] + value[1]
+                # And for c3 charts it needs to be coreced to an array of arrays
+                dj["data"]["sets"][key] = [dj["data"]["sets"][key]]
         print(dj["data"]["sets"])
     # For stacked charts, need to nest "groups" elements as a list of lists for c3
     if "groups" in dj["data"]:
