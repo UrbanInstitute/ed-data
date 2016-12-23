@@ -226,11 +226,26 @@ fig4_18 <- read.csv(paste(textpath, "Financial aid_institutional/04_0180.csv", s
 json4_18 <- makeJson(sectionn = 4, graphn = 18, dt = fig4_18$percent, graphtype = "bar", series="Percentage receiving institutional grant aid", xlabel="Institution type",
                      categories = fig4_18$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
-#Figure 4-19
-fig4_19 <- read.csv(paste(textpath, "Financial aid_institutional/04_0190-revised.csv", sep=""),stringsAsFactors=FALSE)
-json4_19 <- makeJson(sectionn = 4, graphn = 19, dt = fig4_19, graphtype = "bar", series=c("Per recipient","Per first-time full-time student"), set1=fig4_19[,c("leftover_first")], set2=fig4_19[,c("leftover_recipient")],
+#Figure 4-19 #had to manually change groups array to:
+"groups": [
+  [
+    "Institutional grant aid per full-time student", 
+    "Remaining (net) tuition and fees per full-time student",
+    "Institutional grant aid per recipient", 
+    "Remaining (net) tuition and fees per recipient"
+    ]
+fig4_19 <- read.csv(paste(textpath, "Financial aid_institutional/04_0190-revised.csv", sep=""),stringsAsFactors=FALSE, check.names = FALSE)
+json4_19 <- makeJson(sectionn = 4, graphn = 19, dt = fig4_19, graphtype = "bar", series=c("Per first-time full-time student", "Per recipient"), set1=fig4_19[,c("Institutional grant aid per full-time student", "Remaining (net) tuition and fees per full-time student")], set2=fig4_19[,c("Institutional grant aid per recipient", "Remaining (net) tuition and fees per recipient")],
                      categories = fig4_19$category, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
+#Figure 4-20 : had to manually change group array to:
+"groups": ["Need-based", "Non-need-based"]
+
+fig4_20 <- read.csv(paste(textpath, "Financial aid_institutional/04_0200-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names = FALSE)
+json4_20<- makeJson(sectionn = 4, graphn = 20, dt = fig4_20, graphtype = "bar", set1= fig4_20[grep("Lowest", fig4_20$category), c("Need-based", "Non-need-based")], set2= fig4_20[grep("Second", fig4_20$category), c("Need-based", "Non-need-based")],
+                    set3= fig4_20[grep("Third", fig4_20$category), c("Need-based", "Non-need-based")],set4= fig4_20[grep("Highest", fig4_20$category), c("Need-based", "Non-need-based")],
+                   series = c("Lowest tuition group", "Second tuition group", "Third tuition group", "Highest tuition group"),
+                   categories = fig4_20$category_label, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 #Figure 4-22
 fig4_22a <- read.csv(paste(textpath, "Financial aid_other/04_022a.csv", sep=""),stringsAsFactors=FALSE)
 fig4_22b <- read.csv(paste(textpath, "Financial aid_other/04_022b.csv", sep=""),stringsAsFactors=FALSE)
