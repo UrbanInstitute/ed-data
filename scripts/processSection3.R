@@ -190,10 +190,17 @@ json3_18f <- makeJson(sectionn = 3, graphn = 18, subn= 22, dt = fig3_18f, grapht
                       categories = fig3_18f$race, graphtitle="Median earnings of women by race", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 3-19
-#MEN
-fig3_19 <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_0190.csv", sep=""),stringsAsFactors=FALSE)
-json3_19 <- makeJson(sectionn = 3, graphn = 19, dt = fig3_19, graphtype = "line", series=c("Ages 18-23", "Ages 24-34"), set1=fig3_19[,c("median.income_18", "p25.income_18", "p75.income_18")], set2=fig3_19[,c("incwage_24", "p25incwage_24", "p75incwage_24", "incwage_24")],
-                     categories = fig3_19$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+#Made hand corrections to x axis ticks. For normal line charts handled in the college-affordability.urban.org repo at:
+#`college-affordability.urban.org/components/30-components/graphs/graph/graph.jsx`
+#in various blocks specific to line and area charts. Given that this chart is a single edge case (toggle
+#line chart), made corrections by hand, namely:
+#- set `x.tick.count: 14`
+#- added empty tick `""` to start and end of x.categories array
+#- added empty tick `null` to start and end of each data series array in `data.sets`
+
+# fig3_19 <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_0190.csv", sep=""),stringsAsFactors=FALSE)
+# json3_19 <- makeJson(sectionn = 3, graphn = 19, dt = fig3_19, graphtype = "line", series=c("Ages 18-23", "Ages 24-34"), set1=fig3_19[,c("median.income_18", "p25.income_18", "p75.income_18")], set2=fig3_19[,c("incwage_24", "p25incwage_24", "p75incwage_24", "incwage_24")],
+#                      categories = fig3_19$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 3-20
 fig3_20a <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_0200.csv", sep=""),stringsAsFactors=FALSE)

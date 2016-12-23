@@ -8,10 +8,19 @@
 
 #SECTION 3: PRICES AND EXPENSES
 
+**Figure 3-19 Made hand corrections to x axis ticks.**
+
+For normal line charts handled in the college-affordability.urban.org repo at:
+`college-affordability.urban.org/components/30-components/graphs/graph/graph.jsx`
+in various blocks specific to line and area charts. Given that this chart is a single edge case (toggle line chart), made corrections by hand, namely:
+- set `x.tick.count: 14`
+- added empty tick `""` to start and end of x.categories array
+- added empty tick `null` to start and end of each data series array in `data.sets`
 
 #SECTION 4: FINANCIAL AID
 
-Figure 4-8 #had to manually change the ordering of the sets and had to replace "groups" aray with     
+**Figure 4-8 had to manually change the ordering of the sets and had to replace "groups" aray with:**
+```
 	"groups": [
 	[
 	"Federal",
@@ -20,8 +29,10 @@ Figure 4-8 #had to manually change the ordering of the sets and had to replace "
 	"Institutional",
 	"Private"
 	]
+```
 
-Figure 4-19: had to manually change groups array to:
+**Figure 4-19: had to manually change groups array to:**
+```
 	"groups": [
 	  [
 	    "Institutional grant aid per full-time student", 
@@ -30,9 +41,12 @@ Figure 4-19: had to manually change groups array to:
 	    "Remaining (net) tuition and fees per recipient"
 	    ]
 	 ]
+```
 
-Figure 4-20 : had to manually change group array to:
+**Figure 4-20 : had to manually change group array to:**
+```
 	"groups": ["Need-based", "Non-need-based"]
+```
 
 #SECTION 5: COVERING EXPENSES
 
@@ -42,8 +56,8 @@ Figure 4-20 : had to manually change group array to:
 
 #SECTION 7: STUDENT PROFILES
 
-#Figure 7-7 #had to change groups array:
-
+**Figure 7-7 #had to change groups array:**
+```
 	"groups": [
 	  [
 	    "Private loans", 
@@ -60,3 +74,4 @@ Figure 4-20 : had to manually change group array to:
 	    "Earnings and other resources"
 	    ]
 	  ],
+```
