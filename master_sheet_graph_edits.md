@@ -42,6 +42,24 @@ Figure 4-20 : had to manually change group array to:
 
 #SECTION 7: STUDENT PROFILES
 
+#Figure 7-3 had to tweak groups array:
+"groups": [
+  [
+    "Expected family contribution", 
+    "Federal grants", 
+    "Military/Veterans", 
+    "State grants", 
+    "Institutional grants", 
+    "Private and employer aid", 
+    "Federal student loans", 
+    "Federal  parent loans", 
+    "Private loans", 
+    "Earnings and other resources", 
+    "Tuition and fees", 
+    "NonTF budget"
+    ]
+  ]
+
 #Figure 7-7 #had to change groups array:
 
 	"groups": [
@@ -60,3 +78,56 @@ Figure 4-20 : had to manually change group array to:
 	    "Earnings and other resources"
 	    ]
 	  ],
+
+#Figure 7-11 need to change groups array to:
+"groups": [
+  [
+    "Expected family contribution", 
+    "Federal grants", 
+    "Military/Veterans", 
+    "State grants", 
+    "Institutional grants", 
+    "Private and employer aid", 
+    "Federal student loans", 
+    "Federal  parent loans", 
+    "Private loans", 
+    "Earnings and other resources",
+    "Budget beyond tuition and fees", 
+    "Tuition and fees"
+    ]
+  ],
+
+ #Figure 7-15 need to change groups array to:
+"groups": [
+  [
+    "Expected family contribution", 
+    "Federal grants", 
+    "Military/Veterans", 
+    "State grants", 
+    "Institutional grants", 
+    "Private and employer aid", 
+    "Federal student loans", 
+    "Federal  parent loans", 
+    "Private loans", 
+    "Earnings and other resources",
+    "Budget beyond tuition and fees", 
+    "Tuition and fees"
+    ]
+  ],
+
+  #Figure 7-19 need to change groups array to:
+"groups": [
+  [
+    "Expected family contribution", 
+    "Federal grants", 
+    "Military/Veterans", 
+    "State grants", 
+    "Institutional grants", 
+    "Private and employer aid", 
+    "Federal student loans", 
+    "Federal  parent loans", 
+    "Private loans", 
+    "Budget beyond tuition and fees", 
+    "Tuition and fees"
+    ]
+  ],
