@@ -25,9 +25,12 @@ json5_32<- makeJson(sectionn = 5, graphn = 32, dt = fig5_32$X..of.PSE.students, 
 
 #Figure 5-31
 fig5_31<- read.csv(paste(textpath, "Covering Expenses_savings/05_0310.csv", sep=""),stringsAsFactors=FALSE)
-json5_31<- makeJson(sectionn = 5, graphn = 31, dt = fig5_31, graphtype = "bar",
-                    series = "Percentage",
-                    categories = fig5_32$X, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
+json5_31<- makeJson(sectionn = 5, graphn = 31, subn = 1, dt = fig5_31$Number.of.accounts..millions., graphtype = "bar",
+                    series = "Accounts in millions",
+                    categories = fig5_31$X, tickformat = "number", rotated = FALSE, directlabels = TRUE)
+json5_31<- makeJson(sectionn = 5, graphn = 31, subn = 2, dt = fig5_31$Average.Account..Thousands.of.2015.Dollars, graphtype = "bar",
+                    series = "Average account size in thousands",
+                    categories = fig5_31$X, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-30
 fig5_30<- read.csv(paste(textpath, "Covering Expenses_savings/05_0300.csv", sep=""),stringsAsFactors=FALSE)
