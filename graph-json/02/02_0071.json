@@ -1,1 +1,54 @@
-{"title": "Research institutions", "data": {"columns": [["Average subsidy per FTE student", 8533.1719, 7675.2535, 7575.3667], ["Average net tuition revenue per FTE student", 8661.1509, 9672.0895, 11711.2593]], "type": "bar", "labels": {"format": "dollar"}, "groups": [["Average subsidy per FTE student", "Average net tuition revenue per FTE student"]]}, "axis": {"x": {"categories": ["'05–'06", "'09–'10", "'13–'14"], "type": "category"}, "y": {"max": 19286.626, "tick": {"format": "dollar"}}, "rotated": false}, "metadata": {"notes": "Institutions are sorted according to the Carnegie Classification of Institutions of Higher Education framework.", "source": "Integrated Postsecondary Education Data System"}, "series": ["Average subsidy per FTE student", "Average net tuition revenue per FTE student"]}
+{
+  "title": "Research institutions",
+  "data": {
+    "columns": [
+      [
+        "Average subsidy per FTE student",
+        8533.1719,
+        7675.2535,
+        7575.3667
+      ],
+      [
+        "Average net tuition revenue per FTE student",
+        8661.1509,
+        9672.0895,
+        11711.2593
+      ]
+    ],
+    "type": "bar",
+    "labels": {
+      "format": "dual_$_% "
+    },
+    "groups": [
+      [
+        "Average subsidy per FTE student",
+        "Average net tuition revenue per FTE student"
+      ]
+    ]
+  },
+  "axis": {
+    "x": {
+      "categories": [
+        "'05\u2013'06",
+        "'09\u2013'10",
+        "'13\u2013'14"
+      ],
+      "type": "category"
+    },
+    "y": {
+      "max": 19286.626,
+      "tick": {
+        "format": "dollar"
+      }
+    },
+    "rotated": false
+  },
+  "metadata": {
+    "notes": "Institutions are sorted according to the Carnegie Classification of Institutions of Higher Education framework.",
+    "source": "Integrated Postsecondary Education Data System"
+  },
+  "series": [
+    "Average subsidy per FTE student",
+    "Average net tuition revenue per FTE student"
+  ]
+}

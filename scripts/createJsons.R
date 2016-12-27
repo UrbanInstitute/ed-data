@@ -7,7 +7,8 @@ library(openxlsx)
 
 # Path to Excel file with graph metadata - change to your file path
 # textpath <- "/Users/vhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/GraphText.xlsx"
-textpath <- "/Users/bchartof/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/GraphText.xlsx"
+#textpath <- "/Users/bchartof/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/GraphText.xlsx"
+ textpath <- "/Users/vivhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/GraphText.xlsx"
 
 graphtext <- readWorkbook(textpath, sheet = 1)
 graphtext$section_number <- as.numeric(graphtext$section_number)

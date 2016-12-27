@@ -36,6 +36,7 @@ json6_4 <- makeJson(sectionn = 6, graphn = 4, dt = fig6_4, graphtype = "line", s
 
 #Figure 6-5
 fig6_5<- read.csv(paste(textpath, "After College_earnings/06_0050.csv", sep=""),stringsAsFactors=FALSE)
+fig6_5$age <- gsub("-", "–", fig6_5$age) 
 json6_5 <- makeJson(sectionn = 6, graphn = 5, dt = fig6_5, graphtype = "line", series=c("High school or equivalent", "Some college, no degree", "Associate degree", "Bachelor's degree", "Advanced degree"),
                     categories = fig6_5$age, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
