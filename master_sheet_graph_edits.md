@@ -78,6 +78,49 @@
 
 #SECTION 3: PRICES AND EXPENSES
 
+**Figure 3-3 (all multiples): manually change color for each to avoid automated repeating colors
+"colors": {
+    "Lowest decile": "#1696D2", 
+    "2nd":"#000000", 
+    "3rd":"#FDBF11", 
+    "4th": "#55b748", 
+    "5th":"#d2d2d2", 
+    "6th": "#ec008b", 
+    "7th": "#cb9f5b", 
+    "8th": "#7348b7", 
+    "9th": "#ff0000", 
+    "Highest decile": "#0f658d"
+   }
+
+**Figure 3-18: 
+Set max value and change number of ticks for 81 and 82
+"y": {
+      "padding": {"top": 0, "bottom": 0},
+      "max": 60000,
+      "tick": {
+        "format": "dollar",
+        "count": 7
+      }
+}
+Set max value and change number of ticks for 811 and 812
+   "y": {
+      "padding": {"top": 0, "bottom": 0},
+      "max": 40000,
+      "tick": {
+        "format": "dollar",
+        "count": 5
+      }
+    },
+#Set max value and change number of ticks for 821 and 822
+"y": {
+  "padding": {"top": 0, "bottom": 0},
+  "max": 50000,
+  "tick": {
+    "format": "dollar",
+    "count": 6
+  }
+},
+
 **Figure 3-19 Made hand corrections to x axis ticks.**
 
 For normal line charts handled in the college-affordability.urban.org repo at:
@@ -87,7 +130,54 @@ in various blocks specific to line and area charts. Given that this chart is a s
 - added empty tick `""` to start and end of x.categories array
 - added empty tick `null` to start and end of each data series array in `data.sets`
 
+#Figure 3-22:
+#First set of multiples- need to add "groups": [["Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"]]
+#First set of multiples set max y value and ticks:
+"y": {
+  "padding": {"top": 0, "bottom": 0},
+  "max": 30000,
+  "tick": {
+    "format": "dollar",
+    "count": 4
+  }
+},
+#Second set of multiples- need to add "groups": [["Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"]]
+  Also set max y value in first graph: "y": {"padding": {"top": 0, "bottom": 0}, "max": 70000,
+
+#Third set of multiples- set max y value and number of ticks
+"y": {
+  "padding": {"top": 0, "bottom": 0},
+  "max": 20000,
+  "tick": {
+    "format": "dollar",
+    "count": 5
+  }
+},
+#Fourth set of multiples- need to add "groups": [["Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"]]
+#need to set max y-value and ticks
+"y": {
+  "padding": {"top": 0, "bottom": 0},
+  "max": 40000,
+  "tick": {
+    "count": 5,
+    "format": "dollar"
+  }
+},
+
+
 #SECTION 4: FINANCIAL AID
+
+#Figure 4-7 (all multiples)
+#set max y value and ticks
+"y": {
+  "padding": {"top": 0, "bottom": 0},
+  "max": 20000,
+  "tick": {
+    "format": "dollar",
+    "count": 5
+  }
+}
+#insert space to x-values after Indepedent or Dependent so that x-values are two lines total
 
 **Figure 4-8 had to manually change the ordering of the sets and had to replace "groups" aray with:**
 ```
@@ -168,7 +258,37 @@ change y tick values
 
 #SECTION 5: COVERING EXPENSES
 
+Figure 5-1 (all multiples)
+1) in first graph, add bracket for x.categories since single category "All families"
+2) set max y value and ticks
+    "y": {
+      "padding": {"top": 0, "bottom": 0},
+      "max": 100000,
+      "tick": {
+        "count": 3,
+        "format": "dollar"
+      }
+    },
 
+Figure 5-13: 
+1) in first graph, add bracket for x.categories since single category "All Undergraduates"
+2) in first, add space to x-axis labels for two lines so "All Under-                 graduates" 
+3) in the third graph, add space to x-axis labels for two lines  so  "Less than          ....." or "$30,000–            ........." for instance
+4) in the fourth graph, add space to x-axis labels for two lines so "Full-time           ....."
+
+Figure 5-17
+1) in the first graph, make x-label three lines by adding spaces in between "All full-time/ dependent/ students"
+2) in the second graph, make each x-label two lines, so  "Less than          ....." or "$30,000–            ........." for instance
+3) set max y-value and ticks
+
+    "y": {
+      "padding": {"top": 0, "bottom": 0},
+      "tick": {
+        "count": 3,
+        "format": "dollar"
+      },
+      "max": 20000
+    },
 #SECTION 6: AFTER COLLEGE
 
 

@@ -127,13 +127,13 @@ fig5_17c <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0173.csv", 
 
 json5_17a <- makeJson(sectionn = 5, graphn = 17, subn= 1, dt = fig5_17a$amount, graphtype = "bar",
                       series = "Loans borrowed",
-                      categories = fig5_17a$category,  xlabel = "All full-time dependent students",graphtitle=NULL, tickformat = "dual_$_%", rotated = TRUE, ymax=17000, directlabels = TRUE)
+                      categories = fig5_17a$category,  xlabel = "All full-time dependent students",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=17000, directlabels = TRUE)
 json5_17b <- makeJson(sectionn = 5, graphn = 17, subn= 2, dt = fig5_17b$amount, graphtype = "bar",
                       series = "Loans borrowed",
-                      categories = fig5_17b$category,  xlabel = "Family income",graphtitle=NULL, tickformat = "dual_$_%", rotated = TRUE, ymax=17000, directlabels = TRUE)
+                      categories = fig5_17b$category,  xlabel = "Family income",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=17000, directlabels = TRUE)
 json5_17c <- makeJson(sectionn = 5, graphn = 17, subn= 3, dt = fig5_17c$amount, graphtype = "bar",
                       series = "Loans borrowed",
-                      categories = fig5_17c$category,  xlabel = "Family income",graphtitle=NULL, tickformat = "dual_$_%", rotated = TRUE, ymax=17000, directlabels = TRUE)
+                      categories = fig5_17c$category,  xlabel = "Family income",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=17000, directlabels = TRUE)
 #Figure 5-16
 fig5_16<- read.csv(paste(textpath, "Covering expenses_borrowing/05_0160.csv", sep=""),stringsAsFactors=FALSE)
 json5_16 <- makeJson(sectionn = 5, graphn = 16, dt = fig5_16$amount, graphtype = "bar", series="Loan amount",
@@ -152,7 +152,7 @@ json5_15b <- makeJson(sectionn = 5, graphn = 15, subn=2, dt = fig5_15b$amount, g
 #Figure 5-14
 fig5_14<- read.csv(paste(textpath, "Covering expenses_borrowing/05_0140.csv", sep=""),stringsAsFactors=FALSE)
 json5_14 <- makeJson(sectionn = 5, graphn = 14, dt = fig5_14, graphtype = "line", series=c("$ Average per borrower", "$ Average per student"),
-                    categories = fig5_14$Academic.Year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                    categories = fig5_14$Academic.Year, tickformat = "$.2s", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-13
 fig5_13a <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0131.csv", sep=""),stringsAsFactors=FALSE)
@@ -171,7 +171,7 @@ json5_13c <- makeJson(sectionn = 5, graphn = 13, subn= 3, dt = fig5_13c, graphty
                       categories = fig5_13c$category,  xlabel = "Dependent Student's Parent Income",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=10000, directlabels = TRUE)
 json5_13d <- makeJson(sectionn = 5, graphn = 13, subn= 4, dt = fig5_13d, graphtype = "bar",
                       series = c("Average per borrower", "Average per student"),
-                      categories = fig5_13d$category,  xlabel = "All",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=10000, directlabels = TRUE)
+                      categories = fig5_13d$category,  xlabel = "Attendance pattern",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=10000, directlabels = TRUE)
 #Figure 5-12
 fig5_12 <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0120.csv", sep=""),stringsAsFactors=FALSE)
 json5_12 <- makeJson(sectionn = 5, graphn = 12, dt = fig5_12, graphtype = "bar", series=c("With debt", "Borrowed in 2011–2012"),
@@ -238,6 +238,7 @@ fig5_1a <- read.csv(paste(textpath, "Covering expenses_income/05_0011.csv", sep=
 fig5_1b <- read.csv(paste(textpath, "Covering expenses_income/05_0012.csv", sep=""),stringsAsFactors=FALSE)
 fig5_1c <- read.csv(paste(textpath, "Covering expenses_income/05_0013.csv", sep=""),stringsAsFactors=FALSE)
 fig5_1d <- read.csv(paste(textpath, "Covering expenses_income/05_0014.csv", sep=""),stringsAsFactors=FALSE)
+fig5_1d$category <- gsub(" to ", "–", fig5_1d$category) 
 
 json5_1a <- makeJson(sectionn = 5, graphn = 1, subn= 1, dt = fig5_1a$income, graphtype = "bar",
                       series = "Income",

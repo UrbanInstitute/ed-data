@@ -9,7 +9,8 @@ source('~/Documents/ed-data/scripts/createJsons.R')
 
 # Path to Excel file with graph metadata - change to your file path
 
-textpath <- "/Users/vhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
+#textpath <- "/Users/vhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
+textpath <- "/Users/vivhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
 
 graphtext <- readWorkbook(paste(textpath, "GraphText.xlsx", sep=""),sheet = 1)
 graphtext$section_number <- as.numeric(graphtext$section_number)
@@ -35,13 +36,23 @@ json3_2 <- makeJson(sectionn = 3, graphn = 2, dt = fig3_2, graphtype = "line",
                     series = c("for profit", "private nonprofit four-year", "public four-year", "public two-year"),
                     categories = fig3_2$year, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
-#Figure 3-3
-
+#Figure 3-3: manually change color for each to avoid automated repeating colors
+"colors": {
+  "Lowest decile": "#1696D2", 
+  "2nd":"#000000", 
+  "3rd":"#FDBF11", 
+  "4th": "#55b748", 
+  "5th":"#d2d2d2", 
+  "6th": "#ec008b", 
+  "7th": "#cb9f5b", 
+  "8th": "#7348b7", 
+  "9th": "#ff0000", 
+  "Highest decile": "#0f658d"
+}
 fig3_3a <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0031.csv", sep=""),stringsAsFactors=FALSE)
 fig3_3b <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0032.csv", sep=""),stringsAsFactors=FALSE)
 fig3_3c <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0033.csv", sep=""),stringsAsFactors=FALSE)
 fig3_3d <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0034.csv", sep=""),stringsAsFactors=FALSE)
-
 
 json3_3a <- makeJson(sectionn = 3, graphn = 3, subn= 1, dt = fig3_3a, graphtype = "bar",
                      series = c("Lowest decile", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "Highest decile"),
@@ -58,13 +69,17 @@ json3_3d <- makeJson(sectionn = 3, graphn = 3, subn= 4, dt = fig3_3d, graphtype 
 #Figure 3-4
 fig3_4a <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0040.csv", sep=""),stringsAsFactors=FALSE)
 fig3_4b <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0041.csv", sep=""),stringsAsFactors=FALSE)
+fig3_4 <- merge(fig3_4a, fig3_4b, by.x ="state", by.y="state", all.x=TRUE)
+#json3_4a <- makeJson(sectionn = 3, graphn = 4, subn= 1, dt = fig3_4a$amount, graphtype = "bar",
+#                     series = "Public two-year tuition and fees",
+ #                    categories = fig3_4a$state, graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+#json3_4b <- makeJson(sectionn = 3, graphn = 4, subn= 2, dt = fig3_4b$amount, graphtype = "bar",
+ #                    series = "Public four-year tuition and fees",
+  #                   categories = fig3_4b$state, graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
-json3_4a <- makeJson(sectionn = 3, graphn = 4, subn= 1, dt = fig3_4a$amount, graphtype = "bar",
-                     series = FALSE,
-                     categories = fig3_4a$state, graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
-json3_4b <- makeJson(sectionn = 3, graphn = 4, subn= 2, dt = fig3_4b$amount, graphtype = "bar",
-                     series = FALSE,
-                     categories = fig3_4b$state, graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+json3_4 <- makeJson(sectionn = 3, graphn = 4, dt = fig3_4, graphtype = "bar", series=c("Public two-year", "Public four-year"), set1=fig3_4[,c("public_two")], set2=fig3_4[,c("public_four")],
+                    categories = fig3_4$state, tickformat = "$.2s", rotated = TRUE, directlabels = TRUE)
+
 
 #Figure 3-5
 fig3_5 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0050.csv", sep=""),stringsAsFactors=FALSE)
@@ -80,7 +95,7 @@ json3_6 <- makeJson(sectionn = 3, graphn = 6, dt = fig3_6$amount, graphtype = "b
 #Figure 3-7
 fig3_7 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0070.csv", sep=""),stringsAsFactors=FALSE)
 json3_7 <- makeJson(sectionn = 3, graphn = 7, dt = fig3_7$roomamt, graphtype = "bar", series=FALSE,
-                    categories = fig3_7$state, tickformat = "number", rotated = TRUE, directlabels = TRUE)
+                    categories = fig3_7$state, tickformat = "$.2s", rotated = TRUE, directlabels = TRUE)
 
 
 
@@ -149,16 +164,43 @@ json3_15 <- makeJson(sectionn = 3, graphn = 15, dt = fig3_15, graphtype = "line"
 #Figure 3-16
 fig3_16 <- read.csv(paste(textpath, "Prices and expenses_student budgets/03_0160.csv", sep=""),stringsAsFactors=FALSE)
 json3_16 <- makeJson(sectionn = 3, graphn = 16, dt = fig3_16, graphtype = "line", series=c("Public two-year", "Public four-year", "Private nonprofit", "For profit"),
-                     categories = fig3_16$X, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                     categories = fig3_16$X, tickformat = "$.2s", rotated = FALSE, directlabels = TRUE)
 
 #Figure 3-17
 fig3_17 <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_0170.csv", sep=""),stringsAsFactors=FALSE)
+fig3_17$age <- gsub("-", "–", fig3_17$age) 
 json3_17 <- makeJson(sectionn = 3, graphn = 17, dt = fig3_17, graphtype = "bar",
                      series = c("Did not work last year", "Part year or part time", "Full year full time"),
                      categories = fig3_17$age, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
-#Figure 3-18
-fig3_18a <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_01801.csv", sep=""),stringsAsFactors=FALSE)
+#Figure 3-18: 
+#Set max value and change number of ticks for 81 and 82
+"y": {
+  "padding": {"top": 0, "bottom": 0},
+  "max": 60000,
+  "tick": {
+    "format": "dollar",
+    "count": 7
+  }
+#Set max value and change number of ticks for 811 and 812
+  "y": {
+    "padding": {"top": 0, "bottom": 0},
+    "max": 40000,
+    "tick": {
+      "format": "dollar",
+      "count": 5
+    }
+  },  
+#Set max value and change number of ticks for 821 and 822
+"y": {
+  "padding": {"top": 0, "bottom": 0},
+  "max": 50000,
+  "tick": {
+    "format": "dollar",
+    "count": 6
+  }
+},
+  fig3_18a <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_01801.csv", sep=""),stringsAsFactors=FALSE)
 fig3_18a$age <- gsub("-", "–", fig3_18a$age) 
 fig3_18b <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_01802.csv", sep=""),stringsAsFactors=FALSE)
 fig3_18b$age <- gsub("-", "–", fig3_18b$age) 
@@ -265,8 +307,17 @@ json3_211d <- makeJson(sectionn = 3, graphn = 21, subn= 14, dt = fig3_211d, grap
                       series = c("Grant aid", "Remaining (net) tuition and fees", "Remaining (net) living expenses"), 
                       categories = fig3_211d$Income, graphtitle="For-profit", tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
-#Figure 3-21
+#Figure 3-22
 #First set of multiples- need to add "groups": [["Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"]]
+#First set of multiples set max y value and ticks:
+"y": {
+  "padding": {"top": 0, "bottom": 0},
+  "max": 30000,
+  "tick": {
+    "format": "dollar",
+    "count": 4
+  }
+},
 fig3_22a <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02201.csv", sep=""),stringsAsFactors=FALSE)
 fig3_22b <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02202.csv", sep=""),stringsAsFactors=FALSE)
 fig3_22c <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02203.csv", sep=""),stringsAsFactors=FALSE)
@@ -296,6 +347,7 @@ fig3_221c <- read.csv(paste(textpath, "Prices and expenses_net price/correct csv
 fig3_221d <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02214.csv", sep=""),stringsAsFactors=FALSE)
 fig3_221e <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02215.csv", sep=""),stringsAsFactors=FALSE)
 
+#set max y value in first graph: "y": {"padding": {"top": 0, "bottom": 0}, "max": 70000,
 json3_221a <- makeJson(sectionn = 3, graphn = 22, subn= 11, dt = fig3_221a, graphtype = "bar",
                       series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
                       categories = fig3_221a$Year, graphtitle="Lowest 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
@@ -313,6 +365,15 @@ json3_221e <- makeJson(sectionn = 3, graphn = 22, subn= 15, dt = fig3_221e, grap
                       categories = fig3_221e$Year, graphtitle="Independent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Third set of multiples- need to add "groups": [["Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"]]
+#set max y value and number of ticks
+"y": {
+  "padding": {"top": 0, "bottom": 0},
+  "max": 20000,
+  "tick": {
+    "format": "dollar",
+    "count": 5
+  }
+},
 fig3_222a <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02221.csv", sep=""),stringsAsFactors=FALSE)
 fig3_222b <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02222.csv", sep=""),stringsAsFactors=FALSE)
 fig3_222c <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02223.csv", sep=""),stringsAsFactors=FALSE)
@@ -336,6 +397,15 @@ json3_222e <- makeJson(sectionn = 3, graphn = 22, subn= 25, dt = fig3_222e, grap
                        categories = fig3_222e$Year, graphtitle="Independent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Fourth set of multiples- need to add "groups": [["Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"]]
+#need to set max y-value and ticks
+"y": {
+  "padding": {"top": 0, "bottom": 0},
+  "max": 40000,
+  "tick": {
+    "count": 5,
+    "format": "dollar"
+  }
+},
 fig3_223a <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02231.csv", sep=""),stringsAsFactors=FALSE)
 fig3_223b <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02232.csv", sep=""),stringsAsFactors=FALSE)
 fig3_223c <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02233.csv", sep=""),stringsAsFactors=FALSE)
