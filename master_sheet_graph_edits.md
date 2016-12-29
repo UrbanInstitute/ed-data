@@ -5,6 +5,8 @@
 
 #SECTION 2: COST OF EDUCATING
 
+*Figure 2-7: for all multiples, add spaces to x-axis labels to create two lines, for example: "'01'–        '02'"
+
 **Figure 2-51: Change Y-axis properties to adjust ticks:
   "axis": {
     "y": {
@@ -291,6 +293,11 @@ Figure 5-17
     },
 #SECTION 6: AFTER COLLEGE
 
+#Figure 6-8
+add bracket to "categories": ["Education Debt"]
+
+#Figure 6-20
+make x-labels two lines after dash by adding space: $1,000– / $5,000
 
 #SECTION 7: STUDENT PROFILES
 
@@ -312,6 +319,23 @@ Figure 5-17
     "NonTF budget"
     ]
   ]
+
+#manually set colors to avoid duplicates
+"colors": {
+  "Institutional grants":"#1696d2",
+  "Military\/Veterans": "#000000",
+  "Tuition and fees": "#55b748",
+  "Earnings and other resources": "#ffff00",
+  "Private and employer aid": "#d2d2d2",
+  "NonTF budget": "#ec008b",
+  "Federal grants": "#6100ec",
+  "State grants": "#d700ec",
+  "Private loans": "#88ec00",
+  "Federal student loans": "#ffa500",
+  "Expected family contribution": "#ec0015",
+  "Federal  parent loans": "#00ecd7"
+},
+
 
 #Figure 7-7 #had to change groups array:
 
@@ -349,6 +373,21 @@ Figure 5-17
     "Tuition and fees"
     ]
   ],
+#need to set colors manually to avoid duplicates
+"colors": {
+  "Expected family contribution":"#d700ec",
+  "Federal grants":"#000000",
+  "Military/Veterans":"#55b748",
+  "State grants": "#00ecd7",
+  "Institutional grants":"#1696d2",
+  "Private and employer aid":"#88ec00",
+  "Federal student loans": "#d2d2d2",
+  "Federal  parent loans":"#6100ec",
+  "Private loans": "#ec008b",
+  "Earnings and other resources":"#ffa500",
+  "Budget beyond tuition and fees":"#ec0015",
+  "Tuition and fees":"#ffff00"
+},
 
  #Figure 7-15 need to change groups array to:
 "groups": [
@@ -367,8 +406,22 @@ Figure 5-17
     "Tuition and fees"
     ]
   ],
-
-  #Figure 7-19 need to change groups array to:
+#need to change colors to avoid duplicates
+"colors": {
+  "Expected family contribution":"#d700ec",
+  "Federal grants":"#000000",
+  "Military/Veterans":"#55b748",
+  "State grants":"#00ecd7",
+  "Institutional grants":"#ffff00",
+  "Private and employer aid":"#88ec00",
+  "Federal student loans":"#d2d2d2",
+  "Federal  parent loans":"#6100ec",
+  "Private loans":"#ec0015",
+  "Earnings and other resources":"#ffa500",
+  "Budget beyond tuition and fees":"#ec008b",
+  "Tuition and fees": "#1696d2"
+},
+#Figure 7-19 need to change groups array
 "groups": [
   [
     "Expected family contribution", 
@@ -384,5 +437,19 @@ Figure 5-17
     "Tuition and fees"
     ]
   ],
+#need to set colors to avoid duplicates
+"colors": {
+  "Expected family contribution":"#d700ec",
+  "Federal grants": "#000000",
+  "Military/Veterans": "#55b748",
+  "State grants": "#ffff00",
+  "Institutional grants": "#1696d2",
+  "Private and employer aid": "#ec008b", 
+  "Federal student loans": "#d2d2d2",
+  "Federal  parent loans": "#6100ec", 
+  "Private loans": "#88ec00",
+  "Budget beyond tuition and fees": "#ec0015",
+  "Tuition and fees": "#00ecd7"
+},
 
 

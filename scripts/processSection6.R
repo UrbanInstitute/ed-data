@@ -51,7 +51,7 @@ json6_6 <- makeJson(sectionn = 6, graphn = 6, dt = fig6_6, graphtype = "bar",
 
 fig6_15 <- read.csv(paste(textpath, "After college_debt/06_0150.csv", sep=""),stringsAsFactors=FALSE)
 figjson6_15 <- makeJson(sectionn = 6, graphn = 15, dt = fig6_15, graphtype = "bar",
-                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or More"),
+                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or more"),
                      categories = fig6_15$race, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 6-14
@@ -66,26 +66,26 @@ json6_14 <- makeJson(sectionn = 6, graphn = 14, dt = fig6_14, graphtype = "bar",
 
 fig6_13 <- read.csv(paste(textpath, "After college_debt/06_0130.csv", sep=""),stringsAsFactors=FALSE)
 json6_13 <- makeJson(sectionn = 6, graphn = 13, dt = fig6_13, graphtype = "bar",
-                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or More"),
+                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or more"),
                      categories = fig6_13$dependency, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 6-12
 
 fig6_12 <- read.csv(paste(textpath, "After college_debt/06_0120.csv", sep=""),stringsAsFactors=FALSE)
 json6_12 <- makeJson(sectionn = 6, graphn = 12, dt = fig6_12, graphtype = "bar",
-                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or More"),
+                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or more"),
                      categories = fig6_12$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 #Figure 6-11
 
 fig6_11 <- read.csv(paste(textpath, "After college_debt/06_0110.csv", sep=""),stringsAsFactors=FALSE)
 json6_11 <- makeJson(sectionn = 6, graphn = 11, dt = fig6_11, graphtype = "bar",
-                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or More"),
+                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or more"),
                      categories = fig6_11$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 6-10
 fig6_10 <- read.csv(paste(textpath, "After college_debt/06_0100.csv", sep=""),stringsAsFactors=FALSE)
 json6_10 <- makeJson(sectionn = 6, graphn = 10, dt = fig6_10, graphtype = "bar",
-                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or More"),
+                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or more"),
                      categories = fig6_10$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 6-9
@@ -97,7 +97,7 @@ json6_9 <- makeJson(sectionn = 6, graphn = 9, dt = fig6_9, graphtype = "bar",
                      categories = fig6_9$Year, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 6-8
-
+#add bracket to "categories": ["Education Debt"]
 fig6_8 <- read.csv(paste(textpath, "After college_debt/06_0080.csv", sep=""),stringsAsFactors=FALSE)
 json6_8 <- makeJson(sectionn = 6, graphn = 8, dt = fig6_8, graphtype = "bar",
                     series = c("Bottom Quartile", "Second Quartile", "Third Quartile", "Highest Quartile"), ymax=1,
@@ -113,11 +113,11 @@ json6_7 <- makeJson(sectionn = 6, graphn = 7, dt = fig6_7, graphtype = "bar",
 
 #Figure 6-16
 fig6_16a<- read.csv(paste(textpath, "After College_loan repayment/06_0160.csv", sep=""),stringsAsFactors=FALSE)
-json6_16a <- makeJson(sectionn = 6, graphn = 16, subn = 1, dt = fig6_16a$percent, graphtype = "bar", series="Borrowers in Repayment",
+json6_16a <- makeJson(sectionn = 6, graphn = 16, subn = 1, dt = fig6_16a$percent, graphtype = "bar", series="Borrowers in repayment",
                     categories = fig6_16a$category, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 fig6_16b<- read.csv(paste(textpath, "After College_loan repayment/06_0161.csv", sep=""),stringsAsFactors=FALSE)
-json6_16b <- makeJson(sectionn = 6, graphn = 16, subn = 2, dt = fig6_16b$debt, graphtype = "bar", series="Average Debt",
+json6_16b <- makeJson(sectionn = 6, graphn = 16, subn = 2, dt = fig6_16b$debt, graphtype = "bar", series="Average debt",
                       categories = fig6_16b$category, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 6-17
@@ -134,14 +134,16 @@ fig6_19<- read.csv(paste(textpath, "After College_loan repayment/06_0190.csv", s
 json6_19<- makeJson(sectionn = 6, graphn = 19, dt = fig6_19, graphtype = "line", series=c("Graduated", "Did not graduate", "Total"),
                     categories = fig6_19$X, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 #Figure 6-20
+#make x-labels two lines after dash by adding space: $1,000– / $5,000
 fig6_20<- read.csv(paste(textpath, "After College_loan repayment/06_0200.csv", sep=""),stringsAsFactors=FALSE)
+fig6_20$X <- gsub("-", "–", fig6_20$X) 
 json6_20<- makeJson(sectionn = 6, graphn = 20, dt = fig6_20$Default.Rate, graphtype = "bar", series="Default Rate",
                     categories = fig6_20$X, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 #Figure 6-21
 
 fig6_21 <- read.csv(paste(textpath, "Breaking even/06_0210.csv", sep=""),stringsAsFactors=FALSE)
-json6_21 <- makeJson(sectionn = 6, graphn = 21, dt = fig6_21, graphtype = "line",
+json6_21 <- makeJson(sectionn = 6, graphn = 21, dt = fig6_21, graphtype = "line", xlabel="Age",
                     series = c("High School Graduate","Associate Degree", "Bachelor's Degree"),
                     categories = fig6_21$age, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
