@@ -144,6 +144,6 @@ json6_20<- makeJson(sectionn = 6, graphn = 20, dt = fig6_20$Default.Rate, grapht
 
 fig6_21 <- read.csv(paste(textpath, "Breaking even/06_0210.csv", sep=""),stringsAsFactors=FALSE)
 json6_21 <- makeJson(sectionn = 6, graphn = 21, dt = fig6_21, graphtype = "line", xlabel="Age",
-                    series = c("High School Graduate","Associate Degree", "Bachelor's Degree"),
+                    series = c("High school graduate","Associate degree", "Bachelor's degree"),
                     categories = fig6_21$age, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 

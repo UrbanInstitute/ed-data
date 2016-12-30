@@ -26,7 +26,18 @@ json2_3 <- makeJson(sectionn = 2, graphn = 3, dt = fig2_3, graphtype = "line", s
                     categories = fig2_3$year, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 #Figure 2-4
+#add "highlightIndex" : 25  to outermost bracket
 fig2_4 <- read.csv(paste(textpath, "Cost of educating_appropriations/02_0040.csv", sep=""),stringsAsFactors=FALSE)
 json2_4 <- makeJson(sectionn = 2, graphn = 4, dt = fig2_4$public, graphtype = "bar", series="State and Local Appropriations per Public FTE Student",
-                    categories = fig2_4$state, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
-#Figure 2-7: for all multiples, add spaces to x-axis labels to create two lines, for example: "'01'–        '02'"
+                    categories = fig2_4$state, tickformat = "$s", rotated = TRUE, directlabels = TRUE)
+#Figure 2-7: 
+#1) for all multiples, add spaces to x-axis labels to create two lines, for example: "'01'–        '02'"
+# 2) set max y value and ticks
+"y": {
+  "padding": {"top": 0, "bottom": 0},
+  "max": 20000,
+  "tick": {
+    "format": "dollar",
+    "count": 5
+  }
+},

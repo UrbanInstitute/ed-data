@@ -5,6 +5,9 @@
 
 #SECTION 2: COST OF EDUCATING
 
+**Figure 2-4
+#add "highlightIndex" : 25  to outermost bracket
+
 *Figure 2-7: for all multiples, add spaces to x-axis labels to create two lines, for example: "'01'–        '02'"
 
 **Figure 2-51: Change Y-axis properties to adjust ticks:
@@ -78,6 +81,19 @@
       }
     }
 
+**Figure 2-7: 
+#1) for all multiples, add spaces to x-axis labels to create two lines, for example: "'01'–        '02'"
+# 2) set max y value and ticks
+"y": {
+  "padding": {"top": 0, "bottom": 0},
+  "max": 20000,
+  "tick": {
+    "format": "dollar",
+    "count": 5
+  }
+},
+
+
 #SECTION 3: PRICES AND EXPENSES
 
 **Figure 3-3 (all multiples): manually change color for each to avoid automated repeating colors
@@ -94,6 +110,16 @@
     "Highest decile": "#0f658d"
    }
 
+**Figure 3-12
+#set max y value and number of ticks:
+"y": {
+  "max": 50000,
+  "padding": {"top": 0, "bottom": 0},
+  "tick": {
+    "format": "dollar",
+    "count": 6
+  }
+}
 **Figure 3-18: 
 Set max value and change number of ticks for 81 and 82
 "y": {
@@ -132,7 +158,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
 - added empty tick `""` to start and end of x.categories array
 - added empty tick `null` to start and end of each data series array in `data.sets`
 
-#Figure 3-22:
+**Figure 3-22:
 #First set of multiples- need to add "groups": [["Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"]]
 #First set of multiples set max y value and ticks:
 "y": {
@@ -169,7 +195,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
 
 #SECTION 4: FINANCIAL AID
 
-#Figure 4-7 (all multiples)
+**Figure 4-7 (all multiples)
 #set max y value and ticks
 "y": {
   "padding": {"top": 0, "bottom": 0},
@@ -192,8 +218,11 @@ in various blocks specific to line and area charts. Given that this chart is a s
 	"Private"
 	]
 ```
-#Figure 4-9
-for graphs 1-3, change number of ticks
+**Figure 4-9
+
+1) for graph 1, add bracket to single category "All..."
+2)for graph 2, add spaces to x-labels to create two lines, for example: "Less than         $30,000" "$30,000 –       $64,999"
+3) for graphs 1-3, change number of ticks
 "y": {
   "max": 8000,
   "padding": {"top": 0, "bottom": 0},
@@ -203,7 +232,9 @@ for graphs 1-3, change number of ticks
   }
 },
 
-for graphs 11-33, change number of ticks
+4) for graph 11, add bracket to single category "All..."
+5)for graph 22, add spaces to x-labels to create two lines, for example: "Less than         $30,000" "$30,000 –       $64,999"
+6) for graphs 11-33, change number of ticks
 "y": {
   "max": 6000,
   "padding": {"top": 0, "bottom": 0},
@@ -212,6 +243,38 @@ for graphs 11-33, change number of ticks
     "count": 4
   }
 },
+
+**Figure 4-13
+# add "highlightIndex" : 18 to outermost bracket
+
+**Figure 4-15
+# 1) set max y-value and ticks
+"y": {
+  "max": 0.4,
+  "padding": {"top": 0, "bottom": 0},
+  "tick": {
+    "format": "percent",
+    "count": 5
+  }
+},
+
+# 2) add spacing to x-values so two lines, for example: "Public             two-year"
+
+**Figure 4-16
+
+# 1) add space for x-axis labels in graphs 3 and 5 to make two lines, for example:
+# "Public        two-year"   "$106,000           or more"
+
+# 2) set max y-value and number of ticks
+"y": {
+  "max": 6000,
+  "padding": {"top": 0, "bottom": 0},
+  "tick": {
+    "format": "$s",
+    "count": 4
+  }
+}
+
 
 **Figure 4-19: had to manually change groups array to:**
 ```
@@ -245,6 +308,80 @@ change y tick values
 2) had to manually change order of sets
 
 
+#for first set of multiples:
+# 1) set y max value and ticks
+    "y": {
+  "padding": {"top":0, "bottom":0},
+  "max": 0.15,
+  "tick": {
+    "count": 4,
+    "format": "percent"
+  }
+}
+
+# 2) adding spacing to x values in third and fourth graphs to create two lines , for example: 
+"Public          four-year"         "Less than           $30,000"
+
+
+**Figure 4-22
+#for first set of multiples:
+# 1) set y max value and ticks
+    "y": {
+  "padding": {"top":0, "bottom":0},
+  "max": 0.15,
+  "tick": {
+    "count": 4,
+    "format": "percent"
+  }
+}
+# 2) adding spacing to x values in third and fourth graphs to create two lines , for example: 
+"Public          four-year"         "Less than           $30,000"
+
+#for second set of multiples:
+# 1) set y max value and ticks
+"y": {
+  "padding": {
+    "top": 0, "bottom": 0
+  },
+  "max": 0.3,
+  "tick": {
+    "format": "percent",
+    "count": 4
+  }
+},
+
+# 2) adding spacing to x values in third and fourth graphs to create two lines , for example: 
+"Public          four-year"         "Less than           $30,000"
+
+**Figure 4-23
+#for first set of multiples:
+# 1) set y max value and ticks
+"y": {
+  "padding": {"top": 0, "bottom":0},
+  "max": 15000,
+  "tick": {
+    "format": "dollar",
+    "count": 4
+  }
+}
+# 2) adding spacing to x values in third and fourth graphs to create two lines , for example: 
+"Public          four-year"         "Less than           $30,000"
+
+#for second set of multiples:
+# 1) set y max value and ticks
+"y": {
+  "padding": {"top": 0, "bottom": 0},
+  "max": 10000,
+  "tick": {
+    "format": "dollar",
+    "count": 3
+  }
+},
+# 2) adding spacing to x values in third and fourth graphs to create two lines , for example: 
+"Public          four-year"         "Less than           $30,000"
+
+
+
 **Figure 4-24 : change y tick values
  "y": {
       "padding": {"top":0, "bottom": 0},
@@ -260,7 +397,7 @@ change y tick values
 
 #SECTION 5: COVERING EXPENSES
 
-Figure 5-1 (all multiples)
+**Figure 5-1 (all multiples)
 1) in first graph, add bracket for x.categories since single category "All families"
 2) set max y value and ticks
     "y": {
@@ -272,13 +409,31 @@ Figure 5-1 (all multiples)
       }
     },
 
-Figure 5-13: 
+**Figure 5-3
+# add   "highlightIndex" : 25  to outermost bracket
+
+
+**Figure 5-8
+# add "highlightIndex" : 0  to outermost bracket
+
+**Figure 5-11
+#set max y-value and ticks
+"y": {
+  "padding": {"top": 0, "bottom": 0},
+  "max": 0.5,
+  "tick": {
+    "format": "percent",
+    "count": 6
+  }
+},
+
+**Figure 5-13: 
 1) in first graph, add bracket for x.categories since single category "All Undergraduates"
 2) in first, add space to x-axis labels for two lines so "All Under-                 graduates" 
 3) in the third graph, add space to x-axis labels for two lines  so  "Less than          ....." or "$30,000–            ........." for instance
 4) in the fourth graph, add space to x-axis labels for two lines so "Full-time           ....."
 
-Figure 5-17
+**Figure 5-17
 1) in the first graph, make x-label three lines by adding spaces in between "All full-time/ dependent/ students"
 2) in the second graph, make each x-label two lines, so  "Less than          ....." or "$30,000–            ........." for instance
 3) set max y-value and ticks
@@ -291,18 +446,22 @@ Figure 5-17
       },
       "max": 20000
     },
+    
+**Figure 5-31
+#delete "groups" array in all graphs
+
 #SECTION 6: AFTER COLLEGE
 
-#Figure 6-8
+**Figure 6-8
 add bracket to "categories": ["Education Debt"]
 
-#Figure 6-20
+**Figure 6-20
 make x-labels two lines after dash by adding space: $1,000– / $5,000
 
 #SECTION 7: STUDENT PROFILES
 
 
-#Figure 7-3 had to tweak groups array:
+**Figure 7-3 had to tweak groups array:
 "groups": [
   [
     "Expected family contribution", 
@@ -337,7 +496,7 @@ make x-labels two lines after dash by adding space: $1,000– / $5,000
 },
 
 
-#Figure 7-7 #had to change groups array:
+**Figure 7-7 #had to change groups array:
 
 	"groups": [
 	  [
@@ -356,7 +515,7 @@ make x-labels two lines after dash by adding space: $1,000– / $5,000
 	    ]
 	  ],
 
-#Figure 7-11 need to change groups array to:
+**Figure 7-11 need to change groups array to:
 "groups": [
   [
     "Expected family contribution", 
@@ -389,7 +548,7 @@ make x-labels two lines after dash by adding space: $1,000– / $5,000
   "Tuition and fees":"#ffff00"
 },
 
- #Figure 7-15 need to change groups array to:
+ **Figure 7-15 need to change groups array to:
 "groups": [
   [
     "Expected family contribution", 
@@ -421,7 +580,8 @@ make x-labels two lines after dash by adding space: $1,000– / $5,000
   "Budget beyond tuition and fees":"#ec008b",
   "Tuition and fees": "#1696d2"
 },
-#Figure 7-19 need to change groups array
+
+**Figure 7-19 need to change groups array
 "groups": [
   [
     "Expected family contribution", 
