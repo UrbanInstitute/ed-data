@@ -71,8 +71,7 @@ fig7_5<- read.csv(paste(textpath, "Personas/07_0050.csv", sep=""),stringsAsFacto
 json7_5<- makeJson(sectionn = 7, graphn = 5, dt = fig7_5$percent, graphtype = "bar", series= "Enrollment",
                    categories = fig7_5$category, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
-#Figure 7-7 ##had to change groups array and manually set colors
-
+#Figure 7-7 had to change groups array and manually set colors
 "groups": [
   [
     "Private loans", 
@@ -104,12 +103,13 @@ json7_5<- makeJson(sectionn = 7, graphn = 5, dt = fig7_5$percent, graphtype = "b
   "Federal student loans":"#ec0015",
   "Earnings and other resources": "#00ecd7"
 },
-#fig7_7<- read.csv(paste(textpath, "Personas/07_0070.csv", sep=""),stringsAsFactors=FALSE)
-#json7_7<- makeJson(sectionn = 7, graphn = 7, dt = fig7_7, graphtype = "bar", set1= fig7_7[grep("Public four-year in-state", fig7_7$category), c("Expected family contribution", "Federal grants", "Military/Veterans", "State grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal  parent loans", "Private loans", "Earnings and other resources", "NonTF budget", "Tuition and fees, "Budget beyond tuition and fees")], set2= fig7_7[grep("Public four-year out-of-state", fig7_7$category), c("Public four-year in-state", fig7_7$category), c("Expected family contribution", "Federal grants", "Military/Veterans", "State grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal  parent loans", "Private loans", "Earnings and other resources", "NonTF budget", "Tuition and fees, "Budget beyond tuition and fees")],
-#                   set3= fig7_7[grep("Private nonprofit four-year", fig7_7$category), c("Public four-year in-state", fig7_7$category), c("Expected family contribution", "Federal grants", "Military/Veterans", "State grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal  parent loans", "Private loans", "Earnings and other resources", "NonTF budget", "Tuition and fees, "Budget beyond tuition and fees")], set4= fig7_7[grep("For-profit", fig7_7$category), c("Public four-year in-state", fig7_7$category), c("Expected family contribution", "Federal grants", "Military/Veterans", "State grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal  parent loans", "Private loans", "Earnings and other resources", "NonTF budget", "Tuition and fees, "Budget beyond tuition and fees")], 
-#                   set5= fig7_7[grep("Public two-year", fig7_7$category), c("Public four-year in-state", fig7_7$category), c("Expected family contribution", "Federal grants", "Military/Veterans", "State grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal  parent loans", "Private loans", "Earnings and other resources", "NonTF budget", "Tuition and fees, "Budget beyond tuition and fees")],
-#                   series = c("Public four-year in-state", "Public four-year out-of-state", "Private nonprofit four-year", "For-profit", "Public two-year" ),
-#                   categories = fig7_7$category_label, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
+fig7_7<- read.csv(paste(textpath, "Personas/07_0070-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names=FALSE)
+json7_7<- makeJson(sectionn = 7, graphn = 7, dt = fig7_7, graphtype = "bar", set1= fig7_7[grep("Public four-year in-state", fig7_7$category), c("EFC", "Federal grants", "Military/Veterans", "State public grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal parent loans", "Private loans", "Earnings and other resources", "NonTF budget", "Tuition and fees", "Budget beyond tuition and fees")], set2= fig7_7[grep("Public four-year out-of-state", fig7_7$category), c("Public four-year in-state", fig7_7$category), c("EFC", "Federal grants", "Military/Veterans", "State public grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal parent loans", "Private loans", "Earnings and other resources", "NonTF budget", "Tuition and fees", "Budget beyond tuition and fees")],
+                   set3= fig7_7[grep("Private nonprofit four-year", fig7_7$category),  c("EFC", "Federal grants", "Military/Veterans", "State public grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal parent loans", "Private loans", "Earnings and other resources", "NonTF budget", "Tuition and fees", "Budget beyond tuition and fees")], set4= fig7_7[grep("For-profit", fig7_7$category), c("EFC", "Federal grants", "Military/Veterans", "State public grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal parent loans", "Private loans", "Earnings and other resources", "NonTF budget", "Tuition and fees", "Budget beyond tuition and fees")],
+                   set5= fig7_7[grep("Public two-year", fig7_7$category),  c("EFC", "Federal grants", "Military/Veterans", "State public grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal parent loans", "Private loans", "Earnings and other resources", "NonTF budget", "Tuition and fees", "Budget beyond tuition and fees")],
+                   series = c("Public four-year in-state","Public four-year out-of-state","Private nonprofit four-year","For-profit", "Public two-year"),
+                   categories = fig7_7$category_label, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 7-8 
 fig7_8<- read.csv(paste(textpath, "Personas/07_0080.csv", sep=""),stringsAsFactors=FALSE, check.names=FALSE)

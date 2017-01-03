@@ -57,7 +57,7 @@ json5_28<- makeJson(sectionn = 5, graphn = 28, dt = fig5_28, graphtype = "bar",
 #Figure 5-27
 fig5_27<- read.csv(paste(textpath, "Covering Expenses_savings/05_0270.csv", sep=""),stringsAsFactors=FALSE)
 json5_27<- makeJson(sectionn = 5, graphn = 27, dt = fig5_27, graphtype = "line",
-                    series = c("All Familes", "Family with Head Age 45–54", "Single with children", "Couple with children"),
+                    series = c("All Families", "Family with head age 45–54", "Single with children", "Couple with children"),
                     categories = fig5_27$year, tickformat = "$.2s", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-26

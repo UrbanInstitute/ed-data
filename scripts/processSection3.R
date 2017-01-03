@@ -9,8 +9,8 @@ source('~/Documents/ed-data/scripts/createJsons.R')
 
 # Path to Excel file with graph metadata - change to your file path
 
-#textpath <- "/Users/vhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
-textpath <- "/Users/vivhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
+textpath <- "/Users/vhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
+#textpath <- "/Users/vivhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
 
 graphtext <- readWorkbook(paste(textpath, "GraphText.xlsx", sep=""),sheet = 1)
 graphtext$section_number <- as.numeric(graphtext$section_number)
@@ -131,9 +131,13 @@ json3_11 <- makeJson(sectionn = 3, graphn = 11, dt = fig3_11, graphtype = "bar",
     "count": 6
   }
 }
+#add space to x-axis labels for graph 4 so that two-lines: ex- "'12–     '13'
 fig3_12a <- read.csv(paste(textpath, "Prices and expenses_student budgets/03_0120.csv", sep=""),stringsAsFactors=FALSE)
+fig3_12a$year <- gsub("-", "–", fig3_12a$year) 
 fig3_12b <- read.csv(paste(textpath, "Prices and expenses_student budgets/03_0121.csv", sep=""),stringsAsFactors=FALSE)
+fig3_12b$year <- gsub("-", "–", fig3_12b$year) 
 fig3_12c <- read.csv(paste(textpath, "Prices and expenses_student budgets/03_0122.csv", sep=""),stringsAsFactors=FALSE)
+fig3_12c$year <- gsub("-", "–", fig3_12c$year) 
 fig3_12d <- read.csv(paste(textpath, "Prices and expenses_student budgets/03_0123.csv", sep=""),stringsAsFactors=FALSE)
 fig3_12d$year <- gsub("-", "–", fig3_12d$year) 
 
@@ -249,23 +253,19 @@ json3_18f <- makeJson(sectionn = 3, graphn = 18, subn= 22, dt = fig3_18f, grapht
 #- set `x.tick.count: 14`
 #- added empty tick `""` to start and end of x.categories array
 #- added empty tick `null` to start and end of each data series array in `data.sets`
-
-# fig3_19 <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_0190.csv", sep=""),stringsAsFactors=FALSE)
-# json3_19 <- makeJson(sectionn = 3, graphn = 19, dt = fig3_19, graphtype = "line", series=c("Ages 18-23", "Ages 24-34"), set1=fig3_19[,c("median.income_18", "p25.income_18", "p75.income_18")], set2=fig3_19[,c("incwage_24", "p25incwage_24", "p75incwage_24", "incwage_24")],
-#                      categories = fig3_19$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
-
+# - added "colors": {"25th percentile": "#1696d2", "Median": "#fdbf11", "75th percentile": "#000000"  } to outermost bracket in "data"
 
 #MEN
-#fig3_19 <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_0190.csv", sep=""),stringsAsFactors=FALSE)
-#json3_19 <- makeJson(sectionn = 3, graphn = 19, dt = fig3_19, graphtype = "line", series=c("Ages 18-23", "Ages 24-34"), set1=fig3_19[,c("median.income_18", "p25.income_18", "p75.income_18")], set2=fig3_19[,c("incwage_24", "p25incwage_24", "p75incwage_24", "incwage_24")],
-#                     categories = fig3_19$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+fig3_19 <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_0190.csv", sep=""),stringsAsFactors=FALSE, check.names =FALSE)
+json3_19<- makeJson(sectionn = 3, graphn = 19, dt = fig3_19, graphtype = "line", set1= fig3_19[grep("18", fig3_19$category), c("Median", "25th percentile", "75th percentile")], set2= fig3_19[grep("24", fig3_19$category), c("Median", "25th percentile", "75th percentile")],
+                    series = c("Age 18-23", "Age 24-34"),
+                    categories = fig3_19$category_labels, tickformat = "$s", rotated = FALSE, directlabels = TRUE)
 
 #WOMEN
-#fig3_19b <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_0191.csv", sep=""),stringsAsFactors=FALSE)
-#json3_19b <- makeJson(sectionn = 3, graphn = 19, subn=1, dt = fig3_19b, graphtype = "line", series=c("Ages 18-23", "Ages 24-34"), set1=fig3_19b[,c("median.income_18", "p25.income_18", "p75.income_18")], set2=fig3_19b[,c("median_24", "p25.income_24", "p75.income_24")],
-#                      categories = fig3_19b$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
-
-
+fig3_19b <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_0191.csv", sep=""),stringsAsFactors=FALSE, check.names=FALSE)
+json3_19b<- makeJson(sectionn = 3, graphn = 19, subn=1, dt = fig3_19b, graphtype = "line", set1= fig3_19b[grep("18", fig3_19b$category), c("Median", "25th percentile", "75th percentile")], set2= fig3_19b[grep("24", fig3_19b$category), c("Median", "25th percentile", "75th percentile")],
+                    series = c("Age 18-23", "Age 24-34"),
+                    categories = fig3_19b$category_labels, tickformat = "$s", rotated = FALSE, directlabels = TRUE)
 #Figure 3-20
 fig3_20a <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_0200.csv", sep=""),stringsAsFactors=FALSE)
 fig3_20b <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_0201.csv", sep=""),stringsAsFactors=FALSE)

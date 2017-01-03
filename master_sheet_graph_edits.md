@@ -120,6 +120,8 @@
     "count": 6
   }
 }
+#add space to x-axis labels for graph 4 so that two-lines: ex- "'12–     '13'
+
 **Figure 3-18: 
 Set max value and change number of ticks for 81 and 82
 "y": {
@@ -157,6 +159,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
 - set `x.tick.count: 14`
 - added empty tick `""` to start and end of x.categories array
 - added empty tick `null` to start and end of each data series array in `data.sets`
+- added "colors": {"25th percentile": "#1696d2", "Median": "#fdbf11", "75th percentile": "#000000"  } to outermost bracket in "data"
 
 **Figure 3-22:
 #First set of multiples- need to add "groups": [["Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"]]
