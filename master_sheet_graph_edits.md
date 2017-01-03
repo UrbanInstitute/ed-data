@@ -123,7 +123,7 @@
 #add space to x-axis labels for graph 4 so that two-lines: ex- "'12–     '13'
 
 **Figure 3-18: 
-Set max value and change number of ticks for 81 and 82
+Set max value and change number of ticks for first set
 "y": {
       "padding": {"top": 0, "bottom": 0},
       "max": 60000,
@@ -132,7 +132,7 @@ Set max value and change number of ticks for 81 and 82
         "count": 7
       }
 }
-Set max value and change number of ticks for 811 and 812
+Set max value and change number of ticks for second set
    "y": {
       "padding": {"top": 0, "bottom": 0},
       "max": 40000,
@@ -141,7 +141,7 @@ Set max value and change number of ticks for 811 and 812
         "count": 5
       }
     },
-#Set max value and change number of ticks for 821 and 822
+#Set max value and change number of ticks for third set
 "y": {
   "padding": {"top": 0, "bottom": 0},
   "max": 50000,
@@ -160,6 +160,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
 - added empty tick `""` to start and end of x.categories array
 - added empty tick `null` to start and end of each data series array in `data.sets`
 - added "colors": {"25th percentile": "#1696d2", "Median": "#fdbf11", "75th percentile": "#000000"  } to outermost bracket in "data"
+- make sure sets are ordered by 1 and then 2
 
 **Figure 3-22:
 #First set of multiples- need to add "groups": [["Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"]]

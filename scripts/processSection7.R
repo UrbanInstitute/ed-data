@@ -38,21 +38,21 @@ json7_1<- makeJson(sectionn = 7, graphn = 1, dt = fig7_1$percent, graphtype = "b
   ]
 #manually set colors to avoid duplicates
 "colors": {
+  "Expected family contribution": "#848081",
+  "Federal grants": "#cfe8f3",
+  "Military\/Veterans": "#a2d4ec",
+  "State grants": "#73bfe2",
   "Institutional grants":"#1696d2",
-  "Military\/Veterans": "#000000",
-  "Tuition and fees": "#55b748",
-  "Earnings and other resources": "#ffff00",
-  "Private and employer aid": "#d2d2d2",
-  "NonTF budget": "#ec008b",
-  "Federal grants": "#6100ec",
-  "State grants": "#d700ec",
-  "Private loans": "#88ec00",
-  "Federal student loans": "#ffa500",
-  "Expected family contribution": "#ec0015",
-  "Federal  parent loans": "#00ecd7"
+  "Private and employer grant aid": "#1696d2",
+  "Federal student loans": "#fccb41",
+  "Federal  parent loans": "#fdbf11",
+  "Private loans": "#fce39e",
+  "Earnings and other resources": "#d5d5d4",
+  "Tuition and fees": "#ec008b",
+  "NonTF budget": "#000000"
 },
 
-#fig7_3<- read.csv(paste(textpath, "Personas/07_0030-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names= FALSE)
+fig7_3<- read.csv(paste(textpath, "Personas/07_0030-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names= FALSE)
 #json7_3<- makeJson(sectionn = 7, graphn = 3, dt = fig7_3, graphtype = "bar", set1= fig7_3[grep("Public four-year in-state", fig7_3$category), c("Expected family contribution", "Federal grants", "Military/Veterans", "State grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal  parent loans", "Private loans", "Earnings and other resources", "Tuition and fees", "NonTF budget")], set2= fig7_3[grep("Public four-year out-of-state", fig7_3$category), c("Expected family contribution", "Federal grants", "Military/Veterans", "State grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal  parent loans", "Private loans", "Earnings and other resources", "Tuition and fees", "NonTF budget")],
 #                   set3= fig7_3[grep("Private nonprofit four-year", fig7_3$category), c("Expected family contribution", "Federal grants", "Military/Veterans", "State grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal  parent loans", "Private loans", "Earnings and other resources", "Tuition and fees", "NonTF budget")], set4= fig7_3[grep("For-profit", fig7_3$category), c("Expected family contribution", "Federal grants", "Military/Veterans", "State grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal  parent loans", "Private loans", "Earnings and other resources", "Tuition and fees", "NonTF budget")], 
 #                   set5= fig7_3[grep("Public two-year", fig7_3$category), c("Expected family contribution", "Federal grants", "Military/Veterans", "State grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal  parent loans", "Private loans", "Earnings and other resources", "Tuition and fees", "NonTF budget")],
@@ -90,18 +90,18 @@ json7_5<- makeJson(sectionn = 7, graphn = 5, dt = fig7_5$percent, graphtype = "b
   ],
 
 "colors": {
-  "Private loans":"#d700ec",
-  "Institutional grants":"#000000",
-  "Tuition and fees":"#55b748",
-  "State grants": "#ffff00",
-  "Federal grants":"#1696d2",
-  "NonTF budget":"#ec008b",
-  "EFC": "#d2d2d2",
-  "Military/Veterans":"#6100ec",
-  "Private and employer aid": "#88ec00",
-  "Federal parent loans":"#ffa500",
-  "Federal student loans":"#ec0015",
-  "Earnings and other resources": "#00ecd7"
+  "Expected family contribution": "#848081",
+  "Federal grants": "#cfe8f3",
+  "Military\/Veterans": "#a2d4ec",
+  "State grants": "#73bfe2",
+  "Institutional grants":"#1696d2",
+  "Private and employer grant aid": "#1696d2",
+  "Federal student loans": "#fccb41",
+  "Federal  parent loans": "#fdbf11",
+  "Private loans": "#fce39e",
+  "Earnings and other resources": "#d5d5d4",
+  "Tuition and fees": "#ec008b",
+  "Budget beyond tuition and fees": "#000000"
 },
 
 fig7_7<- read.csv(paste(textpath, "Personas/07_0070-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names=FALSE)
@@ -143,18 +143,18 @@ json7_9<- makeJson(sectionn = 7, graphn = 9, dt = fig7_9$percent, graphtype = "b
 
 #need to set colors manually to avoid duplicates
 "colors": {
-  "Expected family contribution":"#d700ec",
-  "Federal grants":"#000000",
-  "Military/Veterans":"#55b748",
-  "State grants": "#00ecd7",
+  "Expected family contribution": "#848081",
+  "Federal grants": "#cfe8f3",
+  "Military\/Veterans": "#a2d4ec",
+  "State grants": "#73bfe2",
   "Institutional grants":"#1696d2",
-  "Private and employer aid":"#88ec00",
-  "Federal student loans": "#d2d2d2",
-  "Federal  parent loans":"#6100ec",
-  "Private loans": "#ec008b",
-  "Earnings and other resources":"#ffa500",
-  "Budget beyond tuition and fees":"#ec0015",
-  "Tuition and fees":"#ffff00"
+  "Private and employer grant aid": "#1696d2",
+  "Federal student loans": "#fccb41",
+  "Federal  parent loans": "#fdbf11",
+  "Private loans": "#fce39e",
+  "Earnings and other resources": "#d5d5d4",
+  "Tuition and fees": "#ec008b",
+  "Budget beyond tuition and fees": "#000000"
 },
 fig7_11<- read.csv(paste(textpath, "Personas/07_0110-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names= FALSE)
 json7_11<- makeJson(sectionn = 7, graphn = 11, dt = fig7_11, graphtype = "bar", set1= fig7_11[grep("Public four-year in-state", fig7_15$category), c("Expected family contribution", "Federal grants", "Military/Veterans", "State grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal  parent loans", "Private loans", "Earnings and other resources", "Budget beyond tuition and fees", "Tuition and fees")], set2= fig7_11[grep("Public four-year out-of-state", fig7_11$category), c("Expected family contribution", "Federal grants", "Military/Veterans", "State grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal  parent loans", "Private loans", "Earnings and other resources", "Budget beyond tuition and fees", "Tuition and fees")],
@@ -194,18 +194,18 @@ json7_13<- makeJson(sectionn = 7, graphn = 13, dt = fig7_13$percent, graphtype =
   ],
 #need to change colors to avoid duplicates
 "colors": {
-  "Expected family contribution":"#d700ec",
-  "Federal grants":"#000000",
-  "Military/Veterans":"#55b748",
-  "State grants":"#00ecd7",
-  "Institutional grants":"#ffff00",
-  "Private and employer aid":"#88ec00",
-  "Federal student loans":"#d2d2d2",
-  "Federal  parent loans":"#6100ec",
-  "Private loans":"#ec0015",
-  "Earnings and other resources":"#ffa500",
-  "Budget beyond tuition and fees":"#ec008b",
-  "Tuition and fees": "#1696d2"
+  "Expected family contribution": "#848081",
+  "Federal grants": "#cfe8f3",
+  "Military\/Veterans": "#a2d4ec",
+  "State grants": "#73bfe2",
+  "Institutional grants":"#1696d2",
+  "Private and employer grant aid": "#1696d2",
+  "Federal student loans": "#fccb41",
+  "Federal  parent loans": "#fdbf11",
+  "Private loans": "#fce39e",
+  "Earnings and other resources": "#d5d5d4",
+  "Tuition and fees": "#ec008b",
+  "Budget beyond tuition and fees": "#000000"
 },
 fig7_15<- read.csv(paste(textpath, "Personas/07_0150-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names= FALSE)
 json7_15<- makeJson(sectionn = 7, graphn = 15, dt = fig7_15, graphtype = "bar", set1= fig7_15[grep("Public four-year in-state", fig7_15$category), c("Expected family contribution", "Federal grants", "Military/Veterans", "State grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal  parent loans", "Private loans", "Earnings and other resources", "Budget beyond tuition and fees", "Tuition and fees")], set2= fig7_15[grep("Public four-year out-of-state", fig7_19$category), c("Expected family contribution", "Federal grants", "Military/Veterans", "State grants", "Institutional grants", "Private and employer aid", "Federal student loans", "Federal  parent loans", "Private loans", "Earnings and other resources", "Budget beyond tuition and fees", "Tuition and fees")],
