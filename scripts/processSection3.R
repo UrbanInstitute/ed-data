@@ -38,17 +38,17 @@ json3_2 <- makeJson(sectionn = 3, graphn = 2, dt = fig3_2, graphtype = "line",
 
 #Figure 3-3: manually change color for each to avoid automated repeating colors
 "colors": {
-  "Lowest decile": "#1696D2", 
-  "2nd":"#000000", 
-  "3rd":"#FDBF11", 
-  "4th": "#55b748", 
-  "5th":"#d2d2d2", 
-  "6th": "#ec008b", 
-  "7th": "#cb9f5b", 
-  "8th": "#7348b7", 
-  "9th": "#ff0000", 
-  "Highest decile": "#0f658d"
-}
+  "Lowest decile": "#cfe8f3", 
+  "2nd":"#a2d4ec", 
+  "3rd":"#73bfe2", 
+  "4th": "#5eb5de", 
+  "5th":"#46abdb", 
+  "6th": "#2da0d6", 
+  "7th": "#1696d2", 
+  "8th": "#12719e", 
+  "9th": "#0a4c6a", 
+  "Highest decile": "#062635"
+},
 fig3_3a <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0031.csv", sep=""),stringsAsFactors=FALSE)
 fig3_3b <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0032.csv", sep=""),stringsAsFactors=FALSE)
 fig3_3c <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0033.csv", sep=""),stringsAsFactors=FALSE)
@@ -67,18 +67,10 @@ json3_3d <- makeJson(sectionn = 3, graphn = 3, subn= 4, dt = fig3_3d, graphtype 
                      series = c("Lowest decile", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "Highest decile"),
                      categories = fig3_3d$category, graphtitle="For-profit", tickformat = "dollar", rotated = FALSE, directlabels = FALSE)
 #Figure 3-4
-fig3_4a <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0040.csv", sep=""),stringsAsFactors=FALSE)
-fig3_4b <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0041.csv", sep=""),stringsAsFactors=FALSE)
-fig3_4 <- merge(fig3_4a, fig3_4b, by.x ="state", by.y="state", all.x=TRUE)
-#json3_4a <- makeJson(sectionn = 3, graphn = 4, subn= 1, dt = fig3_4a$amount, graphtype = "bar",
-#                     series = "Public two-year tuition and fees",
- #                    categories = fig3_4a$state, graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
-#json3_4b <- makeJson(sectionn = 3, graphn = 4, subn= 2, dt = fig3_4b$amount, graphtype = "bar",
- #                    series = "Public four-year tuition and fees",
-  #                   categories = fig3_4b$state, graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
-
-json3_4 <- makeJson(sectionn = 3, graphn = 4, dt = fig3_4, graphtype = "bar", series=c("Public two-year", "Public four-year"), set1=fig3_4[,c("public_two")], set2=fig3_4[,c("public_four")],
-                    categories = fig3_4$state, tickformat = "$.2s", rotated = TRUE, directlabels = TRUE)
+#add "highlightIndex": 34 to outermost bracket
+fig3_4 <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0040-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names=FALSE)
+json3_4 <- makeJson(sectionn = 3, graphn = 4, dt = fig3_4, graphtype = "bar", series=c("Public two-year", "Public four-year"), set1=fig3_4[,c("Public two-year")], set2=fig3_4[,c("Public four-year")],
+                     categories = fig3_4$category, tickformat = "$.2s", rotated = TRUE, directlabels = TRUE)
 
 
 #Figure 3-5
@@ -93,11 +85,15 @@ json3_6 <- makeJson(sectionn = 3, graphn = 6, dt = fig3_6$amount, graphtype = "b
                     categories = fig3_6$category, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 3-7
+#add "highlightIndex": 27 to outermost bracket
+
 fig3_7 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0070.csv", sep=""),stringsAsFactors=FALSE)
 json3_7 <- makeJson(sectionn = 3, graphn = 7, dt = fig3_7$roomamt, graphtype = "bar", series="Average room and board charges",
                     categories = fig3_7$state, tickformat = "$.2s", rotated = TRUE, directlabels = TRUE)
 
 #Figure 3-8
+#add "highlightIndex": 27 to outermost bracket
+
 fig3_8 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0080.csv", sep=""),stringsAsFactors=FALSE)
 json3_8 <- makeJson(sectionn = 3, graphn = 8, dt = fig3_8$difference, graphtype = "bar", series="Difference",
                     categories = fig3_8$state, tickformat = "$.2s", rotated = TRUE, directlabels = TRUE)

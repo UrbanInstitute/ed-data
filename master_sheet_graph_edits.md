@@ -5,8 +5,18 @@
 
 #SECTION 2: COST OF EDUCATING
 
+**Figure 2-2
+#add blank data point (null) as last x-value and "" to categories
+#add "overrideTickCount": true, to topmost bracket
+#set tick.count to 8
+
+**Figure 2-3
+#add blank data point (null) as last x-value and "" to categories
+#add "overrideTickCount": true, to topmost bracket
+#set tick.count to 9
+
 **Figure 2-4
-#add "highlightIndex" : 25  to outermost bracket
+#add "highlightIndex" : 36  to outermost bracket
 
 *Figure 2-7: for all multiples, add spaces to x-axis labels to create two lines, for example: "'01'–        '02'"
 
@@ -97,18 +107,23 @@
 #SECTION 3: PRICES AND EXPENSES
 
 **Figure 3-3 (all multiples): manually change color for each to avoid automated repeating colors
-"colors": {
-    "Lowest decile": "#1696D2", 
-    "2nd":"#000000", 
-    "3rd":"#FDBF11", 
-    "4th": "#55b748", 
-    "5th":"#d2d2d2", 
-    "6th": "#ec008b", 
-    "7th": "#cb9f5b", 
-    "8th": "#7348b7", 
-    "9th": "#ff0000", 
-    "Highest decile": "#0f658d"
-   }
+   "colors": {
+    "Lowest decile": "#cfe8f3", 
+    "2nd":"#a2d4ec", 
+    "3rd":"#73bfe2", 
+    "4th": "#5eb5de", 
+    "5th":"#46abdb", 
+    "6th": "#2da0d6", 
+    "7th": "#1696d2", 
+    "8th": "#12719e", 
+    "9th": "#0a4c6a", 
+    "Highest decile": "#062635"
+   },
+**Figure 3-4: add "highlightIndex": 34 to outermost bracket
+
+**Figure 3-7: add "highlightIndex": 27 to outermost bracket
+
+**Figure 3-8: add "highlightIndex": 27 to outermost bracket
 
 **Figure 3-12
 #set max y value and number of ticks:

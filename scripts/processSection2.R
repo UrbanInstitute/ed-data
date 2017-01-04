@@ -19,14 +19,22 @@ fig2_1$year <- gsub("-", "–", fig2_1$year)
 json2_1 <- makeJson(sectionn = 2, graphn = 1, dt = fig2_1, graphtype = "line", series=c("State and local public higher education appropriations", "Public student enrollment", "State and local public higher education appropriations per public student"),
                      categories = fig2_1$year, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
+##Figure 2-2
+#add blank data point (null) as last x-value and "" to categories
+#add "overrideTickCount": true, to topmost bracket
+#set tick.count to 8
+
 #Figure 2-3
+#add blank data point (null) as last x-value and "" to categories
+#add "overrideTickCount": true, to topmost bracket
+#set tick.count to 9
 fig2_3 <- read.csv(paste(textpath, "Cost of educating_appropriations/02_0030.csv", sep=""),stringsAsFactors=FALSE)
 fig2_3$year <- gsub("-", "–", fig2_3$year) 
 json2_3 <- makeJson(sectionn = 2, graphn = 3, dt = fig2_3, graphtype = "line", series=c("Local support", "State support"),
                     categories = fig2_3$year, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 #Figure 2-4
-#add "highlightIndex" : 25  to outermost bracket
+#add "highlightIndex" : 36  to outermost bracket
 fig2_4 <- read.csv(paste(textpath, "Cost of educating_appropriations/02_0040.csv", sep=""),stringsAsFactors=FALSE)
 json2_4 <- makeJson(sectionn = 2, graphn = 4, dt = fig2_4$public, graphtype = "bar", series="State and Local Appropriations per Public FTE Student",
                     categories = fig2_4$state, tickformat = "$s", rotated = TRUE, directlabels = TRUE)
