@@ -470,10 +470,10 @@ change y tick values
     },
 **Figure 5-25:
 #add "overrideTickCount": true to outermost bracket
-#set x.ticks.count to 15
+#set x.ticks.count to 11
+#add 4 blank data points (two at beginning and two at end) 
 
-**Figure 5-31
-#delete "groups" array in all graphs
+
 
 #SECTION 6: AFTER COLLEGE
 

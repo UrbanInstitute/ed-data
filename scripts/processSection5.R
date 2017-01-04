@@ -24,14 +24,13 @@ json5_32<- makeJson(sectionn = 5, graphn = 32, dt = fig5_32$X..of.PSE.students, 
                     categories = fig5_32$X, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-31
-#delete "groups" array in all graphs
 fig5_31a<- read.csv(paste(textpath, "Covering Expenses_savings/05_0310.csv", sep=""),stringsAsFactors=FALSE)
 fig5_31b<- read.csv(paste(textpath, "Covering Expenses_savings/05_0311.csv", sep=""),stringsAsFactors=FALSE)
 
-json5_31a<- makeJson(sectionn = 5, graphn = 31, subn = 1, dt = fig5_31a$Number.of.accounts..millions., graphtype = "bar",
+json5_31a<- makeJson(sectionn = 5, graphn = 311, dt = fig5_31a$Number.of.accounts..millions., graphtype = "bar",
                     series = "Accounts in millions", ylabel= "In millions",
                     categories = fig5_31a$X, tickformat = "number", rotated = FALSE, directlabels = TRUE)
-json5_31b<- makeJson(sectionn = 5, graphn = 31, subn = 2, dt = fig5_31b$Average.Account..Thousands.of.2015.Dollars, graphtype = "bar",
+json5_31b<- makeJson(sectionn = 5, graphn = 312, dt = fig5_31b$Average.Account..Thousands.of.2015.Dollars, graphtype = "bar",
                     series = "Average account size in thousands",
                     categories = fig5_31b$X, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
@@ -62,12 +61,13 @@ json5_27<- makeJson(sectionn = 5, graphn = 27, dt = fig5_27, graphtype = "line",
 
 #Figure 5-26
 fig5_26<- read.csv(paste(textpath, "Covering Expenses_savings/05_0260.csv", sep=""),stringsAsFactors=FALSE)
-json5_26<- makeJson(sectionn = 5, graphn = 26, dt = fig5_26, graphtype = "line",
-                    series = c("Savings","Total EFC"),
-                    categories = fig5_26$category, tickformat = "$.2s", rotated = FALSE, directlabels = TRUE)
+json5_26<- makeJson(sectionn = 5, graphn = 26, dt = fig5_26$Total.EFC, graphtype = "line",
+                    series = "Total EFC", xlabel="Savings",
+                    categories = fig5_26$Savings, tickformat = "$.2s", rotated = FALSE, directlabels = TRUE)
 #Figure 5-25
 #add "overrideTickCount": true to outermost bracket
-#set x.ticks.count to 15
+#set x.ticks.count to 11
+#add 4 blank data points (two at beginning and two at end) 
 fig5_25<- read.csv(paste(textpath, "Covering Expenses_savings/05_0250.csv", sep=""),stringsAsFactors=FALSE)
 json5_25<- makeJson(sectionn = 5, graphn = 25, dt = fig5_25$amount, graphtype = "line",
                     series = "Personal savings rate",
