@@ -7,7 +7,10 @@ library(openxlsx)
 
 source('~/Documents/ed-data/scripts/createJsons.R')
 textpath <- "/Users/vivhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
-#textpath <- "/Users/vhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
+# textpath <- "/Users/bchartof/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) 
+# Project/**Production/"
+# source('~/Projects/ed-data/scripts/createJsons.R')
+
 graphtext <- readWorkbook(paste(textpath, "GraphText.xlsx", sep=""),sheet = 1)
 graphtext$section_number <- as.numeric(graphtext$section_number)
 graphtext$multiples <- as.numeric(graphtext$multiples)
@@ -105,7 +108,7 @@ json7_5<- makeJson(sectionn = 7, graphn = 5, dt = fig7_5$percent, graphtype = "b
 },
 
 fig7_7<- read.csv(paste(textpath, "Personas/07_0070-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names=FALSE)
-json7_7<- makeJson(sectionn = 7, graphn = 7, dt = fig7_7, graphtype = "bar", set1= fig7_7[grep("Public four-year in-state", fig7_7$category), c("Expected family contribution", "Federal grant aid", "Military and veterans grant aid", "State grant aid", "Institutional grant aid", "Private and employer grant aid", "Federal student loans", "Federal parent loans", "Private loans", "Earnings and other resources", "Tuition and fees", "Budget beyond tuition and fees")], set2= fig7_7[grep("Public four-year out-of-state", fig7_7$category), c("Public four-year in-state", fig7_7$category), c("Expected family contribution", "Federal grant aid", "Military and veterans grant aid", "State grant aid", "Institutional grant aid", "Private and employer grant aid", "Federal student loans", "Federal parent loans", "Private loans", "Earnings and other resources", "Tuition and fees", "Budget beyond tuition and fees")],
+json7_7<- makeJson(sectionn = 7, graphn = 7, dt = fig7_7, graphtype = "bar", set1= fig7_7[grep("Public four-year in-state", fig7_7$category), c("Expected family contribution", "Federal grant aid", "Military and veterans grant aid", "State grant aid", "Institutional grant aid", "Private and employer grant aid", "Federal student loans", "Federal parent loans", "Private loans", "Earnings and other resources", "Tuition and fees", "Budget beyond tuition and fees")], set2= fig7_7[grep("Public four-year out-of-state", fig7_7$category),  c("Expected family contribution", "Federal grant aid", "Military and veterans grant aid", "State grant aid", "Institutional grant aid", "Private and employer grant aid", "Federal student loans", "Federal parent loans", "Private loans", "Earnings and other resources", "Tuition and fees", "Budget beyond tuition and fees")],
                    set3= fig7_7[grep("Private nonprofit four-year", fig7_7$category),  c("Expected family contribution", "Federal grant aid", "Military and veterans grant aid", "State grant aid", "Institutional grant aid", "Private and employer grant aid", "Federal student loans", "Federal parent loans", "Private loans", "Earnings and other resources", "Tuition and fees", "Budget beyond tuition and fees")], set4= fig7_7[grep("For-profit", fig7_7$category), c("Expected family contribution", "Federal grant aid", "Military and veterans grant aid", "State grant aid", "Institutional grant aid", "Private and employer grant aid", "Federal student loans", "Federal parent loans", "Private loans", "Earnings and other resources", "Tuition and fees", "Budget beyond tuition and fees")],
                    set5= fig7_7[grep("Public two-year", fig7_7$category),  c("Expected family contribution", "Federal grant aid", "Military and veterans grant aid", "State grant aid", "Institutional grant aid", "Private and employer grant aid", "Federal student loans", "Federal parent loans", "Private loans", "Earnings and other resources", "Tuition and fees", "Budget beyond tuition and fees")],
                    series = c("Public four-year in-state","Public four-year out-of-state","Private nonprofit four-year","For-profit", "Public two-year"),
