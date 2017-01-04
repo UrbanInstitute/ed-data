@@ -1,0 +1,1 @@
+{"series": "Pell-Grant", "title": "All", "data": {"labels": {"format": "$s"}, "columns": [["Pell-Grant", 4400]], "type": "bar"}, "axis": {"rotated": true, "x": {"categories": "All (49%)", "type": "category"}, "y": {"tick": {"format": "$s"}}}, "metadata": {"notes": null, "source": "National Postsecondary Student Aid Study, 2012. "}}
