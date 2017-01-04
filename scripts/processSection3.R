@@ -247,15 +247,14 @@ json3_18f <- makeJson(sectionn = 3, graphn = 183, subn= 2, dt = fig3_18f, grapht
 
 #Figure 3-19
 
-#Made hand corrections to x axis ticks. For normal line charts handled in the college-affordability.urban.org repo at:
+#Made hand corrections to x axis ticks.
+#For normal line charts handled in the college-affordability.urban.org repo at:
 #`college-affordability.urban.org/components/30-components/graphs/graph/graph.jsx`
-#in various blocks specific to line and area charts. Given that this chart is a single edge case (toggle
-#line chart), made corrections by hand, namely:
-#- set `x.tick.count: 14`
-#- added empty tick `""` to start and end of x.categories array
-#- added empty tick `null` to start and end of each data series array in `data.sets`
-# - added "colors": {"25th percentile": "#1696d2", "Median": "#fdbf11", "75th percentile": "#000000"  } to outermost bracket in "data"
-# - make sure sets are ordered by 1 and then 2
+#in various blocks specific to line and area charts. Given that this chart is a single edge case (toggle line chart), made corrections by hand, namely:
+#- set `x.tick.count: 13`
+#"overrideTickCount": true,
+#- added "colors": {"25th percentile": "#1696d2", "Median": "#fdbf11", "75th percentile": "#000000"  } to outermost bracket in "data"
+#- make sure sets are ordered by 1 and then 2
 #MEN
 fig3_19 <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_0190.csv", sep=""),stringsAsFactors=FALSE, check.names =FALSE)
 json3_19<- makeJson(sectionn = 3, graphn = 191, dt = fig3_19, graphtype = "line", set1= fig3_19[grep("18", fig3_19$category), c("Median", "25th percentile", "75th percentile")], set2= fig3_19[grep("24", fig3_19$category), c("Median", "25th percentile", "75th percentile")],

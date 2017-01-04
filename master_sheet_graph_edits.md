@@ -2,6 +2,8 @@
 
 #SECTION 1: WHAT IS COLLEGE
 
+**Figure 1-4
+#add 2 blank data points, one at beginning and end
 
 #SECTION 2: COST OF EDUCATING
 
@@ -171,9 +173,8 @@ Set max value and change number of ticks for second set
 For normal line charts handled in the college-affordability.urban.org repo at:
 `college-affordability.urban.org/components/30-components/graphs/graph/graph.jsx`
 in various blocks specific to line and area charts. Given that this chart is a single edge case (toggle line chart), made corrections by hand, namely:
-- set `x.tick.count: 14`
-- added empty tick `""` to start and end of x.categories array
-- added empty tick `null` to start and end of each data series array in `data.sets`
+- set `x.tick.count: 13`
+"overrideTickCount": true,
 - added "colors": {"25th percentile": "#1696d2", "Median": "#fdbf11", "75th percentile": "#000000"  } to outermost bracket in "data"
 - make sure sets are ordered by 1 and then 2
 
@@ -356,6 +357,9 @@ change y tick values
 # 2) adding spacing to x values in third and fourth graphs to create two lines , for example: 
 "Public          four-year"         "Less than           $30,000"
 
+#3) add brackets to single category in first graph
+
+
 #for second set of multiples:
 # 1) set y max value and ticks
 "y": {
@@ -372,6 +376,8 @@ change y tick values
 # 2) adding spacing to x values in third and fourth graphs to create two lines , for example: 
 "Public          four-year"         "Less than           $30,000"
 
+#3) add brackets to single category in first graph
+
 **Figure 4-23
 #for first set of multiples:
 # 1) set y max value and ticks
@@ -386,6 +392,9 @@ change y tick values
 # 2) adding spacing to x values in third and fourth graphs to create two lines , for example: 
 "Public          four-year"         "Less than           $30,000"
 
+#3) add brackets to single category in first graph
+
+
 #for second set of multiples:
 # 1) set y max value and ticks
 "y": {
@@ -399,6 +408,7 @@ change y tick values
 # 2) adding spacing to x values in third and fourth graphs to create two lines , for example: 
 "Public          four-year"         "Less than           $30,000"
 
+#3) add brackets to single category in first graph
 
 
 **Figure 4-24 : change y tick values
@@ -477,6 +487,11 @@ change y tick values
 
 #SECTION 6: AFTER COLLEGE
 
+**Figure 6-1: 
+1) add two blank data points, one to beginning and end
+2) add "overrideTickCount": true to outermost bracket
+3) add x.tick.count: 9
+
 **Figure 6-8
 add bracket to "categories": ["Education Debt"]
 
@@ -486,155 +501,204 @@ make x-labels two lines after dash by adding space: $1,000– / $5,000
 #SECTION 7: STUDENT PROFILES
 
 
-**Figure 7-3 had to tweak groups array:
-"groups": [
-  [
-    "Expected family contribution", 
-    "Federal grants", 
-    "Military/Veterans", 
-    "State grants", 
-    "Institutional grants", 
-    "Private and employer aid", 
-    "Federal student loans", 
-    "Federal  parent loans", 
-    "Private loans", 
-    "Earnings and other resources", 
-    "Tuition and fees", 
-    "NonTF budget"
-    ]
-  ]
+**Figure 7-3 
+#1) change 0 to "NA" with regex
+#[0]{1}[,]  --> replace with "NA",
+#[0]{1}\n  --> replace with "NA"\n
 
-#manually set colors to avoid duplicates
-"colors": {
-  "Institutional grants":"#1696d2",
-  "Military\/Veterans": "#000000",
-  "Tuition and fees": "#55b748",
-  "Earnings and other resources": "#ffff00",
-  "Private and employer aid": "#d2d2d2",
-  "NonTF budget": "#ec008b",
-  "Federal grants": "#6100ec",
-  "State grants": "#d700ec",
-  "Private loans": "#88ec00",
-  "Federal student loans": "#ffa500",
-  "Expected family contribution": "#ec0015",
-  "Federal  parent loans": "#00ecd7"
-},
+#2) edit groups array
+#"groups": [
+#[
+#"Private loans", 
+#"Institutional grant aid", 
+#"Tuition and fees", 
+#"State grant aid",
+#"Federal grant aid", 
+#"Budget beyond tuition and fees", 
+#"Expected family contribution", 
+#"Military and veterans grant aid", 
+#"Private and employer grant aid", 
+#"Federal parent loans", 
+#"Federal student loans", 
+#"Earnings and other resources"
+#]
+#],
+
+#3) add colors array
+#"colors": {
+  #"Expected family contribution": "#848081",
+  #"Federal grant aid": "#cfe8f3",
+  #"Military and veterans grant aid": "#a2d4ec",
+  #"State grant aid": "#73bfe2",
+  #"Institutional grant aid":"#1696d2",
+  #"Private and employer grant aid": "#1696d2",
+  #"Federal student loans": "#fccb41",
+  #"Federal parent loans": "#fdbf11",
+  #"Private loans": "#fce39e",
+  #"Earnings and other resources": "#d5d5d4",
+  #"Tuition and fees": "#ec008b",
+  #"Budget beyond tuition and fees": "#000000"
+  #},
 
 
-**Figure 7-7 #had to change groups array:
 
-	"groups": [
-	  [
-	    "Private loans", 
-	    "Institutional grants", 
-	    "Tuition and fees", 
-	    "State public grants",
-	    "Federal grants", 
-	    "NonTF budget", 
-	    "EFC", 
-	    "Military/Veterans", 
-	    "Private and employer aid", 
-	    "Federal parent loans", 
-	    "Federal student loans", 
-	    "Earnings and other resources"
-	    ]
-	  ],
+**Figure 7-7 
+#1) change 0 to "NA" with regex
+#[0]{1}[,]  --> replace with "NA",\n
+#[0]{1}\n  --> replace with "NA"
 
-**Figure 7-11 need to change groups array to:
-"groups": [
-  [
-    "Expected family contribution", 
-    "Federal grants", 
-    "Military/Veterans", 
-    "State grants", 
-    "Institutional grants", 
-    "Private and employer aid", 
-    "Federal student loans", 
-    "Federal  parent loans", 
-    "Private loans", 
-    "Earnings and other resources",
-    "Budget beyond tuition and fees", 
-    "Tuition and fees"
-    ]
-  ],
-#need to set colors manually to avoid duplicates
-"colors": {
-  "Expected family contribution":"#d700ec",
-  "Federal grants":"#000000",
-  "Military/Veterans":"#55b748",
-  "State grants": "#00ecd7",
-  "Institutional grants":"#1696d2",
-  "Private and employer aid":"#88ec00",
-  "Federal student loans": "#d2d2d2",
-  "Federal  parent loans":"#6100ec",
-  "Private loans": "#ec008b",
-  "Earnings and other resources":"#ffa500",
-  "Budget beyond tuition and fees":"#ec0015",
-  "Tuition and fees":"#ffff00"
-},
+#2) edit groups array
+#"groups": [
+#[
+#"Private loans", 
+#"Institutional grant aid", 
+#"Tuition and fees", 
+#"State grant aid",
+#"Federal grant aid", 
+#"Budget beyond tuition and fees", 
+#"Expected family contribution", 
+#"Military and veterans grant aid", 
+#"Private and employer grant aid", 
+#"Federal parent loans", 
+#"Federal student loans", 
+#"Earnings and other resources"
+#]
+#],
 
- **Figure 7-15 need to change groups array to:
-"groups": [
-  [
-    "Expected family contribution", 
-    "Federal grants", 
-    "Military/Veterans", 
-    "State grants", 
-    "Institutional grants", 
-    "Private and employer aid", 
-    "Federal student loans", 
-    "Federal  parent loans", 
-    "Private loans", 
-    "Earnings and other resources",
-    "Budget beyond tuition and fees", 
-    "Tuition and fees"
-    ]
-  ],
-#need to change colors to avoid duplicates
-"colors": {
-  "Expected family contribution":"#d700ec",
-  "Federal grants":"#000000",
-  "Military/Veterans":"#55b748",
-  "State grants":"#00ecd7",
-  "Institutional grants":"#ffff00",
-  "Private and employer aid":"#88ec00",
-  "Federal student loans":"#d2d2d2",
-  "Federal  parent loans":"#6100ec",
-  "Private loans":"#ec0015",
-  "Earnings and other resources":"#ffa500",
-  "Budget beyond tuition and fees":"#ec008b",
-  "Tuition and fees": "#1696d2"
-},
+#3) add colors array
+#"colors": {
+  #"Expected family contribution": "#848081",
+  #"Federal grant aid": "#cfe8f3",
+  #"Military and veterans grant aid": "#a2d4ec",
+  #"State grant aid": "#73bfe2",
+  #"Institutional grant aid":"#1696d2",
+  #"Private and employer grant aid": "#1696d2",
+  #"Federal student loans": "#fccb41",
+  #"Federal parent loans": "#fdbf11",
+  #"Private loans": "#fce39e",
+  #"Earnings and other resources": "#d5d5d4",
+  #"Tuition and fees": "#ec008b",
+  #"Budget beyond tuition and fees": "#000000"
+  #},
 
-**Figure 7-19 need to change groups array
-"groups": [
-  [
-    "Expected family contribution", 
-    "Federal grants", 
-    "Military/Veterans", 
-    "State grants", 
-    "Institutional grants", 
-    "Private and employer aid", 
-    "Federal student loans", 
-    "Federal  parent loans", 
-    "Private loans", 
-    "Budget beyond tuition and fees", 
-    "Tuition and fees"
-    ]
-  ],
-#need to set colors to avoid duplicates
-"colors": {
-  "Expected family contribution":"#d700ec",
-  "Federal grants": "#000000",
-  "Military/Veterans": "#55b748",
-  "State grants": "#ffff00",
-  "Institutional grants": "#1696d2",
-  "Private and employer aid": "#ec008b", 
-  "Federal student loans": "#d2d2d2",
-  "Federal  parent loans": "#6100ec", 
-  "Private loans": "#88ec00",
-  "Budget beyond tuition and fees": "#ec0015",
-  "Tuition and fees": "#00ecd7"
-},
+**Figure 7-11 
+#1) change 0 to "NA" with regex
+#[0]{1}[,]  --> replace with "NA",
+#[0]{1}\n  --> replace with "NA"\n
+
+#2) edit groups array
+#"groups": [
+#[
+#"Private loans", 
+#"Institutional grant aid", 
+#"Tuition and fees", 
+#"State grant aid",
+#"Federal grant aid", 
+#"Budget beyond tuition and fees", 
+#"Expected family contribution", 
+#"Military and veterans grant aid", 
+#"Private and employer grant aid", 
+#"Federal parent loans", 
+#"Federal student loans", 
+#"Earnings and other resources"
+#]
+#],
+
+#3) add colors array
+#"colors": {
+  #"Expected family contribution": "#848081",
+  #"Federal grant aid": "#cfe8f3",
+  #"Military and veterans grant aid": "#a2d4ec",
+  #"State grant aid": "#73bfe2",
+  #"Institutional grant aid":"#1696d2",
+  #"Private and employer grant aid": "#1696d2",
+  #"Federal student loans": "#fccb41",
+  #"Federal parent loans": "#fdbf11",
+  #"Private loans": "#fce39e",
+  #"Earnings and other resources": "#d5d5d4",
+  #"Tuition and fees": "#ec008b",
+  #"Budget beyond tuition and fees": "#000000"
+  #},
+
+
+ **Figure 7-15 
+#1) change 0 to "NA" with regex
+#[0]{1}[,]  --> replace with "NA",
+#[0]{1}\n  --> replace with "NA"\n
+
+#2) edit groups array
+#"groups": [
+#[
+#"Private loans", 
+#"Institutional grant aid", 
+#"Tuition and fees", 
+#"State grant aid",
+#"Federal grant aid", 
+#"Budget beyond tuition and fees", 
+#"Expected family contribution", 
+#"Military and veterans grant aid", 
+#"Private and employer grant aid", 
+#"Federal parent loans", 
+#"Federal student loans", 
+#"Earnings and other resources"
+#]
+#],
+
+#3) add colors array
+#"colors": {
+  #"Expected family contribution": "#848081",
+  #"Federal grant aid": "#cfe8f3",
+  #"Military and veterans grant aid": "#a2d4ec",
+  #"State grant aid": "#73bfe2",
+  #"Institutional grant aid":"#1696d2",
+  #"Private and employer grant aid": "#1696d2",
+  #"Federal student loans": "#fccb41",
+  #"Federal parent loans": "#fdbf11",
+  #"Private loans": "#fce39e",
+  #"Earnings and other resources": "#d5d5d4",
+  #"Tuition and fees": "#ec008b",
+  #"Budget beyond tuition and fees": "#000000"
+  #},
+
+**Figure 7-19 
+
+#1) change 0 to "NA" with regex
+#[0]{1}[,]  --> replace with "NA",\n
+#[0]{1}\n  --> replace with "NA"
+
+#2) edit groups array
+#"groups": [
+#[
+#"Private loans", 
+#"Institutional grant aid", 
+#"Tuition and fees", 
+#"State grant aid",
+#"Federal grant aid", 
+#"Budget beyond tuition and fees", 
+#"Expected family contribution", 
+#"Military and veterans grant aid", 
+#"Private and employer grant aid", 
+#"Federal parent loans", 
+#"Federal student loans", 
+#"Earnings and other resources"
+#]
+#],
+
+#3) add colors array
+#"colors": {
+  #"Expected family contribution": "#848081",
+  #"Federal grant aid": "#cfe8f3",
+  #"Military and veterans grant aid": "#a2d4ec",
+  #"State grant aid": "#73bfe2",
+  #"Institutional grant aid":"#1696d2",
+  #"Private and employer grant aid": "#1696d2",
+  #"Federal student loans": "#fccb41",
+  #"Federal parent loans": "#fdbf11",
+  #"Private loans": "#fce39e",
+  #"Earnings and other resources": "#d5d5d4",
+  #"Tuition and fees": "#ec008b",
+  #"Budget beyond tuition and fees": "#000000"
+  #},
+
 
 
