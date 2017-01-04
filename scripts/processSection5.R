@@ -66,6 +66,8 @@ json5_26<- makeJson(sectionn = 5, graphn = 26, dt = fig5_26, graphtype = "line",
                     series = c("Savings","Total EFC"),
                     categories = fig5_26$category, tickformat = "$.2s", rotated = FALSE, directlabels = TRUE)
 #Figure 5-25
+#add "overrideTickCount": true to outermost bracket
+#set x.ticks.count to 15
 fig5_25<- read.csv(paste(textpath, "Covering Expenses_savings/05_0250.csv", sep=""),stringsAsFactors=FALSE)
 json5_25<- makeJson(sectionn = 5, graphn = 25, dt = fig5_25$amount, graphtype = "line",
                     series = "Personal savings rate",
@@ -155,15 +157,16 @@ json5_16 <- makeJson(sectionn = 5, graphn = 16, dt = fig5_16$amount, graphtype =
 
 #Figure 5-15
 #First graph
-fig5_15a<- read.csv(paste(textpath, "Covering expenses_borrowing/05_0151.csv", sep=""),stringsAsFactors=FALSE)
-json5_15a <- makeJson(sectionn = 5, graphn = 15, subn=1, dt = fig5_15a$X..of.students.borrowing.federal.loans, graphtype = "bar", series="Percentage of students borrowing federal loans",
+fig5_151<- read.csv(paste(textpath, "Covering expenses_borrowing/05_0151.csv", sep=""),stringsAsFactors=FALSE)
+json5_151 <- makeJson(sectionn = 5, graphn = 151, dt = fig5_15a$X..of.students.borrowing.federal.loans, graphtype = "bar", series="Percentage of students borrowing federal loans",
                      categories = fig5_15a$Degree, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 #Second graph
-fig5_15b<- read.csv(paste(textpath, "Covering expenses_borrowing/05_0152.csv", sep=""),stringsAsFactors=FALSE)
-json5_15b <- makeJson(sectionn = 5, graphn = 15, subn=2, dt = fig5_15b$amount, graphtype = "bar", series="Average amount in federal loans",
+fig5_152<- read.csv(paste(textpath, "Covering expenses_borrowing/05_0152.csv", sep=""),stringsAsFactors=FALSE)
+json5_152 <- makeJson(sectionn = 5, graphn = 152, dt = fig5_15b$amount, graphtype = "bar", series="Average amount in federal loans",
                       categories = fig5_15b$Degree, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-14
+#add "overrideTickCount": true to outermost bracket
 fig5_14<- read.csv(paste(textpath, "Covering expenses_borrowing/05_0140.csv", sep=""),stringsAsFactors=FALSE)
 json5_14 <- makeJson(sectionn = 5, graphn = 14, dt = fig5_14, graphtype = "line", series=c("$ Average per borrower", "$ Average per student"),
                     categories = fig5_14$Academic.Year, tickformat = "$.2s", rotated = FALSE, directlabels = TRUE)

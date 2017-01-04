@@ -409,6 +409,7 @@ change y tick values
         "format": "dollar",
         "count": 6
       }
+#add "overrideTickCount": true to outermost bracket
 
 **Figure 4-21 : make x label two lines, in first two graphs of multiple, in order to widen the graph
 
@@ -452,6 +453,8 @@ change y tick values
 3) in the third graph, add space to x-axis labels for two lines  so  "Less than          ....." or "$30,000–            ........." for instance
 4) in the fourth graph, add space to x-axis labels for two lines so "Full-time           ....."
 
+**Figure 5-14
+#add "overrideTickCount": true to outermost bracket
 **Figure 5-17
 1) in the first graph, make x-label three lines by adding spaces in between "All full-time/ dependent/ students"
 2) in the second graph, make each x-label two lines, so  "Less than          ....." or "$30,000–            ........." for instance
@@ -465,7 +468,10 @@ change y tick values
       },
       "max": 20000
     },
-    
+**Figure 5-25:
+#add "overrideTickCount": true to outermost bracket
+#set x.ticks.count to 15
+
 **Figure 5-31
 #delete "groups" array in all graphs
 
