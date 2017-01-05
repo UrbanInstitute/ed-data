@@ -31,6 +31,7 @@ json3_1 <- makeJson(sectionn = 3, graphn = 1, dt = fig3_1, graphtype = "bar",
                     categories = fig3_1$category, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 3-2
+#add "overrideTickCount": true to outermost bracket
 fig3_2 <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0020-revised.csv", sep=""),stringsAsFactors=FALSE)
 json3_2 <- makeJson(sectionn = 3, graphn = 2, dt = fig3_2, graphtype = "line",
                     series = c("for profit", "private nonprofit four-year", "public four-year", "public two-year"),
@@ -267,6 +268,25 @@ json3_19b<- makeJson(sectionn = 3, graphn = 192, dt = fig3_19b, graphtype = "lin
                     series = c("Age 18–23", "Age 24–34"),
                     categories = fig3_19b$category_label, tickformat = "$s", rotated = FALSE, directlabels = TRUE)
 #Figure 3-20
+#For first graph:
+#"y": {
+#"padding": {"top":0, "bottom":0},
+#"max": 50000,
+#"min":-10000,
+#"tick": {
+#"format": "dollar",
+#"count": 6
+#}
+#},
+#For second graph:
+#"y": {
+#"padding": {"top": 0, "bottom": 0},
+#"max": 1,
+#"tick": {
+#"format": "percent",
+#"count": 5
+#}
+#}
 fig3_20a <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_0200.csv", sep=""),stringsAsFactors=FALSE)
 fig3_20b <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_0201.csv", sep=""),stringsAsFactors=FALSE)
 

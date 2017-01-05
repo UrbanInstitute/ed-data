@@ -75,23 +75,23 @@
     },
 
 **Figure 2-61: Change Y-axis properties to adjust ticks:
-    "y": {
-      "padding": {"top": 0, "bottom": 0},
-      "max": 20000,
-      "tick": {
-        "format": "dollar",
-        "count": 5
-      }
-    }
+    #"y": {
+      #"padding": {"top": 0, "bottom": 0},
+      #"max": 25000,
+      #"tick": {
+        #"format": "dollar",
+        #"count": 6
+      #}
+    #}
 **Figure 2-62: Change Y-axis properties to adjust ticks:
-        "y": {
-     "padding": {"top": 0, "bottom": 0},
-     "max": 1000,
-      "tick": {
-        "format": "dollar",
-        "count": 5
-      }
-    }
+        #"y": {
+     #"padding": {"top": 0, "bottom": 0},
+     #"max": 1200,
+      #"tick": {
+        #"format": "dollar",
+        #"count": 7
+      #}
+    #}
 
 **Figure 2-7: 
 #1) for all multiples, add spaces to x-axis labels to create two lines, for example: "'01'–        '02'"
@@ -107,6 +107,18 @@
 
 
 #SECTION 3: PRICES AND EXPENSES
+
+**Figure 3-2
+
+For second graph:
+    "y": {
+      "padding": {"top": 0, "bottom": 0},
+      "max": 1,
+      "tick": {
+        "format": "percent",
+        "count": 5
+      }
+    }
 
 **Figure 3-3 (all multiples): manually change color for each to avoid automated repeating colors
    "colors": {
@@ -170,13 +182,13 @@ Set max value and change number of ticks for second set
 
 **Figure 3-19 Made hand corrections to x axis ticks.**
 
-For normal line charts handled in the college-affordability.urban.org repo at:
-`college-affordability.urban.org/components/30-components/graphs/graph/graph.jsx`
-in various blocks specific to line and area charts. Given that this chart is a single edge case (toggle line chart), made corrections by hand, namely:
-- set `x.tick.count: 13`
-"overrideTickCount": true,
-- added "colors": {"25th percentile": "#1696d2", "Median": "#fdbf11", "75th percentile": "#000000"  } to outermost bracket in "data"
-- make sure sets are ordered by 1 and then 2
+#For normal line charts handled in the college-affordability.urban.org repo at:
+#`college-affordability.urban.org/components/30-components/graphs/graph/graph.jsx`
+#in various blocks specific to line and area charts. Given that this chart is a single edge case (toggle line chart), made corrections by hand, namely:
+#- set `x.tick.count: 13`
+#"overrideTickCount": true,
+#- added "colors": {"25th percentile": "#1696d2", "Median": "#fdbf11", "75th percentile": "#000000"  } to outermost bracket in "data"
+#- make sure sets are ordered by 1 and then 2
 
 **Figure 3-22:
 #First set of multiples- need to add "groups": [["Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"]]
@@ -267,6 +279,10 @@ in various blocks specific to line and area charts. Given that this chart is a s
 **Figure 4-13
 # add "highlightIndex" : 18 to outermost bracket
 
+
+**Figure 4-14
+#add highlightIndex": 20 to outermost bracket
+
 **Figure 4-15
 # 1) set max y-value and ticks
 "y": {
@@ -274,7 +290,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
   "padding": {"top": 0, "bottom": 0},
   "tick": {
     "format": "percent",
-    "count": 5
+    "count": 3
   }
 },
 
@@ -319,7 +335,7 @@ add brackets to single x-categories in 4-211 and 4-212
 change y tick values
 "y": {
   "padding": {"top": 0, "bottom": 0},
-  "max": 1000,
+  "max": 1800,
   "tick": {
     "format": "dollar",
     "count": 3
@@ -428,16 +444,18 @@ change y tick values
 #SECTION 5: COVERING EXPENSES
 
 **Figure 5-1 (all multiples)
-1) in first graph, add bracket for x.categories since single category "All families"
-2) set max y value and ticks
-    "y": {
-      "padding": {"top": 0, "bottom": 0},
-      "max": 100000,
-      "tick": {
-        "count": 3,
-        "format": "dollar"
-      }
-    },
+#1) in first graph, add bracket for x.categories since single category "All families"
+#2) set max y value and ticks
+    #"y": {
+      #"padding": {"top": 0, "bottom": 0},
+      #"max": 120000,
+      #"tick": {
+        #"count": 4,
+        #"format": "dollar"
+      #}
+    #},
+#3) For x-axis labels, add space between year range and "years", so that they are on two lines, 
+#for example: "25-34           years"
 
 **Figure 5-3
 # add   "highlightIndex" : 25  to outermost bracket

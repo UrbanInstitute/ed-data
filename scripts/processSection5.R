@@ -261,6 +261,18 @@ json5_2 <- makeJson(sectionn = 5, graphn = 2, dt = fig5_2$Median.Income, graphty
                     categories = fig5_2$Ed.level, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 #Figure 5-1
+#1) in first graph, add bracket for x.categories since single category "All families"
+#2) set max y value and ticks
+#"y": {
+#"padding": {"top": 0, "bottom": 0},
+#"max": 120000,
+#"tick": {
+#"count": 4,
+#"format": "dollar"
+#}
+#},
+#3) For x-axis labels, add space between year range and "years", so that they are on two lines, 
+#for example: "25-34           years"
 
 fig5_1a <- read.csv(paste(textpath, "Covering expenses_income/05_0011.csv", sep=""),stringsAsFactors=FALSE)
 fig5_1b <- read.csv(paste(textpath, "Covering expenses_income/05_0012.csv", sep=""),stringsAsFactors=FALSE)

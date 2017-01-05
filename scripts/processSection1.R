@@ -42,7 +42,7 @@ json1_3 <- makeJson(sectionn = 1, graphn = 3, dt = fig1_3, graphtype = "bar",
 
 #Figure 1-4
 #add 2 blank data points, one at beginning and end
-
+#add "padding": {"bottom": 15}, 
 fig1_4 <- read.csv(paste(textpath, "What is college_institutions/01_0040.csv", sep=""),stringsAsFactors=FALSE)
 json1_4 <- makeJson(sectionn = 1, graphn = 4, dt = fig1_4, graphtype = "line",
                     series = c("Public four-year", "Public two-year", "Private nonprofit four-year", "For-profit"),

@@ -49,3 +49,23 @@ json2_4 <- makeJson(sectionn = 2, graphn = 4, dt = fig2_4$public, graphtype = "b
     "count": 5
   }
 },
+
+
+#Figure 2-61: Change Y-axis properties to adjust ticks:
+  #"y": {
+  #"padding": {"top": 0, "bottom": 0},
+  #"max": 25000,
+  #"tick": {
+  #"format": "dollar",
+  #"count": 6
+  #}
+  #}
+#Figure 2-62: Change Y-axis properties to adjust ticks:
+  #"y": {
+  #"padding": {"top": 0, "bottom": 0},
+  #"max": 1200,
+  #"tick": {
+  #"format": "dollar",
+  #"count": 7
+  #}
+  #}

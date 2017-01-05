@@ -95,10 +95,10 @@ fig4_7b <- read.csv(paste(textpath, "Financial aid_grant aid/CSVs/040072.csv", s
 
 json4_7a <- makeJson(sectionn = 4, graphn = 7, subn= 1, dt = fig4_7a, graphtype = "bar",
                     series = c("Federal Grants", "Veterans' and Military", "State Grants", "Institutional Grants", "Employer or Private Grants"),
-                    categories = fig4_7a$column, graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+                    xlabel="Independent", categories = fig4_7a$column, graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 json4_7b <- makeJson(sectionn = 4, graphn = 7, subn=2, dt = fig4_7b, graphtype = "bar",
                     series = c("Federal Grants", "Veterans' and Military", "State Grants", "Institutional Grants", "Employer or Private Grants"),
-                    categories = fig4_7b$column, graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+                    xlabel="Dependent", categories = fig4_7b$column, graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 #Figure 4-8 #had to manually change the ordering of the sets and had to replace "groups" aray with     
 "groups": [
@@ -194,6 +194,7 @@ json4_13 <- makeJson(sectionn = 4, graphn = 13, dt = fig4_13$GrantAid, graphtype
                     categories = fig4_13$state, tickformat = "$.2s", rotated = TRUE, directlabels = TRUE)
 
 #Figure 4-14
+#add highlightIndex": 20 to outermost bracket
 fig4_14 <- read.csv(paste(textpath, "Financial aid_state/04_0140.csv", sep=""),stringsAsFactors=FALSE)
 json4_14 <- makeJson(sectionn = 4, graphn = 14, dt = fig4_14$stategrants, graphtype = "bar", series="Percentage of state grants",
                      categories = fig4_14$state, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
@@ -206,7 +207,7 @@ json4_14 <- makeJson(sectionn = 4, graphn = 14, dt = fig4_14$stategrants, grapht
   "padding": {"top": 0, "bottom": 0},
   "tick": {
     "format": "percent",
-    "count": 5
+    "count": 3
   }
 },
 
@@ -311,7 +312,7 @@ json4_19 <- makeJson(sectionn = 4, graphn = 19, dt = fig4_19, graphtype = "bar",
 #change number of ticks
 "y": {
   "padding": {"top": 0, "bottom": 0},
-  "max": 1000,
+  "max": 1800,
   "tick": {
     "format": "dollar",
     "count": 3
@@ -354,7 +355,7 @@ fig4_22d$sub_category <- gsub("-", "–", fig4_22d$sub_category)
 #3) add brackets to single category in first graph
 
 json4_22a <- makeJson(sectionn = 4, graphn = 221, subn= 1, dt = fig4_22a$percent_employer, graphtype = "bar", series="Employer aid", categories = fig4_22a$sub_category, 
-                      graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels=TRUE)
+                      xlabel= "Total", graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels=TRUE)
 json4_22b <- makeJson(sectionn = 4, graphn = 221, subn= 2,  dt = fig4_22b$percent_employer, graphtype = "bar", series="Employer aid", categories = fig4_22b$sub_category, 
                       xlabel = "Dependency Status", graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels=TRUE)
 json4_22c <- makeJson(sectionn = 4, graphn = 221,  subn= 3, dt = fig4_22c$percent_employer, graphtype = "bar", series="Employer aid", categories = fig4_22c$sub_category, 
