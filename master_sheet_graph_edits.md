@@ -592,6 +592,19 @@ make x-labels two lines after dash by adding space: $1,000– / $5,000
   "Budget beyond tuition and fees": "#000000"
   },
 
+4) change order of stacked bars to:
+    "Expected family contribution",
+    "Federal grant aid",
+    "Military and veterans grant aid",
+    "State grant aid",
+    "Institutional grant aid",
+    "Private and employer grant aid",
+    "Federal student loans",
+    "Federal parent loans",
+    "Private loans",
+    "Earnings and other resources" 
+    "Tuition and fees",
+    "Budget beyond tuition and fees"
 
 
 **Figure 7-7 
@@ -633,6 +646,20 @@ make x-labels two lines after dash by adding space: $1,000– / $5,000
   "Budget beyond tuition and fees": "#000000"
   },
 
+4) change order of stacked bars in each set to:
+    "Expected family contribution",
+    "Federal grant aid",
+    "Military and veterans grant aid",
+    "State grant aid",
+    "Institutional grant aid",
+    "Private and employer grant aid",
+    "Federal student loans",
+    "Federal parent loans",
+    "Private loans",
+    "Earnings and other resources" 
+    "Tuition and fees",
+    "Budget beyond tuition and fees"
+
 **Figure 7-11 
 1) change 0 to "NA" with regex
 [0]{1}[,]  --> replace with "NA",
@@ -671,6 +698,20 @@ make x-labels two lines after dash by adding space: $1,000– / $5,000
   "Tuition and fees": "#ec008b",
   "Budget beyond tuition and fees": "#000000"
   },
+
+4) change order of stacked bars in each set to:
+    "Expected family contribution",
+    "Federal grant aid",
+    "Military and veterans grant aid",
+    "State grant aid",
+    "Institutional grant aid",
+    "Private and employer grant aid",
+    "Federal student loans",
+    "Federal parent loans",
+    "Private loans",
+    "Earnings and other resources" 
+    "Tuition and fees",
+    "Budget beyond tuition and fees"
 
 
  **Figure 7-15 
@@ -712,6 +753,20 @@ make x-labels two lines after dash by adding space: $1,000– / $5,000
   "Budget beyond tuition and fees": "#000000"
   },
 
+4) change order of stacked bars in each set to:
+    "Expected family contribution",
+    "Federal grant aid",
+    "Military and veterans grant aid",
+    "State grant aid",
+    "Institutional grant aid",
+    "Private and employer grant aid",
+    "Federal student loans",
+    "Federal parent loans",
+    "Private loans",
+    "Earnings and other resources" 
+    "Tuition and fees",
+    "Budget beyond tuition and fees"
+
 **Figure 7-19 
 
 1) change 0 to "NA" with regex
@@ -752,5 +807,16 @@ make x-labels two lines after dash by adding space: $1,000– / $5,000
   "Budget beyond tuition and fees": "#000000"
   },
 
-
+4) change order of stacked bars in each set to:
+    "Expected family contribution",
+    "Federal grant aid",
+    "Military and veterans grant aid",
+    "State grant aid",
+    "Institutional grant aid",
+    "Private and employer grant aid",
+    "Federal student loans",
+    "Federal parent loans",
+    "Private loans",
+    "Tuition and fees",
+    "Budget beyond tuition and fees"
 
