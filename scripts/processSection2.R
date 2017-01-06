@@ -41,11 +41,95 @@ json2_4 <- makeJson(sectionn = 2, graphn = 4, dt = fig2_4$public, graphtype = "b
 #Figure 2-7: 
 #1) for all multiples, add spaces to x-axis labels to create two lines, for example: "'01'–        '02'"
 # 2) set max y value and ticks
-"y": {
-  "padding": {"top": 0, "bottom": 0},
-  "max": 20000,
-  "tick": {
-    "format": "dollar",
-    "count": 5
-  }
-},
+#"y": {
+#"padding": {"top": 0, "bottom": 0},
+#"max": 20000,
+#"tick": {
+#"format": "dollar",
+#"count": 5
+#}
+#},
+
+#Figure 2-51: Change Y-axis properties to adjust ticks:
+  #"axis": {
+  #"y": {
+  #"max": 6000,
+  #"padding": {"top": 0, "bottom": 0},
+  #"tick": {
+  #"format": "dollar",
+  #"count": 4
+  #}
+  #},
+
+#Figure 2-52: Change Y-axis properties to adjust ticks:
+  #  "axis": {
+  #    "y": {
+  #    "max": 1000,
+  #    "padding": {"top": 0, "bottom": 0},
+  #      "tick": {
+  #        "format": "dollar",
+  #        "count": 5#
+  
+  #      }
+  #    },
+    
+#Figure 2-53: Change Y-axis properties to adjust ticks:
+  #"y": {
+  #"max": 60000,
+  #"padding": {"top": 0, "bottom": 0},
+  #"tick": {
+  #"format": "dollar",
+  #"count": 4
+  #}
+  #}
+  
+#Figure 2-54: Change Y-axis properties to adjust ticks:
+  #"y": {
+  #"max": 4000,
+  #"padding": {"top": 0, "bottom": 0},
+  #"tick": {
+  #"format": "dollar",
+  #"count": 5
+  #}
+  #}
+
+#Figure 2-55: Change Y-axis properties to adjust ticks:
+  #"y": {
+  #"max": 30000,
+  #"padding": {"top": 0, "bottom": 0},
+  #"tick": {
+  #"format": "dollar",
+  #"count": 4
+  #}
+  #},
+  
+#Figure 2-61: Change Y-axis properties to adjust ticks:
+  #"y": {
+  #"padding": {"top": 0, "bottom": 0},
+  #"max": 25000,
+  #"tick": {
+  #"format": "dollar",
+  #"count": 6
+  #}
+  #}
+#Figure 2-62: Change Y-axis properties to adjust ticks:
+  #"y": {
+  #"padding": {"top": 0, "bottom": 0},
+  #"max": 1200,
+  #"tick": {
+  #"format": "dollar",
+  #"count": 7
+  #}
+  #}
+
+#Figure 2-7: 
+  #1) for all multiples, add spaces to x-axis labels to create two lines, for example: "'01'–        '02'"
+  # 2) set max y value and ticks
+  #"y": {
+  #"padding": {"top": 0, "bottom": 0},
+  #"max": 20000,
+  #"tick": {
+  #"format": "dollar",
+  #"count": 5
+  #}
+  #},

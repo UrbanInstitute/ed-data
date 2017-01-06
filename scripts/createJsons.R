@@ -6,7 +6,7 @@ library(jsonlite)
 library(openxlsx)
 
 # Path to Excel file with graph metadata - change to your file path
-# textpath <- "/Users/vhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/GraphText.xlsx"
+ textpath <- "/Users/vhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/GraphText.xlsx"
 # textpath <- "/Users/bchartof/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/GraphText.xlsx"
  textpath <- "/Users/vivhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/GraphText.xlsx"
 
@@ -144,16 +144,19 @@ makeJson <- function(
     graphjson$title <- row$title
   }
   metadata$source <- row$sources
+
   metadata$notes <- row$notes
   graphjson$metadata <- metadata
   
+
   # Write json
   json <- toJSON(graphjson, auto_unbox=T)
   jsonpath <- paste("graph-json/",sprintf("%02s",sectionn), "/", sprintf("%02s",sectionn), "_", sprintf("%03s",graphn), subn, ".json", sep="")
   write(json, jsonpath)
   # As noted above, flatten "columns" arrays
   system(paste("python3 scripts/flattenJsonColumns.py", jsonpath, sep=" "))
-  
+
   return(json)
+
 }
 

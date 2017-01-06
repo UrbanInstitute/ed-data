@@ -13,6 +13,9 @@ graphtext$multiples <- as.numeric(graphtext$multiples)
 graphtext$toggle <- as.numeric(graphtext$toggle)
 
 #Figure 6-1
+#1) add two blank data points, one to beginning and end
+#2) add "overrideTickCount": true to outermost bracket
+#3) add x.tick.count: 9
 fig6_1<- read.csv(paste(textpath, "After College_employment/06_0010.csv", sep=""),stringsAsFactors=FALSE)
 json6_1 <- makeJson(sectionn = 6, graphn = 1, dt = fig6_1, graphtype = "line", series=c("High school or equivalent", "Some college, no degree", "Associate degree", "Bachelor's degree", "Advanced degree"),
                     categories = fig6_1$year, tickformat = "percent", rotated = FALSE, directlabels = TRUE)

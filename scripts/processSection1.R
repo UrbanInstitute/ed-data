@@ -41,6 +41,7 @@ json1_3 <- makeJson(sectionn = 1, graphn = 3, dt = fig1_3, graphtype = "bar",
                     categories = fig1_3$category, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 #Figure 1-4
+#add 2 blank data points, one at beginning and end
 fig1_4 <- read.csv(paste(textpath, "What is college_institutions/01_0040.csv", sep=""),stringsAsFactors=FALSE)
 json1_4 <- makeJson(sectionn = 1, graphn = 4, dt = fig1_4, graphtype = "line",
                     series = c("Public four-year", "Public two-year", "Private nonprofit four-year", "For-profit"),
@@ -59,6 +60,7 @@ json1_6 <- makeJson(sectionn = 1, graphn = 6, dt = fig1_6, graphtype = "bar",
                     series = c("Public four-year", "Private four-year", "Public two-year", "For-profit", "Other or nondegree-granting"),
                     categories = fig1_6$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
+
 #Figure 1-7
 fig1_7 <- read.csv(paste(textpath, "What is college_students/01_0070.csv", sep=""),stringsAsFactors=FALSE)
 fig1_7$category <- gsub("-", "–", fig1_7$category) 
@@ -69,8 +71,8 @@ json1_7 <- makeJson(sectionn = 1, graphn = 7, dt = fig1_7, graphtype = "bar",
 #Figure 1-8
 fig1_8 <- read.csv(paste(textpath, "What is college_students/01_0080.csv", sep=""),stringsAsFactors=FALSE)
 json1_8 <- makeJson(sectionn = 1, graphn = 8, dt = fig1_8, graphtype = "bar",
-                    series = c("Less than $30,000", "$30,000 <- 64,999", "$65,000 <- 105,999", "$106,000 or more"),
-                    categories = fig1_8$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+                    series = c("Less than $30,000", "$30,000–64,999", "$65,000–105,999", "$106,000 or more"),
+                    categories = fig1_8$X, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 1-9
 fig1_9 <- read.csv(paste(textpath, "What is college_students/01_0090.csv", sep=""),stringsAsFactors=FALSE)

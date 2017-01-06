@@ -81,34 +81,38 @@ json4_6 <- makeJson(sectionn = 4, graphn = 6, dt = fig4_6, graphtype = "bar",
 
 #Figure 4-7
 #set max y value and ticks
-"y": {
-  "padding": {"top": 0, "bottom": 0},
-  "max": 20000,
-  "tick": {
-    "format": "dollar",
-    "count": 5
-  }
-}
+#"y": {
+#  "padding": {"top": 0, "bottom": 0},
+#  "max": 20000,
+#  "tick": {
+#    "format": "dollar",
+#    "count": 5
+#  }
+#}
+#insert space to x-values after Indepedent or Dependent so that x-values are two lines total
+
 fig4_7a <- read.csv(paste(textpath, "Financial aid_grant aid/CSVs/040071.csv", sep=""),stringsAsFactors=FALSE)
 fig4_7b <- read.csv(paste(textpath, "Financial aid_grant aid/CSVs/040072.csv", sep=""),stringsAsFactors=FALSE)
 
 
 json4_7a <- makeJson(sectionn = 4, graphn = 7, subn= 1, dt = fig4_7a, graphtype = "bar",
                     series = c("Federal Grants", "Veterans' and Military", "State Grants", "Institutional Grants", "Employer or Private Grants"),
-                    categories = fig4_7a$column, graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+                    xlabel="Independent", categories = fig4_7a$column, graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 json4_7b <- makeJson(sectionn = 4, graphn = 7, subn=2, dt = fig4_7b, graphtype = "bar",
                     series = c("Federal Grants", "Veterans' and Military", "State Grants", "Institutional Grants", "Employer or Private Grants"),
-                    categories = fig4_7b$column, graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+                    xlabel="Dependent", categories = fig4_7b$column, graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
-#Figure 4-8 #had to manually change the ordering of the sets and had to replace "groups" aray with     
-"groups": [
-[
-"Federal",
-"State",
-"Veterans",
-"Institutional",
-"Private"
-]
+#Figure 4-8 
+#had to manually change the ordering of the sets and had to replace "groups" aray with     
+#"groups": [
+#[
+#"Federal",
+#"State",
+#"Veterans",
+#"Institutional",
+#"Private"
+#]
+
 #fig4_8 <- read.csv(paste(textpath, "Financial aid_grant aid/CSVs/04_0080.csv", sep=""),stringsAsFactors=FALSE)
 #json4_8<- makeJson(sectionn = 4, graphn = 8, dt = fig4_8, graphtype = "bar", set1= fig4_8[grep("Less than \\$30,00", fig4_8$category), c("Federal", "Veterans", "State", "Institutional", "Private")], set2= fig4_8[grep("\\$30,000\\:\\$64,999", fig4_8$category),c("Federal", "Veterans", "State", "Institutional", "Private")],
 #                    set3= fig4_8[grep("\\$65,000\\:\\$105,999", fig4_8$category),c("Federal", "Veterans", "State", "Institutional", "Private")], set4= fig4_8[grep("\\$106,000\\:\\$154,999", fig4_8$category),c("Federal", "Veterans", "State", "Institutional", "Private")],
@@ -126,14 +130,14 @@ fig4_9c <- read.csv(paste(textpath, "Financial aid_federal/04_00903.csv", sep=""
 #1) for graph 1, add bracket to single category "All..."
 #2)for graph 2, add spaces to x-labels to create two lines, for example: "Less than         $30,000" "$30,000 –       $64,999"
 #3) for graphs 1-3, change number of ticks
-"y": {
-  "max": 8000,
-  "padding": {"top": 0, "bottom": 0},
-  "tick": {
-    "format": "$s",
-    "count": 5
-  }
-},
+#"y": {
+#  "max": 8000,
+#  "padding": {"top": 0, "bottom": 0},
+#  "tick": {
+#    "format": "$s",
+#    "count": 5
+#  }
+#},
 json4_91a <- makeJson(sectionn = 4, graphn = 91, subn= 3, dt = fig4_9a$grant_per_recip, graphtype = "bar",
                      series = "Pell-Grant",
                      categories = fig4_9a$dependency_income, tickformat = "$s", rotated = TRUE, directlabels = TRUE, graphtitle="Dependency status")
@@ -144,10 +148,10 @@ json4_93c <- makeJson(sectionn = 4, graphn = 91, subn= 1, dt = fig4_9c$grant_per
                      series = "Pell-Grant",
                      categories = fig4_9c$dependency_income, tickformat = "$s", rotated = TRUE, directlabels = TRUE, graphtitle="All")
 #SECOND SET
-#4) for graph 11, add bracket to single category "All..."
-#5) for graph 22, add spaces to x-labels to create two lines, for example: "Less than         $30,000" "$30,000 –       $64,999"
+#4) for graph 1, add bracket to single category "All..."
+#5) for graph 2, add spaces to x-labels to create two lines, for example: "Less than         $30,000" "$30,000 –       $64,999"
 
-#6) for graphs 11-33, change number of ticks
+#6) for graphs 1-3, change number of ticks
 "y": {
   "max": 6000,
   "padding": {"top": 0, "bottom": 0},
@@ -194,6 +198,7 @@ json4_13 <- makeJson(sectionn = 4, graphn = 13, dt = fig4_13$GrantAid, graphtype
                     categories = fig4_13$state, tickformat = "$.2s", rotated = TRUE, directlabels = TRUE)
 
 #Figure 4-14
+#add highlightIndex": 20 to outermost bracket
 fig4_14 <- read.csv(paste(textpath, "Financial aid_state/04_0140.csv", sep=""),stringsAsFactors=FALSE)
 json4_14 <- makeJson(sectionn = 4, graphn = 14, dt = fig4_14$stategrants, graphtype = "bar", series="Percentage of state grants",
                      categories = fig4_14$state, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
@@ -201,14 +206,14 @@ json4_14 <- makeJson(sectionn = 4, graphn = 14, dt = fig4_14$stategrants, grapht
 
 #Figure 4-15
 # 1) set max y-value and ticks
-"y": {
-  "max": 0.4,
-  "padding": {"top": 0, "bottom": 0},
-  "tick": {
-    "format": "percent",
-    "count": 5
-  }
-},
+#"y": {
+#  "max": 0.4,
+#  "padding": {"top": 0, "bottom": 0},
+#  "tick": {
+#    "format": "percent",
+#    "count": 3
+#  }
+#},
 
 # 2) add spacing to x-values so two lines, for example: "Public             two-year"
 fig4_15a <- read.csv(paste(textpath, "Financial aid_state/04_0151.csv", sep=""),stringsAsFactors=FALSE)
@@ -239,14 +244,14 @@ json4_15e <- makeJson(sectionn = 4, graphn = 15, subn=5, dt = fig4_15e$percent, 
 # "Public        two-year"   "$106,000           or more"
 
 # 2) set max y-value and number of ticks
-"y": {
-  "max": 6000,
-  "padding": {"top": 0, "bottom": 0},
-  "tick": {
-    "format": "$s",
-    "count": 4
-  }
-}
+#"y": {
+#  "max": 6000,
+#  "padding": {"top": 0, "bottom": 0},
+#  "tick": {
+#    "format": "$s",
+#    "count": 4
+#  }
+#}
 fig4_16a <- read.csv(paste(textpath, "Financial aid_state/04_0161.csv", sep=""),stringsAsFactors=FALSE)
 fig4_16b <- read.csv(paste(textpath, "Financial aid_state/04_0162.csv", sep=""),stringsAsFactors=FALSE)
 fig4_16c <- read.csv(paste(textpath, "Financial aid_state/04_0163.csv", sep=""),stringsAsFactors=FALSE)
@@ -283,22 +288,22 @@ json4_18 <- makeJson(sectionn = 4, graphn = 18, dt = fig4_18$percent, graphtype 
 
 
 #Figure 4-19: had to manually change groups array to:
-  "groups": [
-    [
-      "Institutional grant aid per full-time student", 
-      "Remaining (net) tuition and fees per full-time student",
-      "Institutional grant aid per recipient", 
-      "Remaining (net) tuition and fees per recipient"
-      ]
-    ]
+#  "groups": [
+#    [
+#      "Institutional grant aid per full-time student", 
+#      "Remaining (net) tuition and fees per full-time student",
+#      "Institutional grant aid per recipient", 
+#      "Remaining (net) tuition and fees per recipient"
+#      ]
+#    ]
 fig4_19 <- read.csv(paste(textpath, "Financial aid_institutional/04_0190-revised.csv", sep=""),stringsAsFactors=FALSE, check.names = FALSE)
 json4_19 <- makeJson(sectionn = 4, graphn = 19, dt = fig4_19, graphtype = "bar", series=c("Per first-time full-time student", "Per recipient"), set1=fig4_19[,c("Institutional grant aid per full-time student", "Remaining (net) tuition and fees per full-time student")], set2=fig4_19[,c("Institutional grant aid per recipient", "Remaining (net) tuition and fees per recipient")],
                      categories = fig4_19$category, tickformat = "$s", rotated = TRUE, directlabels = TRUE)
   
   
 
-#Figure 4-20 : 1) had to manually change group array to:
-"groups": ["Need-based", "Non-need-based"]
+#Figure 4-20 : 
+#1) had to manually change group array to: "groups": ["Need-based", "Non-need-based"]
 #  2) had to manually change order of sets
 
 #fig4_20 <- read.csv(paste(textpath, "Financial aid_institutional/04_0200-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names = FALSE)
@@ -308,14 +313,16 @@ json4_19 <- makeJson(sectionn = 4, graphn = 19, dt = fig4_19, graphtype = "bar",
 #                   categories = fig4_20$category_label, tickformat = "$s", rotated = TRUE, directlabels = TRUE)
 
 #Figure 4-21
-#change number of ticks
-"y": {
-  "padding": {"top": 0, "bottom": 0},
-  "max": 1000,
-  "tick": {
-    "format": "dollar",
-    "count": 3
-  }
+#1)add brackets to single x-categories in 4-211 and 4-212
+#2)change y tick values
+#"y": {
+#  "padding": {"top": 0, "bottom": 0},
+#  "max": 1800,
+#  "tick": {
+#    "format": "dollar",
+#    "count": 3
+#  }
+#3) make x label two lines, in first two graphs of multiple, in order to widen the graph
 
 fig4_21a <- read.csv(paste(textpath, "Financial aid_institutional/04_0211.csv", sep=""),stringsAsFactors=FALSE, check.names = FALSE)
 fig4_21b <- read.csv(paste(textpath, "Financial aid_institutional/04_0212.csv", sep=""),stringsAsFactors=FALSE, check.names = FALSE)
@@ -339,25 +346,27 @@ fig4_22d$sub_category <- gsub("-", "–", fig4_22d$sub_category)
 
 #for first set of multiples:
 # 1) set y max value and ticks
-    "y": {
-  "padding": {"top":0, "bottom":0},
-  "max": 0.15,
-  "tick": {
-    "count": 4,
-    "format": "percent"
-  }
-}
+#    "y": {
+#  "padding": {"top":0, "bottom":0},
+#  "max": 0.15,
+#  "tick": {
+#    "count": 4,
+#    "format": "percent"
+#  }
+#}
 
 # 2) adding spacing to x values in third and fourth graphs to create two lines , for example: 
-"Public          four-year"         "Less than           $30,000"
+#"Public          four-year"         "Less than           $30,000"
 
-json4_22a <- makeJson(sectionn = 4, graphn = 22, subn= 1, dt = fig4_22a$percent_employer, graphtype = "bar", series="Employer aid", categories = fig4_22a$sub_category, 
-                      graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels=TRUE)
-json4_22b <- makeJson(sectionn = 4, graphn = 22, subn= 2,  dt = fig4_22b$percent_employer, graphtype = "bar", series="Employer aid", categories = fig4_22b$sub_category, 
+#3) add brackets to single category in first graph
+
+json4_22a <- makeJson(sectionn = 4, graphn = 221, subn= 1, dt = fig4_22a$percent_employer, graphtype = "bar", series="Employer aid", categories = fig4_22a$sub_category, 
+                      xlabel= "Total", graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels=TRUE)
+json4_22b <- makeJson(sectionn = 4, graphn = 221, subn= 2,  dt = fig4_22b$percent_employer, graphtype = "bar", series="Employer aid", categories = fig4_22b$sub_category, 
                       xlabel = "Dependency Status", graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels=TRUE)
-json4_22c <- makeJson(sectionn = 4, graphn = 22,  subn= 3, dt = fig4_22c$percent_employer, graphtype = "bar", series="Employer aid", categories = fig4_22c$sub_category, 
+json4_22c <- makeJson(sectionn = 4, graphn = 221,  subn= 3, dt = fig4_22c$percent_employer, graphtype = "bar", series="Employer aid", categories = fig4_22c$sub_category, 
                       xlabel = "Sector", graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels=TRUE)
-json4_22d <- makeJson(sectionn = 4, graphn = 22, subn= 4, dt = fig4_22d$percent_employer, graphtype = "bar", series="Employer aid", categories = fig4_22d$sub_category, 
+json4_22d <- makeJson(sectionn = 4, graphn = 221, subn= 4, dt = fig4_22d$percent_employer, graphtype = "bar", series="Employer aid", categories = fig4_22d$sub_category, 
                       xlabel = "Dependent students' parents' income", graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels=TRUE)
 
 fig4_221a <- read.csv(paste(textpath, "Financial aid_other/04_0221a.csv", sep=""),stringsAsFactors=FALSE)
@@ -368,27 +377,29 @@ fig4_221d$sub_category <- gsub("-", "–", fig4_221d$sub_category)
 
 #for second set of multiples:
 # 1) set y max value and ticks
-"y": {
-  "padding": {
-    "top": 0, "bottom": 0
-  },
-  "max": 0.3,
-  "tick": {
-    "format": "percent",
-    "count": 4
-  }
-},
+#"y": {
+#  "padding": {
+#    "top": 0, "bottom": 0
+#  },
+#  "max": 0.3,
+#  "tick": {
+#    "format": "percent",
+#    "count": 4
+#  }
+#},
 
 # 2) adding spacing to x values in third and fourth graphs to create two lines , for example: 
-"Public          four-year"         "Less than           $30,000"
+#"Public          four-year"         "Less than           $30,000"
 
-json4_221a <- makeJson(sectionn = 4, graphn = 22, subn= 11, dt = fig4_221a$percent_private, graphtype = "bar", series="Private Grants", categories = fig4_221a$sub_category, 
+#3) add brackets to single category in first graph
+
+json4_221a <- makeJson(sectionn = 4, graphn = 222, subn=1, dt = fig4_221a$percent_private, graphtype = "bar", series="Private Grants", categories = fig4_221a$sub_category, 
                       graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels=TRUE)
-json4_221b <- makeJson(sectionn = 4, graphn = 22, subn= 22,  dt = fig4_221b$percent_private, graphtype = "bar",series="Private Grants", categories = fig4_221b$sub_category, 
+json4_221b <- makeJson(sectionn = 4, graphn = 222, subn= 2,  dt = fig4_221b$percent_private, graphtype = "bar",series="Private Grants", categories = fig4_221b$sub_category, 
                       xlabel = "Dependency Status", graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels=TRUE)
-json4_221c <- makeJson(sectionn = 4, graphn = 22,  subn= 33, dt = fig4_221c$percent_private, graphtype = "bar", series="Private Grants", categories = fig4_221c$sub_category, 
+json4_221c <- makeJson(sectionn = 4, graphn = 222,  subn= 3, dt = fig4_221c$percent_private, graphtype = "bar", series="Private Grants", categories = fig4_221c$sub_category, 
                       xlabel = "Sector", graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels=TRUE)
-json4_221d <- makeJson(sectionn = 4, graphn = 22, subn= 44, dt = fig4_221d$percent_private, graphtype = "bar", series="Private Grants", categories = fig4_221d$sub_category, 
+json4_221d <- makeJson(sectionn = 4, graphn = 222, subn= 4, dt = fig4_221d$percent_private, graphtype = "bar", series="Private Grants", categories = fig4_221d$sub_category, 
                       xlabel = "Dependent students' parents' income", graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels=TRUE)
 
 
@@ -402,62 +413,66 @@ fig4_23d$sub_category <- gsub("-", "–", fig4_23d$sub_category)
 
 #for first set of multiples:
 # 1) set y max value and ticks
-"y": {
-  "padding": {"top": 0, "bottom":0},
-  "max": 15000,
-  "tick": {
-    "format": "dollar",
-    "count": 4
-  }
-}
+#"y": {
+#  "padding": {"top": 0, "bottom":0},
+#  "max": 15000,
+#  "tick": {
+#    "format": "dollar",
+#    "count": 4
+#  }
+#}
 # 2) adding spacing to x values in third and fourth graphs to create two lines , for example: 
 "Public          four-year"         "Less than           $30,000"
 
-json4_23a <- makeJson(sectionn = 4, graphn = 23, subn= 1, dt = fig4_23a$average_employer_aid, graphtype = "bar", series="Employer aid", categories = fig4_23a$sub_category, 
+#3) add brackets to single category in first graph
+
+json4_23a <- makeJson(sectionn = 4, graphn = 231, subn= 1, dt = fig4_23a$average_employer_aid, graphtype = "bar", series="Employer aid", categories = fig4_23a$sub_category, 
                        graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=TRUE)
-json4_23b <- makeJson(sectionn = 4, graphn = 23, subn= 2, dt = fig4_23b$average_employer_aid, graphtype = "bar", series="Employer aid", categories = fig4_23b$sub_category, 
+json4_23b <- makeJson(sectionn = 4, graphn = 231, subn= 2, dt = fig4_23b$average_employer_aid, graphtype = "bar", series="Employer aid", categories = fig4_23b$sub_category, 
                       xlabel = "Dependency Status", graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=TRUE)
-json4_23c <- makeJson(sectionn = 4, graphn = 23, subn= 3, dt = fig4_23c$average_employer_aid, graphtype = "bar", series="Employer aid", categories = fig4_23c$sub_category, 
+json4_23c <- makeJson(sectionn = 4, graphn = 231, subn= 3, dt = fig4_23c$average_employer_aid, graphtype = "bar", series="Employer aid", categories = fig4_23c$sub_category, 
                       xlabel = "Sector", graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=TRUE)
-json4_23d <- makeJson(sectionn = 4, graphn = 23, subn= 4, dt = fig4_23c$average_employer_aid, graphtype = "bar", series="Employer aid", categories = fig4_23c$sub_category, 
+json4_23d <- makeJson(sectionn = 4, graphn = 231, subn= 4, dt = fig4_23c$average_employer_aid, graphtype = "bar", series="Employer aid", categories = fig4_23c$sub_category, 
                       xlabel = "Dependent students' parents' income", graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=TRUE)
 
 #for second set of multiples:
 # 1) set y max value and ticks
-"y": {
-  "padding": {"top": 0, "bottom": 0},
-  "max": 10000,
-  "tick": {
-    "format": "dollar",
-    "count": 3
-  }
-},
+#"y": {
+#  "padding": {"top": 0, "bottom": 0},
+#  "max": 10000,
+#  "tick": {
+#    "format": "dollar",
+#    "count": 3
+#  }
+#},
 # 2) adding spacing to x values in third and fourth graphs to create two lines , for example: 
-"Public          four-year"         "Less than           $30,000"
+#"Public          four-year"         "Less than           $30,000"
+
+#3) add brackets to single category in first graph
 
 fig4_231a <- read.csv(paste(textpath, "Financial aid_other/04_0231a.csv", sep=""),stringsAsFactors=FALSE)
 fig4_231b <- read.csv(paste(textpath, "Financial aid_other/04_0231b.csv", sep=""),stringsAsFactors=FALSE)
 fig4_231c <- read.csv(paste(textpath, "Financial aid_other/04_0231c.csv", sep=""),stringsAsFactors=FALSE)
 fig4_231d <- read.csv(paste(textpath, "Financial aid_other/04_0231d.csv", sep=""),stringsAsFactors=FALSE)
 
-json4_231a <- makeJson(sectionn = 4, graphn = 23, subn= 11, dt = fig4_231a$average_private_grants, graphtype = "bar", series="Private Grants", categories = fig4_231a$sub_category, 
+json4_231a <- makeJson(sectionn = 4, graphn = 232, subn= 1, dt = fig4_231a$average_private_grants, graphtype = "bar", series="Private Grants", categories = fig4_231a$sub_category, 
                       graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=TRUE)
-json4_231b <- makeJson(sectionn = 4, graphn = 23, subn= 22, dt = fig4_231b$average_private_grants, graphtype = "bar", series="Private Grants", categories = fig4_231b$sub_category, 
+json4_231b <- makeJson(sectionn = 4, graphn = 232, subn= 2, dt = fig4_231b$average_private_grants, graphtype = "bar", series="Private Grants", categories = fig4_231b$sub_category, 
                        xlabel = "Dependency Status", graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=TRUE)
-json4_231c <- makeJson(sectionn = 4, graphn = 23, subn= 33, dt = fig4_231c$average_private_grants, graphtype = "bar", series="Private Grants", categories = fig4_231c$sub_category, 
+json4_231c <- makeJson(sectionn = 4, graphn = 232, subn= 3, dt = fig4_231c$average_private_grants, graphtype = "bar", series="Private Grants", categories = fig4_231c$sub_category, 
                        xlabel = "Sector", graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=TRUE)
-json4_231d <- makeJson(sectionn = 4, graphn = 23, subn= 44, dt = fig4_231d$average_private_grants, graphtype = "bar", series="Private Grants", categories = fig4_231d$sub_category, 
+json4_231d <- makeJson(sectionn = 4, graphn = 232, subn= 4, dt = fig4_231d$average_private_grants, graphtype = "bar", series="Private Grants", categories = fig4_231d$sub_category, 
                        xlabel = "Dependent students' parents' income", graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=TRUE)
 
 #Figure 4-24
 #change y tick values
-"y": {
-  "padding": {"top":0, "bottom": 0},
-  "max": 25,
-  "tick": {
-    "format": "dollar",
-    "count": 6
-  }
+#"y": {
+#  "padding": {"top":0, "bottom": 0},
+#  "max": 25,
+#  "tick": {
+#    "format": "dollar",
+#    "count": 6
+#  }
 #add "overrideTickCount": true to outermost bracket
 
 fig4_24 <- read.csv(paste(textpath, "Financial aid_tax benefits/04_0240-dollars.csv", sep=""),stringsAsFactors=FALSE)
