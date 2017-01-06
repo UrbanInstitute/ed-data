@@ -42,6 +42,10 @@ json5_30<- makeJson(sectionn = 5, graphn = 30, dt = fig5_30, graphtype = "line",
                     categories = fig5_30$X, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-29
+#add "overrideTickCount": true   to outermost bracket
+#add x.tick.count = 6
+#add empty data point to end
+
 fig5_29<- read.csv(paste(textpath, "Covering Expenses_savings/05_0290.csv", sep=""),stringsAsFactors=FALSE)
 json5_29<- makeJson(sectionn = 5, graphn = 29, dt = fig5_29, graphtype = "line",
                     series = c("White non-Hispanic", "Non-white or Hispanic"),
@@ -128,14 +132,14 @@ json5_18c <- makeJson(sectionn = 5, graphn = 18, subn= 3, dt = fig5_18c$parentPL
 #2) in the second graph, make each x-label two lines, so  "Less than          ....." or "$30,000–            ........." for instance
 #3) set max y-value and ticks
 
-"y": {
-  "padding": {"top": 0, "bottom": 0},
-  "tick": {
-    "count": 3,
-    "format": "dollar"
-  },
-  "max": 20000
-},
+#"y": {
+#  "padding": {"top": 0, "bottom": 0},
+#  "tick": {
+#    "count": 3,
+#    "format": "dollar"
+#  },
+#  "max": 20000
+#},
 fig5_17a <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0171.csv", sep=""),stringsAsFactors=FALSE)
 fig5_17b <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0172.csv", sep=""),stringsAsFactors=FALSE)
 fig5_17b$category <- gsub("-", "–", fig5_17b$category) 
@@ -197,14 +201,14 @@ json5_12 <- makeJson(sectionn = 5, graphn = 12, dt = fig5_12, graphtype = "bar",
 
 #Figure 5-11
 #set max y-value and ticks
-"y": {
-  "padding": {"top": 0, "bottom": 0},
-  "max": 0.5,
-  "tick": {
-    "format": "percent",
-    "count": 6
-  }
-},
+#"y": {
+#  "padding": {"top": 0, "bottom": 0},
+#  "max": 0.5,
+#  "tick": {
+#    "format": "percent",
+#    "count": 6
+#  }
+#},
 fig5_11 <- read.csv(paste(textpath, "Covering expenses_working/05_0110.csv", sep=""),stringsAsFactors=FALSE)
 fig5_11$category <- gsub("-", "–", fig5_11$category) 
 json5_11 <- makeJson(sectionn = 5, graphn = 11, dt = fig5_11, graphtype = "bar", series=c("Total", "Public four-year", "Private nonprofit four-year", "Public two-year", "For-profit"), set1=fig5_11[,c("all")], set2=fig5_11[,c("publicfour")],
