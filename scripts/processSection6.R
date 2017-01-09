@@ -18,24 +18,12 @@ json6_100<- makeJson(sectionn = 6, graphn = 100, dt = fig6_100, graphtype = "bar
                     categories = fig6_100$category, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 #Figure 6-200
-#for both graphs, set number of ticks
-#"y": {
-#"padding": {"top": 0, "bottom": 0},
-#"max": 1,
-#"tick": {
-#  "format": "percent",
-#  "count": 5
-#},
-#"max": 1
-#},
-fig6_200 <- read.csv(paste(textpath, "After college_landing page/06_0200.csv", sep=""),stringsAsFactors=FALSE)
-json6_200 <- makeJson(sectionn = 6, graphn = 200, subn=1, dt = fig6_200, graphtype = "bar", xlabel="Part-time or full-time",
-                    series = c("Completed Bachelor's degree at a four-year college", "Completed other degree program at a two-year college", "Still enrolled", "Not enrolled"), ymax=1,
-                    categories = fig6_200$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
-fig6_201 <- read.csv(paste(textpath, "After college_landing page/06_0201.csv", sep=""),stringsAsFactors=FALSE)
-json6_201 <- makeJson(sectionn = 6, graphn = 200, subn=2,  dt = fig6_201, graphtype = "bar", xlabel="Exclusively full-time",
-                      series = c("Completed Bachelor's degree at a four-year college", "Completed other degree program at a two-year college", "Still enrolled", "Not enrolled"), ymax=1,
-                      categories = fig6_201$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+fig6_200 <- read.csv(paste(textpath, "After college_landing page/06_0200-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names=FALSE)
+json6_200<- makeJson(sectionn = 6, graphn = 200, dt = fig6_200, graphtype = "bar", set1= fig6_200[grep("part", fig6_200$category), c("Completed Bachelor's degree at four-year college", "Completed other degree at two-year college", "Still enrolled", "Not enrolled")], 
+                     set2= fig6_200[grep("full", fig6_200$category),c("Completed Bachelor's degree at four-year college", "Completed other degree at two-year college", "Still enrolled", "Not enrolled")], 
+                     series = c("Part-time or full-time", "Exclusively full-time"),
+                    categories = fig6_200$category_labels, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+
 #Figure 6-1
 #1) add two blank data points, one to beginning and end
 #2) add "overrideTickCount": true to outermost bracket
