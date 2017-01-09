@@ -47,7 +47,7 @@ json6_5 <- makeJson(sectionn = 6, graphn = 5, dt = fig6_5, graphtype = "line", s
 
 fig6_6 <- read.csv(paste(textpath, "After college_earnings/06_0060.csv", sep=""),stringsAsFactors=FALSE)
 json6_6 <- makeJson(sectionn = 6, graphn = 6, dt = fig6_6, graphtype = "bar",
-                    series = c("$0-$20,999",	"$21,000-$35,399",	"$35,400-$51,999",	"$52,000-$79.999	$80,000+"),
+                    series = c("$0-$20,999",	"$21,000-$35,399",	"$35,400-$51,999",	"$52,000-$79.999",	"$80,000+"),
                     categories = fig6_6$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 6-15
@@ -107,7 +107,8 @@ json6_8 <- makeJson(sectionn = 6, graphn = 8, dt = fig6_8, graphtype = "bar",
                     categories = fig6_8$category, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 #Figure 6-7
-
+#1) add top level `"forceTall": true` to force 900px height
+# 2) add top level `"padding": {"bottom": 30}`
 fig6_7 <- read.csv(paste(textpath, "After college_earnings/06_0070.csv", sep=""),stringsAsFactors=FALSE)
 json6_7 <- makeJson(sectionn = 6, graphn = 7, dt = fig6_7, graphtype = "bar",
                     series = c("0–25th percentile", "25th–50th percentile", "50th–75th percentile"),

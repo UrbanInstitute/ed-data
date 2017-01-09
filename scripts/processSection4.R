@@ -138,6 +138,7 @@ fig4_9c <- read.csv(paste(textpath, "Financial aid_federal/04_00903.csv", sep=""
 #    "count": 5
 #  }
 #},
+#4)for graphs 1-3, added top level attribute `"wideSmallMultiple": true`
 json4_91a <- makeJson(sectionn = 4, graphn = 91, subn= 3, dt = fig4_9a$grant_per_recip, graphtype = "bar",
                      series = "Pell-Grant",
                      categories = fig4_9a$dependency_income, tickformat = "$s", rotated = TRUE, directlabels = TRUE, graphtitle="Dependency status")
@@ -148,10 +149,10 @@ json4_93c <- makeJson(sectionn = 4, graphn = 91, subn= 1, dt = fig4_9c$grant_per
                      series = "Pell-Grant",
                      categories = fig4_9c$dependency_income, tickformat = "$s", rotated = TRUE, directlabels = TRUE, graphtitle="All")
 #SECOND SET
-#4) for graph 1, add bracket to single category "All..."
-#5) for graph 2, add spaces to x-labels to create two lines, for example: "Less than         $30,000" "$30,000 –       $64,999"
+#5) for graph 1, add bracket to single category "All..."
+#6) for graph 2, add spaces to x-labels to create two lines, for example: "Less than         $30,000" "$30,000 –       $64,999"
 
-#6) for graphs 1-3, change number of ticks
+#7) for graphs 1-3, change number of ticks
 "y": {
   "max": 6000,
   "padding": {"top": 0, "bottom": 0},
@@ -160,6 +161,7 @@ json4_93c <- makeJson(sectionn = 4, graphn = 91, subn= 1, dt = fig4_9c$grant_per
     "count": 4
   }
 },
+#8)for graphs 1-3, added top level attribute `"wideSmallMultiple": true`
 json4_92a <- makeJson(sectionn = 4, graphn = 92, subn= 3, dt = fig4_9a$pell_per_student, graphtype = "bar",
                      series = "Pell-Grant",
                      categories = fig4_9a$dependency_income, tickformat = "$s", rotated = TRUE, directlabels = TRUE, graphtitle="Dependency status")

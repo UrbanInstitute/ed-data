@@ -139,11 +139,9 @@
 
 
 #SECTION 3: PRICES AND EXPENSES
-- **`03_0040.json`**
+- **Figure 3-4**
  - added top level `"padding":{"bottom": 30}`
 
-- **`JSONS 03_0201.json` and `03_0202.json`**
- - Added top level attribute `"tallSmallMultiple": true`
 
 - **Figure 3-3 (all multiples)**
  -  manually change color for each to avoid automated repeating colors
@@ -236,6 +234,9 @@ in various blocks specific to line and area charts. Given that this chart is a s
     - added "colors": {"25th percentile": "#1696d2", "Median": "#fdbf11", "75th percentile": "#000000"  } to outermost bracket in "data"
     - make sure sets are ordered by 1 and then 2
 
+- **Figure 3-20
+ - In both graphs, added top level attribute `"tallSmallMultiple": true`
+
 - **Figure 3-22:**
  - **First set of multiples**
     - First set of multiples need to add
@@ -327,13 +328,6 @@ in various blocks specific to line and area charts. Given that this chart is a s
 
 #SECTION 4: FINANCIAL AID
 
-- **`04_0911.json` - `04_0913.json`**
- - Added top level attribute `"wideSmallMultiple": true`
-
-
-- **`04_0921.json` - `04_0923.json`**
- - Added top level attribute `"wideSmallMultiple": true`
-
 - **Figure 4-7 (all multiples)**
  - set max y value and ticks
  
@@ -365,36 +359,39 @@ in various blocks specific to line and area charts. Given that this chart is a s
     ]
   ```
 - **Figure 4-9**
+ - **First set of multiples**
+	 - for graph 1, add bracket to single category `"All..."`
+	 - for graph 2, add spaces to x-labels to create two lines, for example: `"Less than         $30,000" "$30,000 –       $64,999"`
+	 - for graphs 1-3, change number of ticks
 
- - for graph 1, add bracket to single category `"All..."`
- - for graph 2, add spaces to x-labels to create two lines, for example: `"Less than         $30,000" "$30,000 –       $64,999"`
- - for graphs 1-3, change number of ticks
+	  ```
+	  "y": {
+	    "max": 8000,
+	    "padding": {"top": 0, "bottom": 0},
+	    "tick": {
+	      "format": "$s",
+	      "count": 5
+	    }
+	  },
+  ```
+  	 - for all graphs, added top level attribute `"wideSmallMultiple": true`
 
-  ```
-  "y": {
-    "max": 8000,
-    "padding": {"top": 0, "bottom": 0},
-    "tick": {
-      "format": "$s",
-      "count": 5
-    }
-  },
-  ```
-
- - for graph 11, add bracket to single category `"All..."`
- - for graph 22, add spaces to x-labels to create two lines, for example: `"Less than         $30,000" "$30,000 –       $64,999"`
- - for graphs 11-33, change number of ticks
-  
-  ```
-  "y": {
-    "max": 6000,
-    "padding": {"top": 0, "bottom": 0},
-    "tick": {
-      "format": "$s",
-      "count": 4
-    }
-  },
-  ```
+ - **Second set of multiples**
+	 - for graph 1, add bracket to single category `"All..."`
+	 - for graph 2, add spaces to x-labels to create two lines, for example: `"Less than         $30,000" "$30,000 –       $64,999"`
+	 - for graphs 1-3, change number of ticks
+	  
+	  ```
+	  "y": {
+	    "max": 6000,
+	    "padding": {"top": 0, "bottom": 0},
+	    "tick": {
+	      "format": "$s",
+	      "count": 4
+	    }
+	  },
+	  ```
+	  - for all graphs, added top level attribute `"wideSmallMultiple": true`
 
 - **Figure 4-13**
  - add `"highlightIndex" : 18` to outermost bracket
@@ -652,7 +649,7 @@ change y tick values
 
 #SECTION 6: AFTER COLLEGE
 
-- **`06_0070.json`**
+- **Figure 6-7**
  - add top level `"forceTall": true` to force 900px height
  - add top level `"padding": {"bottom": 30}`
  

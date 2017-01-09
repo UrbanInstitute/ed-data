@@ -68,7 +68,8 @@ json3_3d <- makeJson(sectionn = 3, graphn = 3, subn= 4, dt = fig3_3d, graphtype 
                      series = c("Lowest decile", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "Highest decile"),
                      categories = fig3_3d$category, graphtitle="For-profit", tickformat = "dollar", rotated = FALSE, directlabels = FALSE)
 #Figure 3-4
-#add "highlightIndex": 34 to outermost bracket
+#added top level `"padding":{"bottom": 30}`
+#added "highlightIndex": 34 to outermost bracket
 fig3_4 <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0040-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names=FALSE)
 json3_4 <- makeJson(sectionn = 3, graphn = 4, dt = fig3_4, graphtype = "bar", series=c("Public two-year", "Public four-year"), set1=fig3_4[,c("Public two-year")], set2=fig3_4[,c("Public four-year")],
                      categories = fig3_4$category, tickformat = "$.2s", rotated = TRUE, directlabels = TRUE)
@@ -266,6 +267,7 @@ json3_19b<- makeJson(sectionn = 3, graphn = 192, dt = fig3_19b, graphtype = "lin
                     series = c("Age 18–23", "Age 24–34"),
                     categories = fig3_19b$category_label, tickformat = "$s", rotated = FALSE, directlabels = TRUE)
 #Figure 3-20
+#In both graphs, added top level attribute `"tallSmallMultiple": true`
 #For first graph:
 #"y": {
 #"padding": {"top":0, "bottom":0},
