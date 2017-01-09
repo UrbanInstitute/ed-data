@@ -652,6 +652,10 @@ change y tick values
 
 #SECTION 6: AFTER COLLEGE
 
+- **`06_0070.json`**
+ - add top level `"forceTall": true` to force 900px height
+ - add top level `"padding": {"bottom": 30}`
+ 
 - **Figure 6-8**
  - add bracket to `"categories": ["Education Debt"]`
 
