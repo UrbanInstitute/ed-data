@@ -12,6 +12,30 @@ graphtext$section_number <- as.numeric(graphtext$section_number)
 graphtext$multiples <- as.numeric(graphtext$multiples)
 graphtext$toggle <- as.numeric(graphtext$toggle)
 
+#Figure 6-100
+fig6_100<- read.csv(paste(textpath, "After College_landing page/06_0100.csv", sep=""),stringsAsFactors=FALSE)
+json6_100<- makeJson(sectionn = 6, graphn = 100, dt = fig6_100, graphtype = "bar", series=c("4 years", "5 years", "6 years"),
+                    categories = fig6_100$category, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
+
+#Figure 6-200
+#for both graphs, set number of ticks
+#"y": {
+#"padding": {"top": 0, "bottom": 0},
+#"max": 1,
+#"tick": {
+#  "format": "percent",
+#  "count": 5
+#},
+#"max": 1
+#},
+fig6_200 <- read.csv(paste(textpath, "After college_landing page/06_0200.csv", sep=""),stringsAsFactors=FALSE)
+json6_200 <- makeJson(sectionn = 6, graphn = 200, subn=1, dt = fig6_200, graphtype = "bar", xlabel="Part-time or full-time",
+                    series = c("Completed Bachelor's degree at a four-year college", "Completed other degree program at a two-year college", "Still enrolled", "Not enrolled"), ymax=1,
+                    categories = fig6_200$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+fig6_201 <- read.csv(paste(textpath, "After college_landing page/06_0201.csv", sep=""),stringsAsFactors=FALSE)
+json6_201 <- makeJson(sectionn = 6, graphn = 200, subn=2,  dt = fig6_201, graphtype = "bar", xlabel="Exclusively full-time",
+                      series = c("Completed Bachelor's degree at a four-year college", "Completed other degree program at a two-year college", "Still enrolled", "Not enrolled"), ymax=1,
+                      categories = fig6_201$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 #Figure 6-1
 #1) add two blank data points, one to beginning and end
 #2) add "overrideTickCount": true to outermost bracket

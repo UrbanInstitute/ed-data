@@ -617,7 +617,7 @@ change y tick values
   },
   ```
 
-- **Figure 5-13:**
+- **Figure 5-13**
  - in first graph, add bracket for `x.categories` since single category `"All Undergraduates"`
  - in first, add space to x-axis labels for two lines so `"All Under-                 graduates"`
  - in the third graph, add space to x-axis labels for two lines  so  `"Less than          ....."` or `"$30,000–            ........."` for instance
@@ -648,6 +648,19 @@ change y tick values
  - add 4 blank data points (two at beginning and two at end) 
 
 #SECTION 6: AFTER COLLEGE
+- **Figure 6-200**
+  - for both graphs, set number of ticks:
+  ```
+     "y": {
+     "padding": {"top": 0, "bottom": 0},
+     "max": 1,
+     "tick": {
+       "format": "percent",
+       "count": 5
+     },
+     "max": 1
+     },
+   ```
 
 - **Figure 6-7**
  - add top level `"forceTall": true` to force 900px height
