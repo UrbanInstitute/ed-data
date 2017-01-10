@@ -21,12 +21,13 @@ graphtext$toggle <- as.numeric(graphtext$toggle)
 #Figure 4-1
 fig4_1 <- read.csv(paste(textpath, "Financial aid_financial need/04_00100.csv", sep=""),stringsAsFactors=FALSE)
 json4_1 <- makeJson(sectionn = 4, graphn = 1, dt = fig4_1$MedianEFCbyParentsIncome, graphtype = "bar", series="Median EFC",
-                    categories = fig4_1$IncomeRange, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+                    xlabel="Income", ylabel="EFC",categories = fig4_1$IncomeRange, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 #Figure 4-2
+# add `"padding": {"bottom": 60}` to outermost tick
 fig4_2 <- read.csv(paste(textpath, "Financial aid_financial need/04_0020.csv", sep=""),stringsAsFactors=FALSE)
 json4_2 <- makeJson(sectionn = 4, graphn = 2, dt = fig4_2, graphtype = "bar", series= c("Independent, no dependents, single", "Independent, no dependents, married",	"Independent with dependents"),
-                     categories = fig4_2$category, tickformat = "$.2s", rotated = TRUE, directlabels = TRUE)
+                    xlabel="Income", ylabel="EFC", categories = fig4_2$category, tickformat = "$.2s", rotated = TRUE, directlabels = TRUE)
 
 #Figure 4-3
 fig4_3 <- read.csv(paste(textpath, "Financial aid_financial need/04_0030.csv", sep=""),stringsAsFactors=FALSE)
@@ -185,7 +186,7 @@ fig4_11 <- read.csv(paste(textpath, "Financial aid_federal/04_0110.csv", sep="")
 fig4_11$year <- gsub("\x96", "–", fig4_11$year) 
 fig4_11
 json4_11 <- makeJson(sectionn = 4, graphn = 11, dt = fig4_11$recipients, graphtype = "bar", series="Amount",
-                    categories = fig4_11$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                    categories = fig4_11$year, tickformat = "number", rotated = FALSE, directlabels = TRUE)
 
 #Figure 4-12
 fig4_12 <- read.csv(paste(textpath, "Financial aid_federal/04_0120.csv", sep=""),stringsAsFactors=FALSE)

@@ -26,8 +26,22 @@ json6_200<- makeJson(sectionn = 6, graphn = 200, dt = fig6_200, graphtype = "bar
 
 #Figure 6-1
 #1) add two blank data points, one to beginning and end
-#2) add "overrideTickCount": true to outermost bracket
-#3) add x.tick.count: 9
+#2) set max y-value and ticks:
+  
+  #```
+#"y": {
+#  "padding": {
+#    "top": 0, "bottom": 0
+#  },
+#  "max": 1,
+#  "min": 0.5,
+#  "tick": {
+#    "format": "percent"
+#  }
+#},
+#```
+#3) set x.tick.count to 9
+#4) add `"overrideTickCount": true` to outermost bracket
 fig6_1<- read.csv(paste(textpath, "After College_employment/06_0010.csv", sep=""),stringsAsFactors=FALSE)
 json6_1 <- makeJson(sectionn = 6, graphn = 1, dt = fig6_1, graphtype = "line", series=c("High school or equivalent", "Some college, no degree", "Associate degree", "Bachelor's degree", "Advanced degree"),
                     categories = fig6_1$year, tickformat = "percent", rotated = FALSE, directlabels = TRUE)

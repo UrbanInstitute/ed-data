@@ -136,7 +136,14 @@
     }
   },
   ```
+ -Net tuition category should be on the bottom of the stacked bars
 
+- **Figure 2-8**
+ - Net tuition category should be on the bottom of the stacked bars
+ - set max y and ticks
+  ```
+    "y": {"padding": {"top":0, "bottom":0}, "max": 50000, "tick": {"format": "dollar", "count": 6}}
+  ```
 
 #SECTION 3: PRICES AND EXPENSES
 - **Figure 3-4**
@@ -327,6 +334,10 @@ in various blocks specific to line and area charts. Given that this chart is a s
 
 
 #SECTION 4: FINANCIAL AID
+
+ - **Figure 4-2**
+  - add `"padding": {"bottom": 60}` to outermost tick
+
 
 - **Figure 4-7 (all multiples)**
  - set max y value and ticks
@@ -661,6 +672,24 @@ change y tick values
      "max": 1
      },
    ```
+- **Figure 6-1**
+ -add two blank data points, one to beginning and end
+ -set max y-value and ticks:
+
+ ```
+     "y": {
+      "padding": {
+        "top": 0, "bottom": 0
+      },
+      "max": 1,
+      "min": 0.5,
+      "tick": {
+        "format": "percent"
+      }
+    },
+```
+ -set x.tick.count to 9
+ - add `"overrideTickCount": true` to outermost bracket
 
 - **Figure 6-7**
  - add top level `"forceTall": true` to force 900px height

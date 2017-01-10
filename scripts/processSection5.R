@@ -237,7 +237,7 @@ json5_8 <- makeJson(sectionn = 5, graphn = 8, dt = fig5_8$minwage, graphtype = "
 #Figure 5-7
 fig5_7<- read.csv(paste(textpath, "Covering expenses_working/05_0070.csv", sep=""),stringsAsFactors=FALSE)
 json5_7 <- makeJson(sectionn = 5, graphn = 7, dt = fig5_7$fed_min_wage, graphtype = "line", series="Federal minimum wage",
-                    categories = fig5_7$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                    categories = fig5_7$year, tickformat = "$,.2f", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-6
 fig5_6<- read.csv(paste(textpath, "Covering expenses_working/05_0060.csv", sep=""),stringsAsFactors=FALSE)
@@ -250,7 +250,7 @@ json5_5 <- makeJson(sectionn = 5, graphn = 5, dt = fig5_5$Median.Income, graphty
 
 #Figure 5-4
 fig5_4<- read.csv(paste(textpath, "Covering expenses_income/05_0040.csv", sep=""),stringsAsFactors=FALSE)
-json5_4 <- makeJson(sectionn = 5, graphn = 4, dt = fig5_4, graphtype = "line", series=c("Ages 25 to 34", "Agest 35 to 44", "Ages 45 to 54", "Ages 55 to 64"),
+json5_4 <- makeJson(sectionn = 5, graphn = 4, dt = fig5_4, graphtype = "line", series=c("Ages 25 to 34", "Ages 35 to 44", "Ages 45 to 54", "Ages 55 to 64"),
                     categories = fig5_4$Year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-3

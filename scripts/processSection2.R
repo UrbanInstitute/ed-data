@@ -30,7 +30,7 @@ json2_1 <- makeJson(sectionn = 2, graphn = 1, dt = fig2_1, graphtype = "line", s
 #set tick.count to 9
 fig2_3 <- read.csv(paste(textpath, "Cost of educating_appropriations/02_0030.csv", sep=""),stringsAsFactors=FALSE)
 fig2_3$year <- gsub("-", "–", fig2_3$year) 
-json2_3 <- makeJson(sectionn = 2, graphn = 3, dt = fig2_3, graphtype = "line", series=c("Local support", "State support"),
+json2_3 <- makeJson(sectionn = 2, graphn = 3, dt = fig2_3, graphtype = "line", series=c("State support", "Local support"),
                     categories = fig2_3$year, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 #Figure 2-4
@@ -49,6 +49,12 @@ json2_4 <- makeJson(sectionn = 2, graphn = 4, dt = fig2_4$public, graphtype = "b
 #"count": 5
 #}
 #},
+#3) Net tuition category should be on the bottom of the stacked bars
+
+#Figure 2-8
+#1) Net tuition category should be on the bottom of the stacked bars
+#2) set max y and ticks
+#"y": {"padding": {"top":0, "bottom":0}, "max": 50000, "tick": {"format": "dollar", "count": 6}}
 
 #Figure 2-51: Change Y-axis properties to adjust ticks:
   #"axis": {
