@@ -133,21 +133,7 @@ json5_20 <- makeJson(sectionn = 5, graphn = 20, dt = fig5_20, graphtype = "bar",
                      series = c("4 years or less", "5 years", "6 to 7 years", "8 years or more"),
                      categories = fig5_20$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
-#Figure 5-18
-fig5_18a <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0181.csv", sep=""),stringsAsFactors=FALSE)
-fig5_18b <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0182.csv", sep=""),stringsAsFactors=FALSE)
-fig5_18c <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0183.csv", sep=""),stringsAsFactors=FALSE)
 
-fig5_18a
-json5_18a <- makeJson(sectionn = 5, graphn = 18, subn= 1, dt = fig5_18a$parentPLUS, graphtype = "bar",
-                      series = "Loans borrowed",
-                      categories = fig5_18a$category,  xlabel = "All full-time dependent students",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=17000, directlabels = TRUE)
-json5_18b <- makeJson(sectionn = 5, graphn = 18, subn= 2, dt = fig5_18b$parentPLUS, graphtype = "bar",
-                      series = "Loans borrowed",
-                      categories = fig5_18b$category,  xlabel = "Family income",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=17000, directlabels = TRUE)
-json5_18c <- makeJson(sectionn = 5, graphn = 18, subn= 3, dt = fig5_18c$parentPLUS, graphtype = "bar",
-                      series = "Loans borrowed",
-                      categories = fig5_18c$category,  xlabel = "Sector",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=17000, directlabels = TRUE)
 
 #Figure 5-17
 #1) in the first graph, make x-label three lines by adding spaces in between "All full-time/ dependent/ students"
