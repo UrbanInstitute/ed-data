@@ -42,9 +42,6 @@ json5_30<- makeJson(sectionn = 5, graphn = 30, dt = fig5_30, graphtype = "line",
                     categories = fig5_30$X, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-29
-#add "overrideTickCount": true   to outermost bracket
-#add x.tick.count = 6
-#add empty data point to end
 
 fig5_29<- read.csv(paste(textpath, "Covering Expenses_savings/05_0290.csv", sep=""),stringsAsFactors=FALSE)
 json5_29<- makeJson(sectionn = 5, graphn = 29, dt = fig5_29, graphtype = "line",
@@ -85,11 +82,36 @@ json5_24<- makeJson(sectionn = 5, graphn = 24, dt = fig5_24$foregone, graphtype 
 
 
 #Figure 5-22
-fig5_22<- read.csv(paste(textpath, "Covering Expenses_time to degree/05_0220-revised.csv", sep=""),stringsAsFactors=FALSE)
-json5_22<- makeJson(sectionn = 5, graphn = 22, dt = fig5_22, graphtype = "bar",
-                     series = c("4 years", "5 years", "6 years"),
-                     categories = fig5_22$category, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+#-for first graph, set max y value and ticks:
+#
+#```
+#"y": {
+#"padding": {"top":0 , "bottom":0},
+#"max": 400000,
+#"tick": {
+#"format": "dollar",
+#"count": 5
+#}
+#},
+#```
+#-for second graph, set max y value and ticks:
+#```
+#"y": {
+#"padding": {"top": 0, "bottom": 0},
+#"max": 800000,
+#"tick": {
+#"format": "dollar",
+#"count": 5
+#}
+#},
+#```
+fig5_22a<- read.csv(paste(textpath, "Covering Expenses_time to degree/05_0221.csv", sep=""),stringsAsFactors=FALSE)
+fig5_22b<- read.csv(paste(textpath, "Covering Expenses_time to degree/05_0222.csv", sep=""),stringsAsFactors=FALSE)
 
+json5_22a <- makeJson(sectionn = 5, graphn = 22, subn=1, dt = fig5_22a, graphtype = "bar", xlabel="Public four-year in-state", categories = fig5_22a$category, 
+                       series=c("4 years", "5 years", "6 years"), graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=TRUE)
+json5_22b <- makeJson(sectionn = 5, graphn = 22, subn=2, dt = fig5_22b, graphtype = "bar", xlabel="Public four-year in-state", categories = fig5_22b$category, 
+                      series=c("4 years", "5 years", "6 years"), graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=TRUE)
 #Figure 5-23
 
 fig5_23 <- read.csv(paste(textpath, "Covering expenses_time to degree/05_0230.csv", sep=""),stringsAsFactors=FALSE)

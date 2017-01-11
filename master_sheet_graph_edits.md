@@ -652,11 +652,36 @@ change y tick values
         "max": 20000
       },
   ```
+- **Figure 5-22**
+ -for first graph, set max y value and ticks:
+
+ ```
+      "y": {
+        "padding": {"top":0 , "bottom":0},
+        "max": 400000,
+        "tick": {
+          "format": "dollar",
+          "count": 5
+        }
+      },
+ ```
+ -for second graph, set max y value and ticks:
+ ```
+      "y": {
+      "padding": {"top": 0, "bottom": 0},
+      "max": 800000,
+      "tick": {
+        "format": "dollar",
+        "count": 5
+      }
+    },
+ ```
 
 - **Figure 5-25:**
  - add `"overrideTickCount": true` to outermost bracket
  - set `x.ticks.count` to `11`
  - add 4 blank data points (two at beginning and two at end) 
+
 
 #SECTION 6: AFTER COLLEGE
 - **Figure 6-200**
@@ -742,6 +767,42 @@ change y tick values
     "Federal  parent loans": "#00ecd7"
   },
   ```
+- **Figure 7-4**
+ - had to manually set order of years for each toggle category so that years are ascending
+  -for example: 
+
+   ``` 
+   "For-profit",
+        [
+          [
+            "2 years",
+            28295.96,
+            18434.976
+          ],
+          [
+            "3 years",
+            42443.94,
+            27652.464
+          ],
+          [
+            "4 years",
+            56591.92,
+            36869.952
+          ],
+          [
+            "5 years",
+            70739.9,
+            46087.44
+          ],
+          [
+            "6 years",
+            84887.88,
+            55304.928
+          ]
+
+        ]
+      ],
+  ```
 
 - **Figure 7-7**
  - had to change groups array:
@@ -764,6 +825,8 @@ change y tick values
         ]
       ],
   ```
+- **Figure 7-8**
+ - had to manually set order of years for each toggle category so that years are ascending
 
 - **Figure 7-11**
  - need to change groups array to:
@@ -804,7 +867,9 @@ change y tick values
     "Tuition and fees":"#ffff00"
   },
   ```
-  
+- **Figure 7-12**
+ - had to manually set order of years for each toggle category so that years are ascending
+
 - **Figure 7-15**
  - need to change groups array to:
  
@@ -845,6 +910,11 @@ change y tick values
     "Tuition and fees": "#1696d2"
   },
   ```
+
+- **Figure 7-16**
+ - had to manually set order of years for each toggle category so that years are ascending
+
+
 - **Figure 7-19**
  - need to change groups array
 
@@ -883,3 +953,6 @@ change y tick values
     "Tuition and fees": "#00ecd7"
   },
   ```
+
+  - **Figure 7-20**
+ - had to manually set order of years for each toggle category so that years are ascending
