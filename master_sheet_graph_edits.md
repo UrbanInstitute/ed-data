@@ -193,7 +193,7 @@
   ```
 
 - **Figure 3-18:** 
- - Set max value and change number of ticks for first set
+ - Set max value and change number of ticks for first pair
   
   ```
   "y": {
@@ -206,7 +206,7 @@
   }
   ```
 
- - Set max value and change number of ticks for second set
+ - Set max value and change number of ticks for second pair
   
  ```
    "y": {
@@ -218,7 +218,7 @@
       }
     },
   ```
- - Set max value and change number of ticks for third set
+ - Set max value and change number of ticks for third pair
 
   ```
   "y": {
@@ -676,6 +676,7 @@ change y tick values
       }
     },
  ```
+ - for both graphys, delete "groups" array
 
 - **Figure 5-25:**
  - add `"overrideTickCount": true` to outermost bracket

@@ -107,10 +107,13 @@ json5_24<- makeJson(sectionn = 5, graphn = 24, dt = fig5_24$foregone, graphtype 
 #```
 fig5_22a<- read.csv(paste(textpath, "Covering Expenses_time to degree/05_0221.csv", sep=""),stringsAsFactors=FALSE)
 fig5_22b<- read.csv(paste(textpath, "Covering Expenses_time to degree/05_0222.csv", sep=""),stringsAsFactors=FALSE)
+json5_13a <- makeJson(sectionn = 5, graphn = 13, subn= 1, dt = fig5_13a, graphtype = "bar",
+                      series = c("Average per borrower", "Average per student"),
+                      categories = fig5_13a$category,  xlabel = "All",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=10000, directlabels = TRUE)
 
 json5_22a <- makeJson(sectionn = 5, graphn = 22, subn=1, dt = fig5_22a, graphtype = "bar", xlabel="Public four-year in-state", categories = fig5_22a$category, 
                        series=c("4 years", "5 years", "6 years"), graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=TRUE)
-json5_22b <- makeJson(sectionn = 5, graphn = 22, subn=2, dt = fig5_22b, graphtype = "bar", xlabel="Public four-year in-state", categories = fig5_22b$category, 
+json5_22b <- makeJson(sectionn = 5, graphn = 22, subn=2, dt = fig5_22b, graphtype = "bar", xlabel="Private Nonprofit four-year", categories = fig5_22b$category, 
                       series=c("4 years", "5 years", "6 years"), graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=TRUE)
 #Figure 5-23
 
@@ -249,7 +252,7 @@ json5_7 <- makeJson(sectionn = 5, graphn = 7, dt = fig5_7$fed_min_wage, graphtyp
 
 #Figure 5-6
 fig5_6<- read.csv(paste(textpath, "Covering expenses_working/05_0060.csv", sep=""),stringsAsFactors=FALSE)
-json5_6 <- makeJson(sectionn = 5, graphn = 6, dt = fig5_6, graphtype = "line", series=c("800 hours at minimum wage", "Tuition, fees, room, and board", "Tuition and fees"),
+json5_6 <- makeJson(sectionn = 5, graphn = 6, dt = fig5_6, graphtype = "line", series=c("Tuition and fees", "800 hours at minimum wage", "Tuition, fees, room, and board"),
                     categories = fig5_6$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 #Figure 5-5
 fig5_5<- read.csv(paste(textpath, "Covering expenses_income/05_0050.csv", sep=""),stringsAsFactors=FALSE)
