@@ -76,15 +76,15 @@ json3_4 <- makeJson(sectionn = 3, graphn = 4, dt = fig3_4, graphtype = "bar", se
 
 
 #Figure 3-5
-fig3_5 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0050.csv", sep=""),stringsAsFactors=FALSE)
+fig3_5 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0050-Revised.csv", sep=""),stringsAsFactors=FALSE)
 json3_5 <- makeJson(sectionn = 3, graphn = 5, dt = fig3_5, graphtype = "bar",
                      series = c("On campus", "Off campus", "Living with parents"),
                      categories = fig3_5$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 3-6
-fig3_6 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0060.csv", sep=""),stringsAsFactors=FALSE)
+fig3_6 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0060-Revised.csv", sep=""),stringsAsFactors=FALSE)
 json3_6 <- makeJson(sectionn = 3, graphn = 6, dt = fig3_6$amount, graphtype = "bar", series="Price",
-                    categories = fig3_6$category, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                    categories = fig3_6$category, tickformat = "$,.3s", rotated = FALSE, directlabels = TRUE)
 
 #Figure 3-7
 #add "highlightIndex": 27 to outermost bracket
@@ -267,8 +267,7 @@ json3_19b<- makeJson(sectionn = 3, graphn = 192, dt = fig3_19b, graphtype = "lin
                     series = c("Age 18–23", "Age 24–34"),
                     categories = fig3_19b$category_label, tickformat = "$s", rotated = FALSE, directlabels = TRUE)
 #Figure 3-20
-#In both graphs, added top level attribute `"tallSmallMultiple": true`
-#For first graph:
+# 1) For first graph:
 #"y": {
 #"padding": {"top":0, "bottom":0},
 #"max": 50000,
@@ -278,7 +277,7 @@ json3_19b<- makeJson(sectionn = 3, graphn = 192, dt = fig3_19b, graphtype = "lin
 #"count": 7
 #}
 #},
-#For second graph:
+# 2)For second graph:
 #"y": {
 #"padding": {"top": 0, "bottom": 0},
 #"max": 1,
@@ -287,18 +286,32 @@ json3_19b<- makeJson(sectionn = 3, graphn = 192, dt = fig3_19b, graphtype = "lin
 #"count": 5
 #}
 #}
+#3) for first graph, add :
+# `"subtitle": "Dollars" `
+#4) for second graph, add:
+# `subtitle: "Percent" `
 fig3_20a <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_0200.csv", sep=""),stringsAsFactors=FALSE)
 fig3_20b <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_0201.csv", sep=""),stringsAsFactors=FALSE)
 
-json3_20a <- makeJson(sectionn = 3, graphn = 20, subn= 1, dt = fig3_20a, graphtype = "bar",
+json3_20a <- makeJson(sectionn = 3, graphn = 201, dt = fig3_20a, graphtype = "bar",
                       series = c("Grant Aid", "Tuition and fees left over"),
-                      categories = fig3_20a$category, graphtitle="Dollars", tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
-json3_20b <- makeJson(sectionn = 3, graphn = 20, subn= 2, dt = fig3_20b, graphtype = "bar", 
+                      categories = fig3_20a$category, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+json3_20b <- makeJson(sectionn = 3, graphn = 202, dt = fig3_20b, graphtype = "bar", 
                       series = c("Grant Aid", "Tuition and fees left over"),
-                      categories = fig3_20b$category, graphtitle="Percent", tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+                      categories = fig3_20b$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 3-21
-#First set of multiples- need to add "groups": [["Tuition and fees covered by grant aid","Remaining (net) tuition and fees","Living expenses covered by grant aid", "Remaining (net) living expenses"]]
+#need to add "groups": [["Tuition and fees covered by grant aid","Remaining (net) tuition and fees","Living expenses covered by grant aid", "Remaining (net) living expenses"]]
+# for all graphs, add ` "wideSmallMultiple": true ` to outermost bracket
+# for all graphs, add 
+#"y": {
+#  "max": 50000,
+#  "padding": {"top": 0, "bottom": 0},
+#  "tick": {
+#    "format": "dollar",
+#    "count": 3
+#}
+#},
 fig3_21a <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02101.csv", sep=""),stringsAsFactors=FALSE)
 fig3_21b <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02102.csv", sep=""),stringsAsFactors=FALSE)
 fig3_21c <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02103.csv", sep=""),stringsAsFactors=FALSE)
@@ -317,26 +330,8 @@ json3_21d <- makeJson(sectionn = 3, graphn = 21, subn= 4, dt = fig3_21d, graphty
                       series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
                       categories = fig3_21d$Income, graphtitle="For-profit", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
-#Second set of multiples- need to add "groups": [["Grant aid","Remaining (net) tuition and fees","Remaining (net) living expenses"]]
-fig3_211a <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02111.csv", sep=""),stringsAsFactors=FALSE)
-fig3_211b <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02112.csv", sep=""),stringsAsFactors=FALSE)
-fig3_211c <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02113.csv", sep=""),stringsAsFactors=FALSE)
-fig3_211d <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02114.csv", sep=""),stringsAsFactors=FALSE)
-
-json3_211a <- makeJson(sectionn = 3, graphn = 21, subn= 11, dt = fig3_211a, graphtype = "bar",
-                      series = c("Grant aid", "Remaining (net) tuition and fees", "Remaining (net) living expenses"),
-                      categories = fig3_211a$Income, graphtitle="Public four-year", tickformat = "percent", rotated = FALSE, directlabels = TRUE)
-json3_211b <- makeJson(sectionn = 3, graphn = 21, subn= 12, dt = fig3_211b, graphtype = "bar",
-                       series = c("Grant aid", "Remaining (net) tuition and fees", "Remaining (net) living expenses"),
-                       categories = fig3_211b$Income, graphtitle="Private nonprofit four-year", tickformat = "percent", rotated = FALSE, directlabels = TRUE)
-json3_211c <- makeJson(sectionn = 3, graphn = 21, subn= 13, dt = fig3_211c, graphtype = "bar",
-                       series = c("Grant aid", "Remaining (net) tuition and fees", "Remaining (net) living expenses"),
-                       categories = fig3_211c$Income, graphtitle="Public two-year", tickformat = "percent", rotated = FALSE, directlabels = TRUE)
-json3_211d <- makeJson(sectionn = 3, graphn = 21, subn= 14, dt = fig3_211d, graphtype = "bar", 
-                      series = c("Grant aid", "Remaining (net) tuition and fees", "Remaining (net) living expenses"), 
-                      categories = fig3_211d$Income, graphtitle="For-profit", tickformat = "percent", rotated = FALSE, directlabels = TRUE)
-
 #Figure 3-22
+#**FOR EACH SET OF MULTIPLES: ADD "subtitle" in jsx file
 #First set of multiples- need to add "groups": [["Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"]]
 #First set of multiples set max y value and ticks:
 #"y": {

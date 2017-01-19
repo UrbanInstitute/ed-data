@@ -1,6 +1,9 @@
 ## MASTER SHEET FOR ALL EDITS MADE BY HAND TO LUMINA JSONS
 
 #SECTION 1: WHAT IS COLLEGE
+ - ** FOR ALL GRAPHS IN "STUDENTS" SECTION (1-5 THROUGH 1-14), ADD THE FOLLOWING TO TOP LEVEL:
+
+ ``` "hideTooltip": true ``` 
 
 
 #SECTION 2: COST OF EDUCATING
@@ -241,10 +244,50 @@ in various blocks specific to line and area charts. Given that this chart is a s
     - added "colors": {"25th percentile": "#1696d2", "Median": "#fdbf11", "75th percentile": "#000000"  } to outermost bracket in "data"
     - make sure sets are ordered by 1 and then 2
 
-- **Figure 3-20
- - In both graphs, added top level attribute `"tallSmallMultiple": true`
+- **Figure 3-20**
+ - For first graph:
+ "y": {
+ "padding": {"top":0, "bottom":0},
+ "max": 50000,
+ "min":-10000,
+ "tick": {
+ "format": "dollar",
+ "count": 7
+ }
+ },
+ - For second graph:
+ "y": {
+ "padding": {"top": 0, "bottom": 0},
+ "max": 1,
+ "tick": {
+ "format": "percent",
+ "count": 5
+ }
+ }
+ - for first graph, add :
+  `"subtitle": "Dollars" `
+ - for second graph, add:
+  `subtitle: "Percent" `
+
+
+- **Figure 3-21**
+ - need to add "groups": [["Tuition and fees covered by grant aid","Remaining (net) tuition and fees","Living expenses covered by grant aid", "Remaining (net) living expenses"]]
+ - for all graphs, add ` "wideSmallMultiple": true ` to outermost bracket
+ - for all graphs, add 
+  ``` 
+      "y": {
+      "max": 50000,
+      "padding": {"top": 0, "bottom": 0},
+      "tick": {
+        "format": "dollar",
+        "count": 3
+
+      }
+    },
+  ```
 
 - **Figure 3-22:**
+ - ** FOR EACH SET OF MULTIPLES: ADD "subtitle" in jsx file
  - **First set of multiples**
     - First set of multiples need to add
     
@@ -334,10 +377,14 @@ in various blocks specific to line and area charts. Given that this chart is a s
 
 
 #SECTION 4: FINANCIAL AID
+- **Figure 4-1**
+  - add ` "hideTooltip": true ` to outermost bracket
 
- - **Figure 4-2**
+- **Figure 4-2**
   - add `"padding": {"bottom": 60}` to outermost tick
 
+- **Figure 4-4**
+ - FOR ALL MULTIPLES: add ` "hideTooltip": true ` to outermost bracket
 
 - **Figure 4-7 (all multiples)**
  - set max y value and ticks
@@ -354,6 +401,11 @@ in various blocks specific to line and area charts. Given that this chart is a s
   ```
  - insert space to x-values after Indepedent or Dependent so that x-values are two lines total
 
+- **Figure 4-3**
+ - add ` "hideTooltip": true ` to outermost bracket
+
+- **Figure 4-6**
+ -add ` "hideTooltip": true ` to outermost bracket
 - **Figure 4-8**
  - had to manually change the ordering of the sets and had to replace `"groups"` aray with:
 
@@ -371,6 +423,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
   ```
 - **Figure 4-9**
  - **First set of multiples**
+   - for all graphs : add ` "hideTooltip": true ` to outermost bracket
 	 - for graph 1, add bracket to single category `"All..."`
 	 - for graph 2, add spaces to x-labels to create two lines, for example: `"Less than         $30,000" "$30,000 –       $64,999"`
 	 - for graphs 1-3, change number of ticks
@@ -388,6 +441,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
   	 - for all graphs, added top level attribute `"wideSmallMultiple": true`
 
  - **Second set of multiples**
+  - for all graphs: add ` "hideTooltip": true ` to outermost bracket
 	 - for graph 1, add bracket to single category `"All..."`
 	 - for graph 2, add spaces to x-labels to create two lines, for example: `"Less than         $30,000" "$30,000 –       $64,999"`
 	 - for graphs 1-3, change number of ticks
@@ -403,6 +457,14 @@ in various blocks specific to line and area charts. Given that this chart is a s
 	  },
 	  ```
 	  - for all graphs, added top level attribute `"wideSmallMultiple": true`
+- **Figure 4-10**
+  - add <em> tags around "Trends in Student Aid 2016" in source line
+
+- **Figure 4-11**
+  - add <em> tags around "Trends in Student Aid 2016" in source line
+
+- **Figure 4-12**
+  - add <em> tags around "Trends in Student Aid 2016" in source line
 
 - **Figure 4-13**
  - add `"highlightIndex" : 18` to outermost bracket
@@ -442,7 +504,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
   ```
 
 
-- **Figure 4-19:**
+- **Figure 4-19**
 
  - had to manually change groups array to:
 
@@ -457,7 +519,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
    ]
 ```
 
-- **Figure 4-20 :**
+- **Figure 4-20**
 
  - had to manually change group array to:
 
@@ -614,7 +676,14 @@ change y tick values
 - **Figure 5-8**
   - add `"highlightIndex" : 0`  to outermost bracket
 
+- **Figure 5-9**
+  - add ` "hideTooltip": true ` to outermost bracket
+
+- **Figure 5-10**
+  - add ` "hideTooltip": true ` to outermost bracket
+
 - **Figure 5-11**
+ - add ` "hideTooltip": true ` to outermost bracket
  - set max y-value and ticks
 
   ```
@@ -652,8 +721,18 @@ change y tick values
         "max": 20000
       },
   ```
+- **Figure 5-19**
+ - add ` "hideTooltip": true ` to outermost bracket
+
+- **Figure 5-20**
+ - add ` "hideTooltip": true ` to outermost bracket
+
+- **Figure 5-21**
+ - add ` "hideTooltip": true ` to outermost bracket
+
+
 - **Figure 5-22**
- -for first graph, set max y value and ticks:
+ - for first graph, set max y value and ticks:
 
  ```
       "y": {
@@ -665,7 +744,7 @@ change y tick values
         }
       },
  ```
- -for second graph, set max y value and ticks:
+ - for second graph, set max y value and ticks:
  ```
       "y": {
       "padding": {"top": 0, "bottom": 0},
@@ -676,13 +755,15 @@ change y tick values
       }
     },
  ```
- - for both graphys, delete "groups" array
+ - for both graphs, delete "groups" array
 
 - **Figure 5-25:**
  - add `"overrideTickCount": true` to outermost bracket
  - set `x.ticks.count` to `11`
  - add 4 blank data points (two at beginning and two at end) 
 
+- **Figure 5-28**
+ - add ` "hideTooltip": true ` to outermost bracket
 
 #SECTION 6: AFTER COLLEGE
 - **Figure 6-200**
@@ -699,8 +780,8 @@ change y tick values
      },
    ```
 - **Figure 6-1**
- -add two blank data points, one to beginning and end
- -set max y-value and ticks:
+ - add two blank data points, one to beginning and end
+ - set max y-value and ticks:
 
  ```
      "y": {
@@ -716,6 +797,11 @@ change y tick values
 ```
  -set x.tick.count to 9
  - add `"overrideTickCount": true` to outermost bracket
+
+
+- **Figure 6-6**
+ - add ` "hideTooltip": true ` to outermost bracket
+
 
 - **Figure 6-7**
  - add top level `"forceTall": true` to force 900px height
@@ -955,5 +1041,5 @@ change y tick values
   },
   ```
 
-  - **Figure 7-20**
+- **Figure 7-20**
  - had to manually set order of years for each toggle category so that years are ascending

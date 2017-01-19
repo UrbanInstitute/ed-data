@@ -345,7 +345,7 @@ json7_19<- makeJson(sectionn = 7, graphn = 19, dt = fig7_19, graphtype = "bar", 
 #had to manually set order of years for each toggle category so that years are ascending
 fig7_20<- read.csv(paste(textpath, "Personas/07_0200-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names=FALSE)
 json7_20<- makeJson(sectionn = 7, graphn = 20, dt = fig7_20, graphtype = "bar", set1= fig7_20[grep("Public four-year in-state", fig7_20$category), c("1 year", "2 years", "3 years", "4 years", "5 years", "6 years")], set2= fig7_20[grep("Public four-year out-of-state", fig7_20$category), c("1 year", "2 years", "3 years", "4 years", "5 years", "6 years")],
-                    set3= fig7_20[grep("Private nonprofit four-year", fig7_20$category), c("1 year", "2 years", "3 years", "4 years", "5 years", "6 years")],set4= fig7_20[grep("Public two-year", fig7_20$category), c("1 year", "2 years", "3 years", "4 years", "5 years", "6 years")], 
+                    set3= fig7_20[grep("Private nonprofit four-year", fig7_20$category), c("1 year", "2 years", "3 years", "4 years", "5 years", "6 years")],set4= fig7_20[grep("Public two-year", fig7_20$category), c("1 year", "2 years", "3 years", "4 years", "5 years", "6 years")], set5= fig7_20[grep("For-profit", fig7_20$category), c("1 year", "2 years", "3 years", "4 years", "5 years", "6 years")], 
                     series = c("Public four-year in-state", "Public four-year out-of-state", "Private nonprofit four-year", "Public two-year"),
                     categories = fig7_20$category_label, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 

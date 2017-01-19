@@ -70,7 +70,7 @@ json6_5 <- makeJson(sectionn = 6, graphn = 5, dt = fig6_5, graphtype = "line", s
                     categories = fig6_5$age, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 6-6
-
+# add ` "hideTooltip": true ` to outermost bracket
 fig6_6 <- read.csv(paste(textpath, "After college_earnings/06_0060.csv", sep=""),stringsAsFactors=FALSE)
 json6_6 <- makeJson(sectionn = 6, graphn = 6, dt = fig6_6, graphtype = "bar",
                     series = c("$0-$20,999",	"$21,000-$35,399",	"$35,400-$51,999",	"$52,000-$79.999",	"$80,000+"),

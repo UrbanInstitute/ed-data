@@ -13,6 +13,7 @@ graphtext$multiples <- as.numeric(graphtext$multiples)
 graphtext$toggle <- as.numeric(graphtext$toggle)
 
 #Figure 5-19
+##add ` "hideTooltip": true ` to outermost bracket
 fig5_19<- read.csv(paste(textpath, "Covering Expenses_time to degree/05_0190.csv", sep=""),stringsAsFactors=FALSE)
 json5_19<- makeJson(sectionn = 5, graphn = 19, dt = fig5_19, graphtype = "bar",
                     series = c("Average years enrolled", "Average years elasped"),
@@ -49,6 +50,7 @@ json5_29<- makeJson(sectionn = 5, graphn = 29, dt = fig5_29, graphtype = "line",
                     categories = fig5_29$X, tickformat = "$.2s", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-28
+#add ` "hideTooltip": true ` to outermost bracket
 fig5_28<- read.csv(paste(textpath, "Covering Expenses_savings/05_0280.csv", sep=""),stringsAsFactors=FALSE)
 json5_28<- makeJson(sectionn = 5, graphn = 28, dt = fig5_28, graphtype = "bar",
                     series = c("Lowest quintile", "Second quintile", "Third quintile", "Fourth quintile", "Highest quintile"),
@@ -82,7 +84,7 @@ json5_24<- makeJson(sectionn = 5, graphn = 24, dt = fig5_24$foregone, graphtype 
 
 
 #Figure 5-22
-#-for first graph, set max y value and ticks:
+#1) for first graph, set max y value and ticks:
 #
 #```
 #"y": {
@@ -94,7 +96,7 @@ json5_24<- makeJson(sectionn = 5, graphn = 24, dt = fig5_24$foregone, graphtype 
 #}
 #},
 #```
-#-for second graph, set max y value and ticks:
+#2) for second graph, set max y value and ticks:
 #```
 #"y": {
 #"padding": {"top": 0, "bottom": 0},
@@ -105,6 +107,8 @@ json5_24<- makeJson(sectionn = 5, graphn = 24, dt = fig5_24$foregone, graphtype 
 #}
 #},
 #```
+#3) for both graphys, delete "groups" array
+
 fig5_22a<- read.csv(paste(textpath, "Covering Expenses_time to degree/05_0221.csv", sep=""),stringsAsFactors=FALSE)
 fig5_22b<- read.csv(paste(textpath, "Covering Expenses_time to degree/05_0222.csv", sep=""),stringsAsFactors=FALSE)
 json5_13a <- makeJson(sectionn = 5, graphn = 13, subn= 1, dt = fig5_13a, graphtype = "bar",
@@ -123,14 +127,14 @@ json5_23 <- makeJson(sectionn = 5, graphn = 23, dt = fig5_23, graphtype = "bar",
                      categories = fig5_23$time_between_enroll_completion, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 5-21
-
+#add ` "hideTooltip": true ` to outermost bracket
 fig5_21 <- read.csv(paste(textpath, "Covering expenses_time to degree/05_0210.csv", sep=""),stringsAsFactors=FALSE)
 json5_21 <- makeJson(sectionn = 5, graphn = 21, dt = fig5_21, graphtype = "bar",
                      series = c("2 years or less", "3 years", "4 to 5 years", "6 years or more"),
                      categories = fig5_21$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 5-20
-
+#add ` "hideTooltip": true ` to outermost bracket
 fig5_20 <- read.csv(paste(textpath, "Covering expenses_time to degree/05_0200.csv", sep=""),stringsAsFactors=FALSE)
 json5_20 <- makeJson(sectionn = 5, graphn = 20, dt = fig5_20, graphtype = "bar",
                      series = c("4 years or less", "5 years", "6 to 7 years", "8 years or more"),
@@ -211,7 +215,8 @@ json5_12 <- makeJson(sectionn = 5, graphn = 12, dt = fig5_12, graphtype = "bar",
 
 
 #Figure 5-11
-#set max y-value and ticks
+# 1) add ` "hideTooltip": true ` to outermost bracket
+# 2) set max y-value and ticks
 #"y": {
 #  "padding": {"top": 0, "bottom": 0},
 #  "max": 0.5,
@@ -226,14 +231,14 @@ json5_11 <- makeJson(sectionn = 5, graphn = 11, dt = fig5_11, graphtype = "bar",
                      set3=fig5_11[,c("publictwo")], set4=fig5_11[,c("privatenonprofit")], set5=fig5_11[,c("forprofit")], categories = fig5_11$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 5-10
-
+#add ` "hideTooltip": true ` to outermost bracket
 fig5_10 <- read.csv(paste(textpath, "Covering expenses_working/05_0100.csv", sep=""),stringsAsFactors=FALSE)
 json5_10 <- makeJson(sectionn = 5, graphn = 10, dt = fig5_10, graphtype = "bar",
                      series = c("No earnings", "$1–$2,999", "$3,000–$5,999", "$6,000–$8,999", "$9,000–$11,999", "$12,000–$14,999", "$15,000 or more"),
                      categories = fig5_10$hours, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 5-9
-
+#add ` "hideTooltip": true ` to outermost bracket
 fig5_9 <- read.csv(paste(textpath, "Covering expenses_working/05_0090.csv", sep=""),stringsAsFactors=FALSE)
 json5_9 <- makeJson(sectionn = 5, graphn = 9, dt = fig5_9, graphtype = "bar",
                      series = c("No work", "1–5", "6–10", "11–15", "16–20", "21–30", "31–40", "41 or more"),

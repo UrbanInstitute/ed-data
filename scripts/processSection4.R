@@ -19,6 +19,7 @@ graphtext$multiples <- as.numeric(graphtext$multiples)
 graphtext$toggle <- as.numeric(graphtext$toggle)
 
 #Figure 4-1
+#add ` "hideTooltip": true ` to outermost bracket
 fig4_1 <- read.csv(paste(textpath, "Financial aid_financial need/04_00100.csv", sep=""),stringsAsFactors=FALSE)
 json4_1 <- makeJson(sectionn = 4, graphn = 1, dt = fig4_1$MedianEFCbyParentsIncome, graphtype = "bar", series="Median EFC",
                     xlabel="Income", ylabel="EFC",categories = fig4_1$IncomeRange, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
@@ -30,6 +31,7 @@ json4_2 <- makeJson(sectionn = 4, graphn = 2, dt = fig4_2, graphtype = "bar", se
                     xlabel="Income", ylabel="EFC", categories = fig4_2$category, tickformat = "$.2s", rotated = TRUE, directlabels = TRUE)
 
 #Figure 4-3
+#add ` "hideTooltip": true ` to outermost bracket
 fig4_3 <- read.csv(paste(textpath, "Financial aid_financial need/04_0030.csv", sep=""),stringsAsFactors=FALSE)
 json4_3 <- makeJson(sectionn = 4, graphn = 3, dt = fig4_3$Percent0EFC, graphtype = "bar", series="Undergraduate Student Percentage",
                     categories = fig4_3$DependencyStatus, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
@@ -42,6 +44,7 @@ json4_4 <- makeJson(sectionn = 4, graphn = 4, dt = fig4_4, graphtype = "bar",
                     categories = fig4_4$column, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 4-4
+#FOR ALL MULTIPLES: add ` "hideTooltip": true ` to outermost bracket
 fig4_4a <- read.csv(paste(textpath, "Financial aid_financial need/04_0041.csv", sep=""),stringsAsFactors=FALSE)
 fig4_4b <- read.csv(paste(textpath, "Financial aid_financial need/04_0042.csv", sep=""),stringsAsFactors=FALSE)
 fig4_4c <- read.csv(paste(textpath, "Financial aid_financial need/04_0043.csv", sep=""),stringsAsFactors=FALSE)
@@ -74,6 +77,7 @@ json4_5 <- makeJson(sectionn = 4, graphn = 5, dt = fig4_5$grant, graphtype = "ba
 
 
 #Figure 4-6
+#add ` "hideTooltip": true ` to outermost bracket
 fig4_6 <- read.csv(paste(textpath, "Financial aid_grant aid/CSVs/04_0060.csv", sep=""),stringsAsFactors=FALSE)
 json4_6 <- makeJson(sectionn = 4, graphn = 6, dt = fig4_6, graphtype = "bar",
                     series = c("Federal (Nonmilitary)","Veterans/Department of Defense","State","Institutional","Private and Employer"),
@@ -140,6 +144,7 @@ fig4_9c <- read.csv(paste(textpath, "Financial aid_federal/04_00903.csv", sep=""
 #  }
 #},
 #4)for graphs 1-3, added top level attribute `"wideSmallMultiple": true`
+#5)for graphs 1-3, added ` "hideTooltip": true `
 json4_91a <- makeJson(sectionn = 4, graphn = 91, subn= 3, dt = fig4_9a$grant_per_recip, graphtype = "bar",
                      series = "Pell-Grant",
                      categories = fig4_9a$dependency_income, tickformat = "$s", rotated = TRUE, directlabels = TRUE, graphtitle="Dependency status")
@@ -173,8 +178,10 @@ json4_92c <- makeJson(sectionn = 4, graphn = 92, subn= 1, dt = fig4_9c$pell_per_
                       series = "Pell-Grant",
                       categories = fig4_9c$dependency_income, tickformat = "$s", rotated = TRUE, directlabels = TRUE, graphtitle="All")
 
+#9)for graphs 1-3, added ` "hideTooltip": true `
 
 #Figure 4-10
+#add <em> tags around "Trends in Student Aid 2016" in source line
 fig4_10 <- read.csv(paste(textpath, "Financial aid_federal/04_0100.csv", sep=""),stringsAsFactors=FALSE)
 fig4_10$year <- gsub("&ndash", "–", fig4_10$year) 
 fig4_10
@@ -182,6 +189,7 @@ json4_10 <- makeJson(sectionn = 4, graphn = 10, dt = fig4_10, graphtype = "line"
                     categories = fig4_10$year, tickformat = "$.2s", rotated = FALSE, directlabels = TRUE)
 
 #Figure 4-11
+#add <em> tags around "Trends in Student Aid 2016" in source line
 fig4_11 <- read.csv(paste(textpath, "Financial aid_federal/04_0110.csv", sep=""),stringsAsFactors=FALSE)
 fig4_11$year <- gsub("\x96", "–", fig4_11$year) 
 fig4_11
@@ -189,6 +197,7 @@ json4_11 <- makeJson(sectionn = 4, graphn = 11, dt = fig4_11$recipients, graphty
                     categories = fig4_11$year, tickformat = "number", rotated = FALSE, directlabels = TRUE)
 
 #Figure 4-12
+#add <em> tags around "Trends in Student Aid 2016" in source line
 fig4_12 <- read.csv(paste(textpath, "Financial aid_federal/04_0120.csv", sep=""),stringsAsFactors=FALSE)
 fig4_12$year <- gsub("-", "–", fig4_12$year) 
 json4_12 <- makeJson(sectionn = 4, graphn = 12, dt = fig4_12, graphtype = "line", series=c("Pell per FTE undergraduate", "Military and veterans aid per FTE undergraduate"),
