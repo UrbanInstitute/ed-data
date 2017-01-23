@@ -47,7 +47,7 @@ json5_30<- makeJson(sectionn = 5, graphn = 30, dt = fig5_30, graphtype = "line",
 fig5_29<- read.csv(paste(textpath, "Covering Expenses_savings/05_0290.csv", sep=""),stringsAsFactors=FALSE)
 json5_29<- makeJson(sectionn = 5, graphn = 29, dt = fig5_29, graphtype = "line",
                     series = c("White non-Hispanic", "Non-white or Hispanic"),
-                    categories = fig5_29$X, tickformat = "$.2s", rotated = FALSE, directlabels = TRUE)
+                    categories = fig5_29$X, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-28
 #add ` "hideTooltip": true ` to outermost bracket

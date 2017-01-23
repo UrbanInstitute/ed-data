@@ -27,7 +27,7 @@ graphtext$toggle <- as.numeric(graphtext$toggle)
 fig1_1 <- read.csv(paste(textpath, "What is college_institutions/01_0010.csv", sep=""),stringsAsFactors=FALSE)
 json1_1 <- makeJson(sectionn = 1, graphn = 1, dt = fig1_1$number, graphtype = "bar",
                     series = "Number of Institutions",
-                    categories = fig1_1$carnegie, tickformat = "s", rotated = TRUE, directlabels = TRUE)
+                    categories = fig1_1$carnegie, tickformat = "number", rotated = TRUE, directlabels = TRUE)
 
 #Figure 1-2
 fig1_2 <- read.csv(paste(textpath, "What is college_institutions/01_0020.csv", sep=""),stringsAsFactors=FALSE)
@@ -39,7 +39,7 @@ json1_2 <- makeJson(sectionn = 1, graphn = 2, dt = fig1_2, graphtype = "bar",
 fig1_3 <- read.csv(paste(textpath, "What is college_institutions/01_0030.csv", sep=""),stringsAsFactors=FALSE)
 json1_3 <- makeJson(sectionn = 1, graphn = 3, dt = fig1_3, graphtype = "bar",
                     series = c("Graduate enrollment", "Full-time undergraduate enrollment", "Part-time undergraduate enrollment"),
-                    categories = fig1_3$category, tickformat = ".2s", rotated = TRUE, directlabels = TRUE)
+                    categories = fig1_3$category, tickformat = "number", rotated = TRUE, directlabels = TRUE)
 
 #Figure 1-4
 #add 2 blank data points, one at beginning and end

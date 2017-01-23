@@ -180,6 +180,9 @@
 - **Figure 3-8**
  - add `"highlightIndex": 27` to outermost bracket
 
+- **Figure 3-11**
+ - add `metadata.pluralNotes: true`
+ 
 - **Figure 3-12**
  - add space to x-axis labels for graph 4 so that two-lines: ex- `"'12–     '13'` 
  - set max y value and number of ticks:
@@ -196,7 +199,9 @@
   ```
 
 - **Figure 3-18:** 
- - Set max value and change number of ticks for first pair
+ - **First Set**
+  - add ` subtitle="Ages 18–34, by gender and age" ` to jsx file
+  - Set max value and change number of ticks for first pair
   
   ```
   "y": {
@@ -208,8 +213,9 @@
         }
   }
   ```
-
- - Set max value and change number of ticks for second pair
+ - **Second Set**
+  -add ` subtitle = "Ages 18–23, by gender and race and ethnicity" to jsx file
+  - Set max value and change number of ticks for second pair
   
  ```
    "y": {
@@ -221,7 +227,9 @@
       }
     },
   ```
- - Set max value and change number of ticks for third pair
+ - **Third Set**
+  -add `subtitle = "Ages 24–34, by gender and race and ethnicity" ` to jsx file
+  - Set max value and change number of ticks for third pair
 
   ```
   "y": {
@@ -401,8 +409,6 @@ in various blocks specific to line and area charts. Given that this chart is a s
   ```
  - insert space to x-values after Indepedent or Dependent so that x-values are two lines total
 
-- **Figure 4-3**
- - add ` "hideTooltip": true ` to outermost bracket
 
 - **Figure 4-6**
  -add ` "hideTooltip": true ` to outermost bracket

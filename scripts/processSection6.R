@@ -19,9 +19,9 @@ json6_100<- makeJson(sectionn = 6, graphn = 100, dt = fig6_100, graphtype = "bar
 
 #Figure 6-200
 fig6_200 <- read.csv(paste(textpath, "After college_landing page/06_0200-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names=FALSE)
-json6_200<- makeJson(sectionn = 6, graphn = 200, dt = fig6_200, graphtype = "bar", set1= fig6_200[grep("part", fig6_200$category), c("Completed Bachelor's degree at four-year college", "Completed other degree at two-year college", "Still enrolled", "Not enrolled")], 
-                     set2= fig6_200[grep("full", fig6_200$category),c("Completed Bachelor's degree at four-year college", "Completed other degree at two-year college", "Still enrolled", "Not enrolled")], 
-                     series = c("Part-time or full-time", "Exclusively full-time"),
+json6_200<- makeJson(sectionn = 6, graphn = 200, dt = fig6_200, graphtype = "bar", set1= fig6_200[grep("part", fig6_200$category), c("Completed Bachelor's degree at four-year college", "Completed degree at two-year college", "Still enrolled", "Not enrolled")], 
+                     set2= fig6_200[grep("full", fig6_200$category),c("Completed Bachelor's degree at four-year college", "Completed degree at two-year college", "Still enrolled", "Not enrolled")], 
+                     series = c("Mixed", "Full-time"),
                     categories = fig6_200$category_labels, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 6-1
