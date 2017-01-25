@@ -25,51 +25,33 @@ fig3_17 <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_017
 fig3_17 <- as.data.frame(fig3_17)
 
 #Figure 3-1
+#add to top level  ` "hideTooltip": true `
 fig3_1 <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0010.csv", sep=""),stringsAsFactors=FALSE)
-json3_1 <- makeJson(sectionn = 3, graphn = 1, dt = fig3_1, graphtype = "bar",
-                    series = c("In-district or in-state tuition", "Additional tuition charged to out-of-state students"),
+json3_1 <- makeJson(sectionn = 3, graphn = 1, dt = fig3_1$amount, graphtype = "bar",
+                    series = "Amount",
                     categories = fig3_1$category, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 3-2
 #add "overrideTickCount": true to outermost bracket
+#add blank 
 fig3_2 <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0020-revised.csv", sep=""),stringsAsFactors=FALSE)
+fig3_2$year <- gsub("-", "–", fig3_2$year) 
 json3_2 <- makeJson(sectionn = 3, graphn = 2, dt = fig3_2, graphtype = "line",
-                    series = c("for profit", "private nonprofit four-year", "public four-year", "public two-year"),
+                    series = c("Private nonprofit four-year", "Public four-year", "Public two-year"),
                     categories = fig3_2$year, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
-#Figure 3-3: manually change color for each to avoid automated repeating colors
-"colors": {
-  "Lowest decile": "#cfe8f3", 
-  "2nd":"#a2d4ec", 
-  "3rd":"#73bfe2", 
-  "4th": "#5eb5de", 
-  "5th":"#46abdb", 
-  "6th": "#2da0d6", 
-  "7th": "#1696d2", 
-  "8th": "#12719e", 
-  "9th": "#0a4c6a", 
-  "Highest decile": "#062635"
-},
-fig3_3a <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0031.csv", sep=""),stringsAsFactors=FALSE)
-fig3_3b <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0032.csv", sep=""),stringsAsFactors=FALSE)
-fig3_3c <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0033.csv", sep=""),stringsAsFactors=FALSE)
-fig3_3d <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0034.csv", sep=""),stringsAsFactors=FALSE)
+#Figure 3-3: 
+fig3_3 <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0030-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names=FALSE)
+json3_3 <- makeJson(sectionn = 3, graphn = 3, dt = fig3_3, graphtype = "bar", series=c("Public and private nonprofit four-year combined", "Public four-year", "Private nonprofit four-year"), 
+                    set1=fig3_3[,c("Public and private nonprofit four-year combined")], set2=fig3_3[,c("Public four-year")],set3=fig3_3[,c("Private nonprofit four-year")],
+                    categories = fig3_3$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
-json3_3a <- makeJson(sectionn = 3, graphn = 3, subn= 1, dt = fig3_3a, graphtype = "bar",
-                     series = c("Lowest decile", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "Highest decile"),
-                     categories = fig3_3a$category, graphtitle="Public two-year", tickformat = "dollar", rotated = FALSE, directlabels = FALSE)
-json3_3b <- makeJson(sectionn = 3, graphn = 3, subn= 2, dt = fig3_3b, graphtype = "bar",
-                     series = c("Lowest decile", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "Highest decile"),
-                     categories = fig3_3b$category, graphtitle="Public four-year", tickformat = "dollar", rotated = FALSE, directlabels = FALSE)
-json3_3c <- makeJson(sectionn = 3, graphn = 3, subn= 3, dt = fig3_3c, graphtype = "bar",
-                     series = c("Lowest decile", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "Highest decile"),
-                     categories = fig3_3c$category, graphtitle="Private non-profit four-year", tickformat = "dollar", rotated = FALSE, directlabels = FALSE)
-json3_3d <- makeJson(sectionn = 3, graphn = 3, subn= 4, dt = fig3_3d, graphtype = "bar",
-                     series = c("Lowest decile", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "Highest decile"),
-                     categories = fig3_3d$category, graphtitle="For-profit", tickformat = "dollar", rotated = FALSE, directlabels = FALSE)
+
+
+
 #Figure 3-4
 #added top level `"padding":{"bottom": 30}`
-#added "highlightIndex": 34 to outermost bracket
+#added "highlightIndex": 42 to outermost bracket
 fig3_4 <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0040-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names=FALSE)
 json3_4 <- makeJson(sectionn = 3, graphn = 4, dt = fig3_4, graphtype = "bar", series=c("Public two-year", "Public four-year"), set1=fig3_4[,c("Public two-year")], set2=fig3_4[,c("Public four-year")],
                      categories = fig3_4$category, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
@@ -192,7 +174,7 @@ json3_17 <- makeJson(sectionn = 3, graphn = 17, dt = fig3_17, graphtype = "bar",
 #Set max value and change number of ticks for first pair
 #"y": {
  # "padding": {"top": 0, "bottom": 0},
-  #"max": 60000,
+  #"max": 50000,
   #"tick": {
    # "format": "dollar",
     #"count": 7
@@ -262,13 +244,13 @@ json3_18f <- makeJson(sectionn = 3, graphn = 183, subn= 2, dt = fig3_18f, grapht
 #MEN
 fig3_19 <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_0190.csv", sep=""),stringsAsFactors=FALSE, check.names =FALSE)
 json3_19<- makeJson(sectionn = 3, graphn = 191, dt = fig3_19, graphtype = "line", set1= fig3_19[grep("18", fig3_19$category), c("Median", "25th percentile", "75th percentile")], set2= fig3_19[grep("24", fig3_19$category), c("Median", "25th percentile", "75th percentile")],
-                    series = c("Age 18–23", "Age 24–34"),
+                    series = c("Ages 18–23", "Ages 24–34"),
                     categories = fig3_19$category_label, tickformat = "$s", rotated = FALSE, directlabels = TRUE)
 
 #WOMEN
 fig3_19b <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_0191.csv", sep=""),stringsAsFactors=FALSE, check.names=FALSE)
 json3_19b<- makeJson(sectionn = 3, graphn = 192, dt = fig3_19b, graphtype = "line", set1= fig3_19b[grep("18", fig3_19b$category), c("Median", "25th percentile", "75th percentile")], set2= fig3_19b[grep("24", fig3_19b$category), c("Median", "25th percentile", "75th percentile")],
-                    series = c("Age 18–23", "Age 24–34"),
+                    series = c("Ages 18–23", "Ages 24–34"),
                     categories = fig3_19b$category_label, tickformat = "$s", rotated = FALSE, directlabels = TRUE)
 #Figure 3-20
 # 1) For first graph:
@@ -357,10 +339,10 @@ json3_22a <- makeJson(sectionn = 3, graphn = 22, subn= 1, dt = fig3_22a, graphty
                       categories = fig3_22a$Year, graphtitle="Lowest 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 json3_22b <- makeJson(sectionn = 3, graphn = 22, subn= 2, dt = fig3_22b, graphtype = "bar", 
                       series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
-                      categories = fig3_22b$Year, graphtitle="Lower Middle 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                      categories = fig3_22b$Year, graphtitle="Lower middle 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 json3_22c <- makeJson(sectionn = 3, graphn = 22, subn= 3, dt = fig3_22c, graphtype = "bar", 
                       series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
-                      categories = fig3_22c$Year, graphtitle="Upper Middle 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                      categories = fig3_22c$Year, graphtitle="Upper middle 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 json3_22d <- makeJson(sectionn = 3, graphn = 22, subn= 4, dt = fig3_22d, graphtype = "bar", 
                       series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
                       categories = fig3_22d$Year, graphtitle="Highest 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
@@ -381,10 +363,10 @@ json3_221a <- makeJson(sectionn = 3, graphn = 22, subn= 11, dt = fig3_221a, grap
                       categories = fig3_221a$Year, graphtitle="Lowest 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 json3_221b <- makeJson(sectionn = 3, graphn = 22, subn= 12, dt = fig3_221b, graphtype = "bar", 
                       series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
-                      categories = fig3_221b$Year, graphtitle="Lower Middle 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                      categories = fig3_221b$Year, graphtitle="Lower middle 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 json3_221c <- makeJson(sectionn = 3, graphn = 22, subn= 13, dt = fig3_221c, graphtype = "bar", 
                       series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
-                      categories = fig3_221c$Year, graphtitle="Upper Middle 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                      categories = fig3_221c$Year, graphtitle="Upper middle 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 json3_221d <- makeJson(sectionn = 3, graphn = 22, subn= 14, dt = fig3_221d, graphtype = "bar", 
                       series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
                       categories = fig3_221d$Year, graphtitle="Highest 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
@@ -413,10 +395,10 @@ json3_222a <- makeJson(sectionn = 3, graphn = 22, subn= 21, dt = fig3_222a, grap
                        categories = fig3_222a$Year, graphtitle="Lowest 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 json3_222b <- makeJson(sectionn = 3, graphn = 22, subn= 22, dt = fig3_222b, graphtype = "bar", 
                        series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
-                       categories = fig3_222b$Year, graphtitle="Lower Middle 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                       categories = fig3_222b$Year, graphtitle="Lower middle 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 json3_222c <- makeJson(sectionn = 3, graphn = 22, subn= 23, dt = fig3_222c, graphtype = "bar", 
                        series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
-                       categories = fig3_222c$Year, graphtitle="Upper Middle 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                       categories = fig3_222c$Year, graphtitle="Upper middle 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 json3_222d <- makeJson(sectionn = 3, graphn = 22, subn= 24, dt = fig3_222d, graphtype = "bar", 
                        series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
                        categories = fig3_222d$Year, graphtitle="Highest 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)

@@ -18,11 +18,20 @@ json6_100<- makeJson(sectionn = 6, graphn = 100, dt = fig6_100, graphtype = "bar
                     categories = fig6_100$category, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 #Figure 6-200
+#replace groups array with:
+#"groups": [
+#[
+#"Completed degree at two-year college",
+#"Completed Bachelor's degree at four-year college",
+#"Still enrolled",
+#"Not enrolled"
+#]
+#],
 fig6_200 <- read.csv(paste(textpath, "After college_landing page/06_0200-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names=FALSE)
 json6_200<- makeJson(sectionn = 6, graphn = 200, dt = fig6_200, graphtype = "bar", set1= fig6_200[grep("part", fig6_200$category), c("Completed Bachelor's degree at four-year college", "Completed degree at two-year college", "Still enrolled", "Not enrolled")], 
                      set2= fig6_200[grep("full", fig6_200$category),c("Completed Bachelor's degree at four-year college", "Completed degree at two-year college", "Still enrolled", "Not enrolled")], 
                      series = c("Mixed", "Full-time"),
-                    categories = fig6_200$category_labels, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+                    categories = fig6_200$category_labels, tickformat = "percent", rotated = TRUE, directlabels = FALSE)
 
 #Figure 6-1
 #1) add two blank data points, one to beginning and end

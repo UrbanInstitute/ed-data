@@ -149,30 +149,13 @@
   ```
 
 #SECTION 3: PRICES AND EXPENSES
+
+- **Figure 3-1**
+- add to top level  ` "hideTooltip": true `
+
 - **Figure 3-4**
  - added top level `"padding":{"bottom": 30}`
-
-
-- **Figure 3-3 (all multiples)**
- -  manually change color for each to avoid automated repeating colors
-
-  ```
-     "colors": {
-      "Lowest decile": "#cfe8f3", 
-      "2nd":"#a2d4ec", 
-      "3rd":"#73bfe2", 
-      "4th": "#5eb5de", 
-      "5th":"#46abdb", 
-      "6th": "#2da0d6", 
-      "7th": "#1696d2", 
-      "8th": "#12719e", 
-      "9th": "#0a4c6a", 
-      "Highest decile": "#062635"
-     },
-  ```
-
-- **Figure 3-4**
- - add `"highlightIndex": 34` to outermost bracket
+ - add `"highlightIndex": 42` to outermost bracket
 
 - **Figure 3-7**
  - add `"highlightIndex": 27` to outermost bracket
@@ -206,7 +189,7 @@
   ```
   "y": {
         "padding": {"top": 0, "bottom": 0},
-        "max": 60000,
+        "max": 50000,
         "tick": {
           "format": "dollar",
           "count": 7
@@ -532,6 +515,10 @@ in various blocks specific to line and area charts. Given that this chart is a s
 ```
   "groups": ["Need-based", "Non-need-based"]
 ```
+ - had to manually change order of sets
+
+ - add ` metadata.pluralNotes:true `
+ 
 
 - **Figure 4-21**
  - add brackets to single x-categories in 4-211 and 4-212
@@ -567,6 +554,10 @@ change y tick values
 
     - adding spacing to x values in third and fourth graphs to create two lines , for example: 
 `"Public          four-year"         "Less than           $30,000"`
+
+
+- **Figure 4-21**
+ - make x label two lines, in first two graphs of multiple, in order to widen the graph
 
 
 - **Figure 4-22**
@@ -654,10 +645,12 @@ change y tick values
   ```
  - add `"overrideTickCount": true` to outermost bracket
 
-- **Figure 4-21**
- - make x label two lines, in first two graphs of multiple, in order to widen the graph
 
+- **Figure 4-26**
+ - add ` "padding": {"bottom": 30}` to outermost bracket
 
+- **Figure 4-27**
+ - add ` "padding": {"bottom": 30}` to outermost bracket
 
 #SECTION 5: COVERING EXPENSES
 
@@ -770,21 +763,26 @@ change y tick values
 
 - **Figure 5-28**
  - add ` "hideTooltip": true ` to outermost bracket
+ - add ` "padding": {"bottom": 30}` to outermost bracket
 
+- **Figure 5-32**
+ - add ` metadata.pluralSources: true `
+ 
 #SECTION 6: AFTER COLLEGE
 - **Figure 6-200**
-  - for both graphs, set number of ticks:
+
+ - set groups array to:
+ ```
+  "groups": [
+  [
+    "Completed degree at two-year college",
+    "Completed Bachelor's degree at four-year college",
+    "Still enrolled",
+    "Not enrolled"
+    ]
+  ],
+
   ```
-     "y": {
-     "padding": {"top": 0, "bottom": 0},
-     "max": 1,
-     "tick": {
-       "format": "percent",
-       "count": 5
-     },
-     "max": 1
-     },
-   ```
 - **Figure 6-1**
  - add two blank data points, one to beginning and end
  - set max y-value and ticks:
