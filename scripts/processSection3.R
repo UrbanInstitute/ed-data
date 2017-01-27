@@ -164,6 +164,7 @@ json3_16 <- makeJson(sectionn = 3, graphn = 16, dt = fig3_16, graphtype = "line"
                      categories = fig3_16$X, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 3-17
+#add ` "padding": {"bottom": 30} ` to outermost bracket
 fig3_17 <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_0170.csv", sep=""),stringsAsFactors=FALSE)
 fig3_17$age <- gsub("-", "–", fig3_17$age) 
 json3_17 <- makeJson(sectionn = 3, graphn = 17, dt = fig3_17, graphtype = "bar", xlabel="Age groups",

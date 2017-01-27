@@ -6,7 +6,7 @@ library(openxlsx)
 
 
 source('~/Documents/ed-data/scripts/createJsons.R')
-textpath <- "/Users/vivhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
+textpath <- "/Users/vhou/Box Sync/COMM/**Project Folders**/College Affordability (Lumina) Project/**Production/"
 graphtext <- readWorkbook(paste(textpath, "GraphText.xlsx", sep=""),sheet = 1)
 graphtext$section_number <- as.numeric(graphtext$section_number)
 graphtext$multiples <- as.numeric(graphtext$multiples)
@@ -15,9 +15,9 @@ graphtext$toggle <- as.numeric(graphtext$toggle)
 
 #Figure 2-1
 fig2_1 <- read.csv(paste(textpath, "Cost of educating_appropriations/02_0010.csv", sep=""),stringsAsFactors=FALSE)
-fig2_1$year <- gsub("-", "–", fig2_1$year) 
+fig2_1$academicyear <- gsub("-", "–", fig2_1$academic.year) 
 json2_1 <- makeJson(sectionn = 2, graphn = 1, dt = fig2_1, graphtype = "line", series=c("State and local public higher education appropriations", "Public student enrollment", "State and local public higher education appropriations per public student"),
-                     categories = fig2_1$year, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
+                     categories = fig2_1$academic.year, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 ##Figure 2-2
 #add blank data point (null) as last x-value and "" to categories
@@ -36,7 +36,7 @@ json2_3 <- makeJson(sectionn = 2, graphn = 3, dt = fig2_3, graphtype = "line", s
 #Figure 2-4
 #add "highlightIndex" : 36  to outermost bracket
 fig2_4 <- read.csv(paste(textpath, "Cost of educating_appropriations/02_0040.csv", sep=""),stringsAsFactors=FALSE)
-json2_4 <- makeJson(sectionn = 2, graphn = 4, dt = fig2_4$public, graphtype = "bar", series="State and Local Appropriations per Public FTE Student",
+json2_4 <- makeJson(sectionn = 2, graphn = 4, dt = fig2_4$public, graphtype = "bar", series="State and local appropriations per public FTE student",
                     categories = fig2_4$state, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 #Figure 2-7: 
 #1) for all multiples, add spaces to x-axis labels to create two lines, for example: "'01'–        '02'"

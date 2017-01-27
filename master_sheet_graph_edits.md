@@ -153,6 +153,10 @@
 - **Figure 3-1**
 - add to top level  ` "hideTooltip": true `
 
+- **Figure 3-3**
+ - add axis.y.padding.left: 200
+
+ 
 - **Figure 3-4**
  - added top level `"padding":{"bottom": 30}`
  - add `"highlightIndex": 42` to outermost bracket
@@ -180,8 +184,11 @@
     }
   }
   ```
+- **Figure 3-17**
+ - add ` "padding": {"bottom": 30} ` to outermost bracket
 
-- **Figure 3-18:** 
+ 
+- **Figure 3-18** 
  - **First Set**
   - add ` subtitle="Ages 18–34, by gender and age" ` to jsx file
   - Set max value and change number of ticks for first pair
@@ -695,16 +702,27 @@ change y tick values
     }
   },
   ```
+  
+- **Figure 5-12**
+ - add ` metadata.pluralNotes: true `
+
 
 - **Figure 5-13**
  - in first graph, add bracket for `x.categories` since single category `"All Undergraduates"`
- - in first, add space to x-axis labels for two lines so `"All Under-                 graduates"`
+ - in first, add space to x-axis labels for two lines so `"All Undergraduates                 (percentage)"`
  - in the third graph, add space to x-axis labels for two lines  so  `"Less than          ....."` or `"$30,000–            ........."` for instance
  - in the fourth graph, add space to x-axis labels for two lines so "Full-time           ....."
 
 - **Figure 5-14**
- - add `"overrideTickCount": true` to outermost bracket
- 
+ - add ` "overrideTickCount": true ` to outermost bracket
+ - add ` metadata.pluralSources: true `
+
+- **Figure 5-15**
+ - for both graphs, add ` "hideTooltip": true ` to top bracket
+
+-**Figure 5-16**
+ - add ` "hideTooltip": true ` to top bracket
+
 - **Figure 5-17**
  - in the first graph, make x-label three lines by adding spaces in between `"All full-time/ dependent/ students"`
  - in the second graph, make each x-label two lines, so  `"Less than          ....."` or `"$30,000–            ........."` for instance
@@ -720,6 +738,7 @@ change y tick values
         "max": 20000
       },
   ```
+  - in first graph, add ` "padding": {"top": 30}, ` to outermost bracket
 - **Figure 5-19**
  - add ` "hideTooltip": true ` to outermost bracket
 
@@ -736,10 +755,10 @@ change y tick values
  ```
       "y": {
         "padding": {"top":0 , "bottom":0},
-        "max": 400000,
+        "max": 500000,
         "tick": {
           "format": "dollar",
-          "count": 5
+          "count": 3
         }
       },
  ```
@@ -747,10 +766,10 @@ change y tick values
  ```
       "y": {
       "padding": {"top": 0, "bottom": 0},
-      "max": 800000,
+      "max": 500000,
       "tick": {
         "format": "dollar",
-        "count": 5
+        "count": 3
       }
     },
  ```

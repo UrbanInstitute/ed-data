@@ -123,7 +123,7 @@ json6_11 <- makeJson(sectionn = 6, graphn = 11, dt = fig6_11, graphtype = "bar",
 #Figure 6-10
 fig6_10 <- read.csv(paste(textpath, "After college_debt/06_0100.csv", sep=""),stringsAsFactors=FALSE)
 json6_10 <- makeJson(sectionn = 6, graphn = 10, dt = fig6_10, graphtype = "bar",
-                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or more"),
+                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000–$59,000","$60,000–$99,999", "$100,000 or more" ),
                      categories = fig6_10$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 6-9
@@ -146,7 +146,7 @@ json6_8 <- makeJson(sectionn = 6, graphn = 8, dt = fig6_8, graphtype = "bar",
 # 2) add top level `"padding": {"bottom": 30}`
 fig6_7 <- read.csv(paste(textpath, "After college_earnings/06_0070.csv", sep=""),stringsAsFactors=FALSE)
 json6_7 <- makeJson(sectionn = 6, graphn = 7, dt = fig6_7, graphtype = "bar",
-                    series = c("0–25th percentile", "25th–50th percentile", "50th–75th percentile"),
+                    series = c("25th percentile", "50th percentile", "75th percentile"),
                     categories = fig6_7$field, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 

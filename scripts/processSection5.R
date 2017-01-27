@@ -91,10 +91,10 @@ json5_24<- makeJson(sectionn = 5, graphn = 24, dt = fig5_24$foregone, graphtype 
 #```
 #"y": {
 #"padding": {"top":0 , "bottom":0},
-#"max": 400000,
+#"max": 500000,
 #"tick": {
 #"format": "dollar",
-#"count": 5
+#"count": 3
 #}
 #},
 #```
@@ -102,14 +102,14 @@ json5_24<- makeJson(sectionn = 5, graphn = 24, dt = fig5_24$foregone, graphtype 
 #```
 #"y": {
 #"padding": {"top": 0, "bottom": 0},
-#"max": 800000,
+#"max": 500000,
 #"tick": {
 #"format": "dollar",
-#"count": 5
+#"count": 3
 #}
 #},
 #```
-#3) for both graphys, delete "groups" array
+#3) for both graphs, delete "groups" array
 
 fig5_22a<- read.csv(paste(textpath, "Covering Expenses_time to degree/05_0221.csv", sep=""),stringsAsFactors=FALSE)
 fig5_22b<- read.csv(paste(textpath, "Covering Expenses_time to degree/05_0222.csv", sep=""),stringsAsFactors=FALSE)
@@ -118,28 +118,28 @@ json5_13a <- makeJson(sectionn = 5, graphn = 13, subn= 1, dt = fig5_13a, graphty
                       categories = fig5_13a$category,  xlabel = "All",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=10000, directlabels = TRUE)
 
 json5_22a <- makeJson(sectionn = 5, graphn = 22, subn=1, dt = fig5_22a, graphtype = "bar", xlabel="Public four-year in-state", categories = fig5_22a$category, 
-                       series=c("4 years", "5 years", "6 years"), graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=TRUE)
+                       series=c("Four years", "Five years", "Six years"), graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=TRUE)
 json5_22b <- makeJson(sectionn = 5, graphn = 22, subn=2, dt = fig5_22b, graphtype = "bar", xlabel="Private Nonprofit four-year", categories = fig5_22b$category, 
-                      series=c("4 years", "5 years", "6 years"), graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=TRUE)
+                      series=c("Four years", "Five years", "Six years"), graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=TRUE)
 #Figure 5-23
 
 fig5_23 <- read.csv(paste(textpath, "Covering expenses_time to degree/05_0230.csv", sep=""),stringsAsFactors=FALSE)
 json5_23 <- makeJson(sectionn = 5, graphn = 23, dt = fig5_23, graphtype = "bar",
-                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or More"),
+                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or more"),
                      categories = fig5_23$time_between_enroll_completion, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 5-21
 #add ` "hideTooltip": true ` to outermost bracket
 fig5_21 <- read.csv(paste(textpath, "Covering expenses_time to degree/05_0210.csv", sep=""),stringsAsFactors=FALSE)
 json5_21 <- makeJson(sectionn = 5, graphn = 21, dt = fig5_21, graphtype = "bar",
-                     series = c("2 years or less", "3 years", "4 to 5 years", "6 years or more"),
+                     series = c("Two years or less", "Three years", "Four to five years", "Six years or more"),
                      categories = fig5_21$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 5-20
 #add ` "hideTooltip": true ` to outermost bracket
 fig5_20 <- read.csv(paste(textpath, "Covering expenses_time to degree/05_0200.csv", sep=""),stringsAsFactors=FALSE)
 json5_20 <- makeJson(sectionn = 5, graphn = 20, dt = fig5_20, graphtype = "bar",
-                     series = c("4 years or less", "5 years", "6 to 7 years", "8 years or more"),
+                     series = c("Four years or less", "Five years", "Six to seven years", "Eight years or more"),
                      categories = fig5_20$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 
@@ -148,6 +148,7 @@ json5_20 <- makeJson(sectionn = 5, graphn = 20, dt = fig5_20, graphtype = "bar",
 #1) in the first graph, make x-label three lines by adding spaces in between "All full-time/ dependent/ students"
 #2) in the second graph, make each x-label two lines, so  "Less than          ....." or "$30,000–            ........." for instance
 #3) set max y-value and ticks
+#4) in first graph, add ` "padding": {"top": 30}, ` to outermost bracket
 
 #"y": {
 #  "padding": {"top": 0, "bottom": 0},
@@ -170,49 +171,56 @@ json5_17b <- makeJson(sectionn = 5, graphn = 17, subn= 2, dt = fig5_17b$amount, 
                       categories = fig5_17b$category,  xlabel = "Family income",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=17000, directlabels = TRUE)
 json5_17c <- makeJson(sectionn = 5, graphn = 17, subn= 3, dt = fig5_17c$amount, graphtype = "bar",
                       series = "Loans borrowed",
-                      categories = fig5_17c$category,  xlabel = "Family income",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=17000, directlabels = TRUE)
+                      categories = fig5_17c$category,  xlabel = "Institution",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=17000, directlabels = TRUE)
 #Figure 5-16
+#add ` "hideTooltip": true ` to top bracket
 fig5_16<- read.csv(paste(textpath, "Covering expenses_borrowing/05_0160.csv", sep=""),stringsAsFactors=FALSE)
 json5_16 <- makeJson(sectionn = 5, graphn = 16, dt = fig5_16$amount, graphtype = "bar", series="Loan amount",
                      categories = fig5_16$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-15
 #First graph
+#add ` "hideTooltip": true ` to top bracket
 fig5_151<- read.csv(paste(textpath, "Covering expenses_borrowing/05_0151.csv", sep=""),stringsAsFactors=FALSE)
 json5_151 <- makeJson(sectionn = 5, graphn = 151, dt = fig5_15a$X..of.students.borrowing.federal.loans, graphtype = "bar", series="Percentage of students borrowing federal loans",
                      categories = fig5_15a$Degree, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 #Second graph
+#add ` "hideTooltip": true ` to top bracket
 fig5_152<- read.csv(paste(textpath, "Covering expenses_borrowing/05_0152.csv", sep=""),stringsAsFactors=FALSE)
 json5_152 <- makeJson(sectionn = 5, graphn = 152, dt = fig5_15b$amount, graphtype = "bar", series="Average amount in federal loans",
                       categories = fig5_15b$Degree, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-14
-#add "overrideTickCount": true to outermost bracket
+#add ` "overrideTickCount": true ` to outermost bracket
+#add ` metadata.pluralSources: true `
 fig5_14<- read.csv(paste(textpath, "Covering expenses_borrowing/05_0140.csv", sep=""),stringsAsFactors=FALSE)
-json5_14 <- makeJson(sectionn = 5, graphn = 14, dt = fig5_14, graphtype = "line", series=c("$ Average per borrower", "$ Average per student"),
+json5_14 <- makeJson(sectionn = 5, graphn = 14, dt = fig5_14, graphtype = "line", series=c("Average per borrower", "Average per student"),
                     categories = fig5_14$Academic.Year, tickformat = "$.2s", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-13
 fig5_13a <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0131.csv", sep=""),stringsAsFactors=FALSE)
 fig5_13b <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0132.csv", sep=""),stringsAsFactors=FALSE)
 fig5_13c <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0133.csv", sep=""),stringsAsFactors=FALSE)
+fig5_13c$category <- gsub("-", "–", fig5_13c$category) 
 fig5_13d <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0134.csv", sep=""),stringsAsFactors=FALSE)
 
+#in first graph, add space between "All Undergraduates" and percentage, so that the x-axis is on two lines
 json5_13a <- makeJson(sectionn = 5, graphn = 13, subn= 1, dt = fig5_13a, graphtype = "bar",
-                     series = c("Average per borrower", "Average per student"),
+                     series = c("Average per borrower", "Average per undergraduate student"),
                      categories = fig5_13a$category,  xlabel = "All",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=10000, directlabels = TRUE)
 json5_13b <- makeJson(sectionn = 5, graphn = 13, subn= 2, dt = fig5_13b, graphtype = "bar",
-                      series = c("Average per borrower", "Average per student"),
+                      series = c("Average per borrower", "Average per undergraduate student"),
                       categories = fig5_13b$category,  xlabel = "Dependency status",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=10000, directlabels = TRUE)
 json5_13c <- makeJson(sectionn = 5, graphn = 13, subn= 3, dt = fig5_13c, graphtype = "bar",
-                      series = c("Average per borrower", "Average per student"),
-                      categories = fig5_13c$category,  xlabel = "Dependent Student's Parent Income",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=10000, directlabels = TRUE)
+                      series = c("Average per borrower", "Average per undergraduate student"),
+                      categories = fig5_13c$category,  xlabel = "Dependent student's parent income",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=10000, directlabels = TRUE)
 json5_13d <- makeJson(sectionn = 5, graphn = 13, subn= 4, dt = fig5_13d, graphtype = "bar",
-                      series = c("Average per borrower", "Average per student"),
+                      series = c("Average per borrower", "Average per undergraduate student"),
                       categories = fig5_13d$category,  xlabel = "Attendance pattern",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=10000, directlabels = TRUE)
 #Figure 5-12
+#add ` metadata.pluralNotes: true `
 fig5_12 <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0120.csv", sep=""),stringsAsFactors=FALSE)
-json5_12 <- makeJson(sectionn = 5, graphn = 12, dt = fig5_12, graphtype = "bar", series=c("With debt", "Borrowed in 2011–2012"),
+json5_12 <- makeJson(sectionn = 5, graphn = 12, dt = fig5_12, graphtype = "bar", series=c("With debt", "Borrowed in 2011–12"),
                     categories = fig5_12$category, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 
