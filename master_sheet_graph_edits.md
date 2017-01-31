@@ -454,13 +454,13 @@ in various blocks specific to line and area charts. Given that this chart is a s
 	  ```
 	  - for all graphs, added top level attribute `"wideSmallMultiple": true`
 - **Figure 4-10**
-  - add <em> tags around "Trends in Student Aid 2016" in source line
+  - add `<em>` tags around "Trends in Student Aid 2016" in source line
 
 - **Figure 4-11**
-  - add <em> tags around "Trends in Student Aid 2016" in source line
+  - add `<em>` tags around "Trends in Student Aid 2016" in source line
 
 - **Figure 4-12**
-  - add <em> tags around "Trends in Student Aid 2016" in source line
+  - add `<em>` tags around "Trends in Student Aid 2016" in source line
 
 - **Figure 4-13**
  - add `"highlightIndex" : 18` to outermost bracket
@@ -678,15 +678,16 @@ change y tick values
 - **Figure 5-3**
  - add   `"highlightIndex" : 25`  to outermost bracket
 
-
 - **Figure 5-8**
   - add `"highlightIndex" : 0`  to outermost bracket
 
 - **Figure 5-9**
   - add ` "hideTooltip": true ` to outermost bracket
+  - add `"customHideLabel": true` to outermost bracket
 
 - **Figure 5-10**
   - add ` "hideTooltip": true ` to outermost bracket
+  - add `"customHideLabel": true` to outermost bracket
 
 - **Figure 5-11**
  - add ` "hideTooltip": true ` to outermost bracket
@@ -837,6 +838,8 @@ change y tick values
  - make x-labels two lines after dash by adding space: `$1,000– / $5,000`
 
 #SECTION 7: STUDENT PROFILES
+- **ALL FIGURES IN SECTION**
+ - 	add toplevel custom flag to increase chart height, `"forceMediumHeight": true`
 
 - **Figure 7-3**
  - had to tweak groups array:
