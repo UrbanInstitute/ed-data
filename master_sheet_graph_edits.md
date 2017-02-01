@@ -732,6 +732,7 @@ change y tick values
  - add ` "hideTooltip": true ` to top bracket
 
 - **Figure 5-17**
+ - add `"wideSmallMultiple":true` to outermost bracket for all three multiples 
  - in the first graph, make x-label three lines by adding spaces in between `"All full-time/ dependent/ students"`
  - in the second graph, make each x-label two lines, so  `"Less than          ....."` or `"$30,000–            ........."` for instance
  - set max y-value and ticks
