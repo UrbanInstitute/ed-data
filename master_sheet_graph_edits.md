@@ -382,6 +382,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
 #SECTION 4: FINANCIAL AID
 - **Figure 4-1**
   - add ` "hideTooltip": true ` to outermost bracket
+  - add `"customLabelPosition":true` to outermost bracket
 
 - **Figure 4-2**
   - add `"padding": {"bottom": 60}` to outermost tick
@@ -786,6 +787,9 @@ change y tick values
  - add `"overrideTickCount": true` to outermost bracket
  - set `x.ticks.count` to `11`
  - add 4 blank data points (two at beginning and two at end) 
+
+- **Figure 5-26:**
+	- add `"customLabelPosition":true` to outermost bracket
 
 - **Figure 5-28**
  - add ` "hideTooltip": true ` to outermost bracket
