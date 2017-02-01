@@ -744,8 +744,6 @@ change y tick values
 
 - **Figure 5-13**
  - in first graph, add bracket for `x.categories` since single category `"All Undergraduates"`
- - in the third graph, add space to x-axis labels for two lines  so  `"Less than          ....."` or `"$30,000–            ........."` for instance
- - in the fourth graph, add space to x-axis labels for two lines so "Full-time           ....."
 
 - **Figure 5-14**
  - add ` "overrideTickCount": true ` to outermost bracket
