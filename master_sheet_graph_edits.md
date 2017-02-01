@@ -159,7 +159,7 @@
 	- Add `axis.x.tick.count: 13`
 
 - **Figure 3-3**
- - add `axis.y.padding.left: 200`
+ - add `axis.y.tick.multiline: false`
 
  
 - **Figure 3-4**
