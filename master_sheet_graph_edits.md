@@ -151,10 +151,15 @@
 #SECTION 3: PRICES AND EXPENSES
 
 - **Figure 3-1**
-- add to top level  ` "hideTooltip": true `
+	- add to top level  ` "hideTooltip": true `
+
+- **Figure 3-2**
+	- add 3 blank data points: `null` at start of each series and `null, null` at end of each series
+	- Add `""` to start of categories list
+	- Add `axis.x.tick.count: 13`
 
 - **Figure 3-3**
- - add axis.y.padding.left: 200
+ - add `axis.y.padding.left: 200`
 
  
 - **Figure 3-4**
