@@ -822,6 +822,7 @@ change y tick values
 
 - **Figure 5-26:**
 	- add `"customLabelPosition":true` to outermost bracket
+	- add `"noAxisPadding":true` to outermost bracket
 
 - **Figure 5-28**
  - add ` "hideTooltip": true ` to outermost bracket
