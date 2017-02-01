@@ -31,7 +31,7 @@ fig6_200 <- read.csv(paste(textpath, "After college_landing page/06_0200-ALL.csv
 json6_200<- makeJson(sectionn = 6, graphn = 200, dt = fig6_200, graphtype = "bar", set1= fig6_200[grep("part", fig6_200$category), c("Completed Bachelor's degree at four-year college", "Completed degree at two-year college", "Still enrolled", "Not enrolled")], 
                      set2= fig6_200[grep("full", fig6_200$category),c("Completed Bachelor's degree at four-year college", "Completed degree at two-year college", "Still enrolled", "Not enrolled")], 
                      series = c("Mixed", "Full-time"),
-                    categories = fig6_200$category_labels, tickformat = "percent", rotated = TRUE, directlabels = FALSE)
+                    categories = fig6_200$category_labels, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 6-1
 #1) add two blank data points, one to beginning and end
@@ -152,16 +152,16 @@ json6_7 <- makeJson(sectionn = 6, graphn = 7, dt = fig6_7, graphtype = "bar",
 
 #Figure 6-16
 fig6_16a<- read.csv(paste(textpath, "After College_loan repayment/06_0160.csv", sep=""),stringsAsFactors=FALSE)
-json6_16a <- makeJson(sectionn = 6, graphn = 16, subn = 1, dt = fig6_16a$percent, graphtype = "bar", series="Borrowers in repayment",
+json6_16a <- makeJson(sectionn = 6, graphn = 161, dt = fig6_16a$percent, graphtype = "bar", series="Borrowers in repayment",
                     categories = fig6_16a$category, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 fig6_16b<- read.csv(paste(textpath, "After College_loan repayment/06_0161.csv", sep=""),stringsAsFactors=FALSE)
-json6_16b <- makeJson(sectionn = 6, graphn = 16, subn = 2, dt = fig6_16b$debt, graphtype = "bar", series="Average debt",
+json6_16b <- makeJson(sectionn = 6, graphn = 162, dt = fig6_16b$debt, graphtype = "bar", series="Average debt",
                       categories = fig6_16b$category, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 6-17
 fig6_17<- read.csv(paste(textpath, "After College_loan repayment/06_0170.csv", sep=""),stringsAsFactors=FALSE)
-json6_17<- makeJson(sectionn = 6, graphn = 17, dt = fig6_17, graphtype = "line", series=c("For-profit", "Public 2 year", "Public 4-year", "Private 4-year"),
+json6_17<- makeJson(sectionn = 6, graphn = 17, dt = fig6_17, graphtype = "line", series=c("For-profit", "Public two-year", "Public four-year", "Private four-year"),
                       categories = fig6_17$X, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 #Figure 6-18
 fig6_18<- read.csv(paste(textpath, "After College_loan repayment/06_0180.csv", sep=""),stringsAsFactors=FALSE)

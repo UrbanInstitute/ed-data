@@ -19,6 +19,7 @@ graphtext$multiples <- as.numeric(graphtext$multiples)
 graphtext$toggle <- as.numeric(graphtext$toggle)
 
 #Figure 4-1
+#add ` "padding": {"bottom": 30} ` to outermost bracket
 #add ` "hideTooltip": true ` to outermost bracket
 fig4_1 <- read.csv(paste(textpath, "Financial aid_financial need/04_00100.csv", sep=""),stringsAsFactors=FALSE)
 json4_1 <- makeJson(sectionn = 4, graphn = 1, dt = fig4_1$MedianEFCbyParentsIncome, graphtype = "bar", series="Median EFC",
@@ -502,6 +503,7 @@ json4_25 <- makeJson(sectionn = 4, graphn = 25, dt = fig4_25$credits_deductions,
 
 #Figure 4-26
 #add ` "padding": {"bottom": 30}` to outermost bracket
+#add ` "hideTooltip": true ` to outermost bracket
 fig4_26 <- read.csv(paste(textpath, "Financial aid_tax benefits/04_0260.csv", sep=""),stringsAsFactors=FALSE)
 json4_26 <- makeJson(sectionn = 4, graphn = 26, dt = fig4_26, graphtype = "bar",
                      series = c("Less than $30,000", "$30,001–65,000", "$65,0001–106,000", "More than $106,000", "Total"), graphtitle="Institution type",
@@ -509,6 +511,7 @@ json4_26 <- makeJson(sectionn = 4, graphn = 26, dt = fig4_26, graphtype = "bar",
 
 #Figure 4-27
 #add ` "padding": {"bottom": 30}` to outermost bracket
+#add ` "hideTooltip": true ` to outermost bracket
 fig4_27 <- read.csv(paste(textpath, "Financial aid_tax benefits/04_0270.csv", sep=""),stringsAsFactors=FALSE)
 json4_27 <- makeJson(sectionn = 4, graphn = 27, dt = fig4_27, graphtype = "bar",
                      series = c("Less than $30,000", "$30,001–65,000", "$65,0001–106,000", "More than $106,000", "Total"), graphtitle="Institution type",
