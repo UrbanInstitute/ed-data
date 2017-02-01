@@ -680,6 +680,7 @@ change y tick values
 
 - **Figure 5-8**
   - add `"highlightIndex" : 0`  to outermost bracket
+  - custom format (`$XX.XX`), set `data.labels.format` and `axis.t.tick.format` to `"dollarCents"`
 
 - **Figure 5-9**
   - add ` "hideTooltip": true ` to outermost bracket
