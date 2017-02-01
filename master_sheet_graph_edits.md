@@ -153,10 +153,15 @@
 #SECTION 3: PRICES AND EXPENSES
 
 - **Figure 3-1**
-- add to top level  ` "hideTooltip": true `
+	- add to top level  ` "hideTooltip": true `
+
+- **Figure 3-2**
+	- add 3 blank data points: `null` at start of each series and `null, null` at end of each series
+	- Add `""` to start of categories list
+	- Add `axis.x.tick.count: 13`
 
 - **Figure 3-3**
- - add axis.y.padding.left: 200
+ - add `axis.y.padding.left: 200`
 
  
 - **Figure 3-4**
@@ -405,6 +410,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
 - **Figure 4-1**
   - add ` "padding": {"bottom": 30} ` to outermost bracket
   - add ` "hideTooltip": true ` to outermost bracket
+  - add `"customLabelPosition":true` to outermost bracket
 
 - **Figure 4-2**
   - add `"padding": {"bottom": 60}` to outermost tick
@@ -481,6 +487,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
 	  },
 	  ```
 	  - for all graphs, added top level attribute `"wideSmallMultiple": true`
+
 
 - **Figure 4-13**
  - add `"highlightIndex" : 18` to outermost bracket
@@ -700,17 +707,21 @@ change y tick values
 - **Figure 5-3**
  - add   `"highlightIndex" : 25`  to outermost bracket
 
+
 - **Figure 5-6**
  - make TFRB appear first in the legend
 
 - **Figure 5-8**
   - add `"highlightIndex" : 0`  to outermost bracket
+  - custom format (`$XX.XX`), set `data.labels.format` and `axis.t.tick.format` to `"dollarCents"`
 
 - **Figure 5-9**
   - add ` "hideTooltip": true ` to outermost bracket
+  - add `"customHideLabel": true` to outermost bracket
 
 - **Figure 5-10**
   - add ` "hideTooltip": true ` to outermost bracket
+  - add `"customHideLabel": true` to outermost bracket
 
 - **Figure 5-11**
  - add ` "hideTooltip": true ` to outermost bracket
@@ -810,6 +821,9 @@ change y tick values
 - **Figure 5-27**
  - change order of arrays in data.columns to match order of series in tooltip
 
+- **Figure 5-26:**
+	- add `"customLabelPosition":true` to outermost bracket
+
 - **Figure 5-28**
  - add ` "hideTooltip": true ` to outermost bracket
  - add ` "padding": {"bottom": 30}` to outermost bracket
@@ -867,6 +881,8 @@ change y tick values
  - make x-labels two lines after dash by adding space: `$1,000– / $5,000`
 
 #SECTION 7: STUDENT PROFILES
+- **ALL FIGURES IN SECTION**
+ - 	add toplevel custom flag to increase chart height, `"forceMediumHeight": true`
 
 - **Figure 7-3**
  - had to tweak groups array:

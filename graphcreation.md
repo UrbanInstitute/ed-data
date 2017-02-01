@@ -20,6 +20,7 @@ GraphText contains one row per graph, with some fields that are for your own ref
 * notes: string - copy/paste from the Word doc, inserted into the graph json (leave blank if none)
  * Many will need editing in the quality control phase
 * sources: string - copy/paste from the Word doc, inserted into the graph json
+ * any text formatting such as italics or adding links in the sources should be coded directly in html form into the source column. For example, if the source is "Trends in Student Aid" and this needs to be italicized, then this should be " `<em>`Trends in Student Aid`</em>` ".
  * You'll see some source notes in Word docs that are inconsistent. A good example is IPEDS - you'll see it written in multiple ways. In general, standardize the main data sources within this spreadsheet. Put "Integrated Postsecondary Education Data System" for IPEDS, "National Postsecondary Student Aid Study 2012" for NPSAS, etc. In the quality control phase, editorial staff may change the formatting. You can then find & replace within this spreadsheet and change all the IPEDS notes at once.
 
 ### Columns that are for your reference only
