@@ -13,7 +13,8 @@ graphtext$multiples <- as.numeric(graphtext$multiples)
 graphtext$toggle <- as.numeric(graphtext$toggle)
 
 #Figure 5-19
-##add ` "hideTooltip": true ` to outermost bracket
+#add ` "hideTooltip": true ` to outermost bracket
+
 fig5_19<- read.csv(paste(textpath, "Covering Expenses_time to degree/05_0190.csv", sep=""),stringsAsFactors=FALSE)
 json5_19<- makeJson(sectionn = 5, graphn = 19, dt = fig5_19, graphtype = "bar",
                     series = c("Average years enrolled", "Average years elasped"),
@@ -59,12 +60,14 @@ json5_28<- makeJson(sectionn = 5, graphn = 28, dt = fig5_28, graphtype = "bar",
                     categories = fig5_28$X, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 #Figure 5-27
+#change order of arrays in data.columns to match order of series in tooltip
 fig5_27<- read.csv(paste(textpath, "Covering Expenses_savings/05_0270.csv", sep=""),stringsAsFactors=FALSE)
 json5_27<- makeJson(sectionn = 5, graphn = 27, dt = fig5_27, graphtype = "line",
                     series = c("All families", "Family with head age 45–54", "Single with children", "Couple with children"),
                     categories = fig5_27$year, tickformat = "$.2s", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-26
+#add ` "noAxisPadding": true ` to outermost bracket
 fig5_26<- read.csv(paste(textpath, "Covering Expenses_savings/05_0260.csv", sep=""),stringsAsFactors=FALSE)
 json5_26<- makeJson(sectionn = 5, graphn = 26, dt = fig5_26$Total.EFC, graphtype = "line",ylabel="EFC",
                     series = "Total EFC", xlabel="Savings",
@@ -204,7 +207,6 @@ fig5_13c <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0133.csv", 
 fig5_13c$category <- gsub("-", "–", fig5_13c$category) 
 fig5_13d <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0134.csv", sep=""),stringsAsFactors=FALSE)
 
-#in first graph, add space between "All Undergraduates" and percentage, so that the x-axis is on two lines
 json5_13a <- makeJson(sectionn = 5, graphn = 13, subn= 1, dt = fig5_13a, graphtype = "bar",
                      series = c("Average per borrower", "Average per undergraduate student"),
                      categories = fig5_13a$category,  xlabel = "All",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=10000, directlabels = TRUE)
@@ -266,8 +268,9 @@ json5_7 <- makeJson(sectionn = 5, graphn = 7, dt = fig5_7$fed_min_wage, graphtyp
                     categories = fig5_7$year, tickformat = "$,.2f", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-6
+#make TFRB appear first in the legend
 fig5_6<- read.csv(paste(textpath, "Covering expenses_working/05_0060.csv", sep=""),stringsAsFactors=FALSE)
-json5_6 <- makeJson(sectionn = 5, graphn = 6, dt = fig5_6, graphtype = "line", series=c("Tuition and fees", "800 hours at minimum wage", "Tuition, fees, room, and board"),
+json5_6 <- makeJson(sectionn = 5, graphn = 6, dt = fig5_6, graphtype = "line", series=c("800 hours at minimum wage", "Tuition, fees, room, and board", "Tuition and fees"),
                     categories = fig5_6$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 #Figure 5-5
 fig5_5<- read.csv(paste(textpath, "Covering expenses_income/05_0050.csv", sep=""),stringsAsFactors=FALSE)
@@ -297,7 +300,7 @@ json5_2 <- makeJson(sectionn = 5, graphn = 2, dt = fig5_2$Median.Income, graphty
 #"padding": {"top": 0, "bottom": 0},
 #"max": 150000,
 #"tick": {
-#"count": 4,
+#"count": 3,
 #"format": "dollar"
 #}
 #},

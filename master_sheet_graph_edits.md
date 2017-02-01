@@ -7,7 +7,9 @@
 
 
 #SECTION 2: COST OF EDUCATING
-
+- **Figure 2-1**
+ - add ` "overrideTickCount": true ` to outermost bracket
+ - set x.tick.count: 6
 - **Figure 2-2**
  - add blank data point (`null`) as last x-value and `""` to categories
  - add `"overrideTickCount": true`, to topmost bracket
@@ -163,8 +165,10 @@
 
  
 - **Figure 3-4**
- - added top level `"padding":{"bottom": 30}`
- - add `"highlightIndex": 42` to outermost bracket
+ - First graph: added metadata.subtitle: "Public two-year institutions"
+ - First graph: added "highlightIndex": 36 to outermost bracket
+ - Second graph: added metadata.subtitle: "Public four-year institutions"
+ - Second graph: added "highlightIndex": 21 to outermost bracket
 
 - **Figure 3-7**
  - add `"highlightIndex": 27` to outermost bracket
@@ -176,6 +180,7 @@
  - add `metadata.pluralNotes: true`
  
 - **Figure 3-12**
+ - add ` "wideSmallMultiple": true ` to outermost bracket
  - add space to x-axis labels for graph 4 so that two-lines: ex- `"'12–     '13'` 
  - set max y value and number of ticks:
 
@@ -194,6 +199,17 @@
 
  
 - **Figure 3-18** 
+ -**FOR ALL GRAPHS:
+ ```
+   "groups": [
+    [
+      "25th percentile",
+      "Median",
+      "75th percentile"
+      ]
+    ],
+  ```
+
  - **First Set**
   - add ` subtitle="Ages 18–34, by gender and age" ` to jsx file
   - Set max value and change number of ticks for first pair
@@ -201,10 +217,10 @@
   ```
   "y": {
         "padding": {"top": 0, "bottom": 0},
-        "max": 50000,
+        "max": 120000,
         "tick": {
           "format": "dollar",
-          "count": 7
+          "count": 4
         }
   }
   ```
@@ -215,10 +231,10 @@
  ```
    "y": {
       "padding": {"top": 0, "bottom": 0},
-      "max": 40000,
+      "max": 80000,
       "tick": {
         "format": "dollar",
-        "count": 5
+        "count": 3
       }
     },
   ```
@@ -229,10 +245,10 @@
   ```
   "y": {
     "padding": {"top": 0, "bottom": 0},
-    "max": 50000,
+    "max": 120000,
     "tick": {
       "format": "dollar",
-      "count": 6
+      "count": 4
     }
   },
   ```
@@ -246,7 +262,8 @@ in various blocks specific to line and area charts. Given that this chart is a s
     - added empty tick `null` to start and end of each data series array in `data.sets`
     - added "colors": {"25th percentile": "#1696d2", "Median": "#fdbf11", "75th percentile": "#000000"  } to outermost bracket in "data"
     - make sure sets are ordered by 1 and then 2
-
+    - add empty data points to beginning and end of each array of data and "" to beginning and end of categories array
+    - make legend items in order of "25th percentile", "Median", "75th percentile"
 - **Figure 3-20**
  - For first graph:
  "y": {
@@ -271,6 +288,16 @@ in various blocks specific to line and area charts. Given that this chart is a s
   `"subtitle": "Dollars" `
  - for second graph, add:
   `subtitle: "Percent" `
+ - For both graphs, add 
+ ```
+  "groups": [
+    [
+      "Grant aid",
+      "Tuition and fees left over"
+      ]
+    ]
+ ```
+ - Make "Tuition and fees" first item in legend
 
 
 - **Figure 3-21**
@@ -381,6 +408,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
 
 #SECTION 4: FINANCIAL AID
 - **Figure 4-1**
+  - add ` "padding": {"bottom": 30} ` to outermost bracket
   - add ` "hideTooltip": true ` to outermost bracket
   - add `"customLabelPosition":true` to outermost bracket
 
@@ -459,14 +487,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
 	  },
 	  ```
 	  - for all graphs, added top level attribute `"wideSmallMultiple": true`
-- **Figure 4-10**
-  - add `<em>` tags around "Trends in Student Aid 2016" in source line
 
-- **Figure 4-11**
-  - add `<em>` tags around "Trends in Student Aid 2016" in source line
-
-- **Figure 4-12**
-  - add `<em>` tags around "Trends in Student Aid 2016" in source line
 
 - **Figure 4-13**
  - add `"highlightIndex" : 18` to outermost bracket
@@ -661,9 +682,11 @@ change y tick values
 
 - **Figure 4-26**
  - add ` "padding": {"bottom": 30}` to outermost bracket
+ - add ` "hideTooltip": true ` to outermost bracket
 
 - **Figure 4-27**
  - add ` "padding": {"bottom": 30}` to outermost bracket
+ - add ` "hideTooltip": true ` to outermost bracket
 
 #SECTION 5: COVERING EXPENSES
 
@@ -683,6 +706,10 @@ change y tick values
   
 - **Figure 5-3**
  - add   `"highlightIndex" : 25`  to outermost bracket
+
+
+- **Figure 5-6**
+ - make TFRB appear first in the legend
 
 - **Figure 5-8**
   - add `"highlightIndex" : 0`  to outermost bracket
@@ -717,7 +744,6 @@ change y tick values
 
 - **Figure 5-13**
  - in first graph, add bracket for `x.categories` since single category `"All Undergraduates"`
- - in first, add space to x-axis labels for two lines so `"All Undergraduates                 (percentage)"`
  - in the third graph, add space to x-axis labels for two lines  so  `"Less than          ....."` or `"$30,000–            ........."` for instance
  - in the fourth graph, add space to x-axis labels for two lines so "Full-time           ....."
 
@@ -750,6 +776,7 @@ change y tick values
   - in first graph, add ` "padding": {"top": 30}, ` to outermost bracket
 - **Figure 5-19**
  - add ` "hideTooltip": true ` to outermost bracket
+
 
 - **Figure 5-20**
  - add ` "hideTooltip": true ` to outermost bracket
@@ -788,6 +815,12 @@ change y tick values
  - add `"overrideTickCount": true` to outermost bracket
  - set `x.ticks.count` to `11`
  - add 4 blank data points (two at beginning and two at end) 
+
+- **Figure 5-26**
+  - add ` "noAxisPadding": true ` to outermost bracket
+
+- **Figure 5-27**
+ - change order of arrays in data.columns to match order of series in tooltip
 
 - **Figure 5-26:**
 	- add `"customLabelPosition":true` to outermost bracket

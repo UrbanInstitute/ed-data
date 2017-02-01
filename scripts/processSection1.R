@@ -32,7 +32,7 @@ json1_1 <- makeJson(sectionn = 1, graphn = 1, dt = fig1_1$number, graphtype = "b
 #Figure 1-2
 fig1_2 <- read.csv(paste(textpath, "What is college_institutions/01_0020.csv", sep=""),stringsAsFactors=FALSE)
 json1_2 <- makeJson(sectionn = 1, graphn = 2, dt = fig1_2, graphtype = "bar",
-                    series = c("0-499", "500-999", "1,000-1,499", "5,000-9,999", "10,000-19,999", "20,000+"),
+                    series = c("0–499", "500–999", "1,000–1,499", "5,000–9,999", "10,000–19,999", "20,000+"),
                     categories = fig1_2$carnegie_label, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 1-3

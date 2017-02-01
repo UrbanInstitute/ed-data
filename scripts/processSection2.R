@@ -14,9 +14,11 @@ graphtext$toggle <- as.numeric(graphtext$toggle)
 
 
 #Figure 2-1
+#add ` "overrideTickCount": true ` to outermost bracket
+#set x.tick.count: 6
 fig2_1 <- read.csv(paste(textpath, "Cost of educating_appropriations/02_0010.csv", sep=""),stringsAsFactors=FALSE)
 fig2_1$academicyear <- gsub("-", "–", fig2_1$academic.year) 
-json2_1 <- makeJson(sectionn = 2, graphn = 1, dt = fig2_1, graphtype = "line", series=c("State and local public higher education appropriations", "Public student enrollment", "State and local public higher education appropriations per public student"),
+json2_1 <- makeJson(sectionn = 2, graphn = 1, dt = fig2_1, graphtype = "line", series=c("Public student enrollment", "State and local public higher education appropriations", "State and local public higher education appropriations per public student"),
                      categories = fig2_1$academic.year, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 ##Figure 2-2
