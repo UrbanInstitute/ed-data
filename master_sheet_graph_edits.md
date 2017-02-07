@@ -1,10 +1,14 @@
 ## MASTER SHEET FOR ALL EDITS MADE BY HAND TO LUMINA JSONS
 
 #SECTION 1: WHAT IS COLLEGE
- - ** FOR ALL GRAPHS IN "STUDENTS" SECTION (1-5 THROUGH 1-14), ADD THE FOLLOWING TO TOP LEVEL:
+ - **FOR ALL GRAPHS IN "STUDENTS" SECTION (1-5 THROUGH 1-14), ADD THE FOLLOWING TO TOP LEVEL:**
 
  ``` "hideTooltip": true ``` 
-
+ 
+- **Figure 1-11**
+	- add `customHideLabelTwo": true` to outermost bracket
+- **Figure 1-12**
+	- add `customHideLabelTwo": true` to outermost bracket
 
 #SECTION 2: COST OF EDUCATING
 - **Figure 2-1**
@@ -301,9 +305,19 @@ in various blocks specific to line and area charts. Given that this chart is a s
 
 
 - **Figure 3-21**
- - need to add "groups": [["Tuition and fees covered by grant aid","Remaining (net) tuition and fees","Living expenses covered by grant aid", "Remaining (net) living expenses"]]
+ - need to add
+ 
+	```
+	"groups": [["Tuition and fees covered by grant aid",
+	"Remaining (net) tuition and fees","Living expenses covered by grant aid",
+	"Remaining (net) living expenses"]]
+	```
+	 
  - for all graphs, add ` "wideSmallMultiple": true ` to outermost bracket
+ - for all graphs, add `"multipleCustomLabelPosition": true` to outermost bracket
+ - for all graphs, add `axis.x.label: "Parent Income Quartile"`
  - for all graphs, add 
+ 
   ``` 
       "y": {
       "max": 50000,
@@ -317,7 +331,8 @@ in various blocks specific to line and area charts. Given that this chart is a s
   ```
 
 - **Figure 3-22:**
- - ** FOR EACH SET OF MULTIPLES: ADD "subtitle" in jsx file
+ - **FOR EACH SET OF MULTIPLES**
+	 - 	Add `"subtitle"` in jsx file
  - **First set of multiples**
     - First set of multiples need to add
     
@@ -526,6 +541,8 @@ in various blocks specific to line and area charts. Given that this chart is a s
   }
   ```
 
+- **Figure 4-17**
+	- Set `data.groups` to `[["Need-based", "Non-need-based"]],`
 
 - **Figure 4-19**
 
