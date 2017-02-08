@@ -29,7 +29,7 @@ json6_100<- makeJson(sectionn = 6, graphn = 100, dt = fig6_100, graphtype = "bar
 #],
 fig6_200 <- read.csv(paste(textpath, "After college_landing page/06_0200-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names=FALSE)
 json6_200<- makeJson(sectionn = 6, graphn = 200, dt = fig6_200, graphtype = "bar", set1= fig6_200[grep("part", fig6_200$category), c("Completed Bachelor's degree at four-year college", "Completed degree at two-year college", "Still enrolled", "Not enrolled")], 
-                     set2= fig6_200[grep("full", fig6_200$category),c("Completed Bachelor's degree at four-year college", "Completed degree at two-year college", "Still enrolled", "Not enrolled")], 
+                     set2= fig6_200[grep("full", fig6_200$category),c("Completed bachelor's degree at four-year college", "Completed degree at two-year college", "Still enrolled", "Not enrolled")], 
                      series = c("Mixed", "Full-time"),
                     categories = fig6_200$category_labels, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
@@ -86,6 +86,7 @@ json6_6 <- makeJson(sectionn = 6, graphn = 6, dt = fig6_6, graphtype = "bar",
                     categories = fig6_6$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 6-15
+#add ` metadata.pluralNotes: true ` to outermost bracket
 
 fig6_15 <- read.csv(paste(textpath, "After college_debt/06_0150.csv", sep=""),stringsAsFactors=FALSE)
 figjson6_15 <- makeJson(sectionn = 6, graphn = 15, dt = fig6_15, graphtype = "bar",
@@ -101,6 +102,7 @@ json6_14 <- makeJson(sectionn = 6, graphn = 14, dt = fig6_14, graphtype = "bar",
 
 
 #Figure 6-13
+#add ` metadata.pluralNotes: true ` to outermost bracket
 
 fig6_13 <- read.csv(paste(textpath, "After college_debt/06_0130.csv", sep=""),stringsAsFactors=FALSE)
 json6_13 <- makeJson(sectionn = 6, graphn = 13, dt = fig6_13, graphtype = "bar",
@@ -108,12 +110,14 @@ json6_13 <- makeJson(sectionn = 6, graphn = 13, dt = fig6_13, graphtype = "bar",
                      categories = fig6_13$dependency, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 6-12
+#add ` metadata.pluralNotes: true ` to outermost bracket
 
 fig6_12 <- read.csv(paste(textpath, "After college_debt/06_0120.csv", sep=""),stringsAsFactors=FALSE)
 json6_12 <- makeJson(sectionn = 6, graphn = 12, dt = fig6_12, graphtype = "bar",
                      series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or more"),
                      categories = fig6_12$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 #Figure 6-11
+#add ` metadata.pluralNotes: true ` to outermost bracket
 
 fig6_11 <- read.csv(paste(textpath, "After college_debt/06_0110.csv", sep=""),stringsAsFactors=FALSE)
 json6_11 <- makeJson(sectionn = 6, graphn = 11, dt = fig6_11, graphtype = "bar",
@@ -121,6 +125,8 @@ json6_11 <- makeJson(sectionn = 6, graphn = 11, dt = fig6_11, graphtype = "bar",
                      categories = fig6_11$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 6-10
+#add ` metadata.pluralNotes: true ` to outermost bracket
+
 fig6_10 <- read.csv(paste(textpath, "After college_debt/06_0100.csv", sep=""),stringsAsFactors=FALSE)
 json6_10 <- makeJson(sectionn = 6, graphn = 10, dt = fig6_10, graphtype = "bar",
                      series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000–$59,000","$60,000–$99,999", "$100,000 or more" ),
@@ -136,6 +142,7 @@ json6_9 <- makeJson(sectionn = 6, graphn = 9, dt = fig6_9, graphtype = "bar",
 
 #Figure 6-8
 #add bracket to "categories": ["Education Debt"]
+
 fig6_8 <- read.csv(paste(textpath, "After college_debt/06_0080.csv", sep=""),stringsAsFactors=FALSE)
 json6_8 <- makeJson(sectionn = 6, graphn = 8, dt = fig6_8, graphtype = "bar",
                     series = c("Bottom Quartile", "Second Quartile", "Third Quartile", "Highest Quartile"), ymax=1,

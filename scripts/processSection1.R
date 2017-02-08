@@ -51,7 +51,7 @@ json1_4 <- makeJson(sectionn = 1, graphn = 4, dt = fig1_4, graphtype = "line",
 #Figure 1-5
 #add to outermost bracket:
 # ``` "hideTooltip": true ``` 
-fig1_5 <- read.csv(paste(textpath, "What is college_students/01_0050.csv", sep=""),stringsAsFactors=FALSE)
+fig1_5 <- read.csv(paste(textpath, "What is college_students/01_0050-revised.csv", sep=""),stringsAsFactors=FALSE)
 json1_5 <- makeJson(sectionn = 1, graphn = 5, dt = fig1_5, graphtype = "bar",
                      series = c("Public four-year", "Private four-year", "Public two-year", "For-profit", "Other or nondegree-granting"),
                      categories = fig1_5$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
@@ -59,8 +59,8 @@ json1_5 <- makeJson(sectionn = 1, graphn = 5, dt = fig1_5, graphtype = "bar",
 #Figure 1-6
 #add to outermost bracket:
 # ``` "hideTooltip": true ``` 
-fig1_6 <- read.csv(paste(textpath, "What is college_students/01_0060.csv", sep=""),stringsAsFactors=FALSE)
-fig1_6$category <- gsub("\xd0", "–", fig1_6$category) 
+fig1_6 <- read.csv(paste(textpath, "What is college_students/01_0060-revised.csv", sep=""),stringsAsFactors=FALSE)
+fig1_6$category <- gsub("-", "–", fig1_6$category) 
 json1_6 <- makeJson(sectionn = 1, graphn = 6, dt = fig1_6, graphtype = "bar",
                     series = c("Public four-year", "Private four-year", "Public two-year", "For-profit", "Other or nondegree-granting"),
                     categories = fig1_6$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)

@@ -894,6 +894,22 @@ change y tick values
 - **Figure 6-8**
  - add bracket to `"categories": ["Education Debt"]`
 
+
+- **Figure 6-10**
+- add ` metadata.pluralNotes: true ` to outermost bracket
+
+- **Figure 6-11**
+ - add ` metadata.pluralNotes: true ` to outermost bracket
+
+- **Figure 6-12**
+ - add ` metadata.pluralNotes: true ` to outermost bracket
+
+- **Figure 6-13**
+ - add ` metadata.pluralNotes: true ` to outermost bracket
+
+- **Figure 6-15**
+ - add ` metadata.pluralNotes: true ` to outermost bracket
+
 - **Figure 6-20**
  - make x-labels two lines after dash by adding space: `$1,000– / $5,000`
 

@@ -34,7 +34,7 @@ json5_31a<- makeJson(sectionn = 5, graphn = 311, dt = fig5_31a$Number.of.account
                     series = "Accounts in millions", ylabel= "In millions",
                     categories = fig5_31a$X, tickformat = "number", rotated = FALSE, directlabels = TRUE)
 json5_31b<- makeJson(sectionn = 5, graphn = 312, dt = fig5_31b$Average.Account..Thousands.of.2015.Dollars, graphtype = "bar",
-                    series = "Average account size in thousands", ylabel="In thousands",
+                    series = "Average account size in thousands",
                     categories = fig5_31b$X, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 
