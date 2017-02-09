@@ -1,10 +1,14 @@
 ## MASTER SHEET FOR ALL EDITS MADE BY HAND TO LUMINA JSONS
 
 #SECTION 1: WHAT IS COLLEGE
- - ** FOR ALL GRAPHS IN "STUDENTS" SECTION (1-5 THROUGH 1-14), ADD THE FOLLOWING TO TOP LEVEL:
+ - **FOR ALL GRAPHS IN "STUDENTS" SECTION (1-5 THROUGH 1-14), ADD THE FOLLOWING TO TOP LEVEL:**
 
  ``` "hideTooltip": true ``` 
-
+ 
+- **Figure 1-11**
+	- add `customHideLabelTwo": true` to outermost bracket
+- **Figure 1-12**
+	- add `customHideLabelTwo": true` to outermost bracket
 
 #SECTION 2: COST OF EDUCATING
 - **Figure 2-1**
@@ -161,7 +165,7 @@
 	- Add `axis.x.tick.count: 13`
 
 - **Figure 3-3**
- - add `axis.y.padding.left: 200`
+ - add `axis.y.tick.multiline: false`
 
  
 - **Figure 3-4**
@@ -301,9 +305,19 @@ in various blocks specific to line and area charts. Given that this chart is a s
 
 
 - **Figure 3-21**
- - need to add "groups": [["Tuition and fees covered by grant aid","Remaining (net) tuition and fees","Living expenses covered by grant aid", "Remaining (net) living expenses"]]
+ - need to add
+ 
+	```
+	"groups": [["Tuition and fees covered by grant aid",
+	"Remaining (net) tuition and fees","Living expenses covered by grant aid",
+	"Remaining (net) living expenses"]]
+	```
+	 
  - for all graphs, add ` "wideSmallMultiple": true ` to outermost bracket
+ - for all graphs, add `"multipleCustomLabelPosition": true` to outermost bracket
+ - for all graphs, add `axis.x.label: "Parent Income Quartile"`
  - for all graphs, add 
+ 
   ``` 
       "y": {
       "max": 50000,
@@ -317,7 +331,8 @@ in various blocks specific to line and area charts. Given that this chart is a s
   ```
 
 - **Figure 3-22:**
- - ** FOR EACH SET OF MULTIPLES: ADD "subtitle" in jsx file
+ - **FOR EACH SET OF MULTIPLES**
+	 - 	Add `"subtitle"` in jsx file
  - **First set of multiples**
     - First set of multiples need to add
     
@@ -526,6 +541,8 @@ in various blocks specific to line and area charts. Given that this chart is a s
   }
   ```
 
+- **Figure 4-17**
+	- Set `data.groups` to `[["Need-based", "Non-need-based"]],`
 
 - **Figure 4-19**
 
@@ -747,8 +764,6 @@ change y tick values
 
 - **Figure 5-13**
  - in first graph, add bracket for `x.categories` since single category `"All Undergraduates"`
- - in the third graph, add space to x-axis labels for two lines  so  `"Less than          ....."` or `"$30,000–            ........."` for instance
- - in the fourth graph, add space to x-axis labels for two lines so "Full-time           ....."
 
 - **Figure 5-14**
  - add ` "overrideTickCount": true ` to outermost bracket
@@ -761,6 +776,7 @@ change y tick values
  - add ` "hideTooltip": true ` to top bracket
 
 - **Figure 5-17**
+ - add `"wideSmallMultiple":true` to outermost bracket for all three multiples 
  - in the first graph, make x-label three lines by adding spaces in between `"All full-time/ dependent/ students"`
  - in the second graph, make each x-label two lines, so  `"Less than          ....."` or `"$30,000–            ........."` for instance
  - set max y-value and ticks
@@ -827,6 +843,7 @@ change y tick values
 
 - **Figure 5-26:**
 	- add `"customLabelPosition":true` to outermost bracket
+	- add `"noAxisPadding":true` to outermost bracket
 
 - **Figure 5-28**
  - add ` "hideTooltip": true ` to outermost bracket
@@ -880,6 +897,22 @@ change y tick values
  
 - **Figure 6-8**
  - add bracket to `"categories": ["Education Debt"]`
+
+
+- **Figure 6-10**
+- add ` metadata.pluralNotes: true ` to outermost bracket
+
+- **Figure 6-11**
+ - add ` metadata.pluralNotes: true ` to outermost bracket
+
+- **Figure 6-12**
+ - add ` metadata.pluralNotes: true ` to outermost bracket
+
+- **Figure 6-13**
+ - add ` metadata.pluralNotes: true ` to outermost bracket
+
+- **Figure 6-15**
+ - add ` metadata.pluralNotes: true ` to outermost bracket
 
 - **Figure 6-20**
  - make x-labels two lines after dash by adding space: `$1,000– / $5,000`
