@@ -711,6 +711,9 @@ change y tick values
 - **Figure 5-6**
  - make TFRB appear first in the legend
 
+- **Figure 5-7**
+ - add ` "size": {"height": 350} ` to outermost bracket
+
 - **Figure 5-8**
   - add `"highlightIndex" : 0`  to outermost bracket
   - custom format (`$XX.XX`), set `data.labels.format` and `axis.t.tick.format` to `"dollarCents"`
@@ -769,7 +772,7 @@ change y tick values
           "count": 3,
           "format": "dollar"
         },
-        "max": 20000
+        "max": 32000
       },
   ```
   - in first graph, add ` "padding": {"top": 30}, ` to outermost bracket
@@ -814,6 +817,7 @@ change y tick values
  - add `"overrideTickCount": true` to outermost bracket
  - set `x.ticks.count` to `11`
  - add 4 blank data points (two at beginning and two at end) 
+ - add ` "size": {"height": 400} ` to outermost bracket
 
 - **Figure 5-26**
   - add ` "noAxisPadding": true ` to outermost bracket

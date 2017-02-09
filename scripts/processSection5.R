@@ -76,6 +76,7 @@ json5_26<- makeJson(sectionn = 5, graphn = 26, dt = fig5_26$Total.EFC, graphtype
 #add "overrideTickCount": true to outermost bracket
 #set x.ticks.count to 11
 #add 4 blank data points (two at beginning and two at end) 
+#add ` "size": {"height": 400} ` to outermost bracket
 fig5_25<- read.csv(paste(textpath, "Covering Expenses_savings/05_0250.csv", sep=""),stringsAsFactors=FALSE)
 json5_25<- makeJson(sectionn = 5, graphn = 25, dt = fig5_25$amount, graphtype = "line",
                     series = "Personal savings rate",
@@ -151,7 +152,6 @@ json5_20 <- makeJson(sectionn = 5, graphn = 20, dt = fig5_20, graphtype = "bar",
 #1) in the first graph, make x-label three lines by adding spaces in between "All full-time/ dependent/ students"
 #2) in the second graph, make each x-label two lines, so  "Less than          ....." or "$30,000–            ........." for instance
 #3) set max y-value and ticks
-#4) in first graph, add ` "padding": {"top": 30}, ` to outermost bracket
 
 #"y": {
 #  "padding": {"top": 0, "bottom": 0},
@@ -159,8 +159,9 @@ json5_20 <- makeJson(sectionn = 5, graphn = 20, dt = fig5_20, graphtype = "bar",
 #    "count": 3,
 #    "format": "dollar"
 #  },
-#  "max": 20000
+#  "max": 32000
 #},
+#4) in first graph, add ` "padding": {"top": 30}, ` to outermost bracket
 fig5_17a <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0171.csv", sep=""),stringsAsFactors=FALSE)
 fig5_17b <- read.csv(paste(textpath, "Covering expenses_borrowing/05_0172.csv", sep=""),stringsAsFactors=FALSE)
 fig5_17b$category <- gsub("-", "–", fig5_17b$category) 
@@ -263,6 +264,7 @@ json5_8 <- makeJson(sectionn = 5, graphn = 8, dt = fig5_8$minwage, graphtype = "
                     categories = fig5_8$state, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 #Figure 5-7
+#add ` "size": {"height": 350} ` to outermost bracket
 fig5_7<- read.csv(paste(textpath, "Covering expenses_working/05_0070.csv", sep=""),stringsAsFactors=FALSE)
 json5_7 <- makeJson(sectionn = 5, graphn = 7, dt = fig5_7$fed_min_wage, graphtype = "line", series="Federal minimum wage", ylabel="2016 dollars",
                     categories = fig5_7$year, tickformat = "$,.2f", rotated = FALSE, directlabels = TRUE)
