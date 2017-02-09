@@ -87,9 +87,9 @@ json3_7 <- makeJson(sectionn = 3, graphn = 7, dt = fig3_7$roomamt, graphtype = "
 
 #Figure 3-8
 #add "highlightIndex": 27 to outermost bracket
-
+#add ` metadata.pluralNotes: true `
 fig3_8 <- read.csv(paste(textpath, "Prices and expenses_room and board/03_0080.csv", sep=""),stringsAsFactors=FALSE)
-json3_8 <- makeJson(sectionn = 3, graphn = 8, dt = fig3_8$difference, graphtype = "bar", series="Difference",
+json3_8 <- makeJson(sectionn = 3, graphn = 8, dt = fig3_8$difference, graphtype = "bar", series="On-campus housing - average rent",
                     categories = fig3_8$state, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 

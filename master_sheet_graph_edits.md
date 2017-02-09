@@ -179,6 +179,7 @@
 
 - **Figure 3-8**
  - add `"highlightIndex": 27` to outermost bracket
+ - add ` metadata.pluralNotes: true `
 
 - **Figure 3-11**
  - add `metadata.pluralNotes: true`

@@ -193,7 +193,7 @@ json4_10 <- makeJson(sectionn = 4, graphn = 10, dt = fig4_10, graphtype = "line"
 fig4_11 <- read.csv(paste(textpath, "Financial aid_federal/04_0110.csv", sep=""),stringsAsFactors=FALSE)
 fig4_11$year <- gsub("\x96", "–", fig4_11$year) 
 fig4_11
-json4_11 <- makeJson(sectionn = 4, graphn = 11, dt = fig4_11$recipients, graphtype = "bar", series="Amount",
+json4_11 <- makeJson(sectionn = 4, graphn = 11, dt = fig4_11$recipients, graphtype = "bar", series="Number of recipients",
                     categories = fig4_11$year, tickformat = "number", rotated = FALSE, directlabels = FALSE)
 
 #Figure 4-12
@@ -309,7 +309,7 @@ json4_18 <- makeJson(sectionn = 4, graphn = 18, dt = fig4_18$percent, graphtype 
 #      ]
 #    ]
 fig4_19 <- read.csv(paste(textpath, "Financial aid_institutional/04_0190-revised.csv", sep=""),stringsAsFactors=FALSE, check.names = FALSE)
-json4_19 <- makeJson(sectionn = 4, graphn = 19, dt = fig4_19, graphtype = "bar", series=c("Per first-time full-time student", "Per recipient"), set1=fig4_19[grep("student", fig4_19$category),c("Institutional grant aid", "Remaining (net) tuition and fees")], set2=fig4_19[grep("recipient", fig4_19$category),c("Institutional grant aid", "Remaining (net) tuition and fees")],
+json4_19 <- makeJson(sectionn = 4, graphn = 19, dt = fig4_19, graphtype = "bar", series=c("Per first-time full-time student", "Per first-time full-time recipient"), set1=fig4_19[grep("student", fig4_19$category),c("Institutional grant aid", "Remaining (net) tuition and fees")], set2=fig4_19[grep("recipient", fig4_19$category),c("Institutional grant aid", "Remaining (net) tuition and fees")],
                      categories = fig4_19$category_label, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
   
   
@@ -322,7 +322,7 @@ json4_19 <- makeJson(sectionn = 4, graphn = 19, dt = fig4_19, graphtype = "bar",
 fig4_20 <- read.csv(paste(textpath, "Financial aid_institutional/04_0200-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names = FALSE)
 #json4_20<- makeJson(sectionn = 4, graphn = 20, dt = fig4_20, graphtype = "bar", set1= fig4_20[grep("Lowest", fig4_20$category), c("Need-based", "Non-need-based")], set2= fig4_20[grep("Second", fig4_20$category), c("Need-based", "Non-need-based")],
 #                    set3= fig4_20[grep("Third", fig4_20$category), c("Need-based", "Non-need-based")],set4= fig4_20[grep("Highest", fig4_20$category), c("Need-based", "Non-need-based")],
-#                   series = c("Lowest tuition group", "Second tuition group", "Third tuition group", "Highest tuition group"), ylabel=""Dependent undergraduate student income quartiles",
+#                   series = c("Lowest tuition group", "Second tuition group", "Third tuition group", "Highest tuition group"), xlabel="Family income quartile", ylabel=""Dependent undergraduate student income quartiles",
 #                   categories = fig4_20$category_label, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 #Figure 4-21
