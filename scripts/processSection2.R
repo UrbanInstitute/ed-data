@@ -18,7 +18,7 @@ graphtext$toggle <- as.numeric(graphtext$toggle)
 #set x.tick.count: 6
 fig2_1 <- read.csv(paste(textpath, "Cost of educating_appropriations/02_0010.csv", sep=""),stringsAsFactors=FALSE)
 fig2_1$academicyear <- gsub("-", "–", fig2_1$academic.year) 
-json2_1 <- makeJson(sectionn = 2, graphn = 1, dt = fig2_1, graphtype = "line", series=c("Public student enrollment", "State and local public higher education appropriations", "State and local public higher education appropriations per public student"),
+json2_1 <- makeJson(sectionn = 2, graphn = 1, dt = fig2_1, graphtype = "line", series=c("Public-sector FTE student enrollment", "State and local public higher education appropriations", "State and local public higher education appropriations per public-sector FTE student"),
                      categories = fig2_1$academic.year, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 ##Figure 2-2
@@ -37,6 +37,7 @@ json2_3 <- makeJson(sectionn = 2, graphn = 3, dt = fig2_3, graphtype = "line", s
 
 #Figure 2-4
 #add "highlightIndex" : 36  to outermost bracket
+#add ` metadata.pluralNotes: true `
 fig2_4 <- read.csv(paste(textpath, "Cost of educating_appropriations/02_0040.csv", sep=""),stringsAsFactors=FALSE)
 json2_4 <- makeJson(sectionn = 2, graphn = 4, dt = fig2_4$public, graphtype = "bar", series="State and local appropriations per public FTE student",
                     categories = fig2_4$state, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)

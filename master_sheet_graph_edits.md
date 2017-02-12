@@ -26,6 +26,7 @@
 
 - **Figure 2-4**
  - add `"highlightIndex" : 36` to outermost bracket
+ - add ` metadata.pluralNotes: true `
  
 - **Figure 2-7**:
  -  for all multiples, add spaces to x-axis labels to create two lines, for example: `"'01'–        '02'"`
