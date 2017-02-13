@@ -15,7 +15,9 @@ graphtext$toggle <- as.numeric(graphtext$toggle)
 
 #Figure 2-1
 #add ` "overrideTickCount": true ` to outermost bracket
-#set x.tick.count: 6
+#set x.tick.count: 9
+#add blank data point to x.categories
+#add null to end of each array of data
 fig2_1 <- read.csv(paste(textpath, "Cost of educating_appropriations/02_0010.csv", sep=""),stringsAsFactors=FALSE)
 fig2_1$academicyear <- gsub("-", "–", fig2_1$academic.year) 
 json2_1 <- makeJson(sectionn = 2, graphn = 1, dt = fig2_1, graphtype = "line", series=c("Public-sector FTE student enrollment", "State and local public higher education appropriations", "State and local public higher education appropriations per public-sector FTE student"),
@@ -42,22 +44,61 @@ fig2_4 <- read.csv(paste(textpath, "Cost of educating_appropriations/02_0040.csv
 json2_4 <- makeJson(sectionn = 2, graphn = 4, dt = fig2_4$public, graphtype = "bar", series="State and local appropriations per public FTE student",
                     categories = fig2_4$state, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 #Figure 2-7: 
-#1) for all multiples, add spaces to x-axis labels to create two lines, for example: "'01'–        '02'"
-# 2) set max y value and ticks
-#"y": {
-#"padding": {"top": 0, "bottom": 0},
-#"max": 20000,
-#"tick": {
-#"format": "dollar",
-#"count": 5
-#}
-#},
-#3) Net tuition category should be on the bottom of the stacked bars
+# 1) set max y value and ticks
+
+#  "padding": {"top": 0, "bottom": 0},
+#  "max": 25000,
+#  "tick": {
+#    "format": "dollar",
+#    "count": 6
+#  },
+
+#2) Net tuition category should be on the bottom of the stacked bars
+
+fig2_7a <- read.csv(paste(textpath, "Cost of educating_subsidies/02-0071.csv", sep=""),stringsAsFactors=FALSE)
+fig2_7a$column <- gsub("-", "–", fig2_7a$column) 
+fig2_7b <- read.csv(paste(textpath, "Cost of educating_subsidies/02-0072.csv", sep=""),stringsAsFactors=FALSE)
+fig2_7b$column <- gsub("-", "–", fig2_7b$column) 
+
+json2_7a <- makeJson(sectionn = 2, graphn = 7, subn= 1, dt = fig2_7a, graphtype = "bar",
+                     series = c("Average net tuition revenue per FTE student", "Average subsidy per FTE student"),
+                    categories = fig2_7a$column, graphtitle="Four-year", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+json2_7b <- makeJson(sectionn = 2, graphn = 7, subn= 2, dt = fig2_7b, graphtype = "bar",
+                     series = c("Average net tuition revenue per FTE student", "Average subsidy per FTE student"),
+                    categories = fig2_7b$column, graphtitle="Two-year", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 2-8
 #1) Net tuition category should be on the bottom of the stacked bars
 #2) set max y and ticks
-#"y": {"padding": {"top":0, "bottom":0}, "max": 50000, "tick": {"format": "dollar", "count": 6}}
+#"y": {
+#  "padding": {"top":0, "bottom": 0},
+#  "max": 60000,
+#  "tick": {
+#    "format": "dollar",
+#   "count": 4
+#  }
+#},
+#3) add spacing to xlabels, for example: '01–          '03 
+#4) add ` pluralNotes: "true" ` to jsx file
+
+fig2_8a <- read.csv(paste(textpath, "Cost of educating_subsidies/02-0081.csv", sep=""),stringsAsFactors=FALSE)
+fig2_8a$category <- gsub("-", "–", fig2_8a$category) 
+fig2_8b <- read.csv(paste(textpath, "Cost of educating_subsidies/02-0082.csv", sep=""),stringsAsFactors=FALSE)
+fig2_8b$category <- gsub("-", "–", fig2_8b$category) 
+fig2_8c <- read.csv(paste(textpath, "Cost of educating_subsidies/02-0083.csv", sep=""),stringsAsFactors=FALSE)
+fig2_8c$category <- gsub("-", "–", fig2_8c$category) 
+
+json2_8a <- makeJson(sectionn = 2, graphn = 8, subn= 1, dt = fig2_8a, graphtype = "bar",
+                     series = c("Average net tuition revenue per FTE student", "Average subsidy per FTE student"),
+                     categories = fig2_8a$category, graphtitle="Research", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
+json2_8b <- makeJson(sectionn = 2, graphn = 8, subn= 2, dt = fig2_8b, graphtype = "bar",
+                     series = c("Average net tuition revenue per FTE student", "Average subsidy per FTE student"),
+                     categories = fig2_8b$category, graphtitle="Master's", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+json2_8c <- makeJson(sectionn = 2, graphn = 8, subn= 3, dt = fig2_8c, graphtype = "bar",
+                     series = c("Average net tuition revenue per FTE student", "Average subsidy per FTE student"),
+                     categories = fig2_8c$category, graphtitle="Bachelor's", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+
 
 #Figure 2-51: Change Y-axis properties to adjust ticks:
   #"axis": {

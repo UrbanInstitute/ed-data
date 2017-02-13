@@ -24,6 +24,7 @@ graphtext$toggle <- as.numeric(graphtext$toggle)
 
 
 #Figure 1-1
+#add ` "size": {"height": 400}, ` to outermost bracket
 fig1_1 <- read.csv(paste(textpath, "What is college_institutions/01_0010.csv", sep=""),stringsAsFactors=FALSE)
 json1_1 <- makeJson(sectionn = 1, graphn = 1, dt = fig1_1$number, graphtype = "bar",
                     series = "Number of Institutions",

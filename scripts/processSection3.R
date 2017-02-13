@@ -41,6 +41,7 @@ json3_2 <- makeJson(sectionn = 3, graphn = 2, dt = fig3_2, graphtype = "line",
                     categories = fig3_2$year, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 #Figure 3-3: 
+#add `axis.y.tick.multiline: false`
 #add axis.y.padding.left: 200
 fig3_3 <- read.csv(paste(textpath, "Prices and expenses_tuition and fees/03_0030-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names=FALSE)
 json3_3 <- makeJson(sectionn = 3, graphn = 3, dt = fig3_3, graphtype = "bar", series=c("Public and private nonprofit four-year combined", "Public four-year", "Private nonprofit four-year"), 

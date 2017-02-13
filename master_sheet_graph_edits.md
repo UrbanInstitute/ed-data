@@ -4,6 +4,8 @@
  - **FOR ALL GRAPHS IN "STUDENTS" SECTION (1-5 THROUGH 1-14), ADD THE FOLLOWING TO TOP LEVEL:**
 
  ``` "hideTooltip": true ``` 
+
+- **Figure 1-1**
  
 - **Figure 1-11**
 	- add `customHideLabelTwo": true` to outermost bracket
@@ -13,7 +15,10 @@
 #SECTION 2: COST OF EDUCATING
 - **Figure 2-1**
  - add ` "overrideTickCount": true ` to outermost bracket
- - set x.tick.count: 6
+ - set x.tick.count: 9
+ - add blank data point to x.categories
+ - add null to end of each array of data
+
 - **Figure 2-2**
  - add blank data point (`null`) as last x-value and `""` to categories
  - add `"overrideTickCount": true`, to topmost bracket
@@ -28,8 +33,6 @@
  - add `"highlightIndex" : 36` to outermost bracket
  - add ` metadata.pluralNotes: true `
  
-- **Figure 2-7**:
- -  for all multiples, add spaces to x-axis labels to create two lines, for example: `"'01'–        '02'"`
 
 - **Figure 2-51**
   - : Change Y-axis properties to adjust ticks:
@@ -133,27 +136,38 @@
   ```
 
 - **Figure 2-7**
- - for all multiples, add spaces to x-axis labels to create two lines, for example: "'01'–        '02'"
  - set max y value and ticks
 
-  ```
-  "y": {
+```
+
     "padding": {"top": 0, "bottom": 0},
-    "max": 20000,
+    "max": 25000,
     "tick": {
       "format": "dollar",
-      "count": 5
-    }
-  },
-  ```
- -Net tuition category should be on the bottom of the stacked bars
+      "count": 6
+    },
+
+```
+ - Net tuition category should be on the bottom of the stacked bars
 
 - **Figure 2-8**
  - Net tuition category should be on the bottom of the stacked bars
  - set max y and ticks
-  ```
-    "y": {"padding": {"top":0, "bottom":0}, "max": 50000, "tick": {"format": "dollar", "count": 6}}
-  ```
+
+ ```
+    "y": {
+      "padding": {"top":0, "bottom": 0},
+      "max": 60000,
+      "tick": {
+        "format": "dollar",
+        "count": 4
+      }
+    },
+
+```
+ - add spacing to xlabels, for example: '01–          '03 
+ - add ` pluralNotes: "true" ` to jsx file
+ 
 
 #SECTION 3: PRICES AND EXPENSES
 
@@ -166,7 +180,7 @@
 	- Add `axis.x.tick.count: 13`
 
 - **Figure 3-3**
- - add `axis.y.tick.multiline: false`
+ - add `axis.x.tick.multiline: false`
 
  
 - **Figure 3-4**
