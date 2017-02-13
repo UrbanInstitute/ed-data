@@ -24,7 +24,6 @@ graphtext$toggle <- as.numeric(graphtext$toggle)
 
 
 #Figure 1-1
-#add ` "size": {"height": 400}, ` to outermost bracket
 fig1_1 <- read.csv(paste(textpath, "What is college_institutions/01_0010.csv", sep=""),stringsAsFactors=FALSE)
 json1_1 <- makeJson(sectionn = 1, graphn = 1, dt = fig1_1$number, graphtype = "bar",
                     series = "Number of Institutions",
@@ -94,8 +93,6 @@ json1_9 <- makeJson(sectionn = 1, graphn = 9, dt = fig1_9, graphtype = "bar",
                     categories = fig1_9$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 1-10
-#add to outermost bracket:
-# ``` "hideTooltip": true ``` 
 fig1_10 <- read.csv(paste(textpath, "What is college_students/01_0100.csv", sep=""),stringsAsFactors=FALSE)
 fig1_10$category <- gsub("-", "–", fig1_10$category) 
 json1_10 <- makeJson(sectionn = 1, graphn = 10, dt = fig1_10, graphtype = "bar",
@@ -103,32 +100,24 @@ json1_10 <- makeJson(sectionn = 1, graphn = 10, dt = fig1_10, graphtype = "bar",
                     categories = fig1_10$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 1-11
-#add to outermost bracket:
-# ``` "hideTooltip": true ``` 
 fig1_11 <- read.csv(paste(textpath, "What is college_students/01_0110.csv", sep=""),stringsAsFactors=FALSE)
 json1_11 <- makeJson(sectionn = 1, graphn = 11, dt = fig1_11, graphtype = "bar",
                      series = c("Public four-year", "Private four-year", "Public two-year", "For-profit", "Other or nondegree-granting"),
                      categories = fig1_11$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 1-12
-#add to outermost bracket:
-# ``` "hideTooltip": true ``` 
 fig1_12 <- read.csv(paste(textpath, "What is college_students/01_0120.csv", sep=""),stringsAsFactors=FALSE)
 json1_12 <- makeJson(sectionn = 1, graphn = 12, dt = fig1_12, graphtype = "bar",
                      series = c("Public four-year", "Private four-year", "Public two-year", "For-profit", "Other or nondegree-granting"),
                      categories = fig1_12$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 1-13
-#add to outermost bracket:
-# ``` "hideTooltip": true ``` 
 fig1_13 <- read.csv(paste(textpath, "What is college_students/01_0130.csv", sep=""),stringsAsFactors=FALSE)
 json1_13 <- makeJson(sectionn = 1, graphn = 13, dt = fig1_13, graphtype = "bar",
                      series = c("Public four-year", "Private four-year", "Public two-year", "For-profit", "Other or nondegree-granting"),
                     categories = fig1_13$Attendance, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 1-14
-#add to outermost bracket:
-# ``` "hideTooltip": true ``` 
 fig1_14 <- read.csv(paste(textpath, "What is college_students/01_0140.csv", sep=""),stringsAsFactors=FALSE)
 json1_14 <- makeJson(sectionn = 1, graphn = 14, dt = fig1_14, graphtype = "bar",
                      series = c("Public four-year", "Private four-year", "Public two-year", "For-profit", "Other or nondegree-granting"),

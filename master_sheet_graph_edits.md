@@ -6,11 +6,24 @@
  ``` "hideTooltip": true ``` 
 
 - **Figure 1-1**
+
+- **Figure 1-10**
+  - add to outermost bracket: ``` "hideTooltip": true ``` 
  
 - **Figure 1-11**
 	- add `customHideLabelTwo": true` to outermost bracket
+  - add to outermost bracket: ``` "hideTooltip": true ``` 
+
 - **Figure 1-12**
 	- add `customHideLabelTwo": true` to outermost bracket
+  - add to outermost bracket: ``` "hideTooltip": true ``` 
+
+- **Figure 1-13**
+  - add to outermost bracket: ``` "hideTooltip": true ``` 
+
+- **Figure 1-14**
+  - add to outermost bracket: ``` "hideTooltip": true ``` 
+
 
 #SECTION 2: COST OF EDUCATING
 - **Figure 2-1**
@@ -35,7 +48,7 @@
  
 
 - **Figure 2-51**
-  - : Change Y-axis properties to adjust ticks:
+  - Change Y-axis properties to adjust ticks:
 
   ```
   "axis": {
@@ -114,10 +127,10 @@
   ```
       "y": {
         "padding": {"top": 0, "bottom": 0},
-        "max": 20000,
+        "max": 25000,
         "tick": {
           "format": "dollar",
-          "count": 5
+          "count": 6
         }
       }
   ```
@@ -127,10 +140,10 @@
   ```
           "y": {
        "padding": {"top": 0, "bottom": 0},
-       "max": 1000,
+       "max": 1200,
         "tick": {
           "format": "dollar",
-          "count": 5
+          "count": 7
         }
       }
   ```
@@ -139,16 +152,18 @@
  - set max y value and ticks
 
 ```
-
-    "padding": {"top": 0, "bottom": 0},
-    "max": 25000,
-    "tick": {
-      "format": "dollar",
-      "count": 6
-    },
+    "y": {
+      "padding": {"top": 0, "bottom": 0},
+      "max": 25000,
+      "tick": {
+        "format": "dollar",
+         "count": 6
+      }
+    }
 
 ```
  - Net tuition category should be on the bottom of the stacked bars
+ - for all graphs: add `  "wideSmallMultiple": true ` to outermost bracket
 
 - **Figure 2-8**
  - Net tuition category should be on the bottom of the stacked bars
@@ -167,6 +182,7 @@
 ```
  - add spacing to xlabels, for example: '01–          '03 
  - add ` pluralNotes: "true" ` to jsx file
+ - for all graphs: add `  "wideSmallMultiple": true ` to outermost bracket
  
 
 #SECTION 3: PRICES AND EXPENSES
@@ -175,12 +191,15 @@
 	- add to top level  ` "hideTooltip": true `
 
 - **Figure 3-2**
+  - add "overrideTickCount": true to outermost bracket
 	- add 3 blank data points: `null` at start of each series and `null, null` at end of each series
-	- Add `""` to start of categories list
+	- Add `""` to start of categories list and ` "", "" ` to the end
 	- Add `axis.x.tick.count: 13`
 
 - **Figure 3-3**
- - add `axis.x.tick.multiline: false`
+ - add ` axis.x.tick.multiline: false `
+ - add ` axis.y.padding.left: 200 `
+
 
  
 - **Figure 3-4**
@@ -284,6 +303,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
     - make sure sets are ordered by 1 and then 2
     - add empty data points to beginning and end of each array of data and "" to beginning and end of categories array
     - make legend items in order of "25th percentile", "Median", "75th percentile"
+
 - **Figure 3-20**
  - For first graph:
  "y": {
@@ -449,6 +469,9 @@ in various blocks specific to line and area charts. Given that this chart is a s
 - **Figure 4-4**
  - FOR ALL MULTIPLES: add ` "hideTooltip": true ` to outermost bracket
 
+- **Figure 4-6**
+ - add ` "hideTooltip": true ` to outermost bracket
+
 - **Figure 4-7 (all multiples)**
  - set max y value and ticks
  
@@ -465,8 +488,6 @@ in various blocks specific to line and area charts. Given that this chart is a s
  - insert space to x-values after Indepedent or Dependent so that x-values are two lines total
 
 
-- **Figure 4-6**
- -add ` "hideTooltip": true ` to outermost bracket
 - **Figure 4-8**
  - had to manually change the ordering of the sets and had to replace `"groups"` aray with:
 
@@ -523,6 +544,9 @@ in various blocks specific to line and area charts. Given that this chart is a s
 - **Figure 4-13**
  - add `"highlightIndex" : 18` to outermost bracket
 
+- **Figure 4-14**
+ - add highlightIndex": 20 to outermost bracket
+
 - **Figure 4-15**
  - set max y-value and ticks
  
@@ -565,14 +589,12 @@ in various blocks specific to line and area charts. Given that this chart is a s
  - had to manually change groups array to:
 
 ```
-  "groups": [
-    [
-      "Institutional grant aid per full-time student", 
-      "Remaining (net) tuition and fees per full-time student",
-      "Institutional grant aid per recipient", 
-      "Remaining (net) tuition and fees per recipient"
+    "groups": [
+      [
+        "Institutional grant aid",
+        "Remaining (net) tuition and fees"
       ]
-   ]
+    ],
 ```
 
 - **Figure 4-20**
@@ -594,41 +616,22 @@ change y tick values
   ```
   "y": {
     "padding": {"top": 0, "bottom": 0},
-    "max": 1000,
+    "max": 1800,
     "tick": {
       "format": "dollar",
       "count": 3
     }
   ```
 
- - had to manually change order of sets
-
-
- - **for first set of multiples:**
- 
-    - set y max value and ticks
- 
-    ```
-        "y": {
-      "padding": {"top":0, "bottom":0},
-      "max": 0.15,
-      "tick": {
-        "count": 4,
-        "format": "percent"
-      }
-    }
-    ```
-
-    - adding spacing to x values in third and fourth graphs to create two lines , for example: 
-`"Public          four-year"         "Less than           $30,000"`
-
-
-- **Figure 4-21**
  - make x label two lines, in first two graphs of multiple, in order to widen the graph
+
+ - add ` wideSmallMultiples: true ` to outermost bracket for all graphs
+
 
 
 - **Figure 4-22**
  - **for first set of multiples:**
+    - add brackets to single category in first graph
     - set y max value and ticks
     
     ```
@@ -645,6 +648,7 @@ change y tick values
 `"Public          four-year"         "Less than           $30,000"`
 
  - **for second set of multiples:**
+    - add brackets to single category in first graph
     - set y max value and ticks
 
     ```
@@ -665,6 +669,7 @@ change y tick values
 
 - **Figure 4-23**
  - **for first set of multiples:**
+    - add brackets to single category in first graph
     - set y max value and ticks
       
       ```
@@ -681,6 +686,7 @@ change y tick values
 `"Public          four-year"         "Less than           $30,000"`
 
  - **for second set of multiples:**
+    - add brackets to single category in first graph
     - set y max value and ticks
    
     ```
@@ -725,11 +731,13 @@ change y tick values
 
 - **Figure 5-1 (all multiples)**
  - in first graph, add bracket for x.categories since single category "All families"
+ - For x-axis labels, add space between year range and "years", so that they are on two lines, 
+#for example: "25-34           years"
  - set max y value and ticks
   ```
       "y": {
         "padding": {"top": 0, "bottom": 0},
-        "max": 100000,
+        "max": 150000,
         "tick": {
           "count": 3,
           "format": "dollar"
@@ -744,8 +752,6 @@ change y tick values
 - **Figure 5-6**
  - make TFRB appear first in the legend
 
-- **Figure 5-7**
- - add ` "size": {"height": 350} ` to outermost bracket
 
 - **Figure 5-8**
   - add `"highlightIndex" : 0`  to outermost bracket
@@ -938,42 +944,45 @@ change y tick values
  - 	add toplevel custom flag to increase chart height, `"forceMediumHeight": true`
 
 - **Figure 7-3**
+ - change 0 to "NA" with regex
+   [0]{1}[,]  --> replace with "NA",
+  [0]{1}\n  --> replace with "NA"\n
  - had to tweak groups array:
 
   ```
-  "groups": [
+    "groups": [
     [
-      "Expected family contribution", 
-      "Federal grants", 
-      "Military/Veterans", 
-      "State grants", 
-      "Institutional grants", 
-      "Private and employer aid", 
-      "Federal student loans", 
-      "Federal  parent loans", 
-      "Private loans", 
-      "Earnings and other resources", 
-      "Tuition and fees", 
-      "NonTF budget"
-      ]
+    "Private loans", 
+    "Institutional grant aid", 
+    "Tuition and fees", 
+    "State grant aid",
+    "Federal grant aid", 
+    "Budget beyond tuition and fees", 
+    "Expected family contribution", 
+    "Military and veterans grant aid", 
+    "Private and employer grant aid", 
+    "Federal parent loans", 
+    "Federal student loans", 
+    "Earnings and other resources"
     ]
+    ],
   ```
  - manually set colors to avoid duplicates
   
   ```
   "colors": {
-    "Institutional grants":"#1696d2",
-    "Military\/Veterans": "#000000",
-    "Tuition and fees": "#55b748",
-    "Earnings and other resources": "#ffff00",
-    "Private and employer aid": "#d2d2d2",
-    "NonTF budget": "#ec008b",
-    "Federal grants": "#6100ec",
-    "State grants": "#d700ec",
-    "Private loans": "#88ec00",
-    "Federal student loans": "#ffa500",
-    "Expected family contribution": "#ec0015",
-    "Federal  parent loans": "#00ecd7"
+    "Expected family contribution": "#848081",
+    "Federal grant aid": "#cfe8f3",
+    "Military and veterans grant aid": "#a2d4ec",
+    "State grant aid": "#73bfe2",
+    "Institutional grant aid":"#1696d2",
+    "Private and employer grant aid": "#1696d2",
+    "Federal student loans": "#fccb41",
+    "Federal parent loans": "#fdbf11",
+    "Private loans": "#fce39e",
+    "Earnings and other resources": "#d5d5d4",
+    "Tuition and fees": "#ec008b",
+    "Budget beyond tuition and fees": "#000000"
   },
   ```
 - **Figure 7-4**
@@ -1014,47 +1023,70 @@ change y tick values
   ```
 
 - **Figure 7-7**
+ - change 0 to "NA" with regex
+   [0]{1}[,]  --> replace with "NA",
+   [0]{1}\n  --> replace with "NA"\n
  - had to change groups array:
 
   ```
     "groups": [
       [
         "Private loans", 
-        "Institutional grants", 
+        "Institutional grant aid", 
         "Tuition and fees", 
-        "State public grants",
-        "Federal grants", 
-        "NonTF budget", 
-        "EFC", 
-        "Military/Veterans", 
-        "Private and employer aid", 
+        "State grant aid",
+        "Federal grant aid", 
+        "Budget beyond tuition and fees", 
+        "Expected family contribution", 
+        "Military and veterans grant aid", 
+        "Private and employer grant aid", 
         "Federal parent loans", 
         "Federal student loans", 
         "Earnings and other resources"
         ]
       ],
   ```
+ - manually set colors: 
+ ```
+     "colors": {
+      "Expected family contribution": "#848081",
+      "Federal grant aid": "#cfe8f3",
+      "Military and veterans grant aid": "#a2d4ec",
+      "State grant aid": "#73bfe2",
+      "Institutional grant aid":"#1696d2",
+      "Private and employer grant aid": "#1696d2",
+      "Federal student loans": "#fccb41",
+      "Federal parent loans": "#fdbf11",
+      "Private loans": "#fce39e",
+      "Earnings and other resources": "#d5d5d4",
+      "Tuition and fees": "#ec008b",
+      "Budget beyond tuition and fees": "#000000"
+      }
+  ```
 - **Figure 7-8**
  - had to manually set order of years for each toggle category so that years are ascending
 
 - **Figure 7-11**
+ - change 0 to "NA" with regex
+  [0]{1}[,]  --> replace with "NA",
+  [0]{1}\n  --> replace with "NA"\n
  - need to change groups array to:
  
   ```
   "groups": [
     [
-      "Expected family contribution", 
-      "Federal grants", 
-      "Military/Veterans", 
-      "State grants", 
-      "Institutional grants", 
-      "Private and employer aid", 
-      "Federal student loans", 
-      "Federal  parent loans", 
       "Private loans", 
-      "Earnings and other resources",
+      "Institutional grant aid", 
+      "Tuition and fees", 
+      "State grant aid",
+      "Federal grant aid", 
       "Budget beyond tuition and fees", 
-      "Tuition and fees"
+      "Expected family contribution", 
+      "Military and veterans grant aid", 
+      "Private and employer grant aid", 
+      "Federal parent loans", 
+      "Federal student loans", 
+      "Earnings and other resources"
       ]
     ],
   ```
@@ -1062,41 +1094,44 @@ change y tick values
  - need to set colors manually to avoid duplicates
   ```
   "colors": {
-    "Expected family contribution":"#d700ec",
-    "Federal grants":"#000000",
-    "Military/Veterans":"#55b748",
-    "State grants": "#00ecd7",
-    "Institutional grants":"#1696d2",
-    "Private and employer aid":"#88ec00",
-    "Federal student loans": "#d2d2d2",
-    "Federal  parent loans":"#6100ec",
-    "Private loans": "#ec008b",
-    "Earnings and other resources":"#ffa500",
-    "Budget beyond tuition and fees":"#ec0015",
-    "Tuition and fees":"#ffff00"
+    "Expected family contribution": "#848081",
+    "Federal grant aid": "#cfe8f3",
+    "Military and veterans grant aid": "#a2d4ec",
+    "State grant aid": "#73bfe2",
+    "Institutional grant aid":"#1696d2",
+    "Private and employer grant aid": "#1696d2",
+    "Federal student loans": "#fccb41",
+    "Federal parent loans": "#fdbf11",
+    "Private loans": "#fce39e",
+    "Earnings and other resources": "#d5d5d4",
+    "Tuition and fees": "#ec008b",
+    "Budget beyond tuition and fees": "#000000"
   },
   ```
 - **Figure 7-12**
  - had to manually set order of years for each toggle category so that years are ascending
 
 - **Figure 7-15**
+ - change 0 to "NA" with regex
+  [0]{1}[,]  --> replace with "NA",
+  [0]{1}\n  --> replace with "NA"\n
  - need to change groups array to:
  
   ```
   "groups": [
     [
-      "Expected family contribution", 
-      "Federal grants", 
-      "Military/Veterans", 
-      "State grants", 
-      "Institutional grants", 
-      "Private and employer aid", 
-      "Federal student loans", 
-      "Federal  parent loans", 
-      "Private loans", 
-      "Earnings and other resources",
-      "Budget beyond tuition and fees", 
-      "Tuition and fees"
+    "Private loans", 
+    "Institutional grant aid", 
+    "Tuition and fees", 
+    "State grant aid",
+    "Federal grant aid", 
+    "Budget beyond tuition and fees", 
+    "Expected family contribution", 
+    "Military and veterans grant aid", 
+    "Private and employer grant aid", 
+    "Federal parent loans", 
+    "Federal student loans", 
+    "Earnings and other resources"
       ]
     ],
   ```
@@ -1105,18 +1140,18 @@ change y tick values
  
   ```
   "colors": {
-    "Expected family contribution":"#d700ec",
-    "Federal grants":"#000000",
-    "Military/Veterans":"#55b748",
-    "State grants":"#00ecd7",
-    "Institutional grants":"#ffff00",
-    "Private and employer aid":"#88ec00",
-    "Federal student loans":"#d2d2d2",
-    "Federal  parent loans":"#6100ec",
-    "Private loans":"#ec0015",
-    "Earnings and other resources":"#ffa500",
-    "Budget beyond tuition and fees":"#ec008b",
-    "Tuition and fees": "#1696d2"
+  "Expected family contribution": "#848081",
+  "Federal grant aid": "#cfe8f3",
+  "Military and veterans grant aid": "#a2d4ec",
+  "State grant aid": "#73bfe2",
+  "Institutional grant aid":"#1696d2",
+  "Private and employer grant aid": "#1696d2",
+  "Federal student loans": "#fccb41",
+  "Federal parent loans": "#fdbf11",
+  "Private loans": "#fce39e",
+  "Earnings and other resources": "#d5d5d4",
+  "Tuition and fees": "#ec008b",
+  "Budget beyond tuition and fees": "#000000"
   },
   ```
 
@@ -1125,22 +1160,25 @@ change y tick values
 
 
 - **Figure 7-19**
- - need to change groups array
+ - change 0 to "NA" with regex
+  [0]{1}[,]  --> replace with "NA",
+  [0]{1}\n  --> replace with "NA"\n
 
   ```
   "groups": [
     [
-      "Expected family contribution", 
-      "Federal grants", 
-      "Military/Veterans", 
-      "State grants", 
-      "Institutional grants", 
-      "Private and employer aid", 
-      "Federal student loans", 
-      "Federal  parent loans", 
-      "Private loans", 
-      "Budget beyond tuition and fees", 
-      "Tuition and fees"
+    "Private loans", 
+    "Institutional grant aid", 
+    "Tuition and fees", 
+    "State grant aid",
+    "Federal grant aid", 
+    "Budget beyond tuition and fees", 
+    "Expected family contribution", 
+    "Military and veterans grant aid", 
+    "Private and employer grant aid", 
+    "Federal parent loans", 
+    "Federal student loans", 
+    "Earnings and other resources"
       ]
     ],
   ```
@@ -1149,17 +1187,18 @@ change y tick values
  
   ```
   "colors": {
-    "Expected family contribution":"#d700ec",
-    "Federal grants": "#000000",
-    "Military/Veterans": "#55b748",
-    "State grants": "#ffff00",
-    "Institutional grants": "#1696d2",
-    "Private and employer aid": "#ec008b", 
-    "Federal student loans": "#d2d2d2",
-    "Federal  parent loans": "#6100ec", 
-    "Private loans": "#88ec00",
-    "Budget beyond tuition and fees": "#ec0015",
-    "Tuition and fees": "#00ecd7"
+  "Expected family contribution": "#848081",
+  "Federal grant aid": "#cfe8f3",
+  "Military and veterans grant aid": "#a2d4ec",
+  "State grant aid": "#73bfe2",
+  "Institutional grant aid":"#1696d2",
+  "Private and employer grant aid": "#1696d2",
+  "Federal student loans": "#fccb41",
+  "Federal parent loans": "#fdbf11",
+  "Private loans": "#fce39e",
+  "Earnings and other resources": "#d5d5d4",
+  "Tuition and fees": "#ec008b",
+  "Budget beyond tuition and fees": "#000000"
   },
   ```
 
