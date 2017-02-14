@@ -243,16 +243,16 @@ fig3_22e <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs
 
 json3_22a <- makeJson(sectionn = 3, graphn = 22, subn= 1, dt = fig3_22a, graphtype = "bar",
                       series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
-                      categories = fig3_22a$Year, graphtitle="Lowest 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                      categories = fig3_22a$Year, graphtitle="Lowest income quartile", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 json3_22b <- makeJson(sectionn = 3, graphn = 22, subn= 2, dt = fig3_22b, graphtype = "bar", 
                       series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
-                      categories = fig3_22b$Year, graphtitle="Lower middle 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                      categories = fig3_22b$Year, graphtitle="Second income quartile", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 json3_22c <- makeJson(sectionn = 3, graphn = 22, subn= 3, dt = fig3_22c, graphtype = "bar", 
                       series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
-                      categories = fig3_22c$Year, graphtitle="Upper middle 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                      categories = fig3_22c$Year, graphtitle="Third income quartile", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 json3_22d <- makeJson(sectionn = 3, graphn = 22, subn= 4, dt = fig3_22d, graphtype = "bar", 
                       series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
-                      categories = fig3_22d$Year, graphtitle="Highest 25 percent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                      categories = fig3_22d$Year, graphtitle="Highest income quartile", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 json3_22e <- makeJson(sectionn = 3, graphn = 22, subn= 5, dt = fig3_22e, graphtype = "bar", 
                       series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
                       categories = fig3_22e$Year, graphtitle="Independent", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)

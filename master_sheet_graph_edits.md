@@ -28,9 +28,9 @@
 #SECTION 2: COST OF EDUCATING
 - **Figure 2-1**
  - add ` "overrideTickCount": true ` to outermost bracket
- - set x.tick.count: 9
- - add blank data point to x.categories
- - add null to end of each array of data
+ - set x.tick.count: 10
+ - add single blank data point to beginning and 2 blank data points to end of x.categories
+ - add ` null ` to beginning and ` null, null, ` at end of each array of data
 
 - **Figure 2-2**
  - add blank data point (`null`) as last x-value and `""` to categories
@@ -325,9 +325,9 @@ in various blocks specific to line and area charts. Given that this chart is a s
  }
  }
  - for first graph, add :
-  `"subtitle": "Dollars" `
+  `"subtitle": "Dollars per full-time student" `
  - for second graph, add:
-  `subtitle: "Percent" `
+  `subtitle: "Percentage of full-time students" `
  - For both graphs, add 
  ```
   "groups": [
