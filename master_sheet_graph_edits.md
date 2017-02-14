@@ -505,6 +505,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
   ```
 - **Figure 4-9**
  - **First set of multiples**
+   - in jsx file, add ` subtitle= "Dollars per recipient" `
    - for all graphs : add ` "hideTooltip": true ` to outermost bracket
 	 - for graph 1, add bracket to single category `"All..."`
 	 - for graph 2, add spaces to x-labels to create two lines, for example: `"Less than         $30,000" "$30,000 –       $64,999"`
@@ -523,7 +524,8 @@ in various blocks specific to line and area charts. Given that this chart is a s
   	 - for all graphs, added top level attribute `"wideSmallMultiple": true`
 
  - **Second set of multiples**
-  - for all graphs: add ` "hideTooltip": true ` to outermost bracket
+   - in jsx file, add ` subtitle= "Dollars per full-time student" `
+   - for all graphs: add ` "hideTooltip": true ` to outermost bracket
 	 - for graph 1, add bracket to single category `"All..."`
 	 - for graph 2, add spaces to x-labels to create two lines, for example: `"Less than         $30,000" "$30,000 –       $64,999"`
 	 - for graphs 1-3, change number of ticks
