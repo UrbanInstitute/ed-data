@@ -222,16 +222,16 @@ fig3_21c <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs
 fig3_21d <- read.csv(paste(textpath, "Prices and expenses_net price/correct csvs/03_02104.csv", sep=""),stringsAsFactors=FALSE)
 
 json3_21a <- makeJson(sectionn = 3, graphn = 21, subn= 1, dt = fig3_21a, graphtype = "bar",
-                      series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
+                      xlabel = "Parental income quartile" series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
                       categories = fig3_21a$Income, graphtitle="Public four-year", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 json3_21b <- makeJson(sectionn = 3, graphn = 21, subn= 2, dt = fig3_21b, graphtype = "bar", 
-                      series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
+                      xlabel = "Parental income quartile" series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
                       categories = fig3_21b$Income, graphtitle="Private nonprofit four-year", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 json3_21c <- makeJson(sectionn = 3, graphn = 21, subn= 3, dt = fig3_21c, graphtype = "bar", 
-                      series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
+                      xlabel = "Parental income quartile" series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
                       categories = fig3_21c$Income, graphtitle="Public two-year", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 json3_21d <- makeJson(sectionn = 3, graphn = 21, subn= 4, dt = fig3_21d, graphtype = "bar", 
-                      series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
+                      xlabel = "Parental income quartile" series = c("Tuition and fees covered by grant aid", "Remaining (net) tuition and fees", "Living expenses covered by grant aid", "Remaining (net) living expenses"),
                       categories = fig3_21d$Income, graphtitle="For-profit", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 3-22

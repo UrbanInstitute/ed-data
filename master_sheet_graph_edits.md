@@ -944,6 +944,7 @@ change y tick values
  - 	add toplevel custom flag to increase chart height, `"forceMediumHeight": true`
 
 - **Figure 7-3**
+ - manually arrange sets so that the dropdown is in order of: "Public four-year out-of-state", "Public four-year in-state", "Public two-year", "Private nonprofit four-year", "For-Profit"
  - change 0 to "NA" with regex
    [0]{1}[,]  --> replace with "NA",
   [0]{1}\n  --> replace with "NA"\n
@@ -986,6 +987,7 @@ change y tick values
   },
   ```
 - **Figure 7-4**
+ - manually arrange sets so that the dropdown is in order of: "Public four-year out-of-state", "Public four-year in-state", "Public two-year", "Private nonprofit four-year", "For-Profit"
  - had to manually set order of years for each toggle category so that years are ascending
   -for example: 
 
@@ -1023,6 +1025,7 @@ change y tick values
   ```
 
 - **Figure 7-7**
+ - manually arrange sets so that the dropdown is in order of: "Public four-year out-of-state", "Public four-year in-state", "Public two-year", "Private nonprofit four-year", "For-Profit"
  - change 0 to "NA" with regex
    [0]{1}[,]  --> replace with "NA",
    [0]{1}\n  --> replace with "NA"\n
@@ -1064,9 +1067,11 @@ change y tick values
       }
   ```
 - **Figure 7-8**
+ - manually arrange sets so that the dropdown is in order of: "Public four-year out-of-state", "Public four-year in-state", "Public two-year", "Private nonprofit four-year", "For-Profit"
  - had to manually set order of years for each toggle category so that years are ascending
 
 - **Figure 7-11**
+ - manually arrange sets so that the dropdown is in order of: "Public four-year out-of-state", "Public four-year in-state", "Public two-year", "Private nonprofit four-year", "For-Profit"
  - change 0 to "NA" with regex
   [0]{1}[,]  --> replace with "NA",
   [0]{1}\n  --> replace with "NA"\n
@@ -1109,9 +1114,11 @@ change y tick values
   },
   ```
 - **Figure 7-12**
+ - manually arrange sets so that the dropdown is in order of: "Public four-year out-of-state", "Public four-year in-state", "Public two-year", "Private nonprofit four-year", "For-Profit"
  - had to manually set order of years for each toggle category so that years are ascending
 
 - **Figure 7-15**
+ - manually arrange sets so that the dropdown is in order of: "Public four-year out-of-state", "Public four-year in-state", "Public two-year", "Private nonprofit four-year", "For-Profit"
  - change 0 to "NA" with regex
   [0]{1}[,]  --> replace with "NA",
   [0]{1}\n  --> replace with "NA"\n
@@ -1156,10 +1163,12 @@ change y tick values
   ```
 
 - **Figure 7-16**
+ - manually arrange sets so that the dropdown is in order of: "Public four-year out-of-state", "Public four-year in-state", "Public two-year", "Private nonprofit four-year", "For-Profit"
  - had to manually set order of years for each toggle category so that years are ascending
 
 
 - **Figure 7-19**
+ - manually arrange sets so that the dropdown is in order of: "Public four-year out-of-state", "Public four-year in-state", "Public two-year", "Private nonprofit four-year", "For-Profit"
  - change 0 to "NA" with regex
   [0]{1}[,]  --> replace with "NA",
   [0]{1}\n  --> replace with "NA"\n
@@ -1203,4 +1212,5 @@ change y tick values
   ```
 
 - **Figure 7-20**
+ - manually arrange sets so that the dropdown is in order of: "Public four-year out-of-state", "Public four-year in-state", "Public two-year", "Private nonprofit four-year", "For-Profit"
  - had to manually set order of years for each toggle category so that years are ascending
