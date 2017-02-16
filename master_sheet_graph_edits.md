@@ -873,8 +873,6 @@ change y tick values
  - add ` "hideTooltip": true ` to outermost bracket
  - add ` "padding": {"bottom": 30}` to outermost bracket
 
-- **Figure 5-32**
- - add ` metadata.pluralSources: true `
  
 #SECTION 6: AFTER COLLEGE
 - **Figure 6-200**
