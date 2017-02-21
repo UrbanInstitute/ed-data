@@ -214,6 +214,7 @@
 - **Figure 3-8**
  - add `"highlightIndex": 27` to outermost bracket
  - add ` metadata.pluralNotes: true `
+ - add ` metadata.pluralSources: true  `
 
 - **Figure 3-11**
  - add `metadata.pluralNotes: true`
@@ -413,7 +414,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
      ```
 
     - Also set max y value in first graph:
-    `"y": {"padding": {"top": 0, "bottom": 0}, "max": 70000,`
+    `"y": {"padding": {"top": 0, "bottom": 0}, "max": 60000,`
 
  - **Third set of multiples**
    - set max y value and number of ticks

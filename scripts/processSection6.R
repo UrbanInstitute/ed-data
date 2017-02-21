@@ -131,7 +131,7 @@ json6_17<- makeJson(sectionn = 6, graphn = 17, dt = fig6_17, graphtype = "line",
 #Figure 6-18
 fig6_18<- read.csv(paste(textpath, "After College_loan repayment/06_0180.csv", sep=""),stringsAsFactors=FALSE)
 json6_18<- makeJson(sectionn = 6, graphn = 18, dt = fig6_18, graphtype = "bar", series=c("2009–10", "2010–11", "2011–12"),
-                    categories = fig6_18$X, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
+                    categories = fig6_18$X, tickformat = "percent", rotated = FALSE, directlabels = FALSE)
 
 #Figure 6-19
 fig6_19<- read.csv(paste(textpath, "After College_loan repayment/06_0190.csv", sep=""),stringsAsFactors=FALSE)
