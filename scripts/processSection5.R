@@ -86,9 +86,9 @@ json5_13a <- makeJson(sectionn = 5, graphn = 13, subn= 1, dt = fig5_13a, graphty
                       categories = fig5_13a$category,  xlabel = "All",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=10000, directlabels = TRUE)
 
 json5_22a <- makeJson(sectionn = 5, graphn = 22, subn=1, dt = fig5_22a, graphtype = "bar", xlabel="Public four-year in-state", categories = fig5_22a$category, 
-                       series=c("Four years", "Five years", "Six years"), graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=TRUE)
+                       series=c("Four years", "Five years", "Six years"), graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=FALSE)
 json5_22b <- makeJson(sectionn = 5, graphn = 22, subn=2, dt = fig5_22b, graphtype = "bar", xlabel="Private Nonprofit four-year", categories = fig5_22b$category, 
-                      series=c("Four years", "Five years", "Six years"), graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=TRUE)
+                      series=c("Four years", "Five years", "Six years"), graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels=FALSE)
 #Figure 5-23
 
 fig5_23 <- read.csv(paste(textpath, "Covering expenses_time to degree/05_0230.csv", sep=""),stringsAsFactors=FALSE)

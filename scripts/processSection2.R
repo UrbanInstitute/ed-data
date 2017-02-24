@@ -32,6 +32,15 @@ json2_3 <- makeJson(sectionn = 2, graphn = 3, dt = fig2_3, graphtype = "line", s
 fig2_4 <- read.csv(paste(textpath, "Cost of educating_appropriations/02_0040.csv", sep=""),stringsAsFactors=FALSE)
 json2_4 <- makeJson(sectionn = 2, graphn = 4, dt = fig2_4$public, graphtype = "bar", series="State and local appropriations per public FTE student",
                     categories = fig2_4$state, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+#Figure 2-61
+fig2_61 <- read.csv(paste(textpath, "Cost of educating_endowments/02_0061.csv", sep=""),stringsAsFactors=FALSE)
+json2_61 <- makeJson(sectionn = 2, graphn = 61, dt = fig2_61$endowinc_median, graphtype = "bar", series="Applicants Admitted by Percentage",
+                   categories = fig2_61$category, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+
+#Figure 2-62
+fig2_62 <- read.csv(paste(textpath, "Cost of educating_endowments/02_0062.csv", sep=""),stringsAsFactors=FALSE)
+json2_62 <- makeJson(sectionn = 2, graphn = 62, dt = fig2_62$endowinc_median, graphtype = "bar", series="Applicants Admitted by Percentage",
+                     categories = fig2_62$category, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 #Figure 2-7: 
 fig2_7a <- read.csv(paste(textpath, "Cost of educating_subsidies/02-0071.csv", sep=""),stringsAsFactors=FALSE)
 fig2_7a$column <- gsub("-", "–", fig2_7a$column) 

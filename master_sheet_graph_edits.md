@@ -122,31 +122,10 @@
   ```
 
 - **Figure 2-61**
- - Change Y-axis properties to adjust ticks:
+ -  add ` "subtitle": "Private nonprofit four-year institutions by share of applicants admitted", ` after title
 
-  ```
-      "y": {
-        "padding": {"top": 0, "bottom": 0},
-        "max": 25000,
-        "tick": {
-          "format": "dollar",
-          "count": 6
-        }
-      }
-  ```
 - **Figure 2-62**
- - Change Y-axis properties to adjust ticks:
-
-  ```
-          "y": {
-       "padding": {"top": 0, "bottom": 0},
-       "max": 1200,
-        "tick": {
-          "format": "dollar",
-          "count": 7
-        }
-      }
-  ```
+ - add ` "subtitle": "Public four-year institutions by share of applicants admitted" ` after title
 
 - **Figure 2-7**
  - set max y value and ticks
@@ -183,7 +162,13 @@
  - add spacing to xlabels, for example: '01–          '03 
  - add ` pluralNotes: "true" ` to jsx file
  - for all graphs: add `  "wideSmallMultiple": true ` to outermost bracket
- 
+
+- **Figure 2-9**
+ - For all multiples, set ticks and max value:
+
+ ```
+    "y": {"max": 120000, "padding": {"top":0, "bottom": 0}, "tick": {"format": "dollar", "count": 5}}
+ ```
 
 #SECTION 3: PRICES AND EXPENSES
 
