@@ -218,6 +218,9 @@
     }
   }
   ```
+  
+- **Figure 3-15**
+	- Add top level object `"size":{"height": 320},`
 - **Figure 3-17**
  - add ` "padding": {"bottom": 30} ` to outermost bracket
 
