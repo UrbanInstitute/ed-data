@@ -6,6 +6,7 @@
  ``` "hideTooltip": true ``` 
 
 - **Figure 1-1**
+	- add top level flag `"forceMediumHeight": true` 
 
 - **Figure 1-10**
   - add to outermost bracket: ``` "hideTooltip": true ``` 
@@ -293,6 +294,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
     - make legend items in order of "25th percentile", "Median", "75th percentile"
 
 - **Figure 3-20**
+ - To both first and second graphs, add top level `"padding": {"right": 30}`
  - For first graph:
  "y": {
  "padding": {"top":0, "bottom":0},
