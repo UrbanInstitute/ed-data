@@ -476,6 +476,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
 
 
 - **Figure 4-8**
+ - add top level flag `"customHideLabelFour": true,`
  - had to manually change the ordering of the sets and had to replace `"groups"` aray with:
 
   ```
