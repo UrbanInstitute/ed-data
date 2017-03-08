@@ -157,7 +157,6 @@
         "count": 4
       }
     },
-
 ```
  - add spacing to xlabels, for example: '01–          '03 
  - add ` pluralNotes: "true" ` to jsx file
@@ -454,7 +453,9 @@ in various blocks specific to line and area charts. Given that this chart is a s
 
 - **Figure 4-4**
  - FOR ALL MULTIPLES: add ` "hideTooltip": true ` to outermost bracket
-
+ - Multiple two, top level flag `"customHideLabelThree": true,`
+ - Multiple five, top level flag `"customHideLabelThree": true,`
+ 
 - **Figure 4-6**
  - add ` "hideTooltip": true ` to outermost bracket
 
@@ -864,6 +865,7 @@ change y tick values
 - **Figure 6-200**
 
  - set groups array to:
+
  ```
   "groups": [
   [
