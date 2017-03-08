@@ -588,7 +588,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
 ```
 
 - **Figure 4-20**
-
+ - add top level object `"size":{"height" : 300},`
  - had to manually change group array to:
 
 ```
