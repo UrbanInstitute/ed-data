@@ -174,7 +174,7 @@ json5_12 <- makeJson(sectionn = 5, graphn = 12, dt = fig5_12, graphtype = "bar",
 fig5_11 <- read.csv(paste(textpath, "Covering expenses_working/05_0110.csv", sep=""),stringsAsFactors=FALSE)
 fig5_11$category <- gsub("-", "–", fig5_11$category) 
 json5_11 <- makeJson(sectionn = 5, graphn = 11, dt = fig5_11, graphtype = "bar", series=c("Total", "Public four-year", "Private nonprofit four-year", "Public two-year", "For-profit"), set1=fig5_11[,c("all")], set2=fig5_11[,c("publicfour")],
-                     xlabel="Parent Income or Dependency Status", set3=fig5_11[,c("publictwo")], set4=fig5_11[,c("privatenonprofit")], set5=fig5_11[,c("forprofit")], categories = fig5_11$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+                     xlabel="Parent income or dependency status", set3=fig5_11[,c("publictwo")], set4=fig5_11[,c("privatenonprofit")], set5=fig5_11[,c("forprofit")], categories = fig5_11$category, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 5-10
 fig5_10 <- read.csv(paste(textpath, "Covering expenses_working/05_0100.csv", sep=""),stringsAsFactors=FALSE)

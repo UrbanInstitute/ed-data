@@ -14,7 +14,7 @@ graphtext$toggle <- as.numeric(graphtext$toggle)
 
 #Figure 6-100
 fig6_100<- read.csv(paste(textpath, "After College_landing page/06_0100.csv", sep=""),stringsAsFactors=FALSE)
-json6_100<- makeJson(sectionn = 6, graphn = 100, dt = fig6_100, graphtype = "bar", series=c("4 years", "5 years", "6 years"),
+json6_100<- makeJson(sectionn = 6, graphn = 100, dt = fig6_100, graphtype = "bar", series=c("Four years", "Five years", "Six years"),
                     categories = fig6_100$category, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 #Figure 6-200

@@ -209,7 +209,7 @@ json4_16e <- makeJson(sectionn = 4, graphn = 16, subn=5, dt = fig4_16e$grant, gr
 fig4_17 <- read.csv(paste(textpath, "Financial aid_state/04_0170-no_percent.csv", sep=""),stringsAsFactors=FALSE)
 fig4_17$year <- gsub("-", "–", fig4_17$year) 
 json4_17 <- makeJson(sectionn = 4, graphn = 17, dt = fig4_17, graphtype = "area",
-                    series = c("Need-based", "Non-need-based"),
+                    series = c("Need-based", "Non–need-based"),
                     categories = fig4_17$year, tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 4-18
@@ -227,8 +227,8 @@ json4_19 <- makeJson(sectionn = 4, graphn = 19, dt = fig4_19, graphtype = "bar",
 
 #Figure 4-20 : 
 fig4_20 <- read.csv(paste(textpath, "Financial aid_institutional/04_0200-ALL.csv", sep=""),stringsAsFactors=FALSE, check.names = FALSE)
-#json4_20<- makeJson(sectionn = 4, graphn = 20, dt = fig4_20, graphtype = "bar", set1= fig4_20[grep("Lowest", fig4_20$category), c("Need-based", "Non-need-based")], set2= fig4_20[grep("Second", fig4_20$category), c("Need-based", "Non-need-based")],
-#                    set3= fig4_20[grep("Third", fig4_20$category), c("Need-based", "Non-need-based")],set4= fig4_20[grep("Highest", fig4_20$category), c("Need-based", "Non-need-based")],
+#json4_20<- makeJson(sectionn = 4, graphn = 20, dt = fig4_20, graphtype = "bar", set1= fig4_20[grep("Lowest", fig4_20$category), c("Need-based", "Non-need–based")], set2= fig4_20[grep("Second", fig4_20$category), c("Need-based", "Non-need–based")],
+#                    set3= fig4_20[grep("Third", fig4_20$category), c("Need-based", "Non-need–based")],set4= fig4_20[grep("Highest", fig4_20$category), c("Need-based", "Non-need–based")],
 #                   series = c("Lowest tuition group", "Second tuition group", "Third tuition group", "Highest tuition group"), xlabel="Family income quartile", ylabel=""Dependent undergraduate student income quartiles",
 #                   categories = fig4_20$category_label, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
