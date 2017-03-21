@@ -20,7 +20,7 @@ json5_19<- makeJson(sectionn = 5, graphn = 19, dt = fig5_19, graphtype = "bar",
 #Figure 5-32
 fig5_32<- read.csv(paste(textpath, "Covering Expenses_savings/05_0320.csv", sep=""),stringsAsFactors=FALSE)
 json5_32<- makeJson(sectionn = 5, graphn = 32, dt = fig5_32$X..of.PSE.students, graphtype = "line",
-                    series = "Percentage", ylabel="In thousands",
+                    series = "Percentage",
                     categories = fig5_32$X, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 
 #Figure 5-31

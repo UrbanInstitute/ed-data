@@ -81,12 +81,12 @@ json6_13 <- makeJson(sectionn = 6, graphn = 13, dt = fig6_13, graphtype = "bar",
 #Figure 6-12
 fig6_12 <- read.csv(paste(textpath, "After college_debt/06_0120.csv", sep=""),stringsAsFactors=FALSE)
 json6_12 <- makeJson(sectionn = 6, graphn = 12, dt = fig6_12, graphtype = "bar",
-                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or more"),
+                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000"),
                      categories = fig6_12$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 #Figure 6-11
 fig6_11 <- read.csv(paste(textpath, "After college_debt/06_0110.csv", sep=""),stringsAsFactors=FALSE)
 json6_11 <- makeJson(sectionn = 6, graphn = 11, dt = fig6_11, graphtype = "bar",
-                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000", "$40,000 or more"),
+                     series = c("No debt", "Less than $10,000", "$10,000–$19,999", "$20,000–$29,999", "$30,000–$39,000"),
                      categories = fig6_11$Sector, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 
 #Figure 6-10
@@ -126,7 +126,7 @@ json6_16b <- makeJson(sectionn = 6, graphn = 162, dt = fig6_16b$debt, graphtype 
 
 #Figure 6-17
 fig6_17<- read.csv(paste(textpath, "After College_loan repayment/06_0170.csv", sep=""),stringsAsFactors=FALSE)
-json6_17<- makeJson(sectionn = 6, graphn = 17, dt = fig6_17, graphtype = "line", series=c("For-profit", "Public two-year", "Public four-year", "Private four-year"),
+json6_17<- makeJson(sectionn = 6, graphn = 17, dt = fig6_17, graphtype = "line", series=c("For-profit", "Public two-year", "Public four-year", "Private nonprofit four-year"),
                       categories = fig6_17$X, tickformat = "percent", rotated = FALSE, directlabels = TRUE)
 #Figure 6-18
 fig6_18<- read.csv(paste(textpath, "After College_loan repayment/06_0180.csv", sep=""),stringsAsFactors=FALSE)

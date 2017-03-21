@@ -123,7 +123,7 @@ json3_12c <- makeJson(sectionn = 3, graphn = 12, subn= 3, dt = fig3_12c, graphty
                       categories = fig3_12c$year, graphtitle="Private nonprofit four-year, living on campus", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 json3_12d <- makeJson(sectionn = 3, graphn = 12, subn= 4, dt = fig3_12d, graphtype = "bar",
                       series = c("Tuition and fees", "Room and board", "Books and supplies", "Transportation", "Other"),
-                      categories = fig3_12d$year, graphtitle="For profit, living off campus", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                      categories = fig3_12d$year, graphtitle="For-profit, living off campus", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 3-13
 fig3_13 <- read.csv(paste(textpath, "Prices and expenses_student budgets/03_0130.csv", sep=""),stringsAsFactors=FALSE)

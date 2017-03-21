@@ -173,7 +173,7 @@ json4_15b <- makeJson(sectionn = 4, graphn = 15, subn=2, dt = fig4_15b$percent, 
                      categories = fig4_15b$sub_category, xlabel = "Dependency status", graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 json4_15c <- makeJson(sectionn = 4, graphn = 15, subn=3, dt = fig4_15c$percent, graphtype = "bar",
                       series = "Undergraduates receiving state aid",
-                      categories = fig4_15c$sub_category, xlabel = "Dependent students' family income", graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
+                      categories = fig4_15c$sub_category, xlabel = "Dependent students' parents' income", graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
 json4_15d <- makeJson(sectionn = 4, graphn = 15, subn=4, dt = fig4_15d$percent, graphtype = "bar",
                       series = "Undergraduates receiving state aid",
                       categories = fig4_15d$sub_category, xlabel = "State residency", graphtitle=NULL, tickformat = "percent", rotated = TRUE, directlabels = TRUE)
@@ -197,7 +197,7 @@ json4_16b <- makeJson(sectionn = 4, graphn = 16, subn=2, dt = fig4_16b$grant, gr
                       categories = fig4_16b$sub_category, xlabel = "Dependency status", graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 json4_16c <- makeJson(sectionn = 4, graphn = 16, subn=3, dt = fig4_16c$grant, graphtype = "bar",
                       series = "Average state grant aid per recipient",
-                      categories = fig4_16c$sub_category, xlabel = "Dependent students' family income", graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
+                      categories = fig4_16c$sub_category, xlabel = "Dependent students' parents' income", graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 json4_16d <- makeJson(sectionn = 4, graphn = 16, subn=4, dt = fig4_16d$grant, graphtype = "bar",
                       series = "Average state grant aid per recipient",
                       categories = fig4_16d$sub_category, xlabel = "State residency", graphtitle=NULL, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)

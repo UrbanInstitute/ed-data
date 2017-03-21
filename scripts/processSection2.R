@@ -49,10 +49,10 @@ fig2_7b$column <- gsub("-", "–", fig2_7b$column)
 
 json2_7a <- makeJson(sectionn = 2, graphn = 7, subn= 1, dt = fig2_7a, graphtype = "bar",
                      series = c("Average net tuition revenue per FTE student", "Average subsidy per FTE student"),
-                    categories = fig2_7a$column, graphtitle="Four-year", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                    categories = fig2_7a$column, graphtitle="Bachelor's", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 json2_7b <- makeJson(sectionn = 2, graphn = 7, subn= 2, dt = fig2_7b, graphtype = "bar",
                      series = c("Average net tuition revenue per FTE student", "Average subsidy per FTE student"),
-                    categories = fig2_7b$column, graphtitle="Two-year", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
+                    categories = fig2_7b$column, graphtitle="Associate", tickformat = "dollar", rotated = FALSE, directlabels = TRUE)
 
 #Figure 2-8
 fig2_8a <- read.csv(paste(textpath, "Cost of educating_subsidies/02-0081.csv", sep=""),stringsAsFactors=FALSE)

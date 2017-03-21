@@ -49,6 +49,7 @@
  
 
 - **Figure 2-51**
+  - for source line of multiples, add ` pluralNotes: "true" ` to jsx file
   - Change Y-axis properties to adjust ticks:
 
   ```
