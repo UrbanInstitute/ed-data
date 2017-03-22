@@ -170,24 +170,24 @@ fig3_18f <- read.csv(paste(textpath, "Prices and expenses_forgone earnings/03_01
 #First set
 json3_18a <- makeJson(sectionn = 3, graphn = 181, subn=1, dt = fig3_18a, graphtype = "bar",
                       series = c("25th percentile and below", "25th percentile to Median", "Median to 75th percentile"),
-                      categories = fig3_18a$age, graphtitle="Median earnings of men by age", tickformat = "dollar", rotated = TRUE, directlabels = FALSE)
+                      categories = fig3_18a$age, graphtitle="Earnings of men by age", tickformat = "dollar", rotated = TRUE, directlabels = FALSE)
 json3_18b <- makeJson(sectionn = 3, graphn = 181, subn=2, dt = fig3_18b, graphtype = "bar",
                       series = c("25th percentile and below", "25th percentile to Median", "Median to 75th percentile"),
-                      categories = fig3_18b$age, graphtitle="Median earnings of women by age", tickformat = "dollar", rotated = TRUE, directlabels = FALSE)
+                      categories = fig3_18b$age, graphtitle="Earnings of women by age", tickformat = "dollar", rotated = TRUE, directlabels = FALSE)
 #Second set
 json3_18c <- makeJson(sectionn = 3, graphn = 182, subn= 1, dt = fig3_18c, graphtype = "bar",
                       series = c("25th percentile and below", "25th percentile to Median", "Median to 75th percentile"),
-                      categories = fig3_18c$race, graphtitle="Median earnings of men by race", tickformat = "dollar", rotated = TRUE, directlabels = FALSE)
+                      categories = fig3_18c$race, graphtitle="Earnings of men by race", tickformat = "dollar", rotated = TRUE, directlabels = FALSE)
 json3_18d <- makeJson(sectionn = 3, graphn = 182, subn= 2, dt = fig3_18d, graphtype = "bar",
                       series = c("25th percentile and below", "25th percentile to Median", "Median to 75th percentile"),
-                      categories = fig3_18d$race, graphtitle="Median earnings of women by race", tickformat = "dollar", rotated = TRUE, directlabels = FALSE)
+                      categories = fig3_18d$race, graphtitle="Earnings of women by race", tickformat = "dollar", rotated = TRUE, directlabels = FALSE)
 #Third set
 json3_18e <- makeJson(sectionn = 3, graphn = 183, subn= 1, dt = fig3_18e, graphtype = "bar",
                       series = c("25th percentile and below", "25th percentile to Median", "Median to 75th percentile"),
-                      categories = fig3_18e$race, graphtitle="Median earnings of men by race", tickformat = "dollar", rotated = TRUE, directlabels = FALSE)
+                      categories = fig3_18e$race, graphtitle="Earnings of men by race", tickformat = "dollar", rotated = TRUE, directlabels = FALSE)
 json3_18f <- makeJson(sectionn = 3, graphn = 183, subn= 2, dt = fig3_18f, graphtype = "bar",
                       series = c("25th percentile and below", "25th percentile to Median", "Median to 75th percentile"),
-                      categories = fig3_18f$race, graphtitle="Median earnings of women by race", tickformat = "dollar", rotated = TRUE, directlabels = FALSE)
+                      categories = fig3_18f$race, graphtitle="Earnings of women by race", tickformat = "dollar", rotated = TRUE, directlabels = FALSE)
 
 #Figure 3-19
 

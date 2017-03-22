@@ -121,7 +121,7 @@ json5_17a <- makeJson(sectionn = 5, graphn = 17, subn= 1, dt = fig5_17a$amount, 
                       categories = fig5_17a$category,  xlabel = "All full-time dependent students",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=17000, directlabels = TRUE)
 json5_17b <- makeJson(sectionn = 5, graphn = 17, subn= 2, dt = fig5_17b$amount, graphtype = "bar",
                       series = "Loans borrowed",
-                      categories = fig5_17b$category,  xlabel = "Parental income",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=17000, directlabels = TRUE)
+                      categories = fig5_17b$category,  xlabel = "Parentalcd income",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=17000, directlabels = TRUE)
 json5_17c <- makeJson(sectionn = 5, graphn = 17, subn= 3, dt = fig5_17c$amount, graphtype = "bar",
                       series = "Loans borrowed",
                       categories = fig5_17c$category,  xlabel = "Institutional sector",graphtitle=NULL, tickformat = "dollar", rotated = TRUE, ymax=17000, directlabels = TRUE)
