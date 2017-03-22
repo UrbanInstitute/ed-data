@@ -111,7 +111,7 @@ json6_8 <- makeJson(sectionn = 6, graphn = 8, dt = fig6_8, graphtype = "bar",
 #Figure 6-7
 fig6_7 <- read.csv(paste(textpath, "After college_earnings/06_0070.csv", sep=""),stringsAsFactors=FALSE)
 json6_7 <- makeJson(sectionn = 6, graphn = 7, dt = fig6_7, graphtype = "bar",
-                    series = c("25th percentile", "50th percentile", "75th percentile"),
+                    series = c("25th percentile and below", "25th percentile to median", "Median to 75th percentile"),
                     categories = fig6_7$field, tickformat = "dollar", rotated = TRUE, directlabels = TRUE)
 
 
