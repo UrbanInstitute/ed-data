@@ -747,7 +747,7 @@ change y tick values
 
 - **Figure 5-6**
  - make TFRB appear first in the legend
-
+ - add ` metadata.pluralSources: true `
 
 - **Figure 5-8**
   - add `"highlightIndex" : 0`  to outermost bracket
