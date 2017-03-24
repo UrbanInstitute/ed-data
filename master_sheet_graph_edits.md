@@ -191,8 +191,12 @@
 - **Figure 3-4**
  - First graph: added metadata.subtitle: "Public two-year institutions"
  - First graph: added "highlightIndex": 36 to outermost bracket
+ - First graph: add to top level 
+  ` "imageOverride": "Public two-year institutions__In-State or In-District Tuition and Fees at Public Institutions, by State, 2016–17" `
  - Second graph: added metadata.subtitle: "Public four-year institutions"
  - Second graph: added "highlightIndex": 21 to outermost bracket
+ - Second graph: add to top level 
+  ` "imageOverride": "Public four-year institutions__In-State or In-District Tuition and Fees at Public Institutions, by State, 2016–17" `
 
 - **Figure 3-7**
  - add `"highlightIndex": 27` to outermost bracket
@@ -238,6 +242,10 @@
       ]
     ],
   ```
+ - in jsx file for each set of multiples, add:
+ ```
+ imageOverride= "Earnings by Age among Full-Time Full-Year Workers with Only a High School Diploma or GED and Not in School__SUBTITLE"
+ ```
 
  - **First Set**
   - add ` subtitle="Ages 18–34, by gender and age" ` to jsx file
@@ -295,7 +303,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
     - make legend items in order of "25th percentile", "Median", "75th percentile"
 
 - **Figure 3-20**
- - To both first and second graphs, add top level `"padding": {"right": 30}`
+ - To both first and second graphs, add top level `"padding": {"right": 20}`
  - For first graph:
  "y": {
  "padding": {"top":0, "bottom":0},
@@ -306,6 +314,8 @@ in various blocks specific to line and area charts. Given that this chart is a s
  "count": 7
  }
  },
+ - add to top level `  "imageOverride": "Dollars per full-time student__Average Grant Aid and Net Tuition and Fees for First-Time Full-Time Students, by Sector, 2013–14", `
+
  - For second graph:
  "y": {
  "padding": {"top": 0, "bottom": 0},
@@ -315,6 +325,7 @@ in various blocks specific to line and area charts. Given that this chart is a s
  "count": 5
  }
  }
+- add to top level `  "imageOverride": "Percentage of full-time students__Average Grant Aid and Net Tuition and Fees for First-Time Full-Time Students, by Sector, 2013–14", `
  - for first graph, add :
   `"subtitle": "Dollars per full-time student" `
  - for second graph, add:
@@ -360,6 +371,10 @@ in various blocks specific to line and area charts. Given that this chart is a s
 - **Figure 3-22:**
  - **FOR EACH SET OF MULTIPLES**
 	 - 	Add `"subtitle"` in jsx file
+   - in jsx file for each set of multiples, add:
+ ```
+   imageOverride= "Total Student Budget, Divided into the Portions of Tuition and Fees and Living Expenses Covered by Grant Aid, and the Tuition and Fees and Living Expenses Remaining, from 1995–96 to 2011–12, in 2011 Dollars__SUBTITLE"
+   ```
  - **First set of multiples**
     - First set of multiples need to add
     
@@ -498,6 +513,11 @@ in various blocks specific to line and area charts. Given that this chart is a s
     ]
   ```
 - **Figure 4-9**
+ - **For all multiples**
+    - in jsx file for each set of multiples, add:
+ ```
+   imageOverride= "Pell Grant by Dependency Status and Income, Full-Time Students, 2011–12 (with Percentage Receiving Pell)__SUBTITLE"
+   ```
  - **First set of multiples**
    - in jsx file, add ` subtitle= "Dollars per recipient" `
    - for all graphs : add ` "hideTooltip": true ` to outermost bracket
