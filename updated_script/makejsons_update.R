@@ -491,7 +491,9 @@ get_categories <- function(current_row, dataset) {
   # 
   # Returns: categories (list)
   
-  categories <- dataset[[1]] 
+  categories <- gsub("-", "-", dataset[[1]]) 
+  #this is from Vivian's code - it's how she replaced the unicode string
+  
   if (defined(current_row$add_nulls_beginning)) {
     add_cat_before <- rep("", current_row$add_nulls_beginning)
     categories <- append(categories, add_cat_before, 0)

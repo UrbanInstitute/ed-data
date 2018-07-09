@@ -55,7 +55,7 @@ temp <- mapply(makeJson, section_1_graph_text_df$section_number,
        data_path = section_1_data_path, gt_file = GRAPHTEXT_FILENAME, debug = DEBUG_FLAG, 
        output_path = section_1_output_path)
 
-# section 2
+# section 2 - to add to
 section_2_graph_text_df <- graph_text_df %>% 
   filter(section_number == 2)
 
