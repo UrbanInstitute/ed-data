@@ -21,7 +21,7 @@ DEBUG_FLAG <- FALSE
 
 # ---- MAIN FUNCTION ---- #
 
-makeJson <- function (snumber, gnumber, 
+makeJson <- function (snumber, subsnumber, gnumber, 
                       text_file_path, data_path, output_path,
                       gt_file, debug = DEBUG_FLAG) {
   
@@ -29,6 +29,7 @@ makeJson <- function (snumber, gnumber,
   #
   # Args:
   #   snumber (int): section number (e.g., 2) 
+  #   subsnumber (int): subsection number 
   #   gnumber (int): graph number (e.g., 71)
   #   text_file_path (str): path to the graphtext file
   #   data_path (str): path to all data files
@@ -37,7 +38,7 @@ makeJson <- function (snumber, gnumber,
   #   debug (bool): whether to print out the JSON to the console or not
   
   # identify row for the graph
-  current_row <- get_row(snumber, gnumber, text_file_path, gt_file)
+  current_row <- get_row(snumber, subsnumber, gnumber, text_file_path, gt_file)
   
   # load dataset
   dataset <- load_data(current_row, data_path)
@@ -171,7 +172,7 @@ write_JSON <- function(current_row, file_path, graphing_params_json) {
   write(graphing_params_json, json_file_path)
 }
 
-get_row <- function (snumber, gnumber, 
+get_row <- function (snumber, subsnumber, gnumber, 
                      file_path, gt_file) {
   
   # Purpose: Retrieve the graphing parameters for a given section number, figure number 
@@ -179,6 +180,7 @@ get_row <- function (snumber, gnumber,
   # Args:
   #   file_path (str): path to the graphtext xslx file
   #   snumber (int): the section number corresponding to the graph
+  #   subsnumber (int): the subsection number
   #   gnumber (int): the graph number for the graph 
   #
   # Returns:
@@ -190,8 +192,9 @@ get_row <- function (snumber, gnumber,
     print(paste("ERROR: cannot load graphtext file ", graphtext_file))
     print(paste("Original error: ", e))
   })
-  current_row = graphtext[ which( graphtext$section_number == snumber 
-                                  & graphtext$graph_number == gnumber), ]  
+  current_row = graphtext[ which(( graphtext$section_number == snumber 
+                                  & graphtext$graph_number == gnumber) &
+                                   graphtext$subsection_number == subsnumber), ]  
   return (current_row)
 }
 
