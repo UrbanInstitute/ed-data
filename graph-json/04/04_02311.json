@@ -1,1 +1,0 @@
-{"data": {"columns": [["Employer aid", 3800]], "type": "bar", "labels": {"format": "percent"}}, "axis": {"y": {"tick": {"format": "percent"}}, "x": {"categories": "Total", "type": "category"}, "rotated": true}, "series": "Employer aid", "metadata": {"source": "National Postsecondary Student Aid Study 2012 ", "notes": null}}

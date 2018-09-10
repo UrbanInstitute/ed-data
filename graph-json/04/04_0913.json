@@ -1,1 +1,0 @@
-{"axis": {"x": {"type": "category", "categories": ["Independent (72%)", "Dependent (39%)"]}, "y": {"tick": {"format": "$s"}}, "rotated": true}, "metadata": {"source": "National Postsecondary Student Aid Study, 2012. ", "notes": null}, "series": "Pell-Grant", "title": "Dependency status", "data": {"columns": [["Pell-Grant", 4500, 4300]], "type": "bar", "labels": {"format": "$s"}}}

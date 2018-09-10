@@ -195,6 +195,10 @@ get_row <- function (snumber, subsnumber, gnumber,
   current_row = graphtext[ which(( graphtext$section_number == snumber 
                                   & graphtext$graph_number == gnumber) &
                                    graphtext$subsection_number == subsnumber), ]  
+  print(which(( graphtext$section_number == snumber 
+                                  & graphtext$graph_number == gnumber) &
+                                   graphtext$subsection_number == subsnumber) )
+  # print(graphtext[1,])
   return (current_row)
 }
 
@@ -309,9 +313,10 @@ get_graph_param_data <- function (current_row, dataset) {
   # groups if needed 
   if (is.element(current_row$type, JSON_NEEDS_GROUPS)){
     if (current_row$toggle){
-      graph_data$groups <- series_names[-1]
+      graph_data$groups <- list(series_names[-1])
     } else {
-      graph_data$groups <- series_names
+      print(list(series_names))
+      graph_data$groups <- list(series_names)
     }
   }
   
