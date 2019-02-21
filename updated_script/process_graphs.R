@@ -26,20 +26,24 @@ sections <- c(
     "student-profiles/"
   )
 
+# After College for some reason has a "breaking even" column even though there isn't one at that subpage on the site...i have removed. 
+# order of these folders matters!
+
 subSections <- list(
     c("institutions/json/","students/json/"),
-    c("appropriations/json/","endowments/json/","subsidies/json/"),
-    c("forgone-earnings/json/","net-price/json/","room-and-board/json/","student-budgets/json/","tuition-and-fees/json/"),
-    c("federal/json","financial-need/json","grant-aid/json","institutional/json","other/json","state/json","tax-benefits/json"),
-    c("borrowing/json/","pre-college-income/json/","savings/json/","state-policies/json/","time-to-degree/json/","working-during-college/json/"),
-    c("breaking-even/json/","employment-after-college/json/","loan-repayment-and-default/json/","student-debt/json/","variation-in-earnings/json/"),
+    c("subsidies/json/","appropriations/json/","endowments/json/"),
+    c("tuition-and-fees/json/","room-and-board/json/","student-budgets/json/","forgone-earnings/json/","net-price/json/"),
+    c("financial-need/json","grant-aid/json","federal/json","state/json","institutional/json","other/json","tax-benefits/json"),
+    c("pre-college-income/json/","savings/json/","working-during-college/json/","borrowing/json/","time-to-degree/json/","state-policies/json/"),
+    c("employment-after-college/json/","variation-in-earnings/json/","student-debt/json/","loan-repayment-and-default/json/"),
     c("json/"),
     c("json/")
   )
 
 # path to all files and xlsx file name (xlsx in the SAME directory)
 GRAPH_TEXT_PATH <- "updated_script/"
-GRAPHTEXT_FILENAME <- "Graphtext_test.xlsx"
+GRAPHTEXT_FILENAME <- "Graphtext_021920.xlsx"
+# GRAPHTEXT_FILENAME <- "testGroup_section2.xlsx"
 data_folder <- "csv-021919/"
 
 ########### Important #################
@@ -51,15 +55,21 @@ sections[selectedSection]
 
 # path to each of the data folders
 section_data_path <- paste("graph-data/",data_folder,sep="")
-section_output_base_path <- paste("../college-affordability.urban.org_tester/pages/",sections[selectedSection],sep="")
+section_output_base_path <- paste("../college-affordability.urban.org/pages/",sections[selectedSection],sep="")
 section_subsection_paths <- subSections[[selectedSection]]
 
 # read in graph df
 graph_text_df <- read.xlsx(paste(GRAPH_TEXT_PATH, GRAPHTEXT_FILENAME, sep=""))
 
-# section 1
-section_graph_text_df <- graph_text_df %>% 
-  filter(section_number == 1)
+
+stringSelection <- paste("0",selectedSection,sep="")
+# print(stringSelection)
+
+# filter to section selected
+section_graph_text_df <- graph_text_df  %>% 
+  filter(section_number == selectedSection)
+
+print(section_graph_text_df)
 
 temp <- mapply(makeJson, section_graph_text_df$section_number, section_graph_text_df$subsection_number, 
        section_graph_text_df$graph_number, text_file_path = GRAPH_TEXT_PATH, 

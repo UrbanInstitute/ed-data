@@ -24,7 +24,9 @@ DEBUG_FLAG <- FALSE
 makeJson <- function (snumber, subsnumber, gnumber, 
                       text_file_path, data_path, output_path,
                       gt_file, debug = DEBUG_FLAG) {
-  
+
+
+  print(paste(snumber, subsnumber, gnumber,".csv start",sep=""))
   # Purpose: to create a json file with all graphing parameters as specified
   #
   # Args:
@@ -49,7 +51,7 @@ makeJson <- function (snumber, subsnumber, gnumber,
   # convert all graphing parameters to JSON
   graphing_params_json <- toJSON(graphing_params, auto_unbox=T, na = "null", 
                                  pretty=TRUE)
-  
+  print(paste(snumber, subsnumber, gnumber,".csv is done",sep=""))
   # write out a JSON file
   write_JSON(current_row, output_path, graphing_params_json)
   
@@ -57,6 +59,7 @@ makeJson <- function (snumber, subsnumber, gnumber,
   if (debug) {
     return (graphing_params_json)
   }
+  
 }
 
 
@@ -195,9 +198,9 @@ get_row <- function (snumber, subsnumber, gnumber,
   current_row = graphtext[ which(( graphtext$section_number == snumber 
                                   & graphtext$graph_number == gnumber) &
                                    graphtext$subsection_number == subsnumber), ]  
-  print(which(( graphtext$section_number == snumber 
-                                  & graphtext$graph_number == gnumber) &
-                                   graphtext$subsection_number == subsnumber) )
+  # print(which(( graphtext$section_number == snumber 
+  #                                 & graphtext$graph_number == gnumber) &
+  #                                  graphtext$subsection_number == subsnumber) )
   # print(graphtext[1,])
   return (current_row)
 }
@@ -239,6 +242,7 @@ get_all_graphing_data <- function (current_row, dataset) {
   
   # create series names depending on whether the graph TOGGLES or not
   # this should catch toggle errors
+  
   if (current_row$toggle) {
     tryCatch({all_graphing_data$series <- colnames(dataset[, c(3:ncol(dataset))])
     }, error = function(e) { 
@@ -284,7 +288,7 @@ get_metadata <- function(current_row) {
   metadata$notes <- current_row$notes
   
   # add subtitle in metadata if needed 
-  if (defined_and_true(current_row$metadata_subtitle)) {
+  if (defined_and_true(strtoi(current_row$metadata_subtitle))) {
     metadata$subtitle <- current_row$subtitle 
   }
   
@@ -315,7 +319,7 @@ get_graph_param_data <- function (current_row, dataset) {
     if (current_row$toggle){
       graph_data$groups <- list(series_names[-1])
     } else {
-      print(list(series_names))
+      # print(list(series_names))
       graph_data$groups <- list(series_names)
     }
   }
@@ -508,7 +512,6 @@ get_categories <- function(current_row, dataset) {
   }
   if (defined(current_row$add_nulls_end)) {
     add_cat_end <- rep("", current_row$add_nulls_end)
-    print("hi")
     categories <- append(add_cat_end, categories, 0)
   }
   return (categories)
@@ -561,6 +564,7 @@ get_y_axis_data <- function(current_row, dataset) {
   if (defined (current_row$y_label)) {
     y$axis$label <- current_row$y_label
   }
+  print(current_row$y_max_value))
   if (defined (current_row$y_max_value)) {
     y$axis$max <- current_row$y_max_value
   }
