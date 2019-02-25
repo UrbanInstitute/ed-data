@@ -557,24 +557,25 @@ get_y_axis_data <- function(current_row, dataset) {
   # Returns: y (list)
   
   y <- list()
-  y$axis <- list() # nesting time
-  y$axis$tick$format <- current_row$y_tick_format
+  # y <- list() # nesting time
+  y$tick$format <- current_row$y_tick_format
   
   # add optional args
   if (defined (current_row$y_label)) {
-    y$axis$label <- current_row$y_label
+    y$label <- current_row$y_label
   }
-  print(current_row$y_max_value))
+  print(current_row$y_max_value)
+
   if (defined (current_row$y_max_value)) {
-    y$axis$max <- current_row$y_max_value
+    y$max <- current_row$y_max_value
   }
   if (defined (current_row$y_tick_count)) {
-    y$axis$tick$count <- current_row$y_tick_count
+    y$tick$count <- current_row$y_tick_count
   }
   # this is an improvement area 
   if (any(defined(current_row$y_padding_left), defined(current_row$y_padding_right), 
           defined(current_row$y_padding_top), defined(current_row$y_padding_bottom))) {
-    y$axis$padding <- get_padding_in_braces(current_row$y_padding_left, 
+    y$padding <- get_padding_in_braces(current_row$y_padding_left, 
                                             current_row$y_padding_right, 
                                             current_row$y_padding_top, 
                                             current_row$y_padding_bottom)
