@@ -483,6 +483,7 @@ get_axis_parameters <- function(current_row, dataset) {
 
   # if ROTATE_TYPE string is in the graph type, graph will have rotated axes 
   axis_data$rotated <- any(grep(ROTATE_TYPE, current_row$type)) 
+  print(axis_data$rotated)
   
   # get x and y axis parameters 
   axis_data$x <- get_x_axis_data(current_row, dataset)
@@ -530,12 +531,14 @@ get_x_axis_data <- function(current_row, dataset) {
   x <- list()
 
   x$categories <- get_categories(current_row, dataset)
+
   if (defined(current_row$x_label)) {
     x$label <- current_row$x_label
   }
   if (defined(current_row$x_tick_count)) {
     x$tick$count <- current_row$x_tick_count
   }
+
   # Gets the value from urrent_row$axis_x_tick_not_multiline 
   # to set the boolean. This is not automated -- always FALSE when
   # the boolean is set to 1. 
@@ -564,7 +567,6 @@ get_y_axis_data <- function(current_row, dataset) {
   if (defined (current_row$y_label)) {
     y$label <- current_row$y_label
   }
-  print(current_row$y_max_value)
 
   if (defined (current_row$y_max_value)) {
     y$max <- current_row$y_max_value
