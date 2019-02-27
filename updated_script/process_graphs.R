@@ -44,7 +44,7 @@ subSections <- list(
 GRAPH_TEXT_PATH <- "updated_script/"
 GRAPHTEXT_FILENAME <- "Graphtext_021920.xlsx"
 # GRAPHTEXT_FILENAME <- "testGroup_section2.xlsx"
-data_folder <- "csv-021919/"
+data_folder <- "csv-022719/"
 
 ########### Important #################
 # Pick which section you want to generate
