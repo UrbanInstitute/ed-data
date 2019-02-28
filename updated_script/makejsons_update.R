@@ -26,7 +26,7 @@ makeJson <- function (snumber, subsnumber, gnumber,
                       gt_file, debug = DEBUG_FLAG) {
 
 
-  print(paste(snumber, subsnumber, gnumber,".csv start",sep=""))
+  # print(paste(snumber, subsnumber, gnumber,".csv start",sep=""))
   # Purpose: to create a json file with all graphing parameters as specified
   #
   # Args:
@@ -395,7 +395,8 @@ add_sets <- function(current_row, data_to_graph) {
   
   # categories for the sets -> we will need to filter our graph data on these
   set_categories <- unique(data_to_graph[1])[, 1]
-  
+  # print(set_categories)
+
   # creates a vector of set1, set2, etc... 
   set_list_names <- paste(rep("set", length(set_categories)), 
                           1:length(set_categories), sep = "")
@@ -412,8 +413,10 @@ add_sets <- function(current_row, data_to_graph) {
     new_data_to_graph <- data_to_graph %>% # filter data based on what category we are on
       filter(tempcat == set_categories[i]) %>% 
       select(- (tempcat)) # get rid of category column
-    temp_cols <- get_columns(current_row, new_data_to_graph) # get columns for each
-    sets[[i]] <- list(set_categories[i], temp_cols) # store as a list for the set name
+    # print(current_row)
+    # print(new_data_to_graph)
+    temp_cols <- get_columns(current_row, new_data_to_graph) # get columns for each    
+    sets[[i]] <- list(set_categories[i], temp_cols) # store as a list for the set name    
   }
   
   names(sets) <- set_list_names # rename the sets as set1, set2, etc...
@@ -483,7 +486,6 @@ get_axis_parameters <- function(current_row, dataset) {
 
   # if ROTATE_TYPE string is in the graph type, graph will have rotated axes 
   axis_data$rotated <- any(grep(ROTATE_TYPE, current_row$type)) 
-  print(axis_data$rotated)
   
   # get x and y axis parameters 
   axis_data$x <- get_x_axis_data(current_row, dataset)
@@ -531,6 +533,10 @@ get_x_axis_data <- function(current_row, dataset) {
   x <- list()
 
   x$categories <- get_categories(current_row, dataset)
+
+  if(current_row$toggle) {
+    x$categories <- unique(get_categories(current_row, dataset))
+  }
 
   if (defined(current_row$x_label)) {
     x$label <- current_row$x_label
