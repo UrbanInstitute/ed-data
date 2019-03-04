@@ -42,7 +42,7 @@ subSections <- list(
 
 # path to all files and xlsx file name (xlsx in the SAME directory)
 GRAPH_TEXT_PATH <- "updated_script/"
-GRAPHTEXT_FILENAME <- "Graphtext_022720.xlsx"
+GRAPHTEXT_FILENAME <- "Graphtext_022820.xlsx"
 # GRAPHTEXT_FILENAME <- "testGroup_section2.xlsx"
 data_folder <- "csv-022719/"
 

@@ -534,7 +534,8 @@ get_x_axis_data <- function(current_row, dataset) {
 
   x$categories <- get_categories(current_row, dataset)
 
-  if(current_row$toggle) {
+
+  if(current_row$toggle | current_row$type == "grouped bar") {
     x$categories <- unique(get_categories(current_row, dataset))
   }
 
