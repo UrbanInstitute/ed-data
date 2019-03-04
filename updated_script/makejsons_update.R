@@ -660,6 +660,9 @@ add_top_level <- function(current_row, all_graphing_data) {
   # adds bools to top level - MUST HAPPEN FIRST OR WILL OVERWRITE DATA
   if (defined(current_row$top_level_flags)) {
     all_graphing_data <- return_kv_list_boolean(current_row$top_level_flags)
+    if (defined(all_graphing_data$connectNull)) {
+      all_graphing_data$line$connectNull <- TRUE
+    }
   }
   
   # get title

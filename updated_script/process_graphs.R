@@ -69,7 +69,7 @@ stringSelection <- paste("0",selectedSection,sep="")
 section_graph_text_df <- graph_text_df  %>% 
   filter(section_number == selectedSection)
 
-print(section_graph_text_df)
+# print(section_graph_text_df)
 
 temp <- mapply(makeJson, section_graph_text_df$section_number, section_graph_text_df$subsection_number, 
        section_graph_text_df$graph_number, text_file_path = GRAPH_TEXT_PATH, 
