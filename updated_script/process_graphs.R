@@ -42,9 +42,9 @@ subSections <- list(
 
 # path to all files and xlsx file name (xlsx in the SAME directory)
 GRAPH_TEXT_PATH <- "updated_script/"
-GRAPHTEXT_FILENAME <- "Graphtext_022820.xlsx"
+GRAPHTEXT_FILENAME <- "Graphtext_030419.xlsx"
 # GRAPHTEXT_FILENAME <- "testGroup_section2.xlsx"
-data_folder <- "csv-022719/"
+data_folder <- "csv-active/"
 
 ########### Important #################
 # Pick which section you want to generate
