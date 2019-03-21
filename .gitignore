@@ -7,3 +7,6 @@
 *.zip
 *.xls
 data/original/Delta_database_87_13_CSV/
+legacy/
+*/legacy
+~*
