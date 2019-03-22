@@ -52,19 +52,6 @@ makeJson <- function (snumber, subsnumber, gnumber,
   graphing_params_json <- toJSON(graphing_params, auto_unbox=T, na = "null", 
                                  pretty=TRUE)
 
-  # BackToR <- fromJSON(graphing_params_json)
-  
-  # if(length(BackToR$axis$x$categories) <3 ) {
-  #   print(length(BackToR$axis$x$categories))
-  #   print(BackToR$axis$x$categories)  
-  #   print(unique(BackToR$axis$x$categories))
-  #   print(is.vector(BackToR$axis$x$categories))
-  #   print("----")
-  # }
-
-  # graphing_params_json2 <-  toJSON(BackToR, auto_unbox=T, na = "null", 
-  #                                pretty=TRUE)
-
   print(paste(snumber, subsnumber, gnumber,".csv is done",sep=""))
   # write out a JSON file
   write_JSON(current_row, output_path, graphing_params_json)
