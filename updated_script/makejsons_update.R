@@ -51,6 +51,20 @@ makeJson <- function (snumber, subsnumber, gnumber,
   # convert all graphing parameters to JSON
   graphing_params_json <- toJSON(graphing_params, auto_unbox=T, na = "null", 
                                  pretty=TRUE)
+
+  # BackToR <- fromJSON(graphing_params_json)
+  
+  # if(length(BackToR$axis$x$categories) <3 ) {
+  #   print(length(BackToR$axis$x$categories))
+  #   print(BackToR$axis$x$categories)  
+  #   print(unique(BackToR$axis$x$categories))
+  #   print(is.vector(BackToR$axis$x$categories))
+  #   print("----")
+  # }
+
+  # graphing_params_json2 <-  toJSON(BackToR, auto_unbox=T, na = "null", 
+  #                                pretty=TRUE)
+
   print(paste(snumber, subsnumber, gnumber,".csv is done",sep=""))
   # write out a JSON file
   write_JSON(current_row, output_path, graphing_params_json)
@@ -259,6 +273,12 @@ get_all_graphing_data <- function (current_row, dataset) {
   
   # get axis: {}
   all_graphing_data$axis <- get_axis_parameters(current_row, dataset)
+
+  
+  if (length(all_graphing_data$axis$x$categories)) {
+    # print(all_graphing_data$axis$x$categories)  
+    # all_graphing_data$axis$x$categories[0][0] <- all_graphing_data$axis$x$categories
+  }
   
   # get metadata: {}
   all_graphing_data$metadata <- get_metadata(current_row)
@@ -517,6 +537,7 @@ get_categories <- function(current_row, dataset) {
     add_cat_end <- rep("", current_row$add_nulls_end)
     categories <- append(add_cat_end, categories, 0)
   }
+
   return (categories)
 }
 
@@ -533,7 +554,6 @@ get_x_axis_data <- function(current_row, dataset) {
   x <- list()
 
   x$categories <- get_categories(current_row, dataset)
-
 
   if(current_row$toggle | current_row$type == "grouped bar") {
     x$categories <- unique(get_categories(current_row, dataset))

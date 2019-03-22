@@ -33,7 +33,7 @@ subSections <- list(
     c("institutions/json/","students/json/"),
     c("subsidies/json/","appropriations/json/","endowments/json/"),
     c("tuition-and-fees/json/","room-and-board/json/","student-budgets/json/","forgone-earnings/json/","net-price/json/"),
-    c("financial-need/json","grant-aid/json","federal/json","state/json","institutional/json","other/json","tax-benefits/json"),
+    c("financial-need/json/","grant-aid/json/","federal/json/","state/json/","institutional/json/","other/json/","tax-benefits/json/"),
     c("pre-college-income/json/","savings/json/","working-during-college/json/","borrowing/json/","time-to-degree/json/","state-policies/json/"),
     c("employment-after-college/json/","variation-in-earnings/json/","student-debt/json/","loan-repayment-and-default/json/"),
     c("json/"),
@@ -42,13 +42,13 @@ subSections <- list(
 
 # path to all files and xlsx file name (xlsx in the SAME directory)
 GRAPH_TEXT_PATH <- "updated_script/"
-GRAPHTEXT_FILENAME <- "Graphtext_032119.xlsx"
+GRAPHTEXT_FILENAME <- "Graphtext_032219.xlsx"
 # GRAPHTEXT_FILENAME <- "testGroup_section2.xlsx"
 data_folder <- "csv-active/"
 
 ########### Important #################
 # Pick which section you want to generate
-selectedSection <- 3
+selectedSection <- 4
 #######################################
 
 sections[selectedSection]
