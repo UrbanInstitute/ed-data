@@ -11,9 +11,10 @@ library(lintr)
 X_AXIS_TYPE <- "category"
 LINE <- "line"
 BAR <- "bar"
+AREA <- "area"
 
 # variables for graphing parameters
-JSON_NEEDS_GROUPS <- c("stacked bar", "horizontal stacked bar")
+JSON_NEEDS_GROUPS <- c("stacked bar", "horizontal stacked bar", "stacked area")
 ROTATE_TYPE <- "horizontal"
 
 # controls verbosity of output
@@ -363,6 +364,8 @@ add_graph_type <- function(current_row, graph_data) {
     graph_type <- LINE
   } else if (any(grep(BAR, current_row$type))) {
     graph_type <- BAR
+  } else if (any(grep(AREA, current_row$type))) {
+  graph_type <- AREA
   } else {
     stop('ERROR: graph type not defined; update graphtext excel sheet')
   }
