@@ -1,17 +1,17 @@
-Tuition group,Parental income,Need-based institutional grants,Non-need-based institutional grants
-Lowest tuition group,Lowest,3070,2693.9
-Lowest tuition group,Second,2833.9,3725.1
-Lowest tuition group,Third,2467.3,6638.9
-Lowest tuition group,Fourth ,2310.6,6494
-Second tuition group,Lowest,5432.9,7418.9
-Second tuition group,Second,5233,9287
-Second tuition group,Third,3854.8,11287.7
-Second tuition group,Fourth ,2379,10442.5
-Third tuition group,Lowest,12328,8495
-Third tuition group,Second,7734.5,11289.5
-Third tuition group,Third,8048.1,10662.5
-Third tuition group,Fourth ,4347.6,10595.9
-Highest tuition group,Lowest,28505.5,4220.1
-Highest tuition group,Second,25312.8,6926
-Highest tuition group,Third,17912,6364.7
-Highest tuition group,Fourth ,6711.8,4693.5
+Parental income,Tuition group,Need-based institutional grants,Non-need-based institutional grants
+Lowest,Lowest tuition group,3070,2693.9
+Second,Lowest tuition group,2833.9,3725.1
+Third,Lowest tuition group,2467.3,6638.9
+Fourth ,Lowest tuition group,2310.6,6494
+Lowest,Second tuition group,5432.9,7418.9
+Second,Second tuition group,5233,9287
+Third,Second tuition group,3854.8,11287.7
+Fourth ,Second tuition group,2379,10442.5
+Lowest,Third tuition group,12328,8495
+Second,Third tuition group,7734.5,11289.5
+Third,Third tuition group,8048.1,10662.5
+Fourth ,Third tuition group,4347.6,10595.9
+Lowest,Highest tuition group,28505.5,4220.1
+Second,Highest tuition group,25312.8,6926
+Third,Highest tuition group,17912,6364.7
+Fourth ,Highest tuition group,6711.8,4693.5
