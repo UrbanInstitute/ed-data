@@ -21,11 +21,9 @@ ROTATE_TYPE <- "horizontal"
 DEBUG_FLAG <- FALSE
 
 # ---- MAIN FUNCTION ---- #
-
 makeJson <- function (snumber, subsnumber, gnumber, 
-                      text_file_path, data_path, output_path,
+                      text_file_path, data_path,
                       gt_file, debug = DEBUG_FLAG) {
-
 
   # print(paste(snumber, subsnumber, gnumber,".csv start",sep=""))
   # Purpose: to create a json file with all graphing parameters as specified
@@ -41,8 +39,17 @@ makeJson <- function (snumber, subsnumber, gnumber,
   #   debug (bool): whether to print out the JSON to the console or not
   
   # identify row for the graph
+
+  output_path = paste(section_output_base_path, section_subsection_paths[subsnumber + 1],sep = "")
+
   current_row <- get_row(snumber, subsnumber, gnumber, text_file_path, gt_file)
   
+  
+  if(current_row$type == "table") {
+    print('table skip')
+    return ("skip")
+  }
+
   # load dataset
   dataset <- load_data(current_row, data_path)
   

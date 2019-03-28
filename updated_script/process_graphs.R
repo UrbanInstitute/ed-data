@@ -30,25 +30,25 @@ sections <- c(
 # order of these folders matters!
 
 subSections <- list(
-    c("institutions/json/","students/json/"),
-    c("subsidies/json/","appropriations/json/","endowments/json/"),
-    c("tuition-and-fees/json/","room-and-board/json/","student-budgets/json/","forgone-earnings/json/","net-price/json/"),
-    c("financial-need/json/","grant-aid/json/","federal/json/","state/json/","institutional/json/","other/json/","tax-benefits/json/"),
-    c("pre-college-income/json/","savings/json/","working-during-college/json/","borrowing/json/","time-to-degree/json/","state-policies/json/"),
-    c("employment-after-college/json/","variation-in-earnings/json/","student-debt/json/","loan-repayment-and-default/json/"),
+    c("json/","institutions/json/","students/json/"),
+    c("json/","subsidies/json/","appropriations/json/","endowments/json/"),
+    c("json/","tuition-and-fees/json/","room-and-board/json/","student-budgets/json/","forgone-earnings/json/","net-price/json/"),
+    c("json/","financial-need/json/","grant-aid/json/","federal/json/","state/json/","institutional/json/","other/json/","tax-benefits/json/"),
+    c("json/","pre-college-income/json/","savings/json/","working-during-college/json/","borrowing/json/","time-to-degree/json/","state-policies/json/"),
+    c("json/","employment-after-college/json/","variation-in-earnings/json/","student-debt/json/","loan-repayment-and-default/json/"),
     c("json/"),
     c("json/")
   )
 
 # path to all files and xlsx file name (xlsx in the SAME directory)
 GRAPH_TEXT_PATH <- "updated_script/"
-GRAPHTEXT_FILENAME <- "Graphtext_032619.xlsx"
+GRAPHTEXT_FILENAME <- "Graphtext_032819.xlsx"
 # GRAPHTEXT_FILENAME <- "testGroup_section2.xlsx"
 data_folder <- "csv-active/"
 
 ########### Important #################
 # Pick which section you want to generate
-selectedSection <- 6
+selectedSection <- 1
 #######################################
 
 sections[selectedSection]
@@ -63,15 +63,19 @@ graph_text_df <- read.xlsx(paste(GRAPH_TEXT_PATH, GRAPHTEXT_FILENAME, sep=""))
 
 
 stringSelection <- paste("0",selectedSection,sep="")
-# print(stringSelection)
+
 
 # filter to section selected
 section_graph_text_df <- graph_text_df  %>% 
   filter(section_number == selectedSection)
 
-# print(section_graph_text_df)
+# output_path = paste(section_output_base_path, section_subsection_paths[section_graph_text_df$subsection_number],sep = "")
 
-temp <- mapply(makeJson, section_graph_text_df$section_number, section_graph_text_df$subsection_number, 
-       section_graph_text_df$graph_number, text_file_path = GRAPH_TEXT_PATH, 
-       data_path = section_data_path, gt_file = GRAPHTEXT_FILENAME, debug = DEBUG_FLAG, 
-       output_path = paste(section_output_base_path, section_subsection_paths[section_graph_text_df$subsection_number],sep = ""))
+temp <- mapply(makeJson, 
+       section_graph_text_df$section_number, 
+       section_graph_text_df$subsection_number, 
+       section_graph_text_df$graph_number, 
+       text_file_path = GRAPH_TEXT_PATH, 
+       data_path = section_data_path, 
+       gt_file = GRAPHTEXT_FILENAME, 
+       debug = DEBUG_FLAG)

@@ -1,3 +1,8 @@
-,"  Less than $27,900","  $27,900-62,999","  $63,000-113,499","  $113,500 or more"
-All undergraduates,0.252320553,0.25322096,0.252584634,0.241873852
-First-year undergraduates ,0.256894425,0.25820538,0.262268243,0.222631953
+,Public four-year,Private nonprofit four-year,Public two-year,For-profit,Other or non-degree-granting
+18 or younger (20%),0.34,0.17,0.44,0.02,0.03
+19 to 23 (41%),0.14,0.08,0.64,0.07,0.07
+24 to 29 (17%),0.05,0.04,0.63,0.16,0.12
+30 to 39 (13%),0.04,0.06,0.62,0.17,0.11
+40 or older (9%),0.03,0.06,0.67,0.15,0.09
+Dependent student (50%),0.23,0.11,0.57,0.04,0.05
+Independent student (50%),0.05,0.05,0.64,0.15,0.11
