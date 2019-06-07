@@ -42,13 +42,13 @@ subSections <- list(
 
 # path to all files and xlsx file name (xlsx in the SAME directory)
 GRAPH_TEXT_PATH <- "updated_script/"
-GRAPHTEXT_FILENAME <- "Graphtext_032819.xlsx"
+GRAPHTEXT_FILENAME <- "Graphtext_060519_dw.xlsx"
 # GRAPHTEXT_FILENAME <- "testGroup_section2.xlsx"
 data_folder <- "csv-active/"
 
 ########### Important #################
 # Pick which section you want to generate
-selectedSection <- 1
+selectedSection <- 8
 #######################################
 
 sections[selectedSection]

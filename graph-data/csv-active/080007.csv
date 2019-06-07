@@ -1,60 +1,11 @@
-Public four-year out-of-state,Expected contribution,350,0
-Public four-year out-of-state,Federal grant aid,5410,0
-Public four-year out-of-state,Military and veterans grants aid,470,0
-Public four-year out-of-state,State grant aid,310,0
-Public four-year out-of-state,Institutional grant aid,5960,0
-Public four-year out-of-state,Private and employer grant aid,1270,0
-Public four-year out-of-state,Federal student loans,5140,0
-Public four-year out-of-state,Federal parent loans,3410,0
-Public four-year out-of-state,Private loans,870,0
-Public four-year out-of-state,Earnings and other resources,13170,0
-Public four-year out-of-state,Tuition and fees,0,19960
-Public four-year out-of-state,Budget beyond tuiiton and fees,0,16400
-Public four-year in-state,Expected contribution,240,0
-Public four-year in-state,Federal grant aid,5540,0
-Public four-year in-state,Military and veterans grants aid,60,0
-Public four-year in-state,State grant aid,3180,0
-Public four-year in-state,Institutional grant aid,1980,0
-Public four-year in-state,Private and employer grant aid,880,0
-Public four-year in-state,Federal student loans,3830,0
-Public four-year in-state,Federal parent loans,750,0
-Public four-year in-state,Private loans,230,0
-Public four-year in-state,Earnings and other resources,8480,0
-Public four-year in-state,Tuition and fees,0,9610
-Public four-year in-state,Budget beyond tuiiton and fees,0,15560
-Public two-year,Expected contribution,80,0
-Public two-year,Federal grant aid,5030,0
-Public two-year,Military and veterans grants aid,40,0
-Public two-year,State grant aid,950,0
-Public two-year,Institutional grant aid,340,0
-Public two-year,Private and employer grant aid,330,0
-Public two-year,Federal student loans,660,0
-Public two-year,Federal parent loans,40,0
-Public two-year,Private loans,80,0
-Public two-year,Earnings and other resources,8280,0
-Public two-year,Tuition and fees,0,3810
-Public two-year,Budget beyond tuiiton and fees,0,12020
-Private nonprofit four-year,Expected contribution,2910,0
-Private nonprofit four-year,Federal grant aid,5950,0
-Private nonprofit four-year,Military and veterans grants aid,80,0
-Private nonprofit four-year,State grant aid,2030,0
-Private nonprofit four-year,Institutional grant aid,16840,0
-Private nonprofit four-year,Private and employer grant aid,1620,0
-Private nonprofit four-year,Federal student loans,5220,0
-Private nonprofit four-year,Federal parent loans,2620,0
-Private nonprofit four-year,Private loans,810,0
-Private nonprofit four-year,Earnings and other resources,7860,0
-Private nonprofit four-year,Tuition and fees,0,30780
-Private nonprofit four-year,Budget beyond tuiiton and fees,0,15160
-For-profit,Expected contribution,880,0
-For-profit,Federal grant aid,5430,0
-For-profit,Military and veterans grants aid,420,0
-For-profit,State grant aid,890,0
-For-profit,Institutional grant aid,2040,0
-For-profit,Private and employer grant aid,600,0
-For-profit,Federal student loans,6340,0
-For-profit,Federal parent loans,3700,0
-For-profit,Private loans,430,0
-For-profit,Earnings and other resources,16220,0
-For-profit,Tuition and fees,0,20470
-For-profit,Budget beyond tuiiton and fees,0,16480
+,,Expected contribution,Federal grant aid,Military and veterans grants aid,State grant aid,Institutional grant aid,Private and employer grant aid,Federal student loans,Federal parent loans,Private loans,Earnings and other resources,Tuition and fees,Budget beyond tuiiton and fees
+Student resources,Public four-year out-of-state,350,5410,470,310,5960,1270,5140,3410,870,13170,0,0
+Student budget,Public four-year out-of-state,0,0,0,0,0,0,0,0,0,0,19960,16400
+Student resources,Public four-year in-state,240,5540,60,3180,1980,880,3830,750,230,8480,0,0
+Student budget,Public four-year in-state,0,0,0,0,0,0,0,0,0,0,9610,15560
+Student resources,Public two-year,80,5030,40,950,340,330,660,40,80,8280,0,0
+Student budget,Public two-year,0,0,0,0,0,0,0,0,0,0,3810,12020
+Student resources,Private nonprofit four-year,2910,5950,80,2030,16840,1620,5220,2620,810,7860,0,0
+Student budget,Private nonprofit four-year,0,0,0,0,0,0,0,0,0,0,30780,15160
+Student resources,For-profit,880,5430,420,890,2040,600,6340,3700,430,16220,0,0
+Student budget,For-profit,0,0,0,0,0,0,0,0,0,0,20470,16480

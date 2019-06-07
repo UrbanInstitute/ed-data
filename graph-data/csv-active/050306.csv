@@ -1,11 +1,36 @@
-,type,Test Data
-United States,type1,7.25
-New Mexico,type1,7.50
-Missouri,type1,7.85
-Delaware,type1,8.25
-Florida,type1,8.25
-United States,type2,7.25
-New Mexico,type2,7.50
-Missouri,type2,7.85
-Delaware,type2,8.25
-Florida,type2,8.25
+content,,
+All undergraduates,Total,0.065007
+All dependent students,Total,0.077527
+"Less than $27,900",Total,0.093563
+"$27,900-62,999",Total,0.091383
+"$63,000-113,499",Total,0.078752
+"$113,500 or more",Total,0.054097
+All independent students ,Total,0.029539
+All undergraduates,Public two-year,0.032095
+All dependent students,Public two-year,0.033645
+"Less than $27,900",Public two-year,0.039397
+"$27,900-62,999",Public two-year,0.045394
+"$63,000-113,499",Public two-year,0.031327
+"$113,500 or more",Public two-year,0.008847
+All independent students ,Public two-year,0.02901
+All undergraduates,Private nonprofit four-year,0.134545
+All dependent students,Private nonprofit four-year,0.154698
+"Less than $27,900",Private nonprofit four-year,0.181572
+"$27,900-62,999",Private nonprofit four-year,0.183271
+"$63,000-113,499",Private nonprofit four-year,0.18172
+"$113,500 or more",Private nonprofit four-year,0.113722
+All independent students ,Private nonprofit four-year,0.051425
+All undergraduates,Public four-year,0.052872
+All dependent students,Public four-year,0.052872
+"Less than $27,900",Public four-year,0.090403
+"$27,900-62,999",Public four-year,0.077797
+"$63,000-113,499",Public four-year,0.05036
+"$113,500 or more",Public four-year,0.02586
+All independent students ,Public four-year,0.032272
+All undergraduates,For-profit,0.027376
+All dependent students,For-profit,0.070241
+"Less than $27,900",For-profit,0.080994
+"$27,900-62,999",For-profit,0.053669
+"$63,000-113,499",For-profit,0.071076
+"$113,500 or more",For-profit,0.071843
+All independent students ,For-profit,0.011621
